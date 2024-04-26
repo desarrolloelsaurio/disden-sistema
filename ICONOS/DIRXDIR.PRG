@@ -1,0 +1,29 @@
+CLEA
+CLOSE ALL
+SET TALK OFF
+SET SAFE OFF
+STORE 0 TO M.BORRADO
+ELDIR=GETD()
+IF !EMPTY(ELDIR) .AND. LAST()#27
+   CANT=ADIR(PIPA,(ELDIR+"\*."),"D")
+   IF !EMPTY(CANT)
+      STORE .F. TO M.SEGUNDA
+      FOR FA=3 TO ALEN(PIPA,1)-1
+         FOR FB=FA+1 TO ALEN(PIPA,1)
+             @ 0,0 SAY PADR(ELDIR+PIPA[FA,1]+"\",30) FONT "ARIAL",16
+             @ 2,5 SAY "FA:"+STR(FA) FONT "ARIAL",16
+             @ 4,0 SAY  PADR(ELDIR+PIPA[FB,1]+"\",30) FONT "ARIAL",16
+             @ 6,5 SAY "FB:"+STR(FB)             FONT "ARIAL",16
+            DO COM2DIR WITH ELDIR+PIPA[FA,1]+"\",ELDIR+PIPA[FB,1]+"\",M.SEGUNDA
+             @ 20,5 SAY "BORRADOR:"+STR(BORRADO)             FONT "ARIAL",16            
+            STORE .T. TO M.SEGUNDA
+            WAIT "VOLVIO" WIND NOWA
+         NEXT
+         STORE .F. TO M.SEGUNDA
+         CLOSE DATA
+      NEXT
+      CLOSE ALL
+   ENDIF
+ENDIF
+CLOSE DATA
+ 

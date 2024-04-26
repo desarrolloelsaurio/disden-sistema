@@ -1,0 +1,19 @@
+***************************************
+*-- Programa: ELICAR.PRG
+*-- Fecha   : 11/08/91
+*-- Version : G. REINER
+*-- Notas   : ELIGE LA CARACTERISTICA
+*-- Modificaci¢n GOYO 05-19-92 05:07am
+***************************************
+FUNCTION ELICAR
+PARA MSG,R1,C1
+SELE MI1
+STORE NUL TO RESPUESTA
+IF CARPOP
+   SET ORDER TO TAG CARTEX
+   ACTI POPUP MI1POP
+   STOR IIF(!EMPTY(RESPUESTA),RECNO(),NUL) TO RESPUESTA
+ELSE
+	 RESPUESTA=ELIMI11('Caracter¡stica '+MSG,'MI1','CARCOD')
+ENDIF
+RETURN RESPUESTA

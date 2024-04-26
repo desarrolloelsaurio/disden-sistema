@@ -1,0 +1,27 @@
+PROCEDURE LSALCCB
+	PARAMETER PORPAN,L_LFEC
+	ULPR=HORA_ULP(PROGRAM())
+	=CHEQSEG()
+	=WORKING()
+	#DEFINE NUL    0                              && NUL
+	#DEFINE BOTOM  "  "+repl("°",78)              && BOTOM
+	#DEFINE PAIP   "|"                            && PAIP
+	#DEFINE ABA    "Abriendo Base de "            && ABA
+	#DEFINE CRLF CHR(13)+CHR(10)                  && CRLF
+	TT="SALDOS DE CUENTAS BANCARIAS"
+	IF !EMPTY(L_LFEC)
+		TT=TT+CRLF+"Saldo al "+dtoc(L_LFEC)
+	ENDIF
+
+	ACLA=PAIP+;
+		PADC("BANCO",20)+PAIP+;
+		PADC("N§ CUENTA",20)+PAIP+;
+		PADC("DEBE",11)+PAIP+;
+		PADC("HABER",11)+PAIP+;
+		PADC("SALDO",11)+PAIP
+
+	LINEA=REPL("=",LEN(ACLA))
+	STORE NUL TO CASOS,DEBE,HABER,SALDO
+	=UNWORK()
+	=IIF(PORPAN,LSALCCBP(),LSALCCBI())
+RETURN MEN_LIN(BOTOM)

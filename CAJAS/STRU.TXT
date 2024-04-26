@@ -1,0 +1,66 @@
+
+Structure for database: C:\SISTEMAS\CAJAS\KARDEX.DBF
+Number of data records:       2
+Date of last update   : 12/12/94
+Code Page             : 0
+Field  Field Name  Type       Width    Dec    Index  Collate
+    1  NUMERO      Numeric       10            Asc   Machine
+    2  COMPR       Character      8            Asc   Machine
+    3  FECHASAL    Date           8                  
+    4  HORASAL     Character      5                  
+    5  FECHAING    Date           8                  
+    6  HORAING     Character      5                  
+** Total **                      45
+
+
+Processor is 80486
+Currently Selected Database:
+Select area:  1, Database in Use: C:\SISTEMAS\CAJAS\KARDEX.DBF    Alias: KARDEX
+           Code page:   0
+ Structural CDX file:   C:\SISTEMAS\CAJAS\KARDEX.CDX
+           Index tag:   NUMERO     Collate: Machine   Key: NUMERO
+           Index tag:   COMPR      Collate: Machine   Key: COMPR
+       Lock(s): Exclusive USE
+
+File search path: 
+Default disk drive: C:
+Print file/device:  PRN:
+Work area =   1
+Margin    =   0
+Decimals  =   4
+Memowidth =  70
+Typeahead =  20
+Blocksize =  64
+Reprocess =       5
+Refresh   =   0 SECONDS
+DOS memory available = 412k
+DOS memory utilized = 0k
+
+Code page: 0
+Collating sequence: Machine
+Compiler code page: 0
+Date format: French
+Macro Hot Key = SHIFT+F10
+UDF parameters are passed by: VALUE
+
+ON KEY LABEL hot keys:
+F2              STORE QUEPOPUP(MIX_T1,MIX_R1,MIX_C1) TO M.TIPODOC
+RIGHTMOUSE      STORE QUEPOPUP(MIX_T1,MIX_R1,MIX_C1) TO M.TIPODOC
+F3              STORE  SEEKTECX(20,"MIX","TEXTO1",MIX_COD,MIX_IND,ALIAS(),ORDER(),MIX_R2,MIX_C2,.T.)  TO M.TIPODOC
+Textmerge Options
+          Delimiters:  Left = <<  Right = >>
+          Noshow
+
+Alternate  - off   Console    - on    Fixed      - off   Safety     - off   
+ANSI       - off   Cursor     - on    Heading    - on    Space      - on    
+Bell       - on    Debug      - on    Help       - off   Status     - off   
+Blink      - on    Deleted    - on    Intensity  - on    Sticky     - on    
+Brstatus   - off   Device     - scrn  Lock       - off   Sysmenus   - on    
+Carry      - off   Dosmem     - off   Logerrors  - off   Talk       - off   
+Century    - off   Echo       - off   Mouse      - on    Textmerge  - off   
+Clear      - on    Escape     - on    Multilocks - on    Title      - off   
+Color      - on    Exact      - on    Near       - off   Unique     - off   
+Compatible - off   Exclusive  - off   Optimize   - on    
+Confirm    - on    Fields     - off   Print      - off   
+
+

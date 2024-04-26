@@ -1,0 +1,14 @@
+FUNCTION QTIPCON
+PARAMETER Q_CNON,Q_UPP,Q_PLUR
+Q_SALCON=""
+DO CASE
+CASE Q_CNON="GAS"
+     Q_SALCON="Tipo de Gasto"
+CASE Q_CNON="MED"
+     Q_SALCON="Medicamento"
+CASE Q_CNON="RAD"
+     Q_SALCON="Material Radiactivo"
+CASE Q_CNON="DES"     
+     Q_SALCON="Material Descartable"
+ENDCASE
+RETURN IIF(Q_UPP,UPPER(Q_SALCON),Q_SALCON)

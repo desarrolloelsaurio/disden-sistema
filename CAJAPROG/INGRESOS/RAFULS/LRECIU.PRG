@@ -1,0 +1,150 @@
+******************************************************************************
+*-- Programa: LRECIU.PRG
+*-- Fecha   : 10-14-92 11:47am
+*-- Version : G. REINER
+*-- Notas   : IMPRESION DE FACTURAS, POR IMPRESORA - TIPO B
+*-- MODIFICACION goyo ADAPTACION FACTURAS - RECIBOS (TIPO B)
+*-- MODIFICACION GOYO / NOVOGAR
+*-- PAGOS CUOTAS
+*-- MODIFICACION PARA RAFULS
+********************************************************************************
+#DEFINE PICU "999,999,999.99"
+#DEFINE NUL  0                                   && NUL
+#DEFINE PAIP "|"                                 && PAIP
+#DEFINE BOTOM  "  "+repl("°",78)                 && BOTOM
+
+STORE HORA_ULP(PROGRAM()) TO ULPR
+IF CHEQSEG()
+	W=PAIP
+	STOR NUL TO CASOS
+	STOR 90 TO T1
+	C1=2
+	C2=18
+	C7=48
+	STORE 60 TO C3,C6
+	C4=C3+10
+	C5=55
+	STORE "" TO NLQ1,NLQ2
+	*	IF TYPE("ESARROYO")#"U" .AND. ESARROYO .AND. LEFT(ULPR,5)="LRECI"
+	*		STORE .F. TO LPT1
+	*		STORE .T. TO LPT2
+	*	ELSE
+	RELE LPT1,LPT2,LPT3
+	*	ENDIF
+	=CABPRI3(2,36)
+	ELCLI=PER.CODCLI
+	ELNOM=PER.CLIENTE
+	PRINTJOB
+	***************************************************
+	=CABEMP(NADAREC)
+	?
+	? PADR("RECIBIMOS DEL SR. "+ALLTRIM(ELNOM)+" LA CANTIDAD DE "+ALLTRIM(XAUSS),80,"-")
+	TT=SAY_NUM(M.SUMPAG)
+	IF LEN(TT)>80
+		=AJUSTE(TT,80,"-","I")
+	ELSE
+		? PADR(TT,80,'-')
+	ENDIF
+	TT="POR CUENTA DEL SR. "
+	=XSEEK(M.ELCLI,"ALQ","CODCLI")
+	=XSEEK(ALQ.CODINM,"INM","CODINM")
+	TT=TT+ALLTRIM(SAYPER(INM.PROCOD,"PRPCOD"))+" ,PROPIETARIO DEL INMUEBLE SITO EN CALLE "
+	TT=TT+ALLTRIM(INM.DOMICILIO)+" DE LA CIUDAD DE "+ALLTRIM(SAYMIX(INM.LOCALIDAD,"CIUCOD"))
+    =AJUSTE(TT,80,"-","I")
+
+	? "DE ACUERDO AL DETALLE A CONTINUACION:"
+
+	IF USED("TMP1")
+		SELE TMP1
+		SCAN
+			? PADR(Q_TIPTEX(TMP1.DETALLE),35)
+			?? " "
+			?? " VENC:"
+			?? TMP1.VENCIM
+						?? "  "
+			?? TMP1.MONTO PICT PICU
+
+			IF TMP1.DIASRET>0
+				?? " RETR:"
+				?? STR(TMP1.DIASRET,4)
+				?? " Ds"
+			ENDIF
+
+		ENDSCAN
+	ELSE
+		IF !EMPTY(LAIMP)
+			FOR ALI=1 TO LAIMP
+				IF IMPUTA[ALI,2]
+					TT='PAGO '+ALLTRIM(IMPUTA[ALI,1])+' '+IMPUTA[ALI,4]+' c/venc '+dtoc(imputa[ali,3])+iif(imputa[ali,3]<date(),'  Retr:'+alltrim(str(date()-imputa[ali,3]))+' ds','')
+				ELSE
+					TT='PAGO PARCIAL '+ALLTRIM(IMPUTA[ALI,1])+' '+IMPUTA[ALI,4]+' c/venc '+dtoc(imputa[ali,3])+iif(imputa[ali,3]<date(),'  Retr:'+alltrim(str(date()-imputa[ali,3])),'')
+				ENDIF
+				? PADR(TT,80,'-')
+			NEXT
+		ELSE
+			TT='EN PAGO DE '+Q_TIPTEX(ccl.DETALLE)
+			? PADR(TT,80,'-')
+		ENDIF
+	ENDIF
+	?
+	? "DISCRIMINACION DEL PAGO"
+	IF !EMPTY(CHEQUES)
+		SELE CCH
+		SET ORDER TO TAG CODCLI
+		SEEK M.ELCLI
+		STORE NUL TO TT
+*		ACLA=PAIP+"FECHA CH"+PAIP+PADC("NUMERO",15)+PAIP+PADC("BANCO",20)+PAIP+PADC("MONTO",14)+PAIP
+		ACLA=PAIP+PADC("NUMERO",15)+PAIP+PADC("BANCO",20)+PAIP
+		LINEA=REPL("=",LEN(ACLA))
+		? LINEA
+		? ACLA
+		SCAN WHILE CCH.CODCLI=M.ELCLI
+			IF CCH.NUMERE=NADAREC
+				? PAIP
+*				?? FECHADE
+*				?? PAIP
+				?? NROCHE
+				?? PAIP
+				?? BANCO
+				?? PAIP
+*				?? MONTO PICT PICU
+*				?? PAIP
+*				TT=TT+MONTO
+			ENDIF
+		ENDS
+*		? PAIP+"T. CHEQ."+PAIP+SPACE(15)+PAIP+SPACE(20)+PAIP
+*		?? TT PICT PICU
+*		?? PAIP
+		? LINEA
+	endif
+	IF !EMPTY(M.EFECAUS)
+		? XAUSS
+		?? ':' AT 46
+		?? M.EFECAUS PICT PICU
+	ENDIF
+	IF !EMPTY(M.EFECDOL)
+		? XADOLS
+		?? ':' AT 46
+		?? M.EFECDOL PICT PICU
+	ENDIF
+	? "TOTAL"
+	?? ':' AT 46
+	?? M.SUMPAG PICT PICU
+	?
+	? PADC("LOS PAGOS ARRIBA DETALLADOS NO SIGNIFICAN LA CANCELACION DE DEUDAS ANTERIORES",80,"*")
+	?
+	?
+	?
+	? PADC(DTOC(DATE())+SPACE(10)+"PP ADMINISTRACION RAFULS",80)
+	? PADC("--------"+SPACE(10)+REPL("-",24),80)
+	_WRAP=.F.
+	_LMARGIN=NUL
+	EJECT PAGE
+	ENDP
+	=FINIMP()
+	=IAUD(NADAREC)
+	RELE LPT1,LPT2,LPT3
+ELSE
+	=IAUDI()
+ENDI
+RETURN MEN_LIN(BOTOM)

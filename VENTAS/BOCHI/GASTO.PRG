@@ -1,0 +1,37 @@
+********************************************************************************
+*-- Programa: GASTO.PRG
+*-- Fecha   : 19.04.90
+*-- Version : G. REINER
+*-- Notas   : MENU DE TIPO DE GASTO
+********************************************************************************
+DO CASE
+CASE BAR()=1
+   SELE GAS
+   DEFI WIND WIN FROM 5,20 TO 12,52
+   ACTI WIND WIN
+   DO INDATGAS
+   DEAC WIND ALL
+CASE BAR()=2
+   STOR 0 TO RESPUESTA
+   ACTI POPU GASPOP
+   IF !EMPTY(RESPUESTA)
+      SELE GAS
+      GO TOP
+      SKIP RESPUESTA-1
+      DEFI WIND WIN FROM 6,20 TO 13,52
+      ACTI WIND WIN
+      DO CODATGAS
+      DEAC WIND ALL
+   ENDI
+CASE BAR()=4
+   DEFI WIND CACA FROM 1,0 TO 5,79 DOUB
+   ACTI WIND CACA
+   DO TIT2 WITH 1,' LISTADO DE TIPO DE GASTO ','I',78
+   DEFI WIND WIN FROM 5,1 TO 21,78 DOUB
+   BROWSE NOINIT NOFOLLOW NOAPPEND NOEDIT NODELETE NOCLEAR WIND WIN
+   DEAC WIND ALL
+CASE BAR()=5
+   DO LIGASPAI
+ENDC
+RETURN
+ 

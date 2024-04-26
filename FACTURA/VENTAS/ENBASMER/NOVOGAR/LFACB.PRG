@@ -1,0 +1,182 @@
+***************************************************
+*-- Programa: LFACI.PRG
+*-- Fecha   : 07/22/91
+*-- Version : G. REINER
+*-- Notas   : IMPRESION DE FACTURAS, POR IMPRESORA
+***************************************************
+PARAMETER COSAS
+STORE HORA_ULP(PROGRAM()) TO ULPR
+=CHEQSEG()
+SELE fac
+picu="99,999,999,999.99"
+W=PAIP
+=IMPRESOR()
+STOR NUL TO CASOS
+STOR 90 TO T1
+STOR ((XATALMAX-XATALMIN)/XATALSTEP)+1 TO CCOL
+DIME CT(CCOL)
+STOR (CCOL*XATALAN+CCOL) TO NADATALE
+C1=2
+C2=18
+C7=48
+C3=C7+NADATALE+2
+C4=C3+10
+C5=C4
+C6=C5+20
+ON KEY DO ABPR
+IF USADOR='GOYO' .OR. USADOR='MANILDO'
+	ON ERROR
+ELSE
+	ON ERROR DO ABPR
+ENDIF
+SET DEVICE TO PRINT
+SET CONSOLE OFF
+SET PRINTER ON
+_PEJECT="NONE"
+_RMARGIN=80
+_PLINENO=NUL
+_PAGENO=1
+_PSCODE='{27}{64}{27}{67}{36}{27}{120}{0}{18}{27}{116}{1}{27}{82}{0}'
+_PLENGTH=36
+_RMARGIN=80
+_PLOFFSET=NUL
+_ALIGNMENT='LEFT'
+_PADVANCE="LINEFEEDS"
+***
+_PCOPIES=1
+PRINTJOB
+WRAP=.T.
+_ALIGNMENT="RIGHT"
+_RMARGIN=132
+?
+?? CHR(14)
+?? 'FACTURA' AT 27
+?
+?
+?
+? FAC.FECHAEM AT 60
+?
+?
+?
+?
+?
+? iif(cosas,CLNAME,"") at 10
+? iif(cosas,CLADRE,'') at 10
+? iif(cosas,CLLOCA,"") at 10
+? 'CONSUMIDOR FINAL' at 10
+GOTO fac.condpago IN mix
+STOR mix.texto1 TO nada
+nada=TRANSF(nada,"@R 999-999-999-999-999-999")
+nada=ALLTRIM(STRTRAN(nada,'-000',SPACE(4)))
+STOR mix.texto1 TO nada2
+? nada AT 15
+?
+STOR 1 TO i
+FOR A=4 TO 16 STEP 3
+	STOR VAL(SUBSTR(nada2,A,3)) TO nada5
+	IF EMPTY(nada5)
+		EXIT
+	ENDI
+	STOR i+1 TO i
+NEXT
+DIME fec[7]
+STOR 1 TO j
+STOR i*3 TO i
+FOR A=1 TO i STEP 3
+	STOR fac.fechaem TO fnada
+	STOR VAL(SUBSTR(nada2,A,3)) TO nada6
+	STOR nada6+fnada TO fnada
+	IF EMPTY(VAL(SUBSTR(nada2,A,3))) .AND. i=3
+		STOR NUL TO fec[1]
+		STOR DTOC(fnada) TO fec[2]
+		EXIT
+	ELSE
+		STOR DTOC(fnada) TO fec[J+1]
+	ENDI
+	STOR j TO fec[1]
+	STOR j+1 TO j
+NEXT
+SELE fax
+GO TOP
+SCAN WHIL fax.factura#fac.factura
+ENDS
+?
+?
+STOR RECNO() TO REGI
+SCAN WHIL fax.factura=fac.factura
+	SELE MER
+	IF SEEK(LEFT(FAX.ARTICULO,13))
+		? CHR(15)
+		?? alltrim(FAX.articulo)+ZERO(FAX.TALLE*10,3)
+		?? '   '
+		?? chr(18)
+		?? LEFT(mer.merca,28)
+		?? '  '
+		?? STR(FAX.CANTIDAD,7)
+		?? TRANSF(FAX.MONTO1,"999,999,999.99")
+		?? ' '
+		?? TRANSF(FAX.MONTO1*FAX.CANTIDAD,"999,999,999.99")
+	ENDIF
+	SELE FAX
+endscan
+IF COSAS
+	if !empty(senia)
+		? CHR(15)
+		?? space(19)
+		?? chr(18)
+		?? padr('SE¥A S/Factura N§ '+alltrim(str(senia1)),28)
+		?? space(24)
+		?? TRANSF(0-senia,"999,999,999.99")
+	endif
+ENDIF
+if !empty(fac.descuento)
+	? CHR(15)
+	?? space(19)
+	?? chr(18)
+	?? padr('DESCUENTO',28)
+	?? space(24)
+	?? TRANSF(0-FAC.DESCUENTO,"999,999,999.99")
+endif
+DO WHILE _PLINENO<28
+	?
+ENDDO
+? fac.montonet PICT picu AT 60
+?? LEFT(IIF(SUBSTR(xauss,1,1)=fac.moneda,' $ ','u$s'),3)
+IF cosas
+	?
+	??? chr(15)
+	IF !EMPTY(EFECAUS)
+		? PADR(XAUSS,20)+':'
+		?? STR(EFECAUS,14,2)
+	ENDIF
+	IF !EMPTY(EFECDOL)
+		? PADR(XADOLS,20)+':'
+		?? STR(EFECDOL,14,2)
+	ENDIF
+	IF !EMPTY(TARJETA)
+		? PADR('TARJETA',20)+':'
+		?? STR(TArjeta,14,2)+' - '
+		?? tartar+' - '
+		?? 'N§ TARJETA:'+NUTAR
+	ENDIF
+	FOR X=1 TO 3
+		IF !EMPTY(CHEQUE[X,1])
+			? PADR('XAUSS',20)+':'
+			?? STR(CHEQUE[X,1],14,2)
+			?? ' - CHEQUE N§ '
+			?? CHEQUE[X,3]
+			?? ' - BANCO '
+			?? CHEQUE[X,2]
+			?? ' - DEPOS.: '
+			? CHEQUE[X,4]
+		ENDIF
+	NEXT
+ENDIF
+********************
+_WRAP=.F.
+EJECT PAGE
+ENDP
+=finimp()
+=IIF(COSAS,iaud(FAC.FACTURA),.T.)
+ENDIF
+RETURN

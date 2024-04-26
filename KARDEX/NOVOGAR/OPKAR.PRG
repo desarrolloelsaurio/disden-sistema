@@ -1,0 +1,15 @@
+*************************
+*-- Programa: OPKAR.PRG
+*-- Fecha   : 06/18/91
+*-- Version : G. REINER
+*-- Notas   : ABRE ARCHIVO KARDEX DE MERCADERIAS TERMINADAS
+*************************
+PARAMETER SHIT
+IF USED("KAR")
+	SELE KAR
+ELSE
+	=MEN_LIN(ABA+"Kardex")
+	SELE 18
+	USE (PATHVEN+'\KARDEX') ORDER TAG ARTICULO ALIAS KAR
+ENDIF
+RETURN MEN_LIN(BOTOM)

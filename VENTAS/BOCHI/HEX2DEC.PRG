@@ -1,0 +1,18 @@
+function hex2dec
+parameter HE
+A=LEFT(HE,1)
+B=RIGHT(HE,1)
+IF ASC(A)>64
+   A=(ASC(A)-55)*16
+ELSE
+   A=VAL(A)*16
+ENDIF
+SUMA=A
+IF ASC(B)>64
+   B=ASC(B)-55
+ELSE
+   B=VAL(B)
+ENDIF
+      
+SUMA=SUMA+B
+RETURN SUMA

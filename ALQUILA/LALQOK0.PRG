@@ -1,0 +1,51 @@
+* ษออออออออออออออออออออออออออออออออออออออออออออป
+* บ PROCEDIMIENTO : LALQOK0.PRG                บ
+* บ COMENTARIO    : CAB. FINMCAS OK P/ALQUILER บ
+* ฬออออออออออออออออออออออออออออออออออออออออออออน
+* บ AUTOR      : GOYO REINER                   บ
+* บ FECHA      : 08-20-93                      บ
+* บ HORA       : 00:48:16am                    บ
+* บ COPYRIGHT  : 1993 by GREGORIO REINER       บ
+* ศออออออออออออออออออออออออออออออออออออออออออออผ
+FUNCTION LALQOK0
+	#DEFINE NUL    0                               && NUL
+	#DEFINE PAIP   "|"                             && PAIP
+	=WORKING()
+	=DOTALK()
+	TMP=GENTMP()
+	SET ORDER TO TAG INQCOD IN PER
+	SET ORDER TO TAG CODINM IN INM
+	SELE ALQ
+	SET ORDER TO
+	SET RELA TO CODINM INTO INM
+	SET RELA TO CODCLI INTO PER ADDI
+	=FLOCK("ALQ") .OR. FLOK("ALQ")
+	=FLOCK("INM") .OR. FLOK("INM")
+	=FLOCK("PER") .OR. FLOK("PER")
+	SORT ON DIAVENC,;
+	PER.CLIENTE,;
+	INM.DOMICILIO ;
+	TO (TMP) ;
+	FIELDS DIAVENC,PER.CLIENTE,CODINM,INM.DOMICILIO,FECHASEG,MONEDA,FECHAALQ, ;
+	CODACT ,FECHAVENC ,MONTOBASE ;
+	FOR EMITE .AND. FECHAVENC>DATE()
+	STOR NUL TO CASOS
+	LINEA=REPL("=",LEN(ACLA))
+	ACLA=PAIP+;
+	PADC("INQUILINO",IIF(PORPAN,20,30))+PAIP+;
+	PADC("C. INM.",10)+PAIP+;
+	PADC("DOMICILIO",IIF(PORPAN,20,40))+PAIP+;
+	"FIN CTRT"+PAIP+;
+	"AS"+PAIP+;
+	PADC("MONTO",XACDIGI)+PAIP
+	UNLO ALL
+	SELE ALQ
+	USE (TMP) ALIAS ALQ EXCL
+	STORE NUL TO CASOS,TTTL,GTTL,GCASOS
+	SELE ALQ
+	DELE FOR EMPTY(CLIENTE)
+	DELE FOR EMPTY(DOMICILIO)
+	PACK
+	TT="Inmuebles con Contrato y en Condiciones de Generar Alquiler"
+	=UNTALK()
+RETURN UNWORK()

@@ -1,0 +1,34 @@
+****************************************************
+*-- Programa: LFACIU.PRG
+*-- Fecha   : 08-26-92 10:38am
+*-- Version : G. REINER
+*-- Notas   : LISTADO DE ULTIMA OPERACION DE FACTURA
+*-- Modificaci¢n GOYO 12-25-92 10:38am
+****************************************************
+STORE HORA_ULP(PROGRAM()) TO ULPR
+=CHEQSEG()
+STORE "" TO CASOS,ACLA,LINEA,TT
+=LFACPU0()
+STOR NUL TO CASOS
+=CABPRI()
+_PCOPIES=1
+PRINTJOB
+=CABPRI1()
+=TIT_LIN(3)
+STORE '' TO KODCLI,KLIENTE,FEKHA,FAKTURA
+=LFACPU1()
+SCAN
+	IF _PLINENO>63
+		=FIN_LIN(3,NUL)
+		=cabpri1()
+		=TIT_LIN(4)
+	ENDI
+	=IIF(KODCLI#FAC.CODCLI,LFACPU1(.T.),LFACPU1())
+ENDSCAN
+=LFACPU1(.T.)
+=FIN_LIN(4,CASOS)
+ENDP
+=FINIMP()
+=REOPFAC()
+=IAUD("")
+RETURN MEN_LIN(BOTOM)

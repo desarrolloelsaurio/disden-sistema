@@ -1,0 +1,9 @@
+#DEFINE PAIP   "|"                               && PAIP
+FUNCTION LMI1P1
+	? PAIP
+	?? STR(RECNO(),5)
+	?? PAIP
+	?? MI1.TEXTO1 PICT TEXTO[1,3]
+	?? PAIP
+	?? MI1.TEXTO2 PICT TEXTO[2,3]
+RETURN IMPUSE()

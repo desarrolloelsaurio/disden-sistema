@@ -1,0 +1,3 @@
+FUNCTION var_AGE
+	PUBL AGEpop,AGEpopc,AGEpopr,ORDAGE
+RETURN .T.

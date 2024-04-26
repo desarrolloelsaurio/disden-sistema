@@ -1,0 +1,16 @@
+************************
+*-- Programa: FICHA.PRG
+*-- Fecha   : 21/09/89
+*-- Version : G. REINER
+*-- Notas   : IMPRIME UN RECUADRO CON LA FECHA, LA HORA Y Nro DE FICHA
+*      EL RENGLON Y LA COLUMNA SE DAN POR PARAMETRO
+************************
+PARAMETER REN,COL,FICHA
+ 
+@ REN,COL SAY "FECHA:  " + DTOC(DATE())
+@ REN+1,COL SAY "HORA :  "
+SET CLOCK TO REN+1,COL+8
+@ REN+2,COL SAY "FICHA: "
+@ REN+2,COL+6 SAY ficha
+@ REN-1,COL-1 to REN+3,COL+16 DOUB
+RETURN

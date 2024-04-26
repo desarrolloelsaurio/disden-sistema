@@ -1,0 +1,14 @@
+PARAMETER TIP_IMP
+STORE BAR() TO DIJO
+ULPR=HORA_ULP(PROGRAM())
+IF CHEQSEG()
+   STORE '' TO TT
+   FISC=QWCLI(DIJO)
+   IF FISC#".F."
+      tt="Reimputa Cobros"+chr(13)+chr(10)+tt
+      do reimpccl WITH TIP_IMP
+   ENDIF
+ELSE
+   =IAUDI()
+ENDIF
+=MEN_LIN(BOTOM)

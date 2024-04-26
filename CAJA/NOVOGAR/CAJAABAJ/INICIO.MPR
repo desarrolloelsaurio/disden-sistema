@@ -1,0 +1,452 @@
+*       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+*       º                                                         º
+*       º 10/13/95             INICIO.MPR               22:19:38  º
+*       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
+*       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+*       º                        Setup Code                       º
+*       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
+*
+EXTERNAL PROCEDURE SHIT
+EXTERNAL PROCEDURE NADA
+SET TALK OFF
+SET ESCA OFF
+CLEA
+=bigletT(2,11,'CAJA')
+=bigchars(12,10,'NOVOGAR',10)
+store 0 to nul
+=men_lin("TECLA PARA CONTINUAR")
+=inkey(0,'HM')
+do while !empty(wontop())
+	rele wind (wontop())
+enddo
+=SETEOS()
+ulpr=PROGRAM()
+=BOX()
+	STOR 0 TO cntr,last_num
+	count=100
+	c=3
+	=ter_smoo(' Sistema de Caja ','Construyendo Men£es','Espere por Favor')
+	RELE PATH,pathcaj,PATHPRO,PATHVEN,PATHCOM,pathcpr
+	PUBL PATH,pathcaj,PATHPRO,PATHVEN,PATHCOM,pathcpr
+	=GETPATH()
+    =ter_smo1(3)
+	acti scre
+	@ 0,0 SAY REPLICATE("Û",80) COLO W
+	@ 0,1 SAY PADC('Caja',20) COLOR I
+	@ 0,23 SAY '|'
+	@ 0,25 SAY DATE() COLOR I
+	@ 0,34 SAY '|'
+	@ 0,36 SAY TIME() COLOR I
+	@ 0,45 SAY '|'
+	@ 0,47 SAY PADC(PROGRAM(),10,' ') COLOR I
+	@ 0,58 SAY '|'
+	acti wind thermo
+	set shad on
+	=genvar()
+	=ter_smo1(3)
+	=genvar1()
+	=ter_smo1(3)
+	acti scre
+	=opaud()
+	acti wind thermo
+	=ter_smo1(3)
+	acti scre
+	=opseg()
+	acti wind thermo
+	=ter_smo1(3)
+	acti scre
+	=OPDOC()
+	acti wind thermo
+	=ter_smo1(3)
+	ULPR=PROGRAM()
+	acti scre
+	=cabpan1()
+	acti wind thermo
+	=ter_smo1(3)
+	************************** inicio caja
+		rele cntr,count,last_num,segu,c,RESPUESTA
+		PUBL RESPUESTA
+	=relewin("thermo")
+	STORE "" TO RESPUESTA
+*       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+*       º                      Menu Definition                    º
+*       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
+*
+SET SYSMENU OFF
+DEFINE MENU MAIN
+DEFI PAD _r4f1buswq OF MAIN PROM "\<Clientes" AT 1,0 COLOR SCHEME 3
+DEFI PAD _r4f1busx1 OF MAIN PROM "\<Entradas" AT 1,9 COLOR SCHEME 3
+DEFI PAD _r4f1busx8 OF MAIN PROM "C\<uentas Corrientes" AT 1,18 COLOR SCHEME 3
+DEFI PAD _r4f1busxg OF MAIN PROM "\<Popups" AT 1,37 COLOR SCHEME 3
+DEFI PAD _r4f1busxn OF MAIN PROM "\<Chau" AT 1,44 COLOR SCHEME 3
+ON PAD _r4f1buswq OF MAIN ACTI POPUP clientes
+ON PAD _r4f1busx1 OF MAIN ACTI POPUP entradas
+ON PAD _r4f1busx8 OF MAIN ACTI POPUP cuentascor
+ON SELE PAD _r4f1busxg OF MAIN do acpopu.spr
+ON SELE PAD _r4f1busxn OF MAIN quit
+
+DEFINE POPUP clientes MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFINE BAR 1 OF clientes PROM "\<Datos Administrativos"
+DEFINE BAR 2 OF clientes PROM "\<Legajo"
+DEFINE BAR 3 OF clientes PROM "\<Control de Impresoras"
+DEFINE BAR 4 OF clientes PROM "\-" ;
+	SKIP FOR .T.
+DEFINE BAR 5 OF clientes PROM "Consulta S‚rvice"
+ON SELE BAR 1 OF clientes do cli
+ON SELE BAR 2 OF clientes do cli
+ON SELE BAR 3 OF clientes do opcimp
+ON SELE BAR 5 OF clientes DO _r4f1but1m
+
+DEFINE POPUP entradas MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFINE BAR 1 OF entradas PROM "Cobrado en \<Efectivo"
+DEFINE BAR 2 OF entradas PROM "Cobrado con \<Tarjeta"
+DEFINE BAR 3 OF entradas PROM "Cobrado \<Cuota/Cheque"
+DEFINE BAR 4 OF entradas PROM "\-" ;
+	SKIP FOR .t.
+DEFINE BAR 5 OF entradas PROM "\<Recibos Emitidos"
+DEFINE BAR 6 OF entradas PROM "R\<eimprime Recibo"
+ON SELE BAR 1 OF entradas DO ICOBCTDO.SPR 
+ON SELE BAR 2 OF entradas DO ICOBTARJ.SPR 
+ON SELE BAR 3 OF entradas DO _r4f1but7t
+ON SELE BAR 5 OF entradas DO LCAJD
+ON SELE BAR 6 OF entradas DO recibo
+
+DEFINE POPUP cuentascor MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFINE BAR 1 OF cuentascor PROM "Cuenta Corriente un Cliente"
+DEFINE BAR 2 OF cuentascor PROM "\-" ;
+	SKIP FOR .t.
+DEFINE BAR 3 OF cuentascor PROM "\<Notas de D‚bito"
+DEFINE BAR 4 OF cuentascor PROM "\-"
+DEFINE BAR 5 OF cuentascor PROM "Remputaci¢n"
+ON SELE BAR 1 OF cuentascor DO _r4f1butbw 
+ON SELE BAR 3 OF cuentascor DO _r4f1butcu 
+ON SELE BAR 5 OF cuentascor DO _r4f1butdq 
+
+*       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+*       º                 Cleanup Code & Procedures               º
+*       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
+*
+DO WHILE .T.
+acti menu MAIN
+IF last()=27 .and. ;
+   getenv("USERNAME")="GOYO"
+   EXIT
+ENDIF
+ENDDO
+SET SYSM TO DEFA
+RETURN
+
+PROCEDURE GENVAR
+	*:*********************************************************************
+	*:        Program: GENVAR.PRG
+	*:         System: SYSTEMA DE COMERCIALIZACION
+	*:         Author: GOYO REINER
+	*:      Copyright (c) 1991, SISTEMAS INFORMATICOS S.R.L.
+	*:  Last modified: 09/19/91     11:54
+	*:*********************************************************************
+	PUBL jANpop,jANpopR, jANpopC
+	PUBL BANpop,iBANr,iBANc,iBANla,iBANan,cBANc,cBANr,cBANan,cBANla,BANpopc,BANpopr,vBANc,vBANr,vBANan,vBANla,mBANc,mBANr,mBANla,mBANan
+	PUBL ciupop,iciur,iciuc,iciula,iciuan,cciuc,cciur,cciuan,cciula,ciupopc,ciupopr,vciuc,vciur,vciuan,vciula,mciuc,mciur,mciula,mciuan
+	PUBL clipop,iclir,iclic,iclila,iclian,cclic,cclir,cclian,cclila,clipopc,clipopr,vclic,vclir,vclian,vclila,mclic,mclir,mclila,mclian
+	PUBL colpop,icolr,icolc,icolla,icolan,ccolc,ccolr,ccolan,ccolla,colpopc,colpopr,vcolc,vcolr,vcolan,vcolla,mcolc,mcolr,mcolla,mcolan
+	PUBL iremc,iremr,ireman,iremla
+	PUBL ifacc,ifacr,ifacan,ifacla
+	PUBL gaspop,igasc,igasr,igasla,igasan,cgasc,cgasr,cgasla,cgasan,gaspopc,gaspopr,vgasc,vgasr,vgasan,vgasla,mgasc,mgasr,mgasla,mgasan
+	PUBL grupop,igruc,igrur,igrula,igruan,cgruc,cgrur,cgrula,cgruan,grupopc,grupopr,vgruc,vgrur,vgruan,vgrula,mgruc,mgrur,mgrula,mgruan
+	PUBL linpop,ilinc,ilinr,ilinla,ilinan,clinr,clinc,clinan,clinla,linpopc,linpopr,vlinan,vlinla,vlinr,vlinc,mlinr,mlinc,mlinan,mlinla
+	PUBL matpop,imatc,imatr,imatan,imatla,cmatc,cmatr,cmatan,cmatla,matpopc,matpopr,mmatc,mmatr,mmatan,mmatla,vmatr,vmatc,vmatla,vmatan
+	PUBL merpop,imerc,imerr,imeran,imerla,cmerc,cmerr,cmeran,cmerla,merpopc,merpopr,mmerc,mmerr,mmeran,mmerla,vmerr,vmerc,vmerla,vmeran,merpop1
+	PUBL pagpop,ipagr,ipagc,ipagla,ipagan,cpagc,cpagr,cpagan,cpagla,pagpopc,pagpopr,vpagc,vpagr,vpagan,vpagla,mpagr,mpagc,mpagla,mpagan
+	PUBL propop,ipror,iproc,iprola,iproan,cproc,cpror,cproan,cprola,propopc,propopr,vproc,vpror,vproan,vprola,mproc,mpror,mprola,mproan
+	publ ipedr,ipedc,ipedan,ipedla
+	PUBL prvpop,iprvr,iprvc,iprvla,iprvan,cprvc,cprvr,cprvan,cprvla,prvpopc,prvpopr,vprvc,vprvr,vprvan,vprvla,mprvc,mprvr,mprvla,mprvan
+	PUBL rubpop,irubc,irubr,iruban,irubla,crubc,crubr,cruban,crubla,rubpopc,rubpopr,vrubc,vrubr,vruban,vrubla,mrubr,mrubc,mruban,mrubla
+	PUBL opkpop,iopkr,iopkc,iopkan,iopkla,copkr,copkc,copkla,copkan,opkpopr,opkpopc,mopkc,mopkr,mopkan,mopkla,vopkr,vopkc,vopkan,vopkla
+	PUBL MARpop,iMARr,iMARc,iMARla,iMARan,cMARc,cMARr,cMARan,cMARla,MARpopc,MARpopr,vMARc,vMARr,vMARan,vMARla,mMARc,mMARr,mMARla,mMARan
+	PUBL tarpop,itarr,itarc,itarla,itaran,ctarc,ctarr,ctaran,ctarla,tarpopc,tarpopr,vtarc,vtarr,vtaran,vtarla,mtarc,mtarr,mtarla,mtaran
+	PUBL JANpop,JANpopr,JANpopc
+	PUBL merpop,merpopr,merpopc
+	PUBL viapop,iviar,iviac,iviala,iviaan,cviac,cviar,cviaan,cviala,viapopc,viapopr,vviac,vviar,vviaan,vviala,mviac,mviar,mviala,mviaan
+	PUBL ivixr,ivixc,ivixla,ivixan,cvixc,cvixr,cvixan,cvixla,vvixc,vvixr,vvixan,vvixla,mvixc,mvixr,mvixla,mvixan
+	PUBL zonpop,izonr,izonc,izonla,izonan,czonc,czonr,czonan,czonla,zonpopc,zonpopr,vzonc,vzonr,vzonan,vzonla,mzonc,mzonr,mzonla,mzonan
+	PUBL maxciva,unid[30],xaciva[15,7],xaci[3],xanum[3,12]
+	PUBL abio,abios,tella,tellas,zuela,zuelas,ruvro,ruvros,llinea,llineas,janname,coefseg,usador,xacancho,xachoja,acdigi,xaus,xauss,xacdigi,korte,xanumcor
+	PUBL mader,maders,genped,genrem
+	PUBL rh,rp,x10,X15,x20,x30,ordpro,xadol,xadols,xamoneda,xacotiz
+	PUBL xatalmin,xatalmax,xatalstep,xatalan,xalis1,xalis2,xalis3,xalis4
+	PUBL xap1,xap2,xap3,xap4,xas1,xas2,xas3,xas4,xanulis,biaja,biajas
+	PUBL JANNRO, JANNAME
+	release ordali,ordCOL,ordGRU,ordLIN,ordmar,ordMER,ordOPK,ordPRo,ordrub,ordSru,ordzon,ordciu,ordprv,ordpag,ordcli
+	public  ordali,ordCOL,ordGRU,ordLIN,ordmar,ordMER,ordOPK,ordPRo,ordrub,ordSru,ordzon,ordciu,ordprv,ordpag,ordcli
+	rele ordciu,ordcli,ordMar,ordprv,ordpro,ordban
+	publ ordciu,ordcli,ordMar,ordprv,ordpro,ordban
+	stor .f. to ordali,ordCOL,ordGRU,ordLIN,ordmar,ordMER,ordOPK,ordPRo,ordrub,ordSru,ordzon,ordciu,ordprv,ordpag,ordcli
+
+	RELE sstm,ulpr,espere,grabando,tratando,IMPRIMIENDO,LARGOIM,LINEA,LARGO,TEN,nlq,offnlq,UNDER,OFFUNDER,WIDE,OFFWIDE,nul,botom,paip,SUCU,JANNRO,cant_empre,probe,probes,SSTM1,ABA
+	PUBL sstm,ulpr,ESPERE,GRABANDO,tratando,IMPRIMIENDO,LARGOIM,LINEA,LARGO,TEN,nlq,offnlq,UNDER,OFFUNDER,WIDE,OFFWIDE,nul,botom,paip,SUCU,JANNRO,cant_empre,probe,probes,SSTM1,ABA
+	RELE TEX_EFES,SSTM2
+	PUBL TEX_EFES,SSTM2
+
+  TEX_EFES=" - [F2] Popup - [F3] B£squeda"
+  SSTM2="CAJAABAJ"
+=VAR_SER()
+	ABA="Abriendo Base de "
+	cant_empre=1
+	probe="Proveedor"
+	probes="Proveedores"
+	=GETPOSIC()
+	nul=0
+	paip='|'
+	botom='  '+repl("°",78)
+	SSTM=padc('Caja',19)
+	SSTM1="HOGAR"
+	ESPERE=padc(' Espere por Favor - El archivo est  siendo Utilizado por otro Usuario ',80,"°")
+	GRABANDO=padc(' Grabando los datos ingresados - Espere por Favor ',80,"°")
+	tratando=PADC(" Tratando de Bloquear el Registro a Utilizar ",80,"°")
+	imprimiendo=PADC(' IMPRIMIENDO LOS DATOS REQUERIDOS - [TECLA] Interrumpe ',80,'°')
+	TEN='Existe - [ENTER] para Continuar'
+	nlq=chr(27)+chr(120)+chr(1)+chr(27)+chr(107)+chr(0)
+	offnlq=chr(27)+chr(120)+chr(0)+chr(18)
+	UNDER=CHR(27)+CHR(45)+CHR(1)
+	OFFUNDER=CHR(27)+CHR(45)+CHR(0)
+	WIDE=CHR(27)+CHR(87)+CHR(1)
+	OFFWIDE=CHR(27)+CHR(87)+CHR(0)
+
+	PAIP='|'
+	cant_empre=1
+	JANNRO=1
+	botom="  "+repl(iif(iscolor(),'Û',"°"),78)
+	SSTM=padc('Caja',19)
+	store 0 to nul
+	=GETJANNA()
+	ESPERE=padc(' Espere por Favor - El archivo est  siendo Utilizado por otro Usuario ',80,"°")
+	GRABANDO=padc(' Grabando los datos ingresados - Espere por Favor ',80,"°")
+	tratando=PADC(" Tratando de Bloquear el Registro a Utilizar ",80,"°")
+	imprimiendo=PADC(' IMPRIMIENDO LOS DATOS REQUERIDOS - [TECLA] Interrumpe ',80,'°')
+	TEN='Existe - [ENTER] para Continuar'
+	TECMEN="[ENTER] para Men£"
+	nlq=chr(27)+chr(120)+chr(1)+chr(27)+chr(107)+chr(0)
+	offnlq=chr(27)+chr(120)+chr(0)+chr(18)+chr(27)+chr(113)+chr(0)
+	UNDER=CHR(27)+CHR(45)+CHR(1)
+	OFFUNDER=CHR(27)+CHR(45)+CHR(0)
+	WIDE=CHR(27)+CHR(87)+CHR(1)
+	OFFWIDE=CHR(27)+CHR(87)+CHR(0)
+	RELE IVA09,IVA109,PC9,IVA18,IVA118,PC18,PC27,IVA127
+PUBL IVA09,IVA109,PC9,IVA18,IVA118,PC18,PC27,IVA127
+IVA09=10.5/100
+IVA109=1+IVA09
+PC9="10.5 %"
+IVA18=21/100
+IVA118=1+IVA18
+PC18="21 %"
+PC27="31.5 %"
+IVA127=1.315
+
+RETURN GETPATH()
+
+PROCEDURE GENVAR1
+	*:*********************************************************************
+	*:        Program: GENVAR1.PRG
+	*:         System: SYSTEMA DE COMERCIALIZACION
+	*:         Author: GOYO REINER
+	*:      Copyright (c) 1991, SISTEMAS INFORMATICOS S.R.L.
+	*:  Last modified: 09/10/91     11:17
+	*:*********************************************************************
+	REST FROM (pathpro+'\UNID') ADDI
+	STORE 36 TO rh
+	STORE 47 TO rp
+	STORE REPL("!",10) TO x10
+	STORE REPL("!",15) TO x15
+	STORE REPL("!",20) TO x20
+	STORE REPL("!",30) TO x30
+	=GETGENE()
+	coefseg=1
+	usador=GETENV("USERNAME")
+	rele pds
+	PUBL pds[2]
+	pds[1]=132
+	pds[2]=233
+	genped=.F.
+	genrem=.F.
+	BIAJA='Vendedor'
+	BIAJAS='Vendedores'
+RETURN GETPATH()
+
+
+*       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+*       º                                                         º
+*       º _R4F1BUT1M  ON SELE BAR 5 OF POPUP clientes        º
+*       º                                                         º
+*       º Procedure Origin:                                       º
+*       º                                                         º
+*       º From Menu:  INICIO.MPR,            Record:    9         º
+*       º Called By:  ON SELE BAR 5 OF POPUP clientes        º
+*       º PROM:     Consulta S‚rvice                            º
+*       º Snippet:    1                                           º
+*       º                                                         º
+*       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
+*
+PROCEDURE _r4f1but1m
+      DO OPCIU
+      STORE .T. TO MARPOP
+      DO OPMAR
+      DO OPSER
+      STORE NUL TO RESPUESTA
+      IF ELIMAR("a Listar",-1,1)
+         FISC="PER.FILTRO='S' .AND. !EMPTY(AT('"+LEFT(MI1.TEXTO2,2)+"/',PER.CAG))"
+         TT="Listado de Services"+chr(13)+chr(10)+"Marca "+alltrim(mi1.texto1)
+         DO LSERMARP
+      ENDIF
+      =CLOSDBF("PER")
+
+
+*       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+*       º                                                         º
+*       º _R4F1BUT7T  ON SELE BAR 3 OF POPUP entradas        º
+*       º                                                         º
+*       º Procedure Origin:                                       º
+*       º                                                         º
+*       º From Menu:  INICIO.MPR,            Record:   14         º
+*       º Called By:  ON SELE BAR 3 OF POPUP entradas        º
+*       º PROM:     Cobrado Cuota/Cheque                        º
+*       º Snippet:    4                                           º
+*       º                                                         º
+*       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
+*
+PROCEDURE _r4f1but7t
+DO OPCIU
+DO OPGAS
+DO opcaj
+DO opcli
+DO CLI
+
+
+
+
+*       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+*       º                                                         º
+*       º _R4F1BUT8R  ON SELE BAR 5 OF POPUP entradas        º
+*       º                                                         º
+*       º Procedure Origin:                                       º
+*       º                                                         º
+*       º From Menu:  INICIO.MPR,            Record:   16         º
+*       º Called By:  ON SELE BAR 5 OF POPUP entradas        º
+*       º PROM:     Listado de Caja por Pantalla                º
+*       º Snippet:    5                                           º
+*       º                                                         º
+*       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
+*
+PROCEDURE _r4f1but8r
+do opciu
+   DO opcaj
+   do oppro
+   DO OPBAN
+   DO OPCCH
+   DO OPCLI
+   M.FECINI=INFEC("WIN","a Listar")
+   IF !EMPTY(M.FECINI)
+      DO LRESCAJ WITH .T.
+   ENDIF
+
+
+
+*       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+*       º                                                         º
+*       º _R4F1BUT9M  ON SELE BAR 6 OF POPUP entradas        º
+*       º                                                         º
+*       º Procedure Origin:                                       º
+*       º                                                         º
+*       º From Menu:  INICIO.MPR,            Record:   17         º
+*       º Called By:  ON SELE BAR 6 OF POPUP entradas        º
+*       º PROM:     Listado de Caja por Impresora               º
+*       º Snippet:    6                                           º
+*       º                                                         º
+*       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
+*
+PROCEDURE _r4f1but9m
+do opciu
+   DO opcaj
+   do oppro
+   DO OPBAN
+   DO OPCCH
+   DO OPCLI
+      M.FECINI=INFEC("WIN","a Listar")
+      IF !EMPTY(M.FECINI)
+         DO LRESCAJ
+      ENDIF
+
+
+
+*       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+*       º                                                         º
+*       º _R4F1BUTBW  ON SELE BAR 1 OF POPUP cuentascor      º
+*       º                                                         º
+*       º Procedure Origin:                                       º
+*       º                                                         º
+*       º From Menu:  INICIO.MPR,            Record:   20         º
+*       º Called By:  ON SELE BAR 1 OF POPUP cuentascor      º
+*       º PROM:     Cuenta Corriente un Cliente                 º
+*       º Snippet:    7                                           º
+*       º                                                         º
+*       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
+*
+PROCEDURE _r4f1butbw
+   DO OPCIU
+   do opcli
+   do opcch
+   do opccl
+   do cli
+
+
+
+*       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+*       º                                                         º
+*       º _R4F1BUTCU  ON SELE BAR 3 OF POPUP cuentascor      º
+*       º                                                         º
+*       º Procedure Origin:                                       º
+*       º                                                         º
+*       º From Menu:  INICIO.MPR,            Record:   22         º
+*       º Called By:  ON SELE BAR 3 OF POPUP cuentascor      º
+*       º PROM:     Notas de D‚bito                             º
+*       º Snippet:    8                                           º
+*       º                                                         º
+*       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
+*
+PROCEDURE _r4f1butcu
+DO OPCIU
+DO OPCCL
+DO OPVIA
+do opfac
+do opcli
+do ideb
+
+
+*       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+*       º                                                         º
+*       º _R4F1BUTDQ  ON SELE BAR 5 OF POPUP cuentascor      º
+*       º                                                         º
+*       º Procedure Origin:                                       º
+*       º                                                         º
+*       º From Menu:  INICIO.MPR,            Record:   24         º
+*       º Called By:  ON SELE BAR 5 OF POPUP cuentascor      º
+*       º PROM:     Remputaci¢n                                 º
+*       º Snippet:    9                                           º
+*       º                                                         º
+*       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
+*
+PROCEDURE _r4f1butdq
+   DO OPCLI
+   DO OPCCL
+   STORE NUL TO RESPUESTA
+   IF ELICLI("a Reimputar",-1,1)
+      =IMPUTCCL(CLI.CODCLI,3)
+   ENDIF
+
+procedure recibo
+if ELIRECI()
+   =OPPER()
+   =OPMIX()
+   DO LRECIU
+ELSE
+=NOSELEC("REMITO")   
+ENDIF

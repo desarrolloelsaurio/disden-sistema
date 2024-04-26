@@ -1,0 +1,23 @@
+********************************************
+*-- Programa: LPLAI.PRG
+*-- Fecha   : 01/06/91 00:56am
+*-- Version : G. REINER
+*-- Notas   : GENERA IMPRESION CON SIDEWAYS
+********************************************
+close data
+SAVE SCRE TO NADA
+=WIN0()
+CLEA
+STORE 'EVERYONE  ' TO AQUIEN
+STORE SPACE(100) TO MENSAJE
+@ 10,1 SAY 'RECEPTOR' GET AQUIEN
+@ 12,1 SAY 'MENSAJE ' GET MENSAJE
+READ
+IF LASTKEY()#27 .AND. !EMPTY(AQUIEN) .AND. !EMPTY(MENSAJE)
+	 COSA='SEND "'+ALLTRIM(MENSAJE)+'" TO '+AQUIEN
+     RUN FOXSWAP /0 (COSA)
+ENDIF
+CLEA
+=RELEWIN("WIN")
+REST SCRE FROM NADA
+RETURN OPENCLOS()

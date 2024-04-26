@@ -1,0 +1,34 @@
+DO CASE
+CASE M.OPCION=3
+   UNLO IN (G_ALIAS)
+   =EVAL(G_CARGA)
+   RETURN 1
+CASE M.OPCION=1
+   IF LAST()#27 
+      IF CHKCPO()
+         IF M.INGRESO
+            =AGRABAR((G_ALIAS))
+            =IAUD('Ing '+G_AUDI)
+         ELSE
+            IF M.CAMBIO
+               SELE (G_ALIAS)
+               GO FF
+               =AGRABAR1((G_ALIAS))
+               =IAUD('Cor '+G_AUDI)
+            ENDIF
+         ENDIF      
+         =EVAL(G_CARGA)
+      ELSE
+         =FALTADAT(G_FALTA)
+      ENDIF
+   ENDIF
+   UNLO IN (G_ALIAS)
+   _CUROBJ=M.PRIOBJ
+CASE M.OPCION=2
+   UNLO IN (G_ALIAS)
+   =EVAL(G_CARGA)
+  _CUROBJ=M.PRIOBJ
+ENDCASE
+UNLO IN (G_ALIAS)
+RETURN 0
+   

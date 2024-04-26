@@ -1,0 +1,30 @@
+***********************************
+*-- Programa: OPOTRS.PRG
+*-- Fecha   : 05/28/91 01:53am
+*-- Version : G. REINER
+*-- Notas   : ABRE ARCHIVO OTROS PARA STOCK
+***********************************
+#DEFINE BOTOM  "  "+repl("°",78)                 && BOTOM
+#DEFINE ABA    "Abriendo Base de "               && ABA
+PARAMETER A_REOP,A_EXCL
+IF A_REOP
+	=REOPXXX("OTRS")
+ENDIF
+IF USED("OTRS")
+	IF A_EXCL
+		USE IN OTRS
+		USE (PATH+"\OTROSTOC") ORDER TAG OTRCODPRO ALIAS OTRS EXCL
+	ELSE
+		SELE OTRS
+	ENDIF
+ELSE
+	=MEN_LIN(ABA+'Otros')
+	=PRXAREA(.T.)
+	IF A_EXCL
+		USE (PATH+"\OTRSTOCK") ORDER TAG OTRCODPRO ALIAS OTRS EXCL
+	ELSE
+		USE (PATH+"\OTRSTOCK") ORDER TAG OTRCODPRO ALIAS OTRS
+	ENDIF
+ENDIF
+RETURN IIF(OTRSPOP,DEFPOGRL(OTRSPOPR,OTRSPOPC,"OTRSPOP","OTRS.OTRO",30,'Seleccione Art¡culo'),.T.) .AND. ;
+MEN_LIN(BOTOM)

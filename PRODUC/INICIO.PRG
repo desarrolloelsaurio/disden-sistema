@@ -1,0 +1,418 @@
+* ษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
+* บ PROCEDIMIENTO : INICIO.PRG                                   บ
+* บ COMENTARIO    : INICIO DE PROGRAMA DE CONTROL DE PRODUCCION  บ
+* ฬออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน
+* บ AUTOR      : GOYO REINER                                     บ
+* บ FECHA      : 09-08-93                                        บ
+* บ HORA       : 10:55:32am                                      บ
+* บ COPYRIGHT  : 1993 by GREGORIO REINER                         บ
+* ศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
+*:******************************************
+*: NAZA - SISTEMA DE CONTROL DE PRODUCCION *
+*:******************************************
+EXTERNAL PROCEDURE CABPRIR
+EXTERNAL PROCEDURE FINIMPR
+EXTERNAL PROCEDURE NADA
+EXTERNAL PROCEDURE SHIT
+****************************
+EXTERNAL REPORT LCOR1
+EXTERNAL REPORT LREMPRF
+EXTERNAL REPORT LREMIRF
+EXTERNAL REPORT LREMPRO
+EXTERNAL REPORT LREMIRO
+EXTERNAL REPORT LREMPRT
+EXTERNAL REPORT LREMIRT
+****************************
+* RP Remito de Producciขn
+* RR Remito de Reproceso
+****************************
+SET TALK OFF
+SET ESCA OFF
+RELE ALL
+CLEA
+=BIGCHARS(2,0,'PRODUCCION')
+=BIGCHARS(17,24,'NAZA',11)
+STOR 0 TO NUL
+=MEN_LIN("TECLA PARA CONTINUAR")
+=INKEY(0,'HM')
+DO WHILE !EMPTY(WONTOP())
+	RELE WIND (WONTOP())
+ENDDO
+STOR .T. TO CONTROL
+DO PRODUC
+DO WHILE .T.
+	ACTI MENU MAIN
+	IF EMPTY(GETENV("EQUIPO")) .OR. GETENV("EQUIPO")="DESARROLLO" .OR. GETENV("USERNAME")="GOYO" GETENV("EQUIPO")="MICASA"
+		EXIT
+	ENDIF
+ENDDO
+RETURN
+* ษออออออออออออออออออออออออออออออออออออออออป
+* บ PROCEDIMIENTO : GENVAR.PRG             บ
+* บ COMENTARIO    : GENERADOR DE VARIABLES บ
+* ฬออออออออออออออออออออออออออออออออออออออออน
+* บ AUTOR      : GOYO REINER               บ
+* บ FECHA      : 09-08-93                  บ
+* บ HORA       : 10:58:43am                บ
+* บ COPYRIGHT  : 1993 by GREGORIO REINER   บ
+* ศออออออออออออออออออออออออออออออออออออออออผ
+PROCEDURE GENVAR
+	=VAR_FCOR()
+	=VAR_AVI()
+	=VAR_CPRA()
+	=VAR_OTRS()
+	PUBL CORPOP,CORPOPR,CORPOPC
+	PUBL CURPOP,ICURC,ICURR,ICURAN,ICURLA,CURPOPC,CURPOPR
+	=VAR_CIU()
+	=VAR_CAG()
+	=VAR_GRU()
+	=TER_SMO1(2)
+	=VAR_LIN()
+	=VAR_TMA()
+	STORE .T. TO TMAPOP
+	=VAR_MAT()
+	=VAR_MER()
+	=TER_SMO1(2)
+	=VAR_OPK()
+	PUBL PRCPOP,IPRCR,IPRCC,IPRCAN,IPRCLA,CPRCR,CPRCC,CPRCAN,CPRCLA,PRCPOPC,PRCPOPR,VPRCR,VPRCC,VPRCAN,VPRCLA,MPRCC,MPRCR,MPRCAN,MPRCLA
+	=VAR_PRO()
+	=TER_SMO1(2)
+	=VAR_RUB()
+	=var_mdd()
+	=VAR_TST()
+	PUBL SUEPOP,ISUEC,ISUER,ISUELA,ISUEAN,CSUEC,CSUER,CSUELA,CSUEAN,SUEPOPC,SUEPOPR,VSUEC,VSUER,VSUEAN,VSUELA,MSUEC,MSUER,MSUELA,MSUEAN
+	=TER_SMO1(2)
+	=VAR_TAL()
+	=VAR_TALS()
+	=var_eta()
+	=VAR_IVA()
+	=VAR_DNI()
+	PUBL TELPOP,ITELC,ITELR,ITELLA,ITELAN,CTELC,CTELAN,CTELR,CTELLA,TELPOPC,TELPOPR,MTELR,MTELC,MTELAN,MTELLA,VTELR,VTELC,VTELAN,VTELLA
+	PUBL IDESC,IDESR,IDESLA,IDESAN,CDESC,CDESR,CDESLA,CDESAN,MDESR,MDESC,MDESAN,MDESLA
+	=TER_SMO1(2)
+	PUBL IRUTR,IRUTC,IRUTLA,IRUTAN,CRUTR,CRUTC,CRUTAN,CRUTLA,MRUTR,MRUTC,MRUTAN,MRUTLA
+	PUBL IFABR,IFABC,IFABLA,IFABAN,CFABC,CFABR,CFABAN,CFABLA,MFABC,MFABR,MFABAN,MFABLA
+	PUBL MARPOP,MARPOPR,MARPOPC
+	=TER_SMO1(2)
+	PUBL IKARR,IKARC,IKARAN,IKARLA,MKARR,MKARC,MKARAN,MKARLA,VKARR,VKARC,VKARAN,VKARLA
+	RELE ORDMER,ORDAVI,ORDTEL,ORDPRO,ORDSUE,ORDRUB,ORDLIN,ORDTAL,ORDGRU,ORDPRC,ORDOPK,ORDTALS
+    RELE ORDTELS,ORDAVIS,ORDCOMS,ORDPRO,ORDRUB
+	=TER_SMO1(2)
+	PUBL ORDMER,ORDAVI,ORDTEL,ORDPRO,ORDSUE,ORDRUB,ORDLIN,ORDTAL,ORDGRU,ORDPRC,ORDOPK,ORDTALS
+    PUBL ORDTELS,ORDAVIS,ORDCOMS,ORDPRO,ORDRUB
+
+	RELE SSTM,ULPR,ESPERE,GRABANDO,TRATANDO,IMPRIMIENDO,LARGOIM,LINEA,LARGO,TEN,NLQ,OFFNLQ,UNDER,OFFUNDER,WIDE,OFFWIDE,NUL,PAIP,BOTOM,TECMOD,SUCU,NUMIM,OPC_SEX,TECMEN,RH,RP,OPC_TEM,ENASCII,PROBE,PROBES,SSTM1
+	PUBL SSTM,ULPR,ESPERE,GRABANDO,TRATANDO,IMPRIMIENDO,LARGOIM,LINEA,LARGO,TEN,NLQ,OFFNLQ,UNDER,OFFUNDER,WIDE,OFFWIDE,NUL,PAIP,BOTOM,TECMOD,SUCU,NUMIM,OPC_SEX,TECMEN,RH,RP,OPC_TEM,ENASCII,PROBE,PROBES,SSTM1
+
+	RELE ABA,TEX_EFES,SSTM2
+	PUBL ABA,TEX_EFES,SSTM2
+
+	TEX_EFES=" - [F2] Popup - [F3] Bฃsqueda"
+	SSTM2="PRODUC"
+
+	=ter_SMO1(2)
+	RELE TEX_EFES
+	PUBL TEX_EFES
+
+	TEX_EFES=" - [F2] Popup - [F3] Bฃsqueda"
+	ABA="Abriendo Base de "
+	probe="Proveedor"
+	probes="Proveedores"
+	=ter_SMO1(2)
+	SUCU='A0005'
+	SSTM='Control de Producciขn'
+	SSTM1="PILCHAS"
+	TECMEN="[ENTER] para Menฃ"
+	TECMOD="TECLA y [ENTER] modifica"
+	botom='  '+repl('ฐ',78)
+	=ter_SMO1(2)
+	OPC_SEX="@M Hombre,Mujer,Colegial,Jขvenes,Unisex,No"
+	OPC_TEM="@M Primavera,Verano,Otoคo,Invierno,Todas"
+	PAIP='|'
+	STOR 0 TO NUL,numim
+	STOR 36 TO rh
+	=ter_SMO1(2)
+	STOR 47 TO rp
+	ESPERE=padc(' Espere por Favor - El archivo est  siendo Utilizado por otro Usuario ',80,"ฐ")
+	GRABANDO=padc(' Grabando los datos ingresados - Espere por Favor ',80,"ฐ")
+	tratando=PADC(" Tratando de Bloquear el Registro a Utilizar ",80,"ฐ")
+	imprimiendo=PADC(' IMPRIMIENDO LOS DATOS REQUERIDOS - [TECLA] Interrumpe ',80,'ฐ')
+	TEN='Existe - [ENTER] para Continuar'
+	=TER_SMO1(2)
+	NLQ=CHR(27)+CHR(120)+CHR(1)+CHR(27)+CHR(107)+CHR(0)
+	OFFNLQ=CHR(27)+CHR(120)+CHR(0)+CHR(18)
+	UNDER=CHR(27)+CHR(45)+CHR(1)
+	OFFUNDER=CHR(27)+CHR(45)+CHR(0)
+	WIDE=CHR(27)+CHR(87)+CHR(1)
+	OFFWIDE=CHR(27)+CHR(87)+CHR(0)
+	existe=' existe - Enter para continuar'
+	ten=' [TECLA] Y [ENTER] para Corregir'
+	=TER_SMO1(2)
+	WIDE=CHR(27)+CHR(87)+CHR(1)
+	OFFWIDE=CHR(27)+CHR(87)+CHR(0)
+	NLQ=CHR(27)+CHR(120)+CHR(1)+CHR(27)+CHR(107)+CHR(0)
+	OFFNLQ=CHR(27)+CHR(120)+CHR(0)+CHR(18)
+	ULPR=PROGRAM()
+	*
+	PUBL ABIO,ABIOS,TELLA,TELLAS,XAUS,XAUSS,ZUELA,ZUELAS,RUVRO,RUVROS,LLINEA,LLINEAS,JANNAME,COEFSEG,USADOR,XACANCHO,XACHOJA,ACDIGI,XAUS,XAUSS,XACDIGI,KORTE,XANUMCOR
+	PUBL MADER,MADERS,XATALMAX,XATALMIN,XATALSTEP
+	=TER_SMO1(2)
+	PUBL FAVRI,XANUMREM
+	*
+	=GETPOPRO()
+RETURN
+* ษออออออออออออออออออออออออออออออออออออออป
+* บ PROCEDIMIENTO : GENVAR1.PRG          บ
+* ฬออออออออออออออออออออออออออออออออออออออน
+* บ AUTOR      : GOYO REINER             บ
+* บ FECHA      : 09-08-93                บ
+* บ HORA       : 10:56:20am              บ
+* บ COPYRIGHT  : 1993 by GREGORIO REINER บ
+* ศออออออออออออออออออออออออออออออออออออออผ
+PROCEDURE GENVAR1
+	JANNAME=CHR(67)+CHR(111)+CHR(109)+CHR(112)+CHR(97)+CHR(164)+CHR(161)+CHR(97)+CHR(32)+CHR(100)+CHR(101)+CHR(32)+CHR(80)+CHR(114)+CHR(111)+CHR(100)+CHR(117)+CHR(99)+CHR(116)+CHR(111)+CHR(115)+CHR(32)+CHR(78)+CHR(65)+CHR(90)+CHR(65)+CHR(32)+CHR(83)+CHR(82)+CHR(76)
+	RELE COEFSEG,USN
+	PUBL COEFSEG,USN
+	COEFSEG=VAL(GETENV("COEFSEG"))
+	USADOR=GETENV("USERNAME")
+	IF ALLTRIM(USADOR)="GOYO"
+	   SET ESCA ON
+	ENDIF
+	PUBL UNID[30],PDS[2]
+	PUBL XACIVA[15,7],XACI[3],XANUM[3,20]
+	PDS[1]=132
+	PDS[2]=233
+	=TER_SMO1(2)
+	=GETGENE()
+	=TER_SMO1(2)
+	=GETUNID()
+	=TER_SMO1(2)
+	STOR 'Accesorio' TO abio
+	STOR 'Accesorios' TO abios
+	STOR 'Material' TO tella
+	STOR 'Materiales' TO tellas
+	=TER_SMO1(2)
+	STOR 'Austral' TO xaus
+	STOR 'Australes' TO xauss
+	STOR 'Color' TO zuela
+	STOR 'Colores' TO zuelas
+	STOR 'Rubro' TO ruvro
+	STOR 'Rubros' TO ruvros
+	=TER_SMO1(2)
+	STOR 'Lกnea' TO llinea
+	STOR 'Lกneas' TO llineas
+	STOR 'Fabricaciขn' TO favri
+	STOR 'Corte' TO korte
+	STOR 'Molderกa' to mader
+	STOR 'Molderกa' to maders
+	=OPMIX()
+ORDTELS=iif(GETNU1(PADR(USADOR,10)+PADR("ORDTELS",20),"FOXPER")=0,.F.,.T.)
+ORDAVIS=iif(GETNU1(PADR(USADOR,10)+PADR("ORDAVIS",20),"FOXPER")=0,.F.,.T.)
+ORDCOMS=iif(GETNU1(PADR(USADOR,10)+PADR("ORDCOMS",20),"FOXPER")=0,.F.,.T.)
+ORDPRO=iif(GETNU1(PADR(USADOR,10)+PADR("ORDPRO",20),"FOXPER")=0,.F.,.T.)
+ORDRUB=iif(GETNU1(PADR(USADOR,10)+PADR("ORDRUB",20),"FOXPER")=0,.F.,.T.)
+XACDIGI=GETNU1(PADR(USADOR,10)+PADR("XACDIGI",20),"FOXPER")
+	=TER_SMO1(2)
+	COEFSEG=1
+	***********************************
+	**** RESTAURA VARIABLES DEL DISCO *
+	***********************************
+	RELE ULPR
+	PUBL ULPR
+	XATALMAX=GETVAR("XATALMAX","N")
+	XATALMIN=GETVAR("XATALMIN","N")
+	XATALSTEP=GETVAR("XATALSTEP","N")
+	ULPR=PROGRAM()
+RETURN
+
+PROCEDURE PRODUC
+	=SETEOS()
+	RELE PATH,PATHPRO,PATHI,PATHVEN,PATHSTOC
+	RELE PATH,PATHPRO,MARPOP,PATHI,PATHVEN
+	PUBL PATH,PATHPRO,MARPOP,PATHI,PATHVEN,PATHSTOC
+	STOR 0 TO CNTR,LAST_NUM
+	COUNT=100
+	C=3
+	=ter_smoo(' COMPAฅIA DE PRODUCTOS NAZA S.R.L. ','Sistema de Control de Producciขn','Espere por Favor')
+	=GETPATH()
+	=GETLIB()
+	STOR .F. TO MARPOP
+	STOR 0 TO NUL
+	STOR '' TO BOTOM
+	ULPR=PROGRAM()
+	*************************** INICIO PRODUCCION **************************
+	=TER_SMO1(2)
+	ACTI SCRE
+	@ 0,00 SAY REPLICATE("Û",80) COLO W
+	@ 0,01 SAY PADC('Producciขn',20) COLO I
+	@ 0,23 SAY '|'
+	@ 0,25 SAY DATE() COLO I
+	@ 0,34 SAY '|'
+	@ 0,45 SAY '|'
+	@ 0,58 SAY '|'
+	ACTI WIND THERMO
+	SET SHAD ON
+	PUBL PATH,PATHPRO,MARPOP,PATHI,PATHVEN
+	=GETPATH()
+	=GENVAR()
+	=GENVAR1()
+	ACTI SCRE
+	=OPAUD()
+	ACTI WIND THERMO
+	=TER_SMO1(2)
+	ACTI SCRE
+	=OPSEG()
+	ACTI WIND THERMO
+	=TER_SMO1(2)
+	ACTI SCRE
+	=OPDOC()
+	ACTI WIND THERMO
+	=TER_SMO1(2)
+	SET SHAD ON
+	ULPR=PROGRAM()
+	ACTI SCRE
+	=CABPAN1()
+	ACTI WIND THERMO
+	=TER_SMO1(2)
+	************************** INICIO PRODUCCION
+	DEFI MENU main MESS 'MENU PRINCIPAL - SISTEMA DE CONTROL DE PRODUCCION (Shift F1 Ayuda en Lกnea) ' shad colo sche 3
+	DEFI PAD varios OF main PROM '\<Varios'    AT 01,00 COLO SCHE 2
+	=TER_SMO1(2)
+	DEFI PAD matpri OF main PROM '\<Mat. Prima' AT 01,07 COLO SCHE 2
+	DEFI PAD mercad OF main PROM '\<Productos' AT 01,18 COLO SChe 2
+	DEFI PAD ordenc OF main PROM '\<Orden de '+korte AT 01,28 COLO SCHE 2
+	DEFI PAD kardex OF main PROM '\<Kardex' AT 01,43 COLO SCHE 2
+	DEFI PAD costos OF main PROM '\<Costos' AT 01,50 COLO SCHE 2
+	=TER_SMO1(2)
+	DEFI PAD variab OF main PROM 'V\<ariables' AT 01,64 COLO SCHE 2
+	DEFI PAD adios  OF main PROM 'C\<hau'      AT 01,74 COLO SCHE 2
+
+	ON SELE PAD VARIOS OF MAIN ACTI POPU VARIOS
+	ON SELE PAD MATPRI OF MAIN ACTI POPU MATPRI
+	ON SELE PAD MERCAD OF MAIN ACTI POPU MERCAD
+	=TER_SMO1(2)
+	ON SELE PAD ORDENC OF MAIN ACTI POPU ORDENC
+	ON SELE PAD KARDEX OF MAIN ACTI POPU KARDEX
+	ON SELE PAD COSTOS OF MAIN ACTI POPU COSTOS
+	ON SELE PAD VARIAB OF MAIN ACTI POPU VARIAB
+	ON SELE PAD ADIOS  OF MAIN ACTI POPU ADIOS
+	=TER_SMO1(2)
+	RESPUESTA='varios#2#0#A/B/M/L Varios#3;
+#\<Rubros;
+#\<Lกneas;
+#\<Talleres'
+
+RESPUESTA=RESPUESTA+'#\<Etapas de Fabricaciขn;
+#\<Grupos de Compra;
+#\<Proveedores;
+#Procesos de \<Fabricaciขn;
+#Agr\<upaciขn'
+RESPUESTA=RESPUESTA+';
+#\<Curvas;
+#\<Unidades;
+#Tel\<a Genrica;
+#Tipo de E\<structura;
+#-;
+#Control I\<mpresoras;
+#Envกa Mensa\<je'
+	=TER_SMO1(2)
+	=DEFPOP()
+
+	=ter_SMO1(2)
+	RESPUESTA='matpri#2#7#A/B/M/L Materias Primas#3;
+#\<'+abios+';
+#\<'+zuelas+';
+#\<'+tellas+';
+#'+LEFT(MADERS,1)+'\<'+SUBSTR(maders,2)
+	=TER_SMO1(2)
+	=DEFPOP()
+
+	=ter_SMO1(2)
+	RESPUESTA='mercad#2#18#A/B/M/L Productos#3;
+#\<Datos del Producto;
+#\<Estructura del Producto;
+#De\<spiece de '+abios
+	=ter_SMO1(2)
+	=DEFPOP()
+	=TER_SMO1(2)
+
+	RESPUESTA='ORDENC#2#28#Ordenes de '+korte+' y Fabricaciขn#3;
+#\<Ordenes de '+korte+' (Cabecera);
+#O\<rdenes de '+korte+' (Mercaderกa);
+#Reser\<vas;
+#-;
+#Inicia Orden de \<'+Favri+';
+#\<Gestiขn de '+Favri+';
+#Finali\<za Orden de '+Favri+';
+#-;
+#\<Histขricos'
+	=TER_SMO1(2)
+	=DEFPOP()
+
+	=ter_SMO1(2)
+	RESPUESTA='kardex#2#43#Kardex#3;
+#\<Operaciones de Kardex;
+#\<Kardex;
+#\<Remitos'
+	=TER_SMO1(2)
+	=DEFPOP()
+
+	=ter_SMO1(2)
+	RESPUESTA='costos#2#50#Costos#3;
+#\<Proyecciขn de Existencia;
+#Pro\<yecciขn Costos M. P.;
+#Proye\<cciขn Costos M. O.;
+#Proyecciขn Costos por C\<urva'
+RESPUESTA=RESPUESTA+";
+#Proyecciขn Costos por Curva-\<Madre;
+#-;
+#Co\<ntrol de Facturas"
+=TER_SMO1(2)
+	=DEFPOP()
+	=ter_SMO1(2)
+
+	RESPUESTA='variab#2#50#Mantenimiento de variables del sistema#3;
+#\<Popups a Utilizar;
+#Ancho de la \<Impresora;
+#Ancho de la \<Hoja;
+#Alimentaciขn del \<Papel'
+RESPUESTA=RESPUESTA+';
+#\<Cantidad de Dกgitos;
+#\<Denominaciขn Moneda;
+#\<Orden de los Listados;
+#Nง \<Documentaciขn'
+RESPUESTA=RESPUESTA+';
+#\<Selecciขn Mercaderกa;
+#Cantidad de \<Talles;
+#Nง de Re\<mito de Reproceso'
+
+	=DEFPOP()
+	=TER_SMO1(2)
+	RESPUESTA='adios#2#53#Se va del Sistema#3#ษอออออออออออออออออออออป#บ         \<Chau        บ#ศอออออออออออออออออออออผ'
+	=DEFPOP()
+
+	ON SELE POPU VARIOS DO VARIOS
+	ON SELE POPU MATPRI DO MATPRI
+	=ter_SMO1(2)
+	ON SELE POPU MERCAD DO MERCAD
+	ON SELE POPU ORDENC DO ORDCOR
+	ON SELE POPU KARDEX DO KARDEX
+	=TER_SMO1(2)
+	ON SELE POPU COSTOS DO COSTOS
+	ON SELE POPU VARIAB DO VARI
+	ON SELE POPU ADIOS DO ADIOS
+
+	=TER_SMO1(2)
+	RELE CNTR,COUNT,LAST_NUM,SEGU,C
+	=RELEWIN("THERMO")
+
+	DO WHILE .T.
+		ACTI MENU MAIN
+		IF EMPTY(GETENV("EQUIPO")) .OR. ;
+			GETENV("EQUIPO")="DESARROLLO" .OR. ;
+			GETENV("USERNAME")="GOYO" .OR. ;
+			GETENV("EQUIPO")="MICASA"
+			EXIT
+		ENDIF
+	ENDDO
+RETURN

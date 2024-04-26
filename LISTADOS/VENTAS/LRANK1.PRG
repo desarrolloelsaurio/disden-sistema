@@ -1,0 +1,11 @@
+FUNCTION LRANK1
+#DEFINE PAIP   "|"                               && PAIP
+? PAIP
+?? NROITE
+?? PAIP
+?? MER.MERCA
+?? PAIP
+?? STR(CANT,10)
+?? PAIP
+STORE CANT+M.TOTAL TO M.TOTAL
+RETURN

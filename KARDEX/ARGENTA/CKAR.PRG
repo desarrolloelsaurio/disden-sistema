@@ -1,0 +1,43 @@
+********************************************************************************
+*-- Programa: CKAR.PRG
+*-- Fecha   : 02-04-93 11:47am
+*-- Version : G. REINER
+*-- Notas   : DESCARGA DE STOCK DESDE FACTURAS NO IMPUTADAS
+********************************************************************************
+STORE HORA_ULP(PROGRAM()) TO ulpr
+IF CHEQSEG()
+   DO WHILE LAST()#27
+      STORE NUL TO RESPUESTA,CKAR_TOMON,CKAR_CANTI,LAMERCA,ELNOMBRE
+      SET ORDER TO TAG ARTICULO IN MER
+      SET ORDER TO TAG PROCOD IN PRO
+      SET ORDER TO TAG ARTICULO IN REM
+      SELE MEX
+      SET ORDER TO TAG PROVEEDOR
+      SET RELA TO ARTICULO INTO MER
+      SET RELA TO PROVEEDOR INTO PRO ADDI
+      SET RELA TO PROVEEDOR+STR(REMESA)+ARTICULO INTO REM ADDI
+      =MEN_LIN("[ESC] para Anular - [ENTER] para Seleccionar Mercader¡a")
+      =MOVEWIN(5,1,20,78,'WIN'," REMESAS NO AGOTADAS ")
+      ON KEY LABEL ENTER DO CKARX
+      BROW FIEL ;
+        A=PADR(SINESP1(MER.palpopup),30):R:H=PADC("ARTICULO",30), ;
+        PRO.PROVEEDOR:R:H=PADC("REIMTENTE",30), ;
+        MEX.REMESA:R:P="99999":H="REMESA", ;
+        B=REM.BULTOS-REM.VENDIDO:R:P="99999":H="SALDO" ;
+        in WIN
+      =relewin("win")
+      IF LAST()=23
+         DO CKAR1
+      ENDIF
+   ENDDO
+   ON KEY LABEL ENTER
+ELSE
+   =IAUDI()
+ENDIF
+RETURN
+
+PROCEDURE CKARX
+LAMERCA=MEX.ARTICULO
+ELNOMBRE=MER.PALPOPUP
+KEYB CHR(23)
+RETURN

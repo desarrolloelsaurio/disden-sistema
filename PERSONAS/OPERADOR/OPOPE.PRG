@@ -1,0 +1,26 @@
+* ษอออออออออออออออออออออออออออออออออออออออออออป
+* บ PROCEDIMIENTO : OPOPE.PRG                 บ
+* บ COMENTARIO    : ABRE BASE DE PROPIETARIOS บ
+* ศอออออออออออออออออออออออออออออออออออออออออออผ
+#DEFINE BOTOM "  "+REPL("ฐ",78)                  && BOTOM
+#DEFINE ABA   "Abriendo Base de "                && ABA
+PARAMETER COMOOPE
+IF COMOOPE
+   =CLOSDBF("OPE")
+ENDIF
+IF USED("PER")
+	SELE PER
+	SET ORDER TO TAG OPERADOR
+ELSE
+	=MEN_LIN(ABA+'Operadores')
+	SELE 21
+	USE (PATHPRO+'\PERSONAS') ORDER TAG OPERADOR ALIAS PER
+ENDIF
+IF COMOOPE
+	=MEN_LIN(ABA+'Operadores')
+	=PRXAREA(.T.)
+	USE (PATHPRO+'\PERSONAS') ORDER TAG OPERADOR ALIAS OPE AGAIN
+ENDIF
+RETURN IIF(COMOOPE,DEFPOGRL(2,40,"OPEPOP","OPE.CLIENTE",30,"Operador"),.T.) .AND.;
+IIF(OPEPOP,DEFPOPER(OPEPOPR,OPEPOPC),.T.) .AND. ;
+MEN_LIN(BOTOM)

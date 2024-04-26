@@ -1,0 +1,14 @@
+FUNCTION LINFACPW
+IF KTIPO='111'
+   ? REPL('=',33)
+ELSE
+   IF KTIPO='231'
+      ? REPL("=",36)
+   ELSE
+      ? REPL("=",23)
+   ENDIF
+ENDIF
+FOR A=1 TO CANT_EL+1
+   ?? REPL("=",XACDIGI+1)
+ENDF
+RETURN .T.

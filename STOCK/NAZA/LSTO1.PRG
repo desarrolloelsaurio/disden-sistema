@@ -1,0 +1,34 @@
+FUNCTION LSTO1
+	IF VARIABLE[3]
+		TTL[3]=TTL[3]+pre.stoCK
+		PTL[3]=PTL[3]+pre.stoCK
+		mTL[3]=mTL[3]+pre.stoCK
+	ENDIF
+	IF VARIABLE[4]
+		TTL[4]=TTL[4]+pre.stoCKMIN
+		PTL[4]=PTL[4]+pre.stoCKMIN
+		mTL[4]=mTL[4]+pre.stoCKMIN
+	ENDIF
+	IF VARIABLE[5]
+		TTL[5]=TTL[5]+pre.stoCKMAX
+		PTL[5]=PTL[5]+pre.stoCKMAX
+		mTL[5]=mTL[5]+pre.stoCKMAX
+	ENDIF
+	IF VARIABLE[6]
+		TTL[6]=TTL[6]+pre.stoCKRES
+		PTL[6]=PTL[6]+pre.stoCKRES
+		mTL[6]=mTL[6]+pre.stoCKRES
+	ENDIF
+	IF VARIABLE[7]
+		X1=EVAL(RESTA)
+		TTL[7]=TTL[7]+X1
+		PTL[7]=PTL[7]+X1
+		mTL[7]=mTL[7]+X1
+	ENDIF
+	IF VARIABLE[8]
+		NUMERO=MER.COSTO*pre.stoCK
+		TTL[8]=TTL[8]+NUMERO
+		PTL[8]=PTL[8]+NUMERO
+		mTL[8]=mTL[8]+NUMERO
+	ENDIF
+RETURN .T.

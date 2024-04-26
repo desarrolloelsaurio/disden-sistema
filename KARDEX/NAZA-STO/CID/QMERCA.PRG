@@ -1,0 +1,3 @@
+FUNCTION QMERCA
+PARA CORMERC
+RETURN IIF(CORMERC="A", "Av¡o", IIF(CORMERC="T", "Tela", IIF(CORMERC="C", "Prod.Terminado", "Otro Prod.")))

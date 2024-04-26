@@ -1,0 +1,19 @@
+FUNCTION LKAR1AR0
+	#DEFINE NUL    0                               && NUL
+	#DEFINE PAIP   "|"                             && PAIP
+	? PAIP
+	?? KARS.FECHAOP
+	?? PAIP
+	?? DETALLE
+	?? PAIP
+	?? COMPR
+	?? PAIP
+	?? RIGHT(ALLTR(NUMERO),8)
+	?? PAIP
+	?? STR(KARS.ENTRADA,XACDIGI,2)
+	?? PAIP
+	?? STR(KARS.SALIDA,XACDIGI,2)
+	?? PAIP
+	M.ENT=M.ENT+KARS.ENTRADA
+	M.SAL=M.SAL+KARS.SALIDA
+RETURN .T.

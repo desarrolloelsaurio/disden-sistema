@@ -1,0 +1,18 @@
+Structure for database: C:\SISTEMAS\CAJA\CAJAA\CTACTEBA.DBF
+Number of data records:       0
+Date of last update   : 10/24/95
+Code Page             : 0
+Field  Field Name  Type       Width    Dec    Index  Collate
+    1  CODBAN      Numeric        4            Asc   Machine
+    2  TARCOD      Character      2                  
+    3  FECHADEP    Date           8                  
+    4  DETALLE     Character     30                  
+    5  FECHAVEN    Date           8                  
+    6  CODCLI      Character     10            Asc   Machine
+    7  PROCOD      Character     10            Asc   Machine
+    8  NROCHEQ     Numeric       10                  
+    9  HORAS       Numeric        3                  
+   10  MONTO       Numeric       14      2           
+   11  FECHA       Date           8                  
+   12  USUARIO     Character     10                  
+** Total **                     118

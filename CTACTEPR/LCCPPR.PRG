@@ -1,0 +1,76 @@
+*******************************************************************************
+*-- Programa: LCCPPR.PRG
+*-- Fecha   : 05-13-92 04:41pm
+*-- Version : G. REINER
+*-- Notas   : LISTADO DE RESUMEN DE CUENTA CORRIENTE
+********************************************************************************
+STOR HORA_ULP(PROGRAM()) TO ULPR
+IF CHEQSEG()
+	=working()
+	NADA=GENTMP()
+	SELE CCP
+	IF ".T."=FISC
+		INDE ON PROCOD TO (NADA) comp
+	ELSE
+		INDE ON PROCOD TO (NADA) FOR eval(FISC) comp
+	ENDIF
+	ACLA=PAIP+PADC("PROVEEDOR",30)+PAIP+PADC("DEBE",13)+PAIP+PADC("HABER",13)+PAIP+PADC("SALDO",13)+PAIP
+	LNS=REPL("=",LEN(ACLA))
+	TT='Listado de Saldos'+ttque
+	=unwork()
+	=WIN0()
+	pag=1
+	=CABPAN()
+	=tit_lns(1)
+	SELE PER
+	SET ORDER TO TAG IIF(TYPE("ORDPRO")#'L' .OR. ORDPRO,'PROCOD','PROVEEDOR')
+	STORE NUL TO GDEBE,GHABER
+	PICU='99,999,999.99'
+	SCAN FOR XSEEK(PER.CODCLI,'CCP','PROCOD')
+		IF ROW()=21
+			IF TLCCPPR1("SUBTOTAL")=27
+				EXIT
+			ENDIF
+			CLEA
+			STOR pag+1 TO pag
+			=CABPAN()
+			=tit_lns(2)
+		ENDIF
+		STORE NUL TO DEBE,HABER
+		=Q_PAG(PER.CODCLI)
+		IF !EMPTY(DEBE+HABER)
+			? PAIP
+			?? PER.CLIENTE
+			?? PAIP
+			?? DEBE PICT PICU
+			GDEBE=GDEBE+DEBE
+			?? PAIP
+			?? HABER PICT PICU
+			GHABER=GHABER+HABER
+			?? PAIP
+			?? DEBE-HABER PICT PICU
+			?? PAIP
+		ENDIF
+	ENDSCAN
+	=Iif(last()=27,"",TLCCPPR1("TOTAL"))
+	=relewin("WIN")
+	=REOPCCP()
+ELSE
+	=IAUDI()
+ENDIF
+RETURN MEN_LIN(BOTOM)
+
+function TLCCPPR1
+	PARAMETER COSA
+	PRIVATE COSA
+	? LNS
+	? PAIP
+	?? PADR(COSA,30)
+	?? PAIP
+	?? GDEBE PICT PICU
+	?? PAIP
+	?? GHABER PICT PICU
+	?? PAIP
+	?? GDEBE-GHABER PICT PICU
+	?? PAIP
+RETURN INKEY(NUL,"HM")

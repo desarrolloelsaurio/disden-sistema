@@ -1,0 +1,48 @@
+
+
+Processor is 80486
+Currently Selected Database:
+Select area:  1, Database in Use: C:\PUBLIC\MONDAY.PAS    Alias: MONDAY
+           Code page:   0
+ Structural CDX file:   C:\PUBLIC\MONDAY.CDX
+           Index tag:   PASSWORD   Collate: Machine   Key: CODEB
+           Index tag:   CODEB      Collate: Machine   Key: CODEB
+       Lock(s): Exclusive USE
+
+File search path: 
+Default disk drive: C:
+Print file/device:  PRN:
+Work area =   1
+Margin    =   0
+Decimals  =   2
+Memowidth =  50
+Typeahead =  20
+Blocksize =  64
+Reprocess =       0
+Refresh   =   0 SECONDS
+DOS memory available = 416k
+DOS memory utilized = 0k
+
+Code page: 0
+Collating sequence: Machine
+Compiler code page: 0
+Date format: American
+Macro Hot Key = SHIFT+F10
+UDF parameters are passed by: VALUE
+Textmerge Options
+          Delimiters:  Left = <<  Right = >>
+          Show
+
+Alternate  - off   Console    - on    Fixed      - off   Safety     - on    
+ANSI       - off   Cursor     - on    Heading    - on    Space      - on    
+Bell       - on    Debug      - on    Help       - on    Status     - off   
+Blink      - on    Deleted    - off   Intensity  - on    Sticky     - on    
+Brstatus   - off   Device     - scrn  Lock       - off   Sysmenus   - on    
+Carry      - off   Dosmem     - off   Logerrors  - on    Talk       - on    
+Century    - off   Echo       - off   Mouse      - on    Textmerge  - off   
+Clear      - on    Escape     - on    Multilocks - off   Title      - off   
+Color      - on    Exact      - off   Near       - off   Unique     - off   
+Compatible - off   Exclusive  - on    Optimize   - on    
+Confirm    - off   Fields     - off   Print      - off   
+
+

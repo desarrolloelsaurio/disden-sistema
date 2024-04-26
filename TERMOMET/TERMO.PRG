@@ -1,0 +1,220 @@
+SET TALK OFF
+CLEA
+@ 22,0 SAY PADC("TECLA CUANDO SUENE",80)
+DEFI WIND THERMO FROM 9,11 TO 15,68 DOUB NOCL NOFL NOGR SHAD NOZO COLO SCHE 8
+*N/W,N/W,GR+/N
+ACTI WIND THERMO
+@ 1,0 SAY PADC("ESPERE",56)
+@ 2,1 TO 4,54
+**** SMOOTH
+CNTR=0
+COUNT=100
+LAST_NUM=0
+C=3
+@ 0,0 SAY PADC("SMOOTH",56)
+DO WHILE CNTR<COUNT
+   CNTR=CNTR+1
+   Z=INT((CNTR/COUNT)*100)
+   IF Z>LAST_NUM
+      LAST_NUM=Z
+      IF Z/2 # INT(Z/2)
+         @ 3,C SAY CHR(221)
+      ELSE
+         @ 3,C SAY CHR(219)
+         C=C+1
+      ENDIF
+   ENDIF
+ENDDO
+? CHR(7)
+WAIT ''
+*** MULTI PASS
+@ 3,3 SAY SPACE(50)
+CNTR=0
+COUNT=1000
+Y=COUNT/4
+STORE 1 TO X,PASS
+ODD=.T.
+@ 0,0 SAY PADC("MULTI PASS 1 OF 4",56)
+DO WHIL CNTR<COUNT
+   DO CASE
+   CASE CNTR/COUNT >=.75
+      IF ODD
+         @ 3,3 SAY REPL(CHR(219),INT((X/Y)*50))+CHR(221)
+         X=X+1
+         CNTR=CNTR+1
+         ODD=.F.
+      ELSE
+         @ 3,3 SAY REPL(CHR(219),INT((X/Y)*50))
+         ODD=.T.
+      ENDIF
+   CASE CNTR/COUNT >=.5
+      CNTR=CNTR+1
+      @ 3,3 SAY REPL(CHR(178),INT((X/Y)*50))
+      X=X+1
+      IF X=Y
+         X=1
+         @ 3,3 SAY REPL(CHR(178),50)
+         @ 0,0 SAY PADC("MULTI PASS 4 OF 4",56)
+      ENDIF
+   CASE CNTR/COUNT >=.25
+      CNTR=CNTR+1
+      @ 3,3 SAY REPL(CHR(177),INT((X/Y)*50))
+      X=X+1
+      IF X=Y
+         X=1
+         @ 3,3 SAY REPL(CHR(177),50)
+         @ 0,0 SAY PADC("MULTI PASS 3 OF 4",56)
+      ENDIF
+      OTHERWISE
+      CNTR=CNTR+1
+      @ 3,3 SAY REPL(CHR(176),INT((X/Y)*50))
+      X=X+1
+      IF X=Y
+         X=1
+         @ 3,3 SAY REPL(CHR(176),50)
+         @ 0,0 SAY PADC("MULTI PASS 2 OF 4",56)
+      ENDIF
+   ENDCASE
+ENDDO
+@ 3,3 SAY REPL(CHR(219),50)
+WAIT ''
+*** BACKPEDALING
+@ 3,3 SAY SPACE(50)
+CNTR=0
+COUNT=1000
+Y=COUNT/4
+STORE 1 TO X,PASS
+ODD=.T.
+@ 0,0 SAY PADC("BACKPEDALING PASS 1 OF 4",56)
+DO WHIL CNTR<COUNT
+   DO CASE
+   CASE CNTR/COUNT >=.75
+      IF ODD
+         @ 3,3 SAY PADL(CHR(221)+REPL(CHR(219),INT((X/Y)*50)),50,CHR(178))
+         X=X+1
+         CNTR=CNTR+1
+         ODD=.F.
+      ELSE
+         @ 3,3 SAY PADL(REPL(CHR(219),INT((X/Y)*50)),50,CHR(178))
+         ODD=.T.
+      ENDIF
+   CASE CNTR/COUNT >=.5
+      CNTR=CNTR+1
+      @ 3,3 SAY REPL(CHR(178),INT((X/Y)*50))
+      X=X+1
+      IF X=Y
+         X=1
+         @ 3,3 SAY REPL(CHR(178),50)
+         @ 0,0 SAY PADC("BACKPEDALING PASS 4 OF 4",56)
+      ENDIF
+   CASE CNTR/COUNT >=.25
+      CNTR=CNTR+1
+      @ 3,3 SAY PADL(REPL(CHR(177),INT((X/Y)*50)),50,CHR(176))
+      X=X+1
+      IF X=Y
+         X=1
+         @ 3,3 SAY REPL(CHR(177),50)
+         @ 0,0 SAY PADC("BACKPEDALING PASS 3 OF 4",56)
+      ENDIF
+      OTHERWISE
+      CNTR=CNTR+1
+      @ 3,3 SAY REPL(CHR(176),INT((X/Y)*50))
+      X=X+1
+      IF X=Y
+         X=1
+         @ 3,3 SAY REPL(CHR(176),50)
+         @ 0,0 SAY PADC("BACKPEDALING PASS 2 OF 4",56)
+      ENDIF
+   ENDCASE
+ENDDO
+@ 3,3 SAY REPL(CHR(219),50)
+WAIT ''
+** HI-LO TERMOMETER
+@ 3,3 SAY SPACE(51)
+CNTR=0
+COUNT=1000
+ODD=.T.
+@ 0,0 SAY PADC("PASSING TRAINS",56)
+DO WHILE CNTR<COUNT
+   Z=INT((CNTR/COUNT)*50)
+   IF Z<26
+      IF ODD
+         @ 3,3 SAY REPL(CHR(223),Z)
+         CNTR=CNTR+1
+         ODD=.F.
+      ELSE
+         @ 3,52-Z SAY REPL(CHR(220),Z)
+         CNTR=CNTR+1
+         ODD=.T.
+      ENDIF
+   ELSE
+      IF Z=26
+         @ 3,27 SAY REPL(CHR(219),2)
+      ENDIF
+      IF ODD
+         @ 3,52-Z SAY CHR(219)
+         CNTR=CNTR+1
+         ODD=.F.
+      ELSE
+         @ 3,Z+3 SAY CHR(219)
+         CNTR=CNTR+1
+         ODD=.T.
+      ENDIF
+   ENDIF
+ENDDO
+WAIT ''
+*** FILL IN
+@ 3,3 SAY SPACE(51)
+CNTR=0
+COUNT=1000
+ODD=.T.
+@ 0,0 SAY PADC("FILL IN TERMOMETER",56)
+DO WHILE CNTR<COUNT
+   Z=INT((CNTR/COUNT)*50)
+   IF ODD
+      @ 3,3+Z SAY CHR(223)
+      ODD=.F.
+   ELSE
+      @ 3,Z+3 SAY CHR(219)
+      ODD=.T.
+      CNTR=CNTR+1
+   ENDIF
+ENDDO
+@ 3,3 SAY REPL(CHR(219),50)
+WAIT ''
+************ BOTH ENDS
+@ 3,3 SAY SPACE(51)
+CNTR=0
+COUNT=1000
+ODD=.T.
+@ 0,0 SAY PADC("BURNING AT BOTH ENDS",56)
+DO WHILE CNTR<COUNT
+   Z=INT((CNTR/COUNT)*50)
+   IF Z<26
+      IF ODD
+         @ 3,3 SAY REPL(CHR(176),Z)
+         CNTR=CNTR+1
+         ODD=.F.
+      ELSE
+         @ 3,52-Z SAY REPL(CHR(176),Z)
+         CNTR=CNTR+1
+         ODD=.T.
+      ENDIF
+   ELSE
+      IF Z=26
+         @ 3,27 SAY REPL(CHR(219),2)
+      ENDIF
+      IF ODD
+         @ 3,52-Z SAY CHR(219)
+         CNTR=CNTR+1
+         ODD=.F.
+      ELSE
+         @ 3,Z+3 SAY CHR(219)
+         CNTR=CNTR+1
+         ODD=.T.
+      ENDIF
+   ENDIF
+ENDDO
+WAIT ''
+CLEAR WINDOWS
+RETURN

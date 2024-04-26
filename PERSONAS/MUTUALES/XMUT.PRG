@@ -1,0 +1,31 @@
+*******************************************************************************
+*-- Programa: XMUT.PRG
+*-- Fecha   : 10-07-92 01:54pm
+*-- Version : G. REINER
+*-- Notas   : RESTAURA BASE DE MUTUALES
+*-- VERSION CAMARA GAMMA
+********************************************************************************
+PROCEDURE XMUT
+ULPR=HORA_ULP(PROGRAM())
+IF CHEQSEG()
+   =MEN_LIN('Generando Nuevo Indice de Mutuales')
+   =FLOK("MUT") .or. lok("MUT")
+   =DOTALK()
+   =OPMUTX()
+   SELE MUX
+   INDEX ON CODMUT TAG CODMUT
+   INDEX ON CODMUT+CODPLAN TAG CODPLAN
+   INDEX ON CODMUT+CODPLAN+TIPO TAG TIPO
+   SELE MUT
+   INDE ON CODMUT         TAG CODMUT    FOR EMPTY(CODPLAN)
+   INDE ON MUTUAL         TAG MUTUAL    FOR EMPTY(CODPLAN)
+   INDE ON MUTUALABR      TAG MUTUALABR FOR EMPTY(CODPLAN)
+   INDE ON CODMUT+CODPLAN TAG CODPLAN   FOR !EMPTY(CODPLAN)
+   INDE ON MUTUALABR+PLAN TAG PALPOPUP  FOR !EMPTY(CODPLAN)
+   =REOPMUT()
+   =UNTALK()
+   =IAUD('CREA INDICE')
+ELSE
+   =IAUDI()
+ENDIF
+RETURN MEN_LIN(BOTOM)

@@ -1,0 +1,10 @@
+SELE PER
+SET ORDER TO TAG IIF(TYPE("ORDCLI")#'L' .OR. ORDCLI,'CODCLI','CLIENTE')
+fisc=fisc+' .and. !empty(legajo)'
+SCAN FOR &fisc
+DO mclij
+	 IF LASTKEY()=27
+      EXIT
+   ENDIF
+ENDSCAN
+RETURN

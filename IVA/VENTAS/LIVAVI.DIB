@@ -1,0 +1,244 @@
+   ********************************************************************************
+   *-- Programa: LIVAVI.PRG
+   *-- Fecha   : 09/26/91
+   *-- Version : G. REINER
+   *-- Notas   : IMPRESION DEL IVA VENTAS, POR IMPRESORA
+   *-- Modificaci¢n GOYO 06-25-92 02:30pm (correccion ncre - y +)
+   ********************************************************************************
+   parameter aRTEMIO
+   STORE PROGRAM() TO ULPR
+ ÚÄIF CHEQSEG()
+ ³    SET ORDER TO TAG CODCLI IN PER
+ ³    SELE FAC
+ ³    nada=""
+ ³    truch=xacdigi-1
+ ³    HAYEXE=HAYCAMPO("EXENTO","FAC")
+ ³    ESCHAR=(TYPE("FAC.FACTURA")='C')
+ ³  ÖÄFOR A=1 TO 3
+ ³  ×  ÚÄIF !EMPTY(xaci[A])
+ ³  ×  ³    nada=nada+paip+PADC(xaci[A],XACDIGI)
+ ³  ×  ÀÄENDIF
+ ³  ÓÄendfor
+ ³    ACLA="|  FECHA |"+IIF(ARTEMIO,PADC("COMPROBANTE",20),PADC("COMPROBANTE",9))+paip+PADC("CLIENTE",30)+paip
+ ³  ÚÄIF ARTEMIO
+ ³  ³    ACLA=ACLA+padc("N§ C.U.I.T",13)+paip
+ ³  ÃÄELSE
+ ³  ³    ACLA=ACLA+'  CODIGO  '+PAIP+PADC("MONTO BRUTO",XACDIGI)+paip+PADC("DESCUENTOS",XACDIGI)+PAIP
+ ³  ÀÄENDIF
+ ³    ACLA=ACLA+PADC("N. GRAVADO",XACDIGI)
+ ³    STORE acla+nada+IIF(HAYEXE,PAIP+PADC("EXENTO",XACDIGI),'')+paip+PADC("FACTURADO",XACDIGI)+paip TO acla
+ ³    STORE REPL("=",LEN(acla)) TO lns
+ ³    STORE LEN(acla) TO largo
+ ³    STORE MIN(xacancho,xachoja) TO largoim
+ ³    MXRN=63
+ ³    =men_lin(imprimiendo)
+ ³  ÚÄIF (largoim=80 .AND. largo>132) .OR. (largoim=132 .AND. largo>233)
+ ³  ³    A=left(sincosas(janname),8)+'.TXT'
+ ³  ³    ACTI SCRE
+ ³  ³    @ 24,0 SAY PADC("Imprimiendo Listado en Archivo "+ALLTRIM(A),80) COLO SCHE 19
+ ³  ³    SET PRINTER TO FILE &a
+ ³  ³    MXRN=IIF(largoim>80,63,53)
+ ³  ÀÄENDIF
+ ³    =cabpri()
+ ³    _PCOPIES=1
+ ³    _pageno=pageno
+ ³  ÕÍPRINTJOB
+ ³  Ø    =CABPRI2()
+ ³  Ø    =TIT_LIN(3)
+ ³  Ø    STORE NUL TO totmon,totdes,totbru,totiva,totot2,totot3,totnet,TOTEXE
+ ³  Ø    SELE fac
+ ³  Ø  ÉÍSCAN FOR &fisc
+ ³  Ø  º  ÚÄIF _PLINENO>MXRN
+ ³  Ø  º  ³    =TLIVAVI("SUBTOTAL")
+ ³  Ø  º  ³    =CABPRI2()
+ ³  Ø  º  ³    =TIT_LNS(4)
+ ³  Ø  º  ÀÄENDI
+ ³  Ø  º    ? paip
+ ³  Ø  º    ?? fac.fechaem
+ ³  Ø  º    ?? paip
+ ³  Ø  º  ÕÍdo case
+ ³  Ø  º <Ø>case fac.tipo="FA" .or. EMPTY(fac.tipo)
+ ³  Ø  º  Ø    ?? IIF(ARTEMIO,"FACTU.","FA.")
+ ³  Ø  º <Ø>CASE fac.tipo="ND"
+ ³  Ø  º  Ø    ?? IIF(ARTEMIO,"N.DEB.",'ND.')
+ ³  Ø  º <Ø>CASE fac.tipo="NC"
+ ³  Ø  º  Ø    ?? IIF(ARTEMIO,"N.CRE.",'NC.')
+ ³  Ø  º  Ø    OTHERWISE
+ ³  Ø  º  Ø    ?? SPACE(IIF(ARTEMIO,16,9))
+ ³  Ø  º  ÔÍENDCASE
+ ³  Ø  º  ÚÄIF ARTEMIO
+ ³  Ø  º  ³    ?? FAC.FACTURA
+ ³  Ø  º  ÃÄELSE
+ ³  Ø  º  ³    ?? RIGHT(ALLTRIM(FAC.FACTURA),6)
+ ³  Ø  º  ÀÄENDIF
+ ³  Ø  º    ?? paip
+ ³  Ø  º    SELE PER
+ ³  Ø  º  ÚÄIF FAC.CODCLI='ANULADA'
+ ³  Ø  º  ³    ?? PADC("A N U L A D A",30)
+ ³  Ø  º  ³    ?? paip
+ ³  Ø  º  ³  ÚÄIF ARTEMIO
+ ³  Ø  º  ³  ³    ?? space(13)
+ ³  Ø  º  ³  ³    ?? paip
+ ³  Ø  º  ³  ÃÄELSE
+ ³  Ø  º  ³  ³    ?? space(10)
+ ³  Ø  º  ³  ³    ?? PAIP
+ ³  Ø  º  ³  ÀÄENDIF
+ ³  Ø  º  ÃÄELSE
+ ³  Ø  º  ³    ?? iIF(SEEK(fac.codcli),LEFT(PER.cliente,30),PADL(IIF(!EMPTY(FAC.MONTO),"NO EXISTE","ANULADA"),30))
+ ³  Ø  º  ³    ?? paip
+ ³  Ø  º  ³  ÚÄIF ARTEMIO
+ ³  Ø  º  ³  ³    ?? left(PER.nroiva,13)
+ ³  Ø  º  ³  ³    ?? paip
+ ³  Ø  º  ³  ÃÄELSE
+ ³  Ø  º  ³  ³    ?? PER.CODCLI
+ ³  Ø  º  ³  ³    ?? PAIP
+ ³  Ø  º  ³  ÀÄENDIF
+ ³  Ø  º  ÀÄENDIF
+ ³  Ø  º  ÚÄIF xamoneda#xauss
+ ³  Ø  º  ³  ÚÄif fac.tipo="NC"
+ ³  Ø  º  ³  ³  ÚÄIF !ARTEMIO
+ ³  Ø  º  ³  ³  ³    ?? "-"+str(ABS(fac.monto),truch,2)
+ ³  Ø  º  ³  ³  ³    ?? paip
+ ³  Ø  º  ³  ³  ³    ?? "-"+str(ABS(fac.DESCUENTo),truch,2)
+ ³  Ø  º  ³  ³  ³    ?? paip
+ ³  Ø  º  ³  ³  ³    STORE totMON-ABS(fac.monto) TO totMON
+ ³  Ø  º  ³  ³  ³    STORE totDES-ABS(fac.DESCUENTO) TO totDES
+ ³  Ø  º  ³  ³  ÀÄENDIF
+ ³  Ø  º  ³  ³    ?? "-"+str(ABS(fac.montobru),truch,2)
+ ³  Ø  º  ³  ³    STORE totbru-ABS(fac.montobru) TO totbru
+ ³  Ø  º  ³  ÃÄelse
+ ³  Ø  º  ³  ³  ÚÄIF !ARTEMIO
+ ³  Ø  º  ³  ³  ³    ?? " "+str(fac.monto,truch,2)
+ ³  Ø  º  ³  ³  ³    ?? paip
+ ³  Ø  º  ³  ³  ³    ?? " "+str(fac.DESCUENTo,truch,2)
+ ³  Ø  º  ³  ³  ³    ?? paip
+ ³  Ø  º  ³  ³  ³    STORE totMON+fac.monto TO totMON
+ ³  Ø  º  ³  ³  ³    STORE totDES+fac.DESCUENTO TO totDES
+ ³  Ø  º  ³  ³  ÀÄENDIF
+ ³  Ø  º  ³  ³    ?? " "+STR(fac.montobru,truch,2)
+ ³  Ø  º  ³  ³    STORE totbru+fac.montobru TO totbru
+ ³  Ø  º  ³  ÀÄendif
+ ³  Ø  º  ÃÄELSE
+ ³  Ø  º  ³  ÚÄif fac.tipo="NC"
+ ³  Ø  º  ³  ³  ÚÄIF !ARTEMIO
+ ³  Ø  º  ³  ³  ³    ?? "-"+str(ABS(fac.monto),truch,2)
+ ³  Ø  º  ³  ³  ³    ?? paip
+ ³  Ø  º  ³  ³  ³    STORE totMON-ABS(fac.monto) TO totMON
+ ³  Ø  º  ³  ³  ³    ?? "-"+str(ABS(fac.DESCUENTO),truch,2)
+ ³  Ø  º  ³  ³  ³    ?? paip
+ ³  Ø  º  ³  ³  ³    STORE totDES-ABS(fac.DESCUENTO) TO totDES
+ ³  Ø  º  ³  ³  ÀÄENDIF
+ ³  Ø  º  ³  ³    ?? "-"+str(ABS(fac.montobru),truch,2)
+ ³  Ø  º  ³  ³    STORE totbru-ABS(fac.montobru) TO totbru
+ ³  Ø  º  ³  ÃÄelse
+ ³  Ø  º  ³  ³  ÚÄIF !ARTEMIO
+ ³  Ø  º  ³  ³  ³    ?? " "+str(fac.monto,truch,2)
+ ³  Ø  º  ³  ³  ³    ?? paip
+ ³  Ø  º  ³  ³  ³    STORE totMON+fac.monto TO totMON
+ ³  Ø  º  ³  ³  ³    ?? " "+str(fac.DESCUENTo,truch,2)
+ ³  Ø  º  ³  ³  ³    ?? paip
+ ³  Ø  º  ³  ³  ³    STORE totDES+fac.DESCUENTO TO totDES
+ ³  Ø  º  ³  ³  ÀÄENDIF
+ ³  Ø  º  ³  ³    ?? " "+STR(fac.montobru,truch,2)
+ ³  Ø  º  ³  ³    STORE totbru+fac.montobru TO totbru
+ ³  Ø  º  ³  ÀÄendif
+ ³  Ø  º  ÀÄENDIF
+ ³  Ø  º    ?? paip
+ ³  Ø  º  ÚÄIF EMPTY(fac.tipo) .OR. fac.tipo="ND"
+ ³  Ø  º  ³    ?? " "+STR(fac.montoiva,truch,2)
+ ³  Ø  º  ³    STORE totiva+fac.montoiva TO totiva
+ ³  Ø  º  ÃÄELSE
+ ³  Ø  º  ³  ÚÄIF fac.tipo="NC"
+ ³  Ø  º  ³  ³    ?? "-"+STR(ABS(fac.montoiva),truch,2)
+ ³  Ø  º  ³  ³    STORE totiva-ABS(fac.montoiva) TO totiva
+ ³  Ø  º  ³  ÀÄENDIF
+ ³  Ø  º  ÀÄENDIF
+ ³  Ø  º    ?? paip
+ ³  Ø  º  ÚÄIF EMPTY(fac.tipo) .OR. fac.tipo="ND"
+ ³  Ø  º  ³    ?? " "+STR(fac.montoot2,truch,2)
+ ³  Ø  º  ³    STORE totot2+fac.montoot2 TO totot2
+ ³  Ø  º  ÃÄELSE
+ ³  Ø  º  ³  ÚÄIF fac.tipo="NC"
+ ³  Ø  º  ³  ³    ?? "-"+STR(ABS(fac.montoot2),truch,2)
+ ³  Ø  º  ³  ³    STORE totot2-ABS(fac.montoot2) TO totot2
+ ³  Ø  º  ³  ÀÄENDIF
+ ³  Ø  º  ÀÄENDIF
+ ³  Ø  º    ?? paip
+ ³  Ø  º  ÚÄIF HAYEXE
+ ³  Ø  º  ³  ÚÄIF EMPTY(fac.tipo) .OR. fac.tipo="ND" .OR. fac.tipo="FA"
+ ³  Ø  º  ³  ³    ?? " "+STR(fac.EXENTO,truch,2)
+ ³  Ø  º  ³  ³    STORE totEXE+fac.EXENTO TO totEXE
+ ³  Ø  º  ³  ÃÄELSE
+ ³  Ø  º  ³  ³  ÚÄIF fac.tipo="NC"
+ ³  Ø  º  ³  ³  ³    ?? "-"+STR(ABS(fac.EXENTO),truch,2)
+ ³  Ø  º  ³  ³  ³    STORE totot3-ABS(fac.EXENTO) TO totot3
+ ³  Ø  º  ³  ³  ÀÄENDIF
+ ³  Ø  º  ³  ÀÄENDIF
+ ³  Ø  º  ³    ?? paip
+ ³  Ø  º  ÀÄENDIF
+ ³  Ø  º  ÚÄIF EMPTY(fac.tipo) .OR. fac.tipo="ND" .OR. fac.tipo="FA"
+ ³  Ø  º  ³    ?? " "+STR(fac.montonet,truch,2)
+ ³  Ø  º  ³    STORE totnet+fac.montonet TO totnet
+ ³  Ø  º  ÃÄELSE
+ ³  Ø  º  ³  ÚÄIF fac.tipo="NC"
+ ³  Ø  º  ³  ³    ?? "-"+STR(ABS(fac.montonet),truch,2)
+ ³  Ø  º  ³  ³    STORE totnet-ABS(fac.montonet) TO totnet
+ ³  Ø  º  ³  ÀÄENDIF
+ ³  Ø  º  ÀÄENDIF
+ ³  Ø  ÃÄELSE
+ ³  Ø  º  ÚÄIF EMPTY(fac.tipo) .OR. fac.tipo="ND" .OR. fac.tipo="FA"
+ ³  Ø  º  ³    ?? " "+STR(fac.montonet,truch,2)
+ ³  Ø  º  ³    STORE totnet+fac.montonet TO totnet
+ ³  Ø  º  ÃÄELSE
+ ³  Ø  º  ³  ÚÄIF fac.tipo="NC"
+ ³  Ø  º  ³  ³    ?? "-"+STR(ABS(fac.montonet),truch,2)
+ ³  Ø  º  ³  ³    STORE totnet-ABS(fac.montonet) TO totnet
+ ³  Ø  º  ³  ÀÄENDIF
+ ³  Ø  º  ÀÄENDIF
+ ³  Ø  ÀÄENDIF
+ ³  Ø    ?? paip
+ ³  ÈÍENDSCAN
+ ³    =TLIVAVI("TOTAL")
+ ÔÍENDP
+   =finimp()
+   =Iaud((FISC))
+ ÃÄELSE
+   =iaudi()
+ ÀÄENDIF
+   RETURN MEN_LIN(BOTOM)
+   FUNCTION TLIVAVI
+   PARAMETER COSA
+   PRIVATE COSA
+   ? lns
+   ? paip
+   ?? SPACE(8)
+   ?? paip
+   ?? PADR(COSA,IIF(ARTEMIO,20,9))
+   ?? paip
+   ?? space(30)
+   ?? paip
+ ÚÄIF ARTEMIO
+ ³    ?? space(13)
+ ³    ?? paip
+ ÃÄELSE
+ ³    ?? SPACE(10)
+ ³    ?? PAIP
+ ³    ?? STR(totmon,XACDIGI,2)+paip+STR(totdes,XACDIGI,2)+paip
+ ÀÄENDIF
+   ?? STR(totbru,XACDIGI,2)
+   ?? paip
+   ?? STR(totiva,XACDIGI,2)
+   ?? paip
+   ?? STR(totot2,XACDIGI,2)
+   ?? paip
+ ÚÄIF HAYEXE
+ ³    ?? STR(TOTEXE,XACDIGI,2)
+ ³    ?? paip
+ ÀÄENDIF
+   ?? STR(totnet,XACDIGI,2)
+   ?? paip
+   _WRAP=.F.
+   ?
+   EJECT PAGE
+   ?
+   RETURN .T.

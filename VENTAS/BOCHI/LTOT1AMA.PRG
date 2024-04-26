@@ -1,0 +1,45 @@
+procedure ltot1ama
+PARA PORIMPRE
+=OPCLI()
+=OPMER()
+=OPCAG()
+=OPRUB()
+store nul to respuesta
+if !empty(elirub("a Consultar",-1,1))
+	ELRUBRO = left(mix.texto2,3)
+	if !empty(elicag("a Consultar",-1,1))
+		ELCAG = left(mix.texto2,2)
+		sele mer
+		STORE {} TO M.FECINI,M.FECFIN
+		IF ENTRE_FE("a Listar")
+			=OPFAC()
+			=DOTALK()
+			=WORKING()
+
+			m.titulo = "AGRUPACION :" + alltrim(mix.texto1)
+
+			SELECT SUM(FAX.TOTAL) AS MONTO, FAC.CODCLI, PER.CAG, PER.CLIENTE, FAX.ARTICULO, MER.MERCA;
+				FROM FAX, FAC, PER, MER ;
+				WHERE 	BETW(FAC.FECHAEM, M.FECINI, M.FECFIN) AND ;
+						FAX.ARTICULO = MER.ARTICULO AND;
+						MER.RUBRO    = ELRUBRO      AND;
+						FAC.FACTURA  = FAX.FACTURA  AND;
+						FAC.CODCLI   = PER.CODCLI   AND;
+						PER.CAG   LIKE "%"+ELCAG+"/%"  ;
+				GROUP BY MER.ARTICULO INTO CURSOR LAME
+*	DEFINE WIND A FROM 0,0 TO 50,100
+*	ACTI WIND A
+*	BROWSE FIEL ARTICULO, CLIENTE, MERCA, TOTAL
+*	RELE WIND A
+			=UNWORK()
+			=UNTALK()
+			IF PORIMPRE
+				REPORT FORM LTOT1AMA TO PRINT PROMPT NOCONSOLE
+			ELSE
+				REPORT FORM LTOT1AMA PREVIEW NOCONSOLE
+			ENDIF
+			USE IN LAME
+		endif
+	endif
+endif
+return

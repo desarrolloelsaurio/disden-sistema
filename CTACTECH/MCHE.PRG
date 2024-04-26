@@ -1,0 +1,37 @@
+********************************************************************************
+*-- Programa: MCHE.PRG
+*-- Fecha   : 07/01/91 09:28am
+*-- Version : ELINA BANALOTTI
+*-- Notas   : MUESTRA CHEQUES
+*-- Modificaci¢n GOYO 22/06/1992 - picture / xseek
+********************************************************************************
+ACTI WIND win
+@ 1,2 SAY "CODIGO CLIENTE" COLO SCHE 3
+@ 2,2 SAY "FECHA DE LA OPERACION " COLO SCHE 3
+@ 3,2 SAY "COMPROBANTE ENTREGADO" COLO SCHE 3
+@ 4,2 SAY "COMPROBANTE PAGADO" COLO SCHE 3
+@ 5,2 SAY "NUMERO COMPROBANTE" COLO SCHE 3
+@ 6,2 SAY "CHEQUE BANCO" COLO SCHE 3
+@ 7,2 SAY "CHEQUE NUMERO" COLO SCHE 3
+@ 8,2 SAY "MONTO CHEQUE" COLO SCHE 3
+@ 9,2 SAY "MONEDA CHEQUE" COLO SCHE 3
+@10,2 SAY "FECHA CHEQUE" COLO SCHE 3
+@11,2 SAY "HORAS DE ACREDITACION" COLO SCHE 3
+=xSEEK(M.CODCLI,'PER','CODCLI')
+NADA=PER.CLIENTE
+SELE CCH
+@1,COL GET NADA
+@ 2,COL GET m.fechaop
+@ 3,COL GET m.compr PICT  "REC 99999999"
+*M.COMPRE=QCOM(M.COMPRE)
+@ 4,COL GET m.compre
+@ 5,col GET m.numere pict '9999999999'
+@ 6,COL GET m.banco PICT "@!"
+@ 7,COL GET m.nroche PICT "@!"
+@ 8,COL GET m.monto PICT  "99999999999.99"
+*m.moneda=QMON(M.MONEDA)
+@ 9,COL GET M.moneda
+@ 10,COL GET M.FECHADE
+@ 11,COL GET M.DIASAC PICT '999'
+CLEAR GETS
+RETURN

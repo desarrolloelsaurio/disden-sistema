@@ -1,0 +1,177 @@
+********************************************************************************
+*-- Programa:LCCHIR
+*-- Fecha   :06/22/92
+*-- Version : G. REINER
+*-- Notas   : LISTADO RESUMEN DE CHEQUES
+********************************************************************************
+ulpr=hora_ulp(program())
+if cheqseg()
+   =impresor()
+   stor nul TO casos
+   =working()
+   NADA=GENTMP()
+   IF FILCLI=3
+      SET ORDER TO CODCLI IN PER
+      SELE CHEQ
+      SET RELA TO CODCLI INTO PER ADDI
+      IF ".T."=FISC
+         INDE ON PER.CODCLI TO (NADA) COMP
+      ELSE
+         INDE ON PER.CODCLI TO (NADA) FOR EVAL(FISC) COMP
+      ENDIF
+      GO TOP
+      ELCLIENTE=PER.CLIENTE
+      ELARTICULO=CHEQ.CODCLI
+      store paip+PADC('CLIENTE',30)+paip+padc("CANTIDAD",XACDIGI)+PAIP+padc("MONTO",XACDIGI)+paip to acla
+   ELSE
+      SELE CHEQ
+      IF FILBCO=3
+         IF ".T."=FISC
+            INDE ON CHEQ.BANCO TO (NADA) COMP
+         ELSE
+            INDE ON CHEQ.BANCO TO (NADA) FOR EVAL(FISC) COMP
+         ENDIF
+         GO TOP
+         ELARTICULO=CHEQ.BANCO
+         store paip+PADC('BANCO',20)+paip+PADC('CANTIDAD',XACDIGI)+paip+padc("MONTO",XACDIGI)+paip to acla
+      else
+         if filfec=3
+            IF ".T."=FISC
+               INDE ON CHEQ.FECHAOP TO (NADA) COMP
+            ELSE
+               INDE ON CHEQ.FECHAOP TO (NADA) FOR EVAL(FISC) COMP
+            ENDIF
+            GO TOP
+            ELARTICULO=CHEQ.FECHAOP
+            store paip+PADC('FECHA',8)+paip+padc("CANTIDAD",XACDIGI)+paip+padc("MONTO",XACDIGI)+paip to acla
+         ELSE
+            IF FILFEV=3
+               IF ".T."=FISC
+                  INDE ON CHEQ.FECHADE TO (NADA) COMP
+               ELSE
+                  INDE ON CHEQ.FECHADE TO (NADA) FOR EVAL(FISC) COMP
+               ENDIF
+               GO TOP
+               ELARTICULO=CHEQ.FECHADE
+               store paip+PADC('FECHA',8)+paip+padc("CANTIDAD",XACDIGI)+paip+padc("MONTO",XACDIGI)+paip to acla
+            ENDIF
+         ENDIF
+      endif
+   ENDIF
+   go top
+   store nul to TOT,TTOT,TCCH,CCH
+   STORE REPL("=",LEN(acla)) TO lns
+   TT='Listado de Cheques'+ttque
+   =cabpri()
+   _PCOPIES=1
+   PRINTJOB
+      =cabpri1()
+      =TIT_LIN(3)
+      SELE CHEQ
+      GO TOP
+      SCAN
+         DO CASE
+         CASE FILCLI=3
+            ELCORTE=CHEQ.CODCLI
+         CASE FILBCO=3
+            ELCORTE=CHEQ.BANCO
+         CASE FILFEC=3
+            ELCORTE=CHEQ.FECHAOP
+         CASE FILFEV=3
+            ELCORTE=CHEQ.FECHADE
+         ENDCASE
+         IF ELCORTE#ELARTICULO
+            =FLCCHPR1()
+         ENDIF
+         IF _PLINENO>63
+            IF TLCCHPR1("SUBTOTAL")=27
+               =FIN_LIN(3,NUL)
+               EXIT
+            ENDIF
+            CLEA
+            STOR pag+1 TO pag
+            EJECT
+            =cabpri1()
+            =TIT_LIN(4)
+         ENDIF
+         DO CASE
+         CASE FILCLI=3
+            STORE CCH+1 TO CCH
+            STORE TOT+CHEQ.MONTO TO TOT
+         CASE FILBCO=3
+            STORE CCH+1 TO CCH
+            STORE TOT+CHEQ.MONTO TO TOT
+         CASE FILFEC=3
+            STORE CCH+1 TO CCH
+            STORE TOT+CHEQ.MONTO TO TOT
+         CASE FILFEV=3
+            STORE CCH+1 TO CCH
+            STORE TOT+CHEQ.MONTO TO TOT
+         ENDCASE
+      ENDSCAN
+      =FIN_LIN(4,CASOS)
+   ENDP
+   =FINIMP()
+   =iaud('')
+ELSE
+   =iaudI()
+ENDIF
+RETURN MEN_LIN(BOTOM)
+
+function TLCCHPR1
+parameter cosa
+private cosa
+? LNS
+? PAIP
+DO CASE
+CASE FILCLI=3
+   ?? PADR(COSA,30)
+CASE FILFEC=3
+   ?? PADR(COSA,8)
+CASE FILFEV=3
+   ?? PADR(COSA,8)
+CASE FILBCO=3
+   ?? PADR(COSA,20)
+ENDCASE
+?? PAIP
+?? STR(TCCH,XACDIGI)
+?? PAIP
+?? STR(TTOT,XACDIGI,2)
+?? PAIP
+return inkey(nul)
+
+FUNCTION FLCCHPR1
+? PAIP
+DO CASE
+CASE FILCLI=3
+   ?? ELCLIENTE
+CASE FILBCO=3
+   ?? ELARTICULO
+CASE FILFEC=3
+   ?? ELARTICULO
+CASE FILFEV=3
+   ?? ELARTICULO
+CASE FILBCO=3
+   ?? ELARTICULO
+ENDCASE
+?? PAIP
+?? STR(CCH,XACDIGI)
+?? PAIP
+TCCH=TCCH+CCH
+STORE NUL TO CCH
+?? STR(TOT,XACDIGI,2)
+?? PAIP
+TTOT=TTOT+TOT
+STORE 0 TO TOT
+DO CASE
+CASE FILCLI=3
+   ELCLIENTE=PER.CLIENTE
+   ELARTICULO=CHEQ.CODCLI
+CASE FILBCO=3
+   ELARTICULO=CHEQ.BANCO
+CASE FILFEC=3
+   ELARTICULO=CHEQ.FECHAOP
+CASE FILFEV=3
+   ELARTICULO=CHEQ.FECHADE
+ENDCASE
+RETURN .T.

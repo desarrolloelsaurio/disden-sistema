@@ -1,0 +1,118 @@
+* ษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
+* บ PROCEDIMIENTO : ICOB_4.PRG                                               บ
+* บ COMENTARIO    :                                                          บ
+* ฬออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน
+* บ AUTOR      : GOYO REINER                                                 บ
+* บ FECHA      : 08-21-93                                                    บ
+* บ HORA       : 09:00:11pm                                                  บ
+* บ COPYRIGHT  : 1993 by GREGORIO REINER                                     บ
+* ศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
+FUNCTION ICOB_4
+	PARAMETER LAGUITA,I_MONEDA,I_FECHAVE,I_NUMCHE,I_NOMBAN,ACUALQUIERA
+	IF !EMPTY(M.LAGUITA)
+		SELE TMP
+		FISC=IIF(ACUALQUIERA,".T.","MARKA")
+		SCAN FOR &FISC
+			SELE CCL
+			SEEK TMP.NUMERORE
+			SCAN WHILE CCL.NUMERORE=TMP.NUMERORE .AND. M.LAGUITA>0
+				IF !PAGADA
+					=LOCK() .OR. LOK()
+					REPL MARKA WITH .T.
+					IF EQ_REG("TMP","CCL") .OR. ACUALQUIERA
+						RESTA=CCL.MONTO-CCL.CUOTA
+						***** PARA GRABAR EN CCL
+						M.FECHAVE=IIF(I_MONEDA#3,M.LAFECHA,I_FECHAVE)
+						M.PAGADA=(I_MONEDA#3)
+						***** PARA GRABAR EN CAJ
+						IF I_MONEDA=3
+							M.FECHADE=I_FECHAVE
+							M.NROCHE=I_NUMCHE
+							M.BANCO=I_NOMBAN
+						ELSE
+							STORE "" TO M.NROCHE,M.BANCO
+							STORE {} TO M.DECHADE
+						ENDIF
+						***** PARA GRABAR EN TODOS
+						IF SSTM1="HOGAR"
+							STORE CCL.COMPRRE+" Nง "+CCL.NUMERORE TO M.COMPR,M.SALIDA
+						ELSE
+							STORE IIF(ISALPHA(CCL.NUMERORE),"",CCL.COMPRRE+" Nง ")+CCL.NUMERORE TO M.COMPR,M.SALIDA
+						ENDIF
+						M.MONEDA=IIF(I_MONEDA=2,XADOLS,XAUSS)
+						STORE "" TO M.DETALLE
+						IF M.LAGUITA>=RESTA
+							REPL CCL.CUOTA WITH CCL.MONTO
+							REPL TMP.CUOTA WITH TMP.MONTO
+							SEPAGA=RESTA
+							IF SSTM1#"ADMIN"
+								M.DETALLE='SALDA '
+							ENDIF
+						ELSE
+							REPL CCL.CUOTA WITH CCL.CUOTA+M.LAGUITA
+							REPL TMP.CUOTA WITH TMP.CUOTA+M.LAGUITA
+							SEPAGA=M.LAGUITA
+							IF SSTM1#"ADMIN"
+								M.DETALLE='PARC. '
+							ENDIF
+						ENDIF
+						M.LAGUITA=M.LAGUITA-SEPAGA
+						REPL CCL.PAGADA WITH (CCL.CUOTA>=CCL.MONTO)
+						REPL TMP.PAGADA WITH CCL.PAGADA
+						IF I_MONEDA<3 .AND. SSTM1#"ADMIN"
+							M.DETALLE=M.DETALLE+LEFT(IIF(I_MONEDA=1,XAUSS,XADOLS),3)+" "
+						ENDIF
+						IF SSTM1="ADMIN"
+							M.DETALLE=CCL.DETALLE
+						ELSE
+							M.DETALLE=M.DETALLE+ALLTRIM(CCL.DETALLE)
+						ENDIF
+						IF I_MONEDA>2
+							M.DETALLE=M.DETALLE+" C/CH "+I_NUMCHE
+						ENDIF
+						***** PARA TODOS
+						M.MONTO=M.SEPAGA
+						M.EQUIVALE=M.SEPAGA/M.XACOTIZ
+						M.VENCIM=CCL.FECHAVE
+					#IF "RAFULS" $ CURDIR()
+					M.NUMERO=SPACE(8)
+					M.CODINM=CCL.CODINM
+					M.CUOTA=NUL
+					M.C_MES=NUL
+					M.C_PERIODO=NUL
+					M.C_ANIO=NUL
+					M.C_COMIS=NUL
+					M.C_CUOTA=NUL
+					M.MARKA=.F.
+					M.FECHA=DATE()	
+					M.REGNO=0
+					M.RECIBO=SPACE(8)
+					#ENDIF
+					M.DIASRET=IIF(I_MONEDA=3,I_FECHAVE,DATE())-M.VENCIM
+					=AGRABAR("TMP1")
+					#IF "RAFULS" $ CURDIR()
+					M.CODCLI=M.ELCLI
+				#ENDIF
+				=AGRABAR("CAJ")
+			ELSE
+				REPL MARKA WITH .F.
+			ENDIF
+			UNLO IN CCL
+		ENDIF
+	ENDSCAN
+	SELE TMP
+ENDSCAN
+IF ACUALQUIERA
+	IF !EMPTY(M.LAGUITA)
+		M.DETALLE="RESTO A FAVOR"
+		M.MONTO=M.LAGUITA
+		M.EQUIVALE=M.MONTO/M.XACOTIZ		
+		M.PAGADA=.T.
+		=AGRABAR("CAJ")
+		STORE .F. TO M.MARCA,M.MARKA
+		STORE SPACE(8) TO M.NUMERO,M.RECIBO
+		=AGRABAR("TMP1")
+	ENDIF
+ENDIF
+ENDIF
+RETURN M.LAGUITA

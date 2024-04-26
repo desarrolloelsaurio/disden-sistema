@@ -1,0 +1,20 @@
+* ษอออออออออออออออออออออออออออออออออออออออออออป
+* บ PROCEDIMIENTO : OPCSS.PRG                 บ
+* บ COMENTARIO    : ABRE BASE DE CONSORCISTAS บ
+* ศอออออออออออออออออออออออออออออออออออออออออออผ
+PARAMETER COMOCLI
+#DEFINE BOTOM "  "+REPL("ฐ",78)                  && BOTOM
+#DEFINE ABA   "Abriendo Base de "                && ABA
+IF USED("PER")
+	SELE PER
+	SET ORDER TO TAG CONSORCI
+ELSE
+	=MEN_LIN(ABA+'Consorcistas')
+	SELE 21
+	USE (PATHPRO+'\PERSONAS') ORDER TAG CONSORCI ALIAS PER
+ENDIF
+IF COMOCLI
+   USE IN 3
+   USE (PATHPRO+'\PERSONAS') IN 3 ALIAS CLI AGAIN ORDER TAG CONSORCI 
+ENDIF
+RETURN IIF(CSSPOP,DEFPOPER(CSSPOPR,CSSPOPC),.T.) .AND. MEN_LIN(BOTOM)

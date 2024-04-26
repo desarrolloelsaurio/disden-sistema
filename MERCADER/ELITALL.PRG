@@ -1,0 +1,35 @@
+* SELECCIONA TALLE
+* MODIFICACION 07-20-94 04:22pm PARA MAS DE 18 TALLES
+#DEFINE NUL    0                                 && NUL
+FUNCTION ELITALL
+PARAMETER E_ARR
+EXTERNAL ARRAY E_ARR
+E_LARGO=alen(E_ARR,1)
+E_RENGL=E_LARGO+3
+E_COLU=20
+IF E_RENGL>25
+   E_RENGL=CEIL(E_RENGL/2)+1
+   E_COLU=45
+ENDIF
+=MOVECENT(0,0,E_RENGL,E_COLU,'elitall','Elija los Talles','[ESC] para Terminar')
+STORE NUL TO E_PUNT,E_INDICE
+E_COL=2
+FOR E_XA=xatalmin to xatalmax step xatalstep
+   E_PUNT=E_PUNT+1
+   E_INDICE=E_INDICE+1
+   @ E_PUNT,E_COL get E_ARR[E_INDICE] pict 'Talle '+alltrim(str(E_XA)) func '*C'
+   IF E_PUNT>19
+      E_PUNT=0
+      E_COL=24
+   ENDIF
+NEXT
+read cycle
+E_SALIDA=.F.
+FOR E_XA=1 TO E_LARGO
+   IF E_ARR[E_XA]
+      STORE .T. TO E_SALIDA
+      EXIT
+   ENDIF
+ENDF
+=RELEWIN("ELITALL")
+RETURN E_SALIDA

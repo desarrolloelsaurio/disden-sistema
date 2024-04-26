@@ -1,0 +1,71 @@
+********************************************************************************
+*-- Programa: LCREI1.PRG
+*-- Fecha   : 09/27/91
+*-- Version : G. REINER
+*-- Notas   : IMPRESION DE NOTAS DE CREDITO, POR IMPRESORA
+********************************************************************************
+STORE HORA_ULP(PROGRAM()) TO ULPR
+IF CHEQSEG()
+	SELE fac
+	=impresor()
+	=MEN_LIN(IMPRIMIENDO)
+	STOR NUL TO casos
+	STORE 30 TO t1
+	store 15 to t2
+	c6=116
+	SET DEVICE TO PRINT
+	SET CONSOLE OFF
+	SET PRINTER ON
+	picu="99,999,999,999.99"
+	_PEJECT="NONE"
+	_PLENGTH=72
+	_PLINENO=NUL
+	_PAGENO=1
+	_PSCODE='{27}{64}{27}{67}{72}{27}{120}{0}{18}{27}{116}{1}{27}{82}{0}'
+	_PLOFFSET=NUL
+	_ALIGNMENT='LEFT'
+	_PADVANCE="LINEFEEDS"
+	wrap=.F.
+	_rmargin=255
+	_lmargin=NUL
+	_PCOPIES=1
+	PRINTJOB
+	***************************************************
+	?
+	?
+	??? chr(14)
+	?? 'NOTA CREDITO' AT 28
+	?
+	?
+	?
+	? fac.fechaem AT 60
+	?
+	?
+	?
+	?
+	=xSEEK(fac.codcli,'CLI','CODCLI')
+	? cli.cliente+" ("+alltrim(fac.codcli)+")" AT 15
+	for xxc=1 to 10
+		?
+	NEXT
+	? "   Nota de Cr‚dito POR DEVOLUCION"
+SELE fac
+??? CHR(15)
+DO WHILE _PLINENO<28
+	?
+ENDDO
+? fac.montonet pict PICU AT c6
+?? RETMON()
+_WRAP=.F.
+_lmargin=NUL
+?
+EJECT PAGE
+?
+ENDP
+=FINIMP()
+=iaud(STR(FACTURA))
+else
+	=iaudi()
+endi
+=MEN_LIN(BOTOM)
+RETURN

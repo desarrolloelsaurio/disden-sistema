@@ -1,0 +1,46 @@
+clea
+R=1
+DO WHILE .T.
+store space(10) to nombre,PSWD
+@ 10,10 say "USUARIO    " GET NOMBRE
+@ 12,10 SAY "CONTRASE¥A " GET PSWD
+READ
+IF !EMPTY(NOMBRE)
+NOMBRE=ALLTRIM(NOMBRE)
+LT=ASC(RIGHT(NOMBRE,1))
+FOR A=LT TO 255
+NOMBRE=CHR(A)+NOMBRE
+IF LEN(NOMBRE)=10
+   EXIT
+ENDIF
+NEXT
+NOMBRE=LEFT(NOMBRE+REPL("$",10),10)
+rele q
+dime q[5]
+for a=1 to 5
+ q[a]=substr(nombre,(a-1)*2+1,2)
+ q[a]=soundex(q[a])
+next
+a=""
+FOR Z=1 TO 5
+A=SUBSTR(Q[Z],3,1)+right(q[z],1)+a+substr(q[z],2,1)+LEFT(Q[Z],1)
+NEXT
+T=0
+FOR Z=20 TO 1 STEP -1
+T=T+ASC(SUBSTR(A,Z))*2**(Z-1)
+NEXT
+A=ALLTRIM(STR(T,10))
+X=""
+FOR Z=LEN(A) TO 1 STEP -1
+b=VAL(SUBSTR(A,Z,1))*2**6-Z
+b=mod(b,254)
+X=X+CHR(b)
+NEXT
+@ R,40 SAY NOMBRE
+@ R,60 SAY X
+R=R+1
+ELSE
+EXIT
+ENDIF
+ENDDO
+RETURN

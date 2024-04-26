@@ -1,0 +1,564 @@
+
+PATH               Pub        C   "        C:\SISTEMAS\VENTAS\VENTASA"
+PATHPRO            Pub        C   "        C:\SISTEMAS\VENTAS\VENTASA"
+PATHCOM            Pub        C   "        C:\SISTEMAS\VENTAS\VENTASA"
+PATHVEN            Pub        C   "        C:\SISTEMAS\VENTAS\VENTASA"
+PATHCPR            Pub        C   "          C:\SISTEMAS\COMPRAS\COMPRASA"
+PATHCAJ            Pub        L   .F.
+BANPOP             Pub        L   .F.
+BANPOPC            Pub        L   .F.
+BANPOPR            Pub        L   .F.
+ORDBAN             Pub        L   .F.
+CIUPOP             Pub        L   .F.
+ICIUR              Pub        L   .F.
+ICIUC              Pub        L   .F.
+ICIULA             Pub        L   .F.
+ICIUAN             Pub        L   .F.
+CCIUC              Pub        L   .F.
+CCIUR              Pub        L   .F.
+CCIUAN             Pub        L   .F.
+CCIULA             Pub        L   .F.
+CIUPOPC            Pub        L   .F.
+CIUPOPR            Pub        L   .F.
+VCIUC              Pub        L   .F.
+VCIUR              Pub        L   .F.
+VCIUAN             Pub        L   .F.
+VCIULA             Pub        L   .F.
+MCIUC              Pub        L   .F.
+MCIUR              Pub        L   .F.
+MCIULA             Pub        L   .F.
+MCIUAN             Pub        L   .F.
+CLIPOP             Pub        L   .F.
+CLIPOPC            Pub        L   .F.
+CLIPOPR            Pub        L   .F.
+ORDALI             Pub        L   .F.
+IVAPOP             Pub        L   .F.
+IVAPOPC            Pub        L   .F.
+IVAPOPR            Pub        L   .F.
+ORDIVA             Pub        L   .F.
+GASPOP             Pub        L   .T.
+IGASC              Pub        L   .F.
+IGASR              Pub        L   .F.
+IGASLA             Pub        L   .F.
+IGASAN             Pub        L   .F.
+CGASC              Pub        L   .F.
+CGASR              Pub        L   .F.
+CGASLA             Pub        L   .F.
+CGASAN             Pub        L   .F.
+GASPOPC            Pub        L   .F.
+GASPOPR            Pub        L   .F.
+VGASC              Pub        L   .F.
+VGASR              Pub        L   .F.
+VGASAN             Pub        L   .F.
+VGASLA             Pub        L   .F.
+MGASC              Pub        L   .F.
+MGASR              Pub        L   .F.
+MGASLA             Pub        L   .F.
+MGASAN             Pub        L   .F.
+PAGPOP             Pub        L   .T.
+IPAGR              Pub        L   .F.
+IPAGC              Pub        L   .F.
+IPAGLA             Pub        L   .F.
+IPAGAN             Pub        L   .F.
+CPAGC              Pub        L   .F.
+CPAGR              Pub        L   .F.
+CPAGAN             Pub        L   .F.
+CPAGLA             Pub        L   .F.
+PAGPOPC            Pub        L   .F.
+PAGPOPR            Pub        L   .F.
+VPAGC              Pub        L   .F.
+VPAGR              Pub        L   .F.
+VPAGAN             Pub        L   .F.
+VPAGLA             Pub        L   .F.
+MPAGC              Pub        L   .F.
+MPAGR              Pub        L   .F.
+MPAGLA             Pub        L   .F.
+MPAGAN             Pub        L   .F.
+PROPOP             Pub        L   .F.
+PROPOPR            Pub        L   .F.
+PROPOPC            Pub        L   .F.
+ORDCIU             Pub        L   .F.
+PRVPOP             Pub        L   .F.
+PRVPOPC            Pub        L   .F.
+PRVPOPR            Pub        L   .F.
+ORDCLI             Pub        L   .F.
+RUBPOP             Pub        L   .F.
+IRUBC              Pub        L   .F.
+IRUBR              Pub        L   .F.
+IRUBAN             Pub        L   .F.
+IRUBLA             Pub        L   .F.
+CRUBC              Pub        L   .F.
+CRUBR              Pub        L   .F.
+CRUBAN             Pub        L   .F.
+CRUBLA             Pub        L   .F.
+RUBPOPC            Pub        L   .F.
+RUBPOPR            Pub        L   .F.
+VRUBC              Pub        L   .F.
+VRUBR              Pub        L   .F.
+VRUBAN             Pub        L   .F.
+VRUBLA             Pub        L   .F.
+MRUBR              Pub        L   .F.
+MRUBC              Pub        L   .F.
+MRUBAN             Pub        L   .F.
+MRUBLA             Pub        L   .F.
+TARPOP             Pub        L   .F.
+ITARR              Pub        L   .F.
+ITARC              Pub        L   .F.
+ITARLA             Pub        L   .F.
+ITARAN             Pub        L   .F.
+CTARC              Pub        L   .F.
+CTARR              Pub        L   .F.
+CTARAN             Pub        L   .F.
+CTARLA             Pub        L   .F.
+TARPOPC            Pub        L   .F.
+TARPOPR            Pub        L   .F.
+VTARC              Pub        L   .F.
+VTARR              Pub        L   .F.
+VTARAN             Pub        L   .F.
+VTARLA             Pub        L   .F.
+MTARC              Pub        L   .F.
+MTARR              Pub        L   .F.
+MTARLA             Pub        L   .F.
+MTARAN             Pub        L   .F.
+ZONPOP             Pub        L   .F.
+IZONR              Pub        L   .F.
+IZONC              Pub        L   .F.
+IZONLA             Pub        L   .F.
+IZONAN             Pub        L   .F.
+CZONC              Pub        L   .F.
+CZONR              Pub        L   .F.
+CZONAN             Pub        L   .F.
+CZONLA             Pub        L   .F.
+ZONPOPC            Pub        L   .F.
+ZONPOPR            Pub        L   .F.
+VZONC              Pub        L   .F.
+VZONR              Pub        L   .F.
+VZONAN             Pub        L   .F.
+VZONLA             Pub        L   .F.
+MZONC              Pub        L   .F.
+MZONR              Pub        L   .F.
+MZONLA             Pub        L   .F.
+MZONAN             Pub        L   .F.
+IREMC              Pub        L   .F.
+IREMR              Pub        L   .F.
+IREMAN             Pub        L   .F.
+IREMLA             Pub        L   .F.
+IFACC              Pub        L   .F.
+IFACR              Pub        L   .F.
+IFACAN             Pub        L   .F.
+IFACLA             Pub        L   .F.
+MERPOP             Pub        L   .F.
+MERPOPC            Pub        L   .F.
+MERPOPR            Pub        L   .F.
+MERPOP1            Pub        L   .F.
+IPEDR              Pub        L   .F.
+IPEDC              Pub        L   .F.
+IPEDAN             Pub        L   .F.
+IPEDLA             Pub        L   .F.
+SRUPOP             Pub        L   .F.
+SRUPOPC            Pub        L   .F.
+SRUPOPR            Pub        L   .F.
+MAXCIVA            Pub        L   .F.
+UNID               Pub        A   
+          (   1)              L   .F.
+          (   2)              L   .F.
+          (   3)              L   .F.
+          (   4)              L   .F.
+          (   5)              L   .F.
+          (   6)              L   .F.
+          (   7)              L   .F.
+          (   8)              L   .F.
+          (   9)              L   .F.
+          (  10)              L   .F.
+          (  11)              L   .F.
+          (  12)              L   .F.
+          (  13)              L   .F.
+          (  14)              L   .F.
+          (  15)              L   .F.
+          (  16)              L   .F.
+          (  17)              L   .F.
+          (  18)              L   .F.
+          (  19)              L   .F.
+          (  20)              L   .F.
+          (  21)              L   .F.
+          (  22)              L   .F.
+          (  23)              L   .F.
+          (  24)              L   .F.
+          (  25)              L   .F.
+          (  26)              L   .F.
+          (  27)              L   .F.
+          (  28)              L   .F.
+          (  29)              L   .F.
+          (  30)              L   .F.
+XACIVA             Pub        A   
+   (    1,    1)              L   .F.
+   (    1,    2)              L   .F.
+   (    1,    3)              L   .F.
+   (    1,    4)              L   .F.
+   (    1,    5)              L   .F.
+   (    1,    6)              L   .F.
+   (    1,    7)              L   .F.
+   (    2,    1)              L   .F.
+   (    2,    2)              L   .F.
+   (    2,    3)              L   .F.
+   (    2,    4)              L   .F.
+   (    2,    5)              L   .F.
+   (    2,    6)              L   .F.
+   (    2,    7)              L   .F.
+   (    3,    1)              L   .F.
+   (    3,    2)              L   .F.
+   (    3,    3)              L   .F.
+   (    3,    4)              L   .F.
+   (    3,    5)              L   .F.
+   (    3,    6)              L   .F.
+   (    3,    7)              L   .F.
+   (    4,    1)              L   .F.
+   (    4,    2)              L   .F.
+   (    4,    3)              L   .F.
+   (    4,    4)              L   .F.
+   (    4,    5)              L   .F.
+   (    4,    6)              L   .F.
+   (    4,    7)              L   .F.
+   (    5,    1)              L   .F.
+   (    5,    2)              L   .F.
+   (    5,    3)              L   .F.
+   (    5,    4)              L   .F.
+   (    5,    5)              L   .F.
+   (    5,    6)              L   .F.
+   (    5,    7)              L   .F.
+   (    6,    1)              L   .F.
+   (    6,    2)              L   .F.
+   (    6,    3)              L   .F.
+   (    6,    4)              L   .F.
+   (    6,    5)              L   .F.
+   (    6,    6)              L   .F.
+   (    6,    7)              L   .F.
+   (    7,    1)              L   .F.
+   (    7,    2)              L   .F.
+   (    7,    3)              L   .F.
+   (    7,    4)              L   .F.
+   (    7,    5)              L   .F.
+   (    7,    6)              L   .F.
+   (    7,    7)              L   .F.
+   (    8,    1)              L   .F.
+   (    8,    2)              L   .F.
+   (    8,    3)              L   .F.
+   (    8,    4)              L   .F.
+   (    8,    5)              L   .F.
+   (    8,    6)              L   .F.
+   (    8,    7)              L   .F.
+   (    9,    1)              L   .F.
+   (    9,    2)              L   .F.
+   (    9,    3)              L   .F.
+   (    9,    4)              L   .F.
+   (    9,    5)              L   .F.
+   (    9,    6)              L   .F.
+   (    9,    7)              L   .F.
+   (   10,    1)              L   .F.
+   (   10,    2)              L   .F.
+   (   10,    3)              L   .F.
+   (   10,    4)              L   .F.
+   (   10,    5)              L   .F.
+   (   10,    6)              L   .F.
+   (   10,    7)              L   .F.
+   (   11,    1)              L   .F.
+   (   11,    2)              L   .F.
+   (   11,    3)              L   .F.
+   (   11,    4)              L   .F.
+   (   11,    5)              L   .F.
+   (   11,    6)              L   .F.
+   (   11,    7)              L   .F.
+   (   12,    1)              L   .F.
+   (   12,    2)              L   .F.
+   (   12,    3)              L   .F.
+   (   12,    4)              L   .F.
+   (   12,    5)              L   .F.
+   (   12,    6)              L   .F.
+   (   12,    7)              L   .F.
+   (   13,    1)              L   .F.
+   (   13,    2)              L   .F.
+   (   13,    3)              L   .F.
+   (   13,    4)              L   .F.
+   (   13,    5)              L   .F.
+   (   13,    6)              L   .F.
+   (   13,    7)              L   .F.
+   (   14,    1)              L   .F.
+   (   14,    2)              L   .F.
+   (   14,    3)              L   .F.
+   (   14,    4)              L   .F.
+   (   14,    5)              L   .F.
+   (   14,    6)              L   .F.
+   (   14,    7)              L   .F.
+   (   15,    1)              L   .F.
+   (   15,    2)              L   .F.
+   (   15,    3)              L   .F.
+   (   15,    4)              L   .F.
+   (   15,    5)              L   .F.
+   (   15,    6)              L   .F.
+   (   15,    7)              L   .F.
+XACI               Pub        A   
+          (   1)              L   .F.
+          (   2)              L   .F.
+          (   3)              L   .F.
+XANUM              Pub        A   
+   (    1,    1)              L   .F.
+   (    1,    2)              L   .F.
+   (    1,    3)              L   .F.
+   (    1,    4)              L   .F.
+   (    1,    5)              L   .F.
+   (    1,    6)              L   .F.
+   (    1,    7)              L   .F.
+   (    1,    8)              L   .F.
+   (    1,    9)              L   .F.
+   (    1,   10)              L   .F.
+   (    1,   11)              L   .F.
+   (    1,   12)              L   .F.
+   (    2,    1)              L   .F.
+   (    2,    2)              L   .F.
+   (    2,    3)              L   .F.
+   (    2,    4)              L   .F.
+   (    2,    5)              L   .F.
+   (    2,    6)              L   .F.
+   (    2,    7)              L   .F.
+   (    2,    8)              L   .F.
+   (    2,    9)              L   .F.
+   (    2,   10)              L   .F.
+   (    2,   11)              L   .F.
+   (    2,   12)              L   .F.
+   (    3,    1)              L   .F.
+   (    3,    2)              L   .F.
+   (    3,    3)              L   .F.
+   (    3,    4)              L   .F.
+   (    3,    5)              L   .F.
+   (    3,    6)              L   .F.
+   (    3,    7)              L   .F.
+   (    3,    8)              L   .F.
+   (    3,    9)              L   .F.
+   (    3,   10)              L   .F.
+   (    3,   11)              L   .F.
+   (    3,   12)              L   .F.
+JANNAME            Pub        C   " DIS - DEN Odontología"
+COEFSEG            Pub        N   1                  (              1,00000000)
+USADOR             Pub        C   "  GOYO"
+XACANCHO           Pub        L   .F.
+XACHOJA            Pub        L   .F.
+ACDIGI             Pub        L   .F.
+XAUS               Pub        L   .F.
+XAUSS              Pub        L   .F.
+XACDIGI            Pub        L   .F.
+KORTE              Pub        C   "Corte"
+XANUMCOR           Pub        L   .F.
+JANNRO             Pub        L   .F.
+XALARGO            Pub        L   .F.
+MADER              Pub        C   "Molder¡a"
+MADERS             Pub        C   "Molder¡a"
+GENPED             Pub        L   .F.
+GENREM             Pub        L   .F.
+BIAJA              Pub        C   "Viajante"
+BIAJAS             Pub        C   "Viajantes"
+RH                 Pub        N   36                 (             36,00000000)
+RP                 Pub        N   47                 (             47,00000000)
+X10                Pub        C   "!!!!!!!!!!"
+X15                Pub        C   "!!!!!!!!!!!!!!!"
+X20                Pub        C   "!!!!!!!!!!!!!!!!!!!!"
+X30                Pub        C   "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+XADOL              Pub        L   .F.
+XADOLS             Pub        L   .F.
+XAMONEDA           Pub        L   .F.
+XACOTIZ            Pub        N   1                  (              1,00000000)
+XATALMIN           Pub        L   .F.
+XATALMAX           Pub        L   .F.
+XATALSTEP          Pub        L   .F.
+XATALAN            Pub        L   .F.
+XALIS1             Pub        L   .F.
+XALIS2             Pub        L   .F.
+XALIS3             Pub        L   .F.
+XALIS4             Pub        L   .F.
+XAP1               Pub        L   .F.
+XAP2               Pub        L   .F.
+XAP3               Pub        L   .F.
+XAP4               Pub        L   .F.
+XAS1               Pub        L   .F.
+XAS2               Pub        L   .F.
+XAS3               Pub        L   .F.
+XAS4               Pub        L   .F.
+XANULIS            Pub        L   .F.
+ORDCOL             Pub        L   .F.
+ORDPAG             Pub        L   .F.
+ORDGRU             Pub        L   .F.
+ORDLIN             Pub        L   .F.
+ORDMAR             Pub        L   .F.
+ORDMER             Pub        L   .F.
+ORDOPK             Pub        L   .F.
+ORDPRO             Pub        L   .F.
+ORDPRV             Pub        L   .F.
+ORDRUB             Pub        L   .F.
+ORDSRU             Pub        L   .F.
+ORDZON             Pub        L   .F.
+ORDGAS             Pub        L   .F.
+JANPOP             Pub        L   .F.
+JANPOPR            Pub        L   .F.
+JANPOPC            Pub        L   .F.
+ORDVIA             Pub        L   .F.
+SSTM               Pub        C   "      Compras      "
+ULPR               Pub        L   .F.
+ESPERE             Pub        C   "°°°°° Espere por Favor - El archiv
+                                  o est  siendo Utilizado por otro U
+                                  suario °°°°°"
+GRABANDO           Pub        C   "°°°°°°°°°°°°°°° Grabando los datos
+                                   ingresados - Espere por Favor °°°
+                                  °°°°°°°°°°°°"
+TRATANDO           Pub        C   "°°°°°°°°°°°°°°°°° Tratando de Bloq
+                                  uear el Registro a Utilizar °°°°°°
+                                  °°°°°°°°°°°°"
+IMPRIMIEND         Pub        C   "    °°°°°°°°°°°° IMPRIMIENDO LOS DATOS
+                                      REQUERIDOS - [TECLA] Interrumpe °
+                                  °°°°°°°°°°°°"
+LARGOIM            Pub        L   .F.
+LINEA              Pub        L   .F.
+LARGO              Pub        L   .F.
+TEN                Pub        C   "Existe - [ENTER] para Continuar"
+NLQ                Pub        C   "xk"
+OFFNLQ             Pub        C   "x"
+UNDER              Pub        C   "-"
+OFFUNDER           Pub        C   "-"
+WIDE               Pub        C   "W"
+OFFWIDE            Pub        C   " W"
+NUL                Pub        N   0                  (              0,00000000)
+BOTOM              Pub        C   "  °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+                                  °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+                                  °°°°°°°°°°°°"
+PAIP               Pub        C   "|"
+TECMEN             Pub        C   "  [ENTER] para Men£"
+CANT_EMPRE         Pub        N   1                  (              1,00000000)
+PROBE              Pub        C   " Proveedor"
+PROBES             Pub        C   " Proveedores"
+SSTM1              Pub        C   "   HOGAR"
+ABA                Pub        C   "Abriendo Base de "
+TEX_EFES           Pub        C   " - [F2] Popup - [F3] B£squeda"
+SSTM2              Pub        C   "    COMPRAS"
+ENASCII            Pub        L   .F.
+ESARROYO           Pub        L   .F.
+SUCU               Pub        L   .F.
+IVA09              Pub        N   0,1050             (              0,10500000)
+IVA109             Pub        N   1,1050             (              1,10500000)
+PC9                Pub        C   "10.5 %"
+IVA18              Pub        N   0,2100             (              0,21000000)
+IVA118             Pub        N   1,2100             (              1,21000000)
+PC18               Pub        C   " 21 %"
+PC27               Pub        C   "31.5 %"
+IVA127             Pub        N   1,315              (              1,31500000)
+PDS                Pub        A   
+          (   1)              N   132                (            132,00000000)
+          (   2)              N   233                (            233,00000000)
+TALKSTAT           (hid)      C   " OFF"  INICIO
+COMPSTAT           (hid)      C   " OFF"  INICIO
+RBORDER            Priv       C   " ON"  INICIO
+CNTR               Priv       N   0                  (              0,00000000)  INICIO
+LAST_NUM           Priv       N   0                  (              0,00000000)  INICIO
+COUNT              Priv       N   100                (            100,00000000)  INICIO
+C                  Priv       N   3                  (              3,00000000)  INICIO
+RUVRO              Priv       C   " Rubro"  INICIO
+RUVROS             Priv       C   " Rubros"  INICIO
+LLINEA             Priv       C   "L¡nea"  INICIO
+LLINEAS            Priv       C   "L¡neas"  INICIO
+OPVARIOS           Priv       N   0                  (              0,00000000)  INICIO
+OPPROV             Priv       N   0                  (              0,00000000)  INICIO
+OPOPERA            Priv       N   1                  (              1,00000000)  INICIO
+OPSALIR            Priv       N   0                  (              0,00000000)  INICIO
+TALKSTAT           Priv       C   " OFF"      OPERPRO
+COMPSTAT           Priv       C   " OFF"      OPERPRO
+VAFACOM            Priv       N   0                  (              0,00000000)      OPERPRO
+VANOCRE            Priv       N   0                  (              0,00000000)      OPERPRO
+VANODE             Priv       N   0                  (              0,00000000)      OPERPRO
+VACIEMES           Priv       N   1                  (              1,00000000)      OPERPRO
+VALIS              Priv       N   0                  (              0,00000000)      OPERPRO
+VAMENU             Priv       N   0                  (              0,00000000)      OPERPRO
+RESPUESTA          Priv       C   "SI"  _r9o0i1clc
+TESTO              Priv       C   "  41996"  _r9o0i1clc
+MES_OK             Priv       C   " 4"  _r9o0i1clc
+ANO_OK             Priv       C   " 1996"  _r9o0i1clc
+LACOSA             Priv       C   " 04/96"  _r9o0i1clc
+MESN_OK            Priv       N   4,0000             (              4,00000000)  _r9o0i1clc
+ANON_OK            Priv       N   1996,0000          (           1996,00000000)  _r9o0i1clc
+FECHAMAX           Priv       D   01/05/96   _r9o0i1clc
+  297 variables defined,     1287 bytes used
+  727 variables available
+
+Print System Memory Variables
+
+_ALIGNMENT         Pub        C   "LEFT "
+_ASSIST            Pub        C   "          C:\WINDOWS\FPW26\CATALOG.APP"
+_BEAUTIFY          Pub        C   "          C:\WINDOWS\FPW26\BEAUTIFY.APP"
+_BOX               Pub        L   .T.
+_CALCMEM           Pub        N   0,0000             (              0,00000000)
+_CALCVALUE         Pub        N   33444,0000         (          33444,00000000)
+_CUROBJ            Pub        N   -1                 (             -1,00000000)
+_DBLCLICK          Pub        N   0,5000             (              0,50000000)
+_DIARYDATE         Pub        D   17/04/96 
+_DOS               Pub        L   .F.
+_FOXDOC            Pub        C   ""
+_FOXGRAPH          Pub        C   ""
+_GENGRAPH          Pub        C   "           C:\WINDOWS\FPW26\GENGRAPH.APP"
+_GENMENU           Pub        C   "           C:\WINDOWS\FPW26\GENMENU.FXP"
+_GENPD             Pub        C   "          C:\WINDOWS\FPW26\GENPD.APP"
+_GENSCRN           Pub        C   "           C:\WINDOWS\FPW26\GENSCRN.FXP"
+_GENXTAB           Pub        C   "           C:\WINDOWS\FPW26\GENXTAB.PRG"
+_INDENT            Pub        N   0                  (              0,00000000)
+_LMARGIN           Pub        N   0                  (              0,00000000)
+_MAC               Pub        L   .F.
+_MLINE             Pub        N   0                  (              0,00000000)
+_PADVANCE          Pub        C   "FORMFEED    "
+_PAGENO            Pub        N   8                  (              8,00000000)
+_PBPAGE            Pub        N   1                  (              1,00000000)
+_PCOLNO            Pub        N   0,0000             (              0,00000000)
+_PCOPIES           Pub        N   1                  (              1,00000000)
+_PDRIVER           Pub        C   ""
+_PDSETUP           Pub        C   ""
+_PECODE            Pub        C   ""
+_PEJECT            Pub        C   "NONE  "
+_PEPAGE            Pub        N   32767              (          32767,00000000)
+_PLENGTH           Pub        N   66                 (             66,00000000)
+_PLINENO           Pub        N   0                  (              0,00000000)
+_PLOFFSET          Pub        N   0                  (              0,00000000)
+_PPITCH            Pub        C   "DEFAULT   "
+_PQUALITY          Pub        L   .F.
+_PRETEXT           Pub        C   ""
+_PSCODE            Pub        C   ""
+_PSPACING          Pub        N   1                  (              1,00000000)
+_PWAIT             Pub        L   .F.
+_RMARGIN           Pub        N   80                 (             80,00000000)
+_SHELL             Pub        C   ""
+_SPELLCHK          Pub        C   ""
+_STARTUP           Pub        C   "           C:\WINDOWS\FPW26\FOXSTART.APP"
+_TABS              Pub        C   ""
+_TALLY             Pub        N   617                (            617,00000000)
+_TEXT              Pub        N   -1                 (             -1,00000000)
+_THROTTLE          Pub        N   0,0000             (              0,00000000)
+_TRANSPORT         Pub        C   "           C:\WINDOWS\FPW26\TRANSPRT.FXP"
+_UNIX              Pub        L   .F.
+_WINDOWS           Pub        L   .T.
+_WRAP              Pub        L   .F.
+
+   57 System Variables Defined
+
+Menu and Pad Definitions
+
+    0 Menus Defined 
+
+Popup Definitions
+
+RUN                   2181  bytes
+WIZARD                1677  bytes
+
+    2 Popups Defined 
+
+Window Definitions
+
+Name                  From                      To                        Size
+INICIO                0,000,0,000               18,143,89,800             50972  bytes
+WRKWN1                0,429,53,000              5,000,97,200              6508  bytes
+OPERPRO               2,714,28,800              27,500,99,200             56492  bytes
+TALK                  10,429,10,000             15,714,72,400             8708  bytes ACTIVE 
+
+    4 Windows Defined 

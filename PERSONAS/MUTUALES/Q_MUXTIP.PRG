@@ -1,0 +1,27 @@
+FUNCTION Q_MUXTIP
+PARAMETER Q_TIP
+IF TYPE("Q_TIP")="C"
+   DO CASE
+      CASE MUX.TIPO="UNI"
+         RETURN 1
+      CASE MUX.TIPO="RAD"
+         RETURN 4
+      CASE MUX.TIPO="REM" .OR. ;
+      MUX.TIPO="MED" 
+         RETURN 2
+      CASE MUX.TIPO="DES"
+         RETURN 3
+     ENDCASE
+ELSE
+      DO CASE
+      CASE M.MU_COD=1
+         RETURN "UNI"
+      CASE M.MU_COD=2
+         RETURN "REM"
+      CASE M.MU_COD=3
+         RETURN "DES"
+      CASE M.MU_COD=4
+         RETURN "RAD"
+      ENDCASE
+ENDIF
+RETURN

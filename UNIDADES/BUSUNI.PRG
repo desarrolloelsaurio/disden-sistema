@@ -1,0 +1,8 @@
+FUNC busuni
+PRIV I
+FOR I=1 TO 30
+   IF unid(I)="UNIDAD"
+      EXIT
+   ENDIF
+ENDF
+RETU(I)

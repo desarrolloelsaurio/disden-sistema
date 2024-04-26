@@ -1,0 +1,19 @@
+FUNCTION LEST2
+	?  PAIP
+	?? ARTICULO
+	?? PAIP
+	?? LEFT(SAYGRL(LEFT(ARTICULO,10),"MER","ARTIRED","MER.MERCA"),IIF(PORPAN,26,30))
+	?? PAIP
+	?? STR(test,8,2)
+	?? PAIP
+	?? STR(tultprc,8,2)
+	?? PAIP
+	IF !PORPAN
+		?? CONDICION
+	ELSE
+		?? fecha
+		?? PAIP
+		?? left(usuario,7)
+	ENDIF
+	??PAIP
+RETURN .T.

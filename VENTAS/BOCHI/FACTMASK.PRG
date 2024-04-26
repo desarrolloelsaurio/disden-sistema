@@ -1,0 +1,36 @@
+********************************************************************************
+*-- Name....: FACTMASK.PRG
+*-- Date....: 9-26-89
+*-- Version.: dBASE IV, Format 1.0
+*-- Notes...: MASCARA FACTURA
+********************************************************************************
+SET CLOCK OFF
+CLEAR
+@ 0,0 SAY '           DIS-DEN           ' COLOR W/I+
+@ 1,0 SAY '         ODONTOLOGIA         ' COLOR W/I+
+@ 2,0 SAY ' Santa Fe 3135    Tel:384433 ' COLOR W/I+
+@ 3,0 SAY '        2000  ROSARIO        ' COLOR W/I+
+@ 0,60 SAY 'FECHA:'+DTOC(DATE())
+@ 1,60 SAY 'HORA :'
+SET CLOCK TO 1,66
+REST FROM ..\VENTASA\IMPRIME ADDITIVE
+A=ESI+REPL(LIN,10)+CRAB+REPL(LIN,40)+CRAB+REPL(LIN,11)+CRAB+REPL(LIN,14)+ESD
+B=BAR+SPAC(10)+BAR+SPAC(40)+BAR+SPAC(11)+BAR+SPAC(14)+BAR
+C=CHR(195)+REPL(LIN,10)+CRUZ+REPL(LIN,40)+CRUZ+REPL(LIN,11)+CRUZ+REPL(LIN,14)+CHR(180)
+D=EII+REPL(LIN,10)+CRAR+REPL(LIN,40)+CRAR+REPL(LIN,11)+CRAR+REPL(LIN,14)+EID
+@ 5,0 SAY A COLOR W+/N
+@ 6,0 SAY B COLOR W+/N
+@ 7,0 SAY C COLOR W+/N
+REN=8
+DO WHIL REN<23
+   @ REN,0 SAY B COLOR W+/N
+   REN=REN+1
+ENDD
+@ REN,0 SAY D COLOR W+/N
+@ 6,2 SAY 'CANTIDAD'
+@ 6,21 SAY 'DENOMINACION PRODUCTO'
+@ 6,53 SAY 'Pcio. UNIT.'
+@ 6,69 SAY 'TOTAL'
+@ 0,30 SAY "Sr."
+RELEASE ESI,ESD,EII,EID,LIN,BAR,CRUZ,CRAB,CRAR
+RETURN

@@ -1,0 +1,14 @@
+FUNCTION LCNXP21
+	#DEFINE PAIP   "|"                             && PAIP
+	? PAIP
+	?? CONSORCIO
+	?? PAIP
+	?? DENOM
+	?? PAIP
+	?? TIPO
+	?? ' |'
+	?? PISO
+	?? ' |'
+	?? DTO
+	?? ' '
+RETURN IMPUSE()

@@ -1,0 +1,7 @@
+DO CASE
+   CASE BAR()=1
+      DO LIFAant
+   CASE BAR()=2
+      DO LIFADIS
+ENDCASE
+RETURN      

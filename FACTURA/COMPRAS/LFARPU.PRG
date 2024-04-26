@@ -1,0 +1,35 @@
+************************************************************
+*-- Programa: LFARIU.PRG
+*-- Fecha   : 09-29-92 04:02pm
+*-- Version : GOYO REINER
+*-- Notas   : LISTADO ULTIMA OPERACION DE FACTURA DE COMPRAS
+************************************************************
+STORE HORA_ULP(PROGRAM()) TO ULPR
+=CHEQSEG()
+STORE '' TO ACLA,LINEA,TT
+=LFARPU0()
+=WIN0()
+PAG=1
+=CABPAN()
+=TIT_LIN(1)
+STORE '' TO KODPRO,KLIENTE,FEKHA,FAKTURA,TOMON
+STORE NUL TO CASOS
+=LFARPU1()
+SCAN
+	IF ROW()>21
+		IF !FIN_LIN(1,NUL)
+			EXIT
+		ENDIF
+		CLEA
+		STOR pag+1 TO pag
+		=CABPAN()
+		=TIT_LIN(2)
+	ENDIF
+	=IIF(KODPRO=FAR.PROCOD,LFARPU1(),LFARPU1(.T.))
+ENDSCAN
+=LFARPU1(.T.)
+=FIN_LIN(2,CASOS)
+=RELEWIN("win")
+=IAUD("")
+=REOPFAR()
+RETURN MEN_LIN(BOTOM)

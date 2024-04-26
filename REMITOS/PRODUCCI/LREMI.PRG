@@ -1,0 +1,87 @@
+**************************************************************************
+*-- Programa: LREMI.PRG
+*-- Fecha   : 07/22/91
+*-- Version : G. REINER
+*-- Notas   : IMPRESION DE REMITOS DE PRODUCCION POR IMPRESORA
+*-- VERSION NAZA - PRODUCCION
+********************************************************************************
+PARAMETER COSA
+STORE HORA_ULP(PROGRAM()) TO ULPR
+IF CHEQSEG()
+	SET ORDER TO TAG AVICODPRO IN aviS
+	SET ORDER TO TAG TELCODPRO in telS
+	SELE REM
+	=HORA_ULP()
+	=CABPRI()
+	_PCOPIES=1
+	PRINTJOB
+	***************************************************
+	?
+	?
+	?
+	? REM.FECHAOP AT 60
+	?
+	?
+	?
+	?
+	?
+	SELE PER
+	? PER.CLIENTE AT 15
+	? PER.DOMICILIO AT 15
+	? PER.LOCALIDAD  AT 15
+	IF PER.CONDIVA#0
+		? SAYMIX(PER.CONDIVA,'IVACOD') AT 15
+		?? PER.NROIVA AT 55
+	ELSE
+		?
+	ENDIF
+	?
+	SELE REX
+	?
+	?
+	?
+	STOR RECNO() TO REGI
+	STOR NUL TO MAX_REG
+	=SEEK(REM.REMITO)
+	STORE NUL TO TOTAL
+	SCAN WHILE REX.REMITO=REM.REMITO               && MAIN LOOP
+		? REX.TELCODPRO AT 4
+		?? ' '
+		IF REX.TIPO="A"
+			SELE AVIS
+			SEEK REX.TELCODPRO
+			?? AVIS.AVIO
+			punun=SAYMIX(aviS.unidad,"MDDCOD")
+			TOTAL=TOTAL+AVIS.MONTO*REX.CANTIDAD
+		ELSE
+			SELE TELS
+			SEEK REX.TELCODPRO
+			?? TEL.TELA
+			PUNUN=SAYMIX(TELS.UNIDAD,"MDDCOD")
+			TOTAL=TOTAL+TEL.MONTO*REX.CANTIDAD
+		ENDIF
+		?? '  '
+		?? LEFT(PUNUN,15)
+		?? ' '
+		SELE REX
+		?? STR(REX.CANTIDAD,14,2)
+	ENDSCAN
+	DO WHILE _PLINENO<60
+		?
+	ENDDO
+	?
+	? 'ORDEN DE FABRICACION:' AT 10
+	?? REM.NUMOT
+	? 'COSTO ESTIMADO:' At 10
+	?? STR(TOTAL,14,2)
+	?
+	?
+	EJECT PAGE
+	?
+	ENDP
+	=FINIMP()
+	=IAUD(REM.REMITO)
+ELSE
+	=IAUDI()
+ENDI
+RETURN MEN_LIN(BOTOM)

@@ -1,0 +1,3 @@
+FUNCTION VAR_CAG
+	PUBL CAGpop,CAGpopc,CAGpopr,ordCAG
+RETURN .T.

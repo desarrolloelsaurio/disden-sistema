@@ -1,0 +1,7 @@
+FUNCTION LI_NPAGE
+	EJECT PAGE
+	=CABPRI1()
+	=TIT_(4)
+	=LP_P2()
+	=_LIN(.T.)
+RETURN .T.

@@ -1,0 +1,12 @@
+* ษอออออออออออออออออออออออออออออออออออออป
+* บ PROCEDIMIENTO : LIVAVM3.PRG         บ
+* บ COMENTARIO    : SUMA SI SON IGUALES บ
+* ศอออออออออออออออออออออออออออออออออออออผ
+FUNCTION LIVAVM3
+	CTD=CTD+CANTIDAD
+	NGRA=NGRA+MONTONET
+	IVA18=IVA18+MONTOIVA
+	IVA09=IVA09+MONTOOT2
+	TTL=TTL+MONTO1
+	STORE CASOS+1 TO CASOS
+RETURN .T.

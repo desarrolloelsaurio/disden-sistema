@@ -1,0 +1,21 @@
+* ษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
+* บ PROCEDIMIENTO : LFACV1.PRG                                   บ
+* บ COMENTARIO    : LISTADO DE FACTURAS POR MERCADERIAS (CUERPO) บ
+* ศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
+FUNCTION LFACV1
+#DEFINE PAIP   "|"                               && PAIP
+? PAIP
+=IIF(VARIABLE[1],QOUT(FAX.FACTURA+PAIP),"")
+=IIF(VARIABLE[2],QOUT(DTOC(FAX.FECHAEM)+PAIP),"")
+=IIF(VARIABLE[3],QOUT(FAX.TIPO+PAIP),"")
+=IIF(VARIABLE[4],QOUT(FAX.CODCLI+PAIP+FAX.CLIENTE+PAIP),"")
+=IIF(VARIABLE[5],QOUT(FAX.ARTICULO+PAIP),"")
+=IIF(VARIABLE[6],QOUT(FAX.MERCA+PAIP),"")
+IF VARIABLE[7]
+   STORE .T. TO HAY
+   ?? STR(FAX.CANTIDAD,XACDIGI,2)
+   ?? PAIP
+   TTL=TTL+FAX.CANTIDAD
+ENDIF
+STORE CASOS+1 TO CASOS
+RETURN .T.

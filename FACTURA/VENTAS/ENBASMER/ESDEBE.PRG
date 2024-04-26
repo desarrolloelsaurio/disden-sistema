@@ -1,0 +1,14 @@
+FUNCTION ESDEBE
+PARAMETER ES_LAVAR,ES_PROVEEDOR
+IF ALIAS()="CCP" .OR. ES_PROVEEDOR
+   RETURN M.ES_LAVAR='RE' .OR. ;
+          M.ES_LAVAR='ND' .OR. ;
+          M.ES_LAVAR='FA' .OR. ;
+          M.ES_LAVAR='OP'
+ELSE
+   RETURN EMPTY(M.ES_LAVAR) .OR. ;
+       M.ES_LAVAR='FA' .OR. ;
+       M.ES_LAVAR='ND' .OR. ;
+       M.ES_LAVAR='SD' .OR. ;
+       M.ES_LAVAR='AL'
+ENDIF

@@ -1,0 +1,3 @@
+FUNCTION VAR_TEL
+	PUBL TELpop,TELpopc,TELpopr,ordTEL
+RETURN .T.

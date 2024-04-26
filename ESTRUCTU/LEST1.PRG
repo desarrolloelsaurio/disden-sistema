@@ -1,0 +1,18 @@
+FUNCTION LEST1
+	? PAIP
+	?? str(posicION,5)
+	?? PAIP
+	=XSEEK(PRC,'PRC','PRCCOD')
+	?? left(PRC.PROCFAB,iif(porpan,23,30))
+	?? PAIP
+	if !PORPAN
+		?? CONDICION
+		?? PAIP
+		?? STR(MONTO,XACDIGI,2)
+		?? PAIP
+	ENDIF
+	?? STR(TEST,IIF(PORPAN,8,11),2)
+	?? PAIP
+	?? STR(TULTPRC,IIF(PORPAN,8,11),2)
+	=IMPUSE()
+RETURN .T.

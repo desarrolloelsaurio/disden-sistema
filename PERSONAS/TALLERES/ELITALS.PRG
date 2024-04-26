@@ -1,0 +1,19 @@
+* ษออออออออออออออออออออออออออออออออออออออออป
+* บ PROCEDIMIENTO : ELITALS.PRG            บ
+* บ COMENTARIO    : SELECCIONA TALLLERES   บ
+* ศออออออออออออออออออออออออออออออออออออออออผ
+* 11-15-93 04:32pm
+* LA FUNCION PARAELI PERMITE EL INGRESO DEL PRIMER TEXTO
+#DEFINE NUL    0                                 && NUL
+FUNCTION ELITALS
+PARA MSG,R1,C1
+IF !USED("PER")
+   =OPTALS()
+ENDIF
+STORE NUL TO RESPUESTA
+	IF !EMPTY(MSG)
+		WAIT "Taller "+MSG WIND NOWA
+	ENDIF
+SELE PER
+RESPUESTA=IIF(TALPOP,PARAELI("TALLERES",1),ELIPER1('Taller '+MSG,'PER','PROCOD',10,"T"))
+RETURN WCL() .AND. IIF(LAST()=27 .OR. READKEY()=12,.F.,RESPUESTA)

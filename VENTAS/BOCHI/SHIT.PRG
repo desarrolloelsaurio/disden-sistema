@@ -1,0 +1,142 @@
+FUNCTION OPSER 
+RETURN .T.
+FUNCTION ELISER
+ RETURN .T.
+FUNCTION LBANP 
+RETURN .T.
+FUNCTION LRUBP 
+RETURN .T.
+FUNCTION LGARJI 
+RETURN .T.
+FUNCTION XLIQ 
+RETURN .T.
+FUNCTION XRUB 
+RETURN .T.
+FUNCTION ELIUSU 
+RETURN .T.
+FUNCTION ELIAVI 
+RETURN .T.
+FUNCTION ELITEL 
+RETURN .T.
+FUNCTION ELIMER 
+RETURN .T.
+FUNCTION ELIBAN 
+RETURN .T.
+FUNCTION ELIAGE 
+RETURN .T.
+FUNCTION ELIEST 
+RETURN .T.
+FUNCTION ELIGAS 
+RETURN .T.
+FUNCTION ELIGRU 
+RETURN .T.
+FUNCTION ELIOPK 
+RETURN .T.
+FUNCTION ELITAL 
+RETURN .T.
+FUNCTION ELITAR 
+RETURN .T.
+FUNCTION ELITIP 
+RETURN .T.
+FUNCTION ELITFA 
+RETURN .T.
+FUNCTION ELIUNIX 
+RETURN .T.
+FUNCTION ELITPR 
+RETURN .T.
+FUNCTION OPSER 
+RETURN .T.
+FUNCTION ELISER 
+RETURN .T.
+FUNCTION ELICNS
+RETURN .T.
+FUNCTION REOPCSS
+RETURN .T.
+FUNCTION REOPINQ
+RETURN .T.
+FUNCTION XMER
+RETURN .T.
+FUNCTION QPOVIA 
+    RETURN .T.
+FUNCTION ELIPRO 
+    RETURN .T.
+FUNCTION IPER_AGE 
+    RETURN .T.
+FUNCTION LPAC
+RETURN .T.
+    function BOX
+return .t.
+    function CCOB
+return .t.
+    function CLIGRL
+return .t.
+    function ELICAR
+return .t.
+    function ELIEMP
+return .t.
+    function ELIMAR
+return .t.
+    function ELIPRP
+return .t.
+    function ELISRU
+return .t.
+    function ELISRU1
+return .t.
+    function ELISUE
+return .t.
+    function ELITALS
+return .t.
+    function INFOPER
+return .t.
+    function INQ
+return .t.
+    function LCCH
+return .t.
+    function LCCLALQ
+return .t.
+    function LPRS
+return .t.
+    function NCRE
+return .t.
+    function NDEB
+return .t.
+    function OPALQ
+return .t.
+    function OPCAJ
+return .t.
+    function OPCCH
+return .t.
+    function OPCCHX
+return .t.
+    function OPEMP
+return .t.
+    function OPGAS
+return .t.
+    function OPINM
+return .t.
+    function OPKAR
+return .t.
+    function OPMAR
+return .t.
+    function OPMER
+return .t.
+    function OPVIA
+return .t.
+    function QWCLI
+return .t.
+    function REOPCCH
+return .t.
+    function REOPCLI
+return .t.
+FUNCTION IFACD
+RETURN .T.
+FUNCTION OPPRC 
+RETURN .T.
+FUNCTION OPPRS 
+RETURN .T.
+FUNCTION ELISEC 
+RETURN .T.
+FUNCTION ELISUC 
+RETURN .T.
+FUNCTION ELITST 
+RETURN .T.

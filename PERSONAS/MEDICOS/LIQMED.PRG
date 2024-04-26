@@ -1,0 +1,165 @@
+* ษอออออออออออออออออออออออออออออออออออออออออออออออออออป
+* บ PROCEDIMIENTO : LIQMED.PRG                        บ
+* บ COMENTARIO    : GESTION DE LIQUIDACION DE MEDICOS บ
+* ฬอออออออออออออออออออออออออออออออออออออออออออออออออออน
+* บ AUTOR      : GOYO REINER                          บ
+* บ FECHA      : 11-18-94                             บ
+* บ HORA       : 09:57:27am                           บ
+* บ COPYRIGHT  : 1994 by GREGORIO REINER              บ
+* ศอออออออออออออออออออออออออออออออออออออออออออออออออออผ
+#DEFINE BOTOM  "  "+repl("ฐ",78)                 && BOTOM
+#DEFINE NUL    0                                 && NUL
+#DEFINE PAIP   "|"                               && PAIP
+#DEFINE CRLF CHR(13)+CHR(10)                     && CRLF
+
+FUNCTION LIQMED
+	EXTERNAL PROCEDURE LLIQMED0.PRG
+	M_DIJO=ALLTRIM(PROMPT())
+	DO CASE
+	CASE M_DIJO='Mdicos no Listados'
+		AGRUPA=ALGUN(30," Salida del Listado ",;
+		"Por Pantalla;"+;
+		"Por Impresora")
+		IF !EMPTY(AGRUPA)
+			=WORKING()
+			=DOTALK()
+			SELE PER
+			=FLOCK("PER") .OR. FLOK("PER")
+			SET ORDER TO
+			TMP=GENTMP()
+			IF TYPE("ORDMED")="U" .OR. ;
+				ORDMED
+				SORT ON CODCLI FOR ;
+				FILTRO="M" .AND. ;
+				TEXTO3#"SI" ;
+				FIELDS CODCLI,CLIENTE ;
+				TO (TMP)
+			ELSE
+				SORT ON CLIENTE FOR ;
+				FILTRO="M" .AND. ;
+				TEXTO3#"SI" ;
+				FIELDS CODCLI,CLIENTE ;
+				TO (TMP)
+			ENDIF
+			=PRXAREA(.T.)
+			USE (TMP) ALIAS TMP EXCL
+			TT="Listado de Mdicos que no se listan"
+			ACLA=PAIP+;
+			"  CODIGO  "+;
+			PAIP+;
+			PADC("MEDICO",30)+PAIP
+			STORE NUL TO CASOS
+			=UNTALK()
+			=UNWORK()
+			IF AGRUPA=1
+				DO LGRLP WITH "TMP","LLIQMED0()","NO LIQUIDA","LMEDNOLP"
+			ELSE
+				DO LGRLI WITH "TMP","LLIQMED0()","NO LIQUIDA","LMEDNOLI"
+			ENDIF
+			SELE TMP
+			USE
+			ERASE (TMP)
+		ENDIF
+	CASE M_DIJO='Listado S bana'
+		DO SABANA
+	CASE M_DIJO='Modifica Liquidaciขn'
+		=OPMIX()
+		M.PORPAR=GETNU1("PORPART","FOXGRL")/100
+		M.FECINI=MESANIO(" Mes tope a Listar ",.t.,.t.)
+		M.ELMES=VAL(LEFT(M.FECINI,2))
+		M.ELANIO=VAL(RIGHT(M.FECINI,4))
+		IF !EMPTY(M.ELMES) .AND. ;
+			!EMPTY(M.ELANIO) .AND. ;
+			LAST()#27 .AND. ;
+			CONFIRMA("Meses a Procesar",.t.,20,10)
+			=OPPER()
+			=OPLIQ()
+			SELE LIX
+			ON KEY LABEL TAB KEYB CHR(23)
+			ON KEY LABEL CTRL+D DO DIFPAG
+			ON KEY LABEL CTRL+P DO NOPAG
+			DO WHILE .T.
+				STORE NUL TO M.RESPUESTA
+				IF !EMPTY(ELIMED("a Listar",-1,1))
+					ELMED=PER.CODCLI
+					SET ORDER TO TAG NUMERO IN LIQ
+					SELE LIX
+					SET RELA TO TPR+STR(NUMERO) INTO LIQ
+					=POPCARTE("[TAB] SALE"+CRLF+;
+					"[CTRL+D] DIFIERE / NO DIFIERE"+CRLF+;
+					"[CTRL+P] PAGA/NO PAGA"+CRLF+;
+					"[ESC] ANULA")
+					=MOVECENT(10,3,20,70,"WIN",ALLTRIM(PER.CLIENTE))
+					BROW FIEL TPR,NUMERO,PRACTICA,PRXCOD,;
+					TOTAL=LIX.T_GAS+LIX.T_GAL:H="TOTAL":P="99,999.99":R ,;
+					PORCEN=(LIX.T_GAS+LIX.T_GAL)*M.PORPAR:H="PARTIC":P="99,999.99":R ,;
+					XPAGA=IIF(LIX.PAGA,"SI","NO"):H="PAGA",;
+					XDIFI=IIF(LIX.DIFIERE,"SI","NO"):H="DIFIERE" FOR ;
+					LIQ.MEDICO=ELMED .AND. ;
+					!EMPTY(LIQ.ANO) .AND. ;
+					(LIQ.ANO<M.ELANIO .OR. LIQ.ANO=M.ELANIO .AND. LIQ.MES<=M.ELMES) .AND. ;
+					PASADA .AND. PAGA .AND. !PAGADA ;
+					FREE PRACTICA ;
+					WIND WIN ;
+					NOCLEAR
+					IF LAST()#27 .AND. ;
+						CONFIRMA("Modificaciones Realizadas",.t.,20,10)
+						* ACTUALIZA LO QUE NO SE PAGARA NUNCA
+						REPL L_MES WITH MONTH(DATE()),;
+						L_ANIO WITH YEAR(DATE()),;
+						PAGADA WITH .T. FOR ;
+						LIQ.MEDICO=ELMED .AND. ;
+						PASADA .AND. !PAGA
+						* ACTUALIZA LO QUE VA AL MES QUE VIENE
+						REPL L_MES WITH NUL,;
+						L_ANIO WITH NUL,;
+						PAGADA WITH .F. FOR ;
+						LIQ.MEDICO=ELMED .AND. ;
+						PASADA .AND. DIFIERE .AND. ;
+						EMPTY(LIX.L_MES) .AND. EMPTY(LIX.L_ANIO)
+						* ACTUALIZA LO QUE SE PAGA ESTE MES
+						REPL L_MES WITH NUL,;
+						L_ANIO WITH NUL,;
+						PAGADA WITH .F. FOR ;
+						LIQ.MEDICO=ELMED .AND. ;
+						PASADA .AND. DIFIERE .AND. ;
+						PAGA .AND. ;
+						EMPTY(LIX.L_MES) .AND. EMPTY(LIX.L_ANIO)
+					ELSE
+						REPL L_MES WITH NUL,;
+						L_ANIO WITH NUL,;
+						PASADA WITH .T.,;
+						PAGA WITH .T. ,;
+						DIFIERE WITH .F. FOR ;
+						LIQ.MEDICO=ELMED .AND. ;
+						EMPTY(LIX.L_MES) .AND. ;
+						!EMPTY(LIX.L_ANIO) .AND. ;
+						EMPTY(M.PAGADA)
+					ENDIF
+				ELSE
+					=NOSELEC("MEDICO")
+					=RELEWIN("WIN")
+					=RELEWIN("POPCARTE")
+					EXIT
+				ENDIF
+			ENDDO
+			ON KEY LABEL TAB
+			ON KEY LABEL CTRL+D
+			ON KEY LABEL CTRL+P
+		ENDIF
+	CASE M_DIJO='Emisiขn de Resฃmenes'
+		DO LRESMED
+	CASE M_DIJO='Confirma Pago'
+	    DO OKPAGMED
+	ENDCASE
+RETURN MEN_LIN(BOTOM)
+
+FUNCTION NOPAG
+	REPL LIX.PAGA WITH !LIX.PAGA
+	REPL LIX.DIFIERE WITH .F.
+RETURN .T.
+
+FUNCTION DIFPAG
+	REPL LIX.DIFIERE WITH !LIX.DIFIERE
+	REPL LIX.PAGA WITH .T.
+RETURN .T.

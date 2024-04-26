@@ -1,0 +1,33 @@
+********************************************************************************
+*-- Programa: LFARPZ2.PRG
+*-- Fecha   : 09-29-92 02:07pm
+*-- Version : G. REINER
+*-- Notas   : MAIN IMPRESION DE FACTURAS DE COMPRA POR PANTALLA
+********************************************************************************
+FUNCTION LFARPZ2
+	? paip
+	=iif(variable[1],qout(FAR.FACTURA+PAIP),"")
+	=iif(variable[2],qout(DTOC(FAR.FECHAEM)+paip),'')
+	=IIF(VARIABLE[3],QOUT(DTOC(FAR.FECHAVE)+PAIP),'')
+	=IIF(VARIABLE[4],QouT(FAR.TIPO+PAIP),'')
+	=IIF(VARIABLE[5],QOUT(left(per.cliente,texto[5,2])+PAIP),'')
+	=IIF(VARIABLE[6],QOUT(left(MIX.TEXTO1,texto[6,2])+PAIP),'')
+	IF VARIABLE[7]
+		=XSEEK(FAR.GASTO,'MIX','GASCOD')
+		?? left(MIX.TEXTO1,texto[7,2])
+		?? PAIP
+	ENDIF
+	=IIF(VARIABLE[8],LFARPZ1(8,FAR.MONTO),"")
+	=IIF(VARIABLE[9],LFARPZ1(9,FAR.DESCUENTO),"")
+	=IIF(VARIABLE[10],LFARPZ1(10,FAR.MONTOBRU),"")
+	=IIF(VARIABLE[11],LFARPZ1(11,FAR.MONTOIVA),"")
+	=IIF(VARIABLE[12],LFARPZ1(12,FAR.MONTOOT2),"")
+	=IIF(VARIABLE[13],LFARPZ1(13,FAR.MONTOOT3),"")
+	=IIF(VARIABLE[14],LFARPZ1(14,FAR.MONTOPER),"")
+	=IIF(VARIABLE[15],LFARPZ1(15,FAR.MONTOEXE),"")
+	=IIF(VARIABLE[16],LFARPZ1(16,FAR.NOGRAVADO),"")
+	=IIF(VARIABLE[17],LFARPZ1(17,FAR.MONTONET),"")
+	=IIF(VARIABLE[18],QOUT(LEFT(IIF(FAR.MONEDA=XADOLS,XADOLS,XAUSS),texto[18,2])+PAIP),'')
+	=IIF(VARIABLE[19],QOUT(left(FAR.MES,texto[19,2])+PAIP),'')
+	casos=casos+1
+RETURN .T.

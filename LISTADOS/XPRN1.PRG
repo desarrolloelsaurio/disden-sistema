@@ -1,0 +1,84 @@
+* REDIRECCIONA LA IMPRESION PARA VARIOS LUGARES
+FUNCTION XPRN1
+	PARAMETER CA_OPCIONES,LAS_BASE,EL_LISTADO,EL_AUD,EL_NOMBRE,EL_SUMA,EL_PICHER,EL_COPIAS
+	=UNTALK()
+	=UNWORK()
+	DO WHILE .T.
+		EL_CONT="Por \<Pantalla;Por \<Impresora;"
+		DO CASE
+		CASE CA_OPCIONES=2
+			M.EL_CONT=M.EL_CONT+"\\<Archivo ASCII;\\<Otras Impresoras;"
+		CASE CA_OPCIONES=3
+			M.EL_CONT=M.EL_CONT+"\<Archivo ASCII;\\<Otras Impresoras;"
+		CASE CA_OPCIONES=4
+			M.EL_CONT=M.EL_CONT+"\<Archivo ASCII;\<Otras Impresoras;"
+		ENDCASE
+		IF FILE("F:\PUBLIC\!NETWARE.NFO")
+			if _windows
+				M.EL_CONT=M.EL_CONT+"Impresión \<Local;Impresión al \<Server;"				       
+		       else
+				M.EL_CONT=M.EL_CONT+"Impresi¢n \<Local;Impresi¢n al \<Server;"		
+			endif
+		ELSE
+			if _windows
+				M.EL_CONT=M.EL_CONT+"\\Impresión Local;\\Impresión al Server;"		        			        		       
+        		else
+				M.EL_CONT=M.EL_CONT+"\\Impresi¢n Local;\\Impresi¢n al Server;"		        			
+			endif
+		ENDIF
+		if _windows
+			M.EL_CONT=M.EL_CONT+"\<Base de Datos;\<Menú Anterior"		
+		else
+			M.EL_CONT=M.EL_CONT+"\<Base de Datos;\<Men£ Anterior"
+		endif
+		M.PORDONDE=ALGUN(30," Salida del Listado ",EL_CONT)
+		DO CASE
+		CASE M.PORDONDE=1
+			STORE .T. TO M.PORPAN
+			IF TYPE("ACLAPAN")#"U"
+				ACLA=ACLAPAN
+			ENDIF
+		CASE M.PORDONDE=2
+			STORE .F. TO M.PORPAN
+			IF TYPE("ACLAPRN")#"U"
+				ACLA=ACLAPRN
+			ENDIF
+			#IF "FELIX" $ CURD()
+				=CARTEL("POR FAVOR, ASEGURESE DE QUE LA LUZ VERDE (READY)",;
+					"DEL PANEL SUPERIOR DE LA IMPRESORA ESTE ENCENDIDA",;
+					"EN CASO DE ON ESTARLO, OPRIMA LA TECLA [CONTINUE] DE LA IMPRESORA",;
+					"HASTA LOGRARLO. GRACIAS")
+			#ENDIF
+		CASE M.PORDONDE=3
+			M.ENASCII=.T.
+			STORE .F. TO M.PORPAN
+			IF TYPE("ACLAPRN")#"U"
+				ACLA=ACLAPRN
+			ENDIF
+		CASE M.PORDONDE=4
+			DO XANUIM
+			LOOP
+		CASE M.PORDONDE=5 .OR. M.PORDONDE=6
+		   =CIMP(.T.)
+		   LOOP
+		CASE M.PORDONDE=7
+		    RELE PORBASE
+		    PUBL PORBASE
+		    STORE .T. TO M.PORBASE
+			M.ENASCII=.F.
+			STORE .F. TO M.PORPAN
+			IF TYPE("ACLAPRN")#"U"
+				ACLA=ACLAPRN
+			ENDIF
+		OTHERWISE
+			EXIT
+			STORE .F. TO M.PORBASE
+		ENDCASE
+		IF ISARRAY(@EL_PICHER)
+			=LGRL2(PORPAN,LAS_BASE,EL_LISTADO,EL_AUD,EL_NOMBRE,EL_SUMA,@EL_PICHER,EL_COPIAS)
+		ELSE
+			=LGRL2(PORPAN,LAS_BASE,EL_LISTADO,EL_AUD,EL_NOMBRE,EL_SUMA,EL_PICHER,EL_COPIAS)
+		ENDIF
+		RELE PORBASE
+	ENDDO
+RETURN .T.

@@ -1,0 +1,100 @@
+*********************************************************************************
+*-- Programa: ICRE.PRG
+*-- Fecha   : 10/10/91
+*-- Versi¢n : R. 'EL BATA'
+*-- Notas   : AJUSTE DE CTA CTE A FAVOR DEL PROPIETARIO
+********************************************************************************
+#DEFINE ENTERCON "PULSE [ENTER] PARA CONTINUAR"  && ENTERCON
+#DEFINE ME1 " - [ESC] para Salir"
+#DEFINE PICU "99999999999.99"
+#DEFINE COL 25
+
+para decredi
+m.cart_cred="Nota de "+iif(decredi,"Cr‚dito","D‚bito")
+ULPR=HORA_ULP(PROGRAM())
+IF CHEQSEG()
+   DO WHIL .T.
+      =movewin(3,5,14,74,"win",m.cart_cred,ALLTRIM(JANNAME))
+      sele ccp
+      scat memv blan
+      @ 1,1 SAY "Propietario"
+      @ 2,1 SAY "Inmueble"
+      @ 3,1 SAY m.cart_cred+" N§"
+      @ 4,1 SAY "Importe"
+      @ 5,1 SAY "Fecha de emisi¢n"
+      @ 6,1 SAY "Moneda en que se emite"
+      @ 7,1 SAY "Cotizaci¢n"
+      @ 8,1 SAY "Concepto"
+      STOR NUL TO respuesta
+      IF !EMPTY(eliPRP(" - [ESC] para Salir",1,COL))
+         m.codcli=PER.CODCLI      
+         scat memv
+         acti wind win
+         m.propi=Alltrim(PER.CODCLI)+' '+Alltrim(PER.CLIENTE)
+         @ 1,col GET m.propi
+         CLEA GETS
+         PUNMAR=iif(decredi,6,5)
+         GO PUNMAR IN DOC
+         REGISTRO=STR(PUNMAR)
+         STOR doc.numero TO m.notacred
+         STOR DATE() TO fechaop
+         STOR xauss TO m.moneda
+         STOR xacotiz TO m.cotizadol
+         if !empty(eliinm("del Propietario",-1,1)) 
+            if inm.procod=per.codcli
+            store inm.codinm to m.codinm
+            else
+            store "" to m.codinm
+            =cartel("El inmueble "+inm.codinm,;
+            "no figura en los archivos como",;
+            "perteneciente a "+alltrim(per.cliente),;
+            entercon)
+            exit
+            endif
+         endif   
+         @ 2,col get m.codinm
+         if !empty(m.codinm)
+            @ 2,col+15 say LEFT(inm.domicilio,30)
+         endif
+         clea read
+         @ 3,col GET m.notacred
+         read
+         m.numerore=q_fac(str(m.notacred))
+         @ 3,col GET m.numerore
+         clea gets
+         @ 4,col GET m.monto
+         @ 5,col GET m.fechaop
+         @ 6,col GET m.moneda PICT "@M "+Alltrim(xauss)+","+Alltrim(xadols)
+         @ 7,col GET m.cotizadol PICT PICU
+         @ 8,col GET m.detalle PICT "@!"
+         READ
+         IF LASTKEY()#27
+            m.comprre=iif(decredi,"ND","NC")
+            m.fechave=m.fechaop
+            COMPR=M.COMPRRE+" N§ "+m.numerore
+            m.procod=per.codcli
+            if m.moneda=xadols
+               m.equivale=m.monto
+               m.monto=m.monto*m.cotizadol
+            else
+               m.equivale=m.monto/m.cotizadol
+            endif
+            IF confirma(m.cart_cred,.T.,19,40)
+               REGISTRO=STR(PUNMAR)
+               =LOCK() .OR. LOK("DOC")
+               REPL DOC.NUMERO WITH m.notacred+1
+               UNLO IN DOC
+               =AGRABAR("ccp")
+               =LCREI()
+            ENDI
+         ENDI
+      ELSE
+         =relewin("win")
+         EXIT
+      endif
+   ENDDO
+   deac wind ALL
+ELSE
+   =iaudi()
+ENDI
+RETURN MEN_LIN(BOTOM)

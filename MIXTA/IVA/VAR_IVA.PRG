@@ -1,0 +1,3 @@
+FUNCTION VAR_IVA
+	PUBL IVApop,IVApopc,IVApopr,ordIVA
+RETURN .T.

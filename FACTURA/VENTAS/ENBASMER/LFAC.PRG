@@ -1,0 +1,133 @@
+*************************************************************************
+*-- Programa: LFAC.PRG
+*-- Fecha   : 05-20-92 02:32am
+*-- Version : G. REINER
+*-- Notas   : DERIVA A LISTADOS DE FACTURAS, NOTAS DE DEBITO Y CREDITO
+*************************************************************************
+PARAMETER PORPAN
+CANT_MAX=15
+DIME TEXTO[CANT_MAX,2], VARIABLE[CANT_MAX], Habilitado[CANT_MAX],habilant[cant_max]
+TEXTO[1,2] =13
+TEXTO[2,2] =8
+TEXTO[3,2] =8
+TEXTO[4,2] =2
+TEXTO[5,2] =20
+TEXTO[6,2] =20
+TEXTO[7,2] =20
+TEXTO[8,2] =XACDIGI
+TEXTO[9,2] =XACDIGI
+TEXTO[10,2]=XACDIGI
+TEXTO[11,2]=XACDIGI
+TEXTO[12,2]=XACDIGI
+TEXTO[13,2]=XACDIGI
+TEXTO[14,2]=XACDIGI
+TEXTO[15,2]=XACDIGI
+TEXTO[1,1] =TIT_INVO
+TEXTO[2,1] ='FECHA EMISION'
+TEXTO[3,1] ='FECHA VENCIMIENTO'
+TEXTO[4,1] ='TIPO COMPROBANTE'
+TEXTO[5,1] ='CLIENTE'
+TEXTO[6,1] =UPPER(BIAJA)
+TEXTO[7,1] ='CONDICION DE VENTA'
+TEXTO[8,1] ='MONTO BRUTO'
+TEXTO[9,1]='DESCUENTO'
+TEXTO[10,1] ='NETO GRAVADO'
+TEXTO[11,1]='MONTO '+XACI(1)
+TEXTO[12,1]='MONTO '+XACI(2)
+TEXTO[13,1]='MONTO '+XACI(3)
+TEXTO[14,1]='EXENTO'
+TEXTO[15,1]='MONTO TOTAL'
+store "" to ttque
+store .t. to habilitado
+habilitado[14]=(type("fac.exento")#"U")
+FOR LFA=11 TO 13
+	HABILITADO[LFA]=!EMPTY(XACI[LFA-10])
+NEXT
+STORE 1 TO FILEMP,FILFAC,FILCLI,FILFEC,FILVIA,FILPAG,FILMON,FILMER,FILART
+FISC=''
+DO WHILE QUERYFAC(PORPAN)
+	IF FILCLI=3 .OR. FILFEC=3 .OR. FILVIA=3 .OR. FILPAG=3
+		SELE faC
+		STORE .T. TO HAY
+		set order to tag factura
+		set order to tag CODCLI IN PER
+		set relation to faC.CODCLI INTO PER
+		set order to tag CODVIA in VIA
+		set relation to faC.CODVIA INTO VIA ADDI
+		set order to tag PAGCOD in MIX
+		set relation to faC.CONDPAGO INTO MIX ADDI
+		CANT_MAX=4
+		DIME TEXTO[CANT_MAX,5],variable[CANT_MAX],CTRL[CANT_MAX]
+		store .t. to variable,CTRL
+		STORE .F. TO TEXTO
+		TEXTO[2,1]="CANT. FACTURAS"
+		TEXTO[2,2]=XACDIGI
+		texto[2,3]="TTL[2]"
+		texto[2,4]="1"
+		TEXTO[2,5]=REPL("9",XACDIGI)
+		TEXTO[3,1]="MONTO"
+		TEXTO[3,2]=XACDIGI
+		texto[3,3]="TTL[3]"
+		texto[3,4]="fac.montonet"
+		TEXTO[3,5]=REPL("9",XACDIGI-3)+".99"
+		TEXTO[4,1]="PROMEDIO"
+		TEXTO[4,2]=XACDIGI
+		texto[4,3]="TTL[3]/TTL[2]"
+		TEXTO[4,5]=REPL("9",XACDIGI-3)+".99"
+		TT='Listado de Facturas'+ttque
+		IF FILCLI=3
+			TEXTO[1,1]='CLIENTE'
+			TEXTO[1,2]=30
+			texto[1,3]="eltexto"
+			TEXTO[1,5]="@!"
+			=IIF(PORPAN,;
+				LRESPT("LFACPR","FAC","PER.CLIENTE","FAC.CODCLI","PER.CLIENTE",'"|"+STR(GTOTAL)+"|"',4),;
+				LRESIT("LFACPR","FAC","PER.CLIENTE","FAC.CODCLI","PER.CLIENTE",'"|"+STR(GTOTAL)+"|"',4))
+		ELSE
+			IF FILFEC=3
+				TEXTO[1,1]='FECHA'
+				TEXTO[1,2]=8
+				texto[1,3]="eltexto"
+				TEXTO[1,5]="@D"
+				=IIF(PORPAN,;
+					LRESPT("LFACPR","FAC","FAC.FECHAEM","FAC.FECHAEM","FAC.FECHAEM",'"|"+STR(GTOTAL)+"|"',4),;
+					LRESIT("LFACPR","FAC","PER.CLIENTE","FAC.CODCLI","PER.CLIENTE",'"|"+STR(GTOTAL)+"|"',4))
+			ELSE
+				IF FILVIA=3
+					TEXTO[1,1]=UPPER(BIAJA)
+					TEXTO[1,2]=30
+					texto[1,3]="eltexto"
+					TEXTO[1,5]="@!"
+					=IIF(PORPAN,;
+						LRESPT("LFACPR","FAC","VIA.VIAJANTE","FAC.CODVIA","VIA.VIAJANTE",'"|"+STR(GTOTAL)+"|"',4),;
+						LRESIT("LFACPR","FAC","VIA.VIAJANTE","FAC.CODVIA","VIA.VIAJANTE",'"|"+STR(GTOTAL)+"|"',4))
+				ELSE
+					IF FILPAG=3
+						TEXTO[1,1]="CONDICION"
+						TEXTO[1,2]=20
+						texto[1,3]="eltexto"
+						TEXTO[1,5]="@!"
+						=IIF(PORPAN,;
+							LRESPT("LFACPR","FAC","MIX.TEXTO1","FAC.CONDPAGO","MIX.TEXTO1",'"|"+STR(GTOTAL)+"|"',4),;
+							LRESIT("LFACPR","FAC","VIA.VIAJANTE","FAC.CODVIA","VIA.VIAJANTE",'"|"+STR(GTOTAL)+"|"',4))
+					ENDIF
+				ENDIF
+			ENDIF
+		ENDIF
+		=REOPFAC()
+	ELSE
+		IF FILMER=2 .OR. FILMER=3
+			TT=TTQUE
+			=IIF(PORPAN,LFACPY(),LFACIY())
+		ELSE
+			=ACOPY(HABILITADO,HABILANT)
+			DO WHILE CFGFAC() .AND. FILFAC#2
+				=IIF(PORPAN,LFACPZ(),LFACIZ())
+				STORE .F. TO VARIABLE
+			ENDDO
+			STORE .F. TO VARIABLE
+			=ACOPY(HABILANT,HABILITADO)
+		ENDIF
+	ENDIF
+ENDDO
+RETURN

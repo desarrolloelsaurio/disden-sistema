@@ -1,0 +1,66 @@
+********************************************************************************
+*-- Programa: Q_DEUC.PRG
+*-- Fecha   : 05-13-92 03:16am
+*-- Version : G. REINER
+*-- Notas   : CALCULA LA DEUDA DE UN CLIENTE Y DEVUELVE EN VAR1 Y 2
+*--           NO SUMA LAS FACTURAS CON MISMO NUMERO - HABILITA CUOTAS
+*-- VERSION NOVOGAR
+********************************************************************************
+FUNCTION Q_DEUC
+	PARAMETER CLNT,VAR1,VAR2,NOPAG,ELDETALLE
+	PRIVATE CLNT,AREA,NOPAG
+	IF !EMPTY(PARAMETER())
+		IF SYS(102)='OFF'
+			=MEN_LIN("CALCULANDO - ESPERE POR FAVOR")
+		ENDIF
+		IF PARAMETER()<2
+			STORE 'DEBE' TO VAR1
+		ENDIF
+		IF PARAMETER()<3
+			STORE 'HABER' TO VAR2
+		ENDIF
+		STORE NUL TO (VAR1),(VAR2)
+		M.AREA=ALIAS()
+		SELE CCL
+		IF EMPTY(NDX(1))
+			SET ORDER TO TAG CODCLI
+		ENDIF
+		IF SEEK(CLNT)
+			SCAN WHILE CCL.CODCLI=CLNT
+				IF !ESDEBE(CCL.COMPRRE)
+					STORE abs(MONTO)+EVAL(VAR2) TO (VAR2)
+				ELSE
+					STORE MONTO+EVAL(VAR1) TO (VAR1)
+					IF NOPAG
+						IF !PAGADA
+							PUNTERO=PUNTERO+1
+							DIME FAXT[PUNTERO,3]
+							IF ELDETALLE
+								IF SSTM1='ADMIN'
+									FAXT[PUNTERO,1]=CCL.NUMERORE+DTOS(CCL.FECHAVE)+;
+									Q_TIPTEX(CCL.DETALLE)+;
+									PAIP+DTOC(CCL.FECHAVE)+PAIP+ccl.numerore
+								ELSE
+									FAXT[PUNTERO,1]=CCL.NUMERORE+DTOS(CCL.FECHAVE)+alltrim(ccl.detalle)+PAIP+DTOC(CCL.FECHAVE)+PAIP+ccl.numerore
+								ENDIF
+							ELSE
+								FAXT[PUNTERO,1]=iif(!empty(ccl.numerore),CAF_Q(ccl.numerore),alltrim(ccl.detalle))+PAIP+DTOC(CCL.FECHAVE)
+							ENDIF
+							FAXT[PUNTERO,2]=CCL.MONTO-CCL.CUOTA
+						ENDIF
+					ENDIF
+				ENDIF
+			ENDSCAN
+			if type("FAXT")#'U'
+				=ASORT(FAXT)
+			ENDIF
+			IF SYS(102)='OFF'
+				=MEN_LIN(BOTOM)
+			ENDIF
+		ENDIF
+		SELE (M.AREA)
+	ELSE
+		STORE 0 TO DEBE,HABER
+		STORE 'DEBE' TO VAR1,VAR2
+	ENDIF
+RETURN  EVAL(VAR1)-EVAL(VAR2)

@@ -1,0 +1,39 @@
+*************************************************
+*-- Programa: LFACPZ.PRG
+*-- Fecha   : 4-16-92
+*-- Version : R. 'EL BATA'/G. REINER
+*-- Notas   : IMPRESION DE FACTURAS POR PANTALLA
+*************************************************
+STORE PROGRAM() TO ULPR
+=CHEQSEG()
+DIME TTL[CANT_MAX],CTRL[CANT_MAX]
+HAY=.F.
+STORE NUL TO ACLA,LINEA,TT,CASOS
+=LFACPZ0()
+=WIN0()
+PAG=1
+=CABPAN()
+=TIT_LIN(1)
+SCAN
+	IF ROW()>21
+		IF HAY
+			IF !FIN_LIN(1,NUL,FIN_SUM('SUBTOTAL',@TTL))
+				EXIT
+			ENDIF
+		ELSE
+			IF !FIN_LIN(1,NUL)
+				EXIT
+			ENDIF
+		ENDIF
+		CLEA
+		STOR PAG+1 TO PAG
+		=CABPAN()
+		=TIT_LIN(2)
+	ENDIF
+	=LFACPZ2()
+ENDSCAN
+=IIF(LAST()#27,Iif(hay,FIN_LIN(2,CASOS,FIN_SUM('TOTAL',@TTL)),FIN_LIN(2,CASOS)),"")
+=IAUD(FISC)
+=RELEWIN('win')
+=REOPFAC()
+RETURN MEN_LIN(BOTOM)

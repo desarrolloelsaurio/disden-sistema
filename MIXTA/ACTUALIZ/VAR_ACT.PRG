@@ -1,0 +1,3 @@
+FUNCTION VAR_ACT
+	PUBL ACTpop,iACTc,iACTr,iACTla,iACTan,cACTc,cACTr,cACTla,cACTan,ACTpopc,ACTpopr,vACTc,vACTr,vACTan,vACTla,mACTc,mACTr,mACTla,mACTan
+RETURN .T.

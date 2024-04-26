@@ -1,0 +1,18 @@
+#DEFINE PAIP   "|"                             && PAIP
+#DEFINE NUL    0                                 && NUL	
+FUNCTION LPAG0
+	PARAMETER L_TEX,L_FUNC,L_BORRA
+	EXTERNAL ARRAY L_FUNC
+	? PAIP
+	??PADR(L_TEX,IIF(PORPAN,15,30))
+	?? PAIP
+	STORE NUL TO M.ELTOT
+	for a=1 to C_MAX
+		?? STR(L_FUNC[A],XACDIGI)
+		?? PAIP
+		STORE M.ELTOT+L_FUNC[A] TO M.ELTOT
+	NEXT
+	?? STR(M.ELTOT,XACDIGI+2)
+	?? PAIP
+	DO CORTEPAG
+RETURN .T.

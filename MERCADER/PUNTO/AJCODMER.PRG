@@ -1,0 +1,18 @@
+*********************************************************
+* AJUSTA UN CODIGO ALFANUMERICO A FORMATO ARTICULO NAZA *
+* 999-999999/99                                         *
+*********************************************************
+FUNCTION AJCODMER
+PARAMETER CODDEMER
+CODDEMER=IIF(EMPTY(CODDEMER),RESPUESTA,CODDEMER)
+IF LEN(ALLTRIM(CODDEMER))#13
+   I=AT('-',CODDEMER)
+   F=AT('/',CODDEMER)
+   A1=VAL(LEFT(CODDEMER,I-1))
+   A1=ZERO(A1,3)+'-'
+   A2=VAL(SUBSTR(CODDEMER,I+1,F-I+1))
+   A2=ZERO(A2,6)
+   A3=UPPER(SUBSTR(CODDEMER,F))
+   CODDEMER=LEFT(A1+A2+A3+'   ',15)
+ENDIF
+RETURN CODDEMER

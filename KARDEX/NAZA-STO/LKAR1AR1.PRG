@@ -1,0 +1,59 @@
+#DEFINE BOTOM  "  "+repl("°",78)                 && BOTOM
+#DEFINE NUL    0                                 && NUL
+#DEFINE PAIP   "|"                               && PAIP
+#DEFINE CRLF CHR(13)+CHR(10)                     && CRLF
+
+FUNCTION LKAR1AR1
+	IF M.SALOK .AND. ;
+			LAST()#27 .AND. ;
+			!EMPTY(M.FECINI)
+		=WORKING()
+		=DOTALK()
+		SELE KARS
+		TMP=GENTMP()
+		SORT ON FECHAOP ;
+			TO (TMP) FOR &FISC
+		SELE KARS
+		USE (TMP) ALIAS KARS
+		STORE "" TO M.LINEA,M.CASOS
+		TT="Listado de Kardex"+;
+			crlf+;
+			TTUNO+;
+			TTDOS+;
+			crlf+;
+			"Detallado desde "+dtoc(m.fecini)
+		IF FEC2
+			TT=TT+" al "+dtoc(m.fecfin)
+		ENDIF
+		ACLA=PAIP+" FECHA  "+PAIP+;
+			PADC("DETALLE",30)+PAIP+;
+			PADC("COMPROBANTE",11)+PAIP+;
+			PADC("ENTRADA",XACDIGI)+PAIP+;
+			PADC("SALIDA",XACDIGI)+PAIP
+		=UNTALK()
+		=UNWORK()
+		DO WHILE .T.
+			M.PORDONDE=XPRN(4)
+			DO CASE
+			CASE PORDONDE=1
+				STORE .T. TO M.PORPAN
+			CASE PORDONDE=2
+				STORE .F. TO M.PORPAN
+			CASE PORDONDE=3
+				STORE .T. TO M.PORPAN,M.ENASCII
+			CASE PORDONDE=4
+				DO XANUIM
+			CASE PORDONDE=5
+				=CIMP(.T.)
+				LOOP
+			CASE PORDONDE=6
+				=CIMP(.T.)
+				LOOP
+			OTHERWISE
+				EXIT
+			ENDCASE
+			=IIF(PORPAN,IIF(FEC2,LKAR2ARP(),LKAR1ARP()),IIF(FEC2,LKAR2ARI(),LKAR1ARI()))
+		ENDDO
+		=OPKARS(.T.)
+	ENDIF
+RETURN MEN_LIN(BOTOM)

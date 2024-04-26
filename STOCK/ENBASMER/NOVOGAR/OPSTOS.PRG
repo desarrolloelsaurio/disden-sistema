@@ -1,0 +1,38 @@
+**************************************
+*-- Programa: OPSTOS.PRG
+*-- Fecha   : 9 DE JUNIO DE 1993
+*-- Version : G. REINER
+*-- Notas   : ABRE ARCHIVO DE STOCK OTRAS SUCURSALES
+*             DESDE CASA CENTRAL
+****************************************************
+PARAMETER OP_SUC,OP_EXCL,OP_REOP,COMOMER
+SELE 25
+IF OP_REOP
+   =REOPXXX("STOS")
+ENDIF
+IF OP_EXCL
+   IF USED("MER") .AND. DBF("MER")=DBF()
+      USE IN MER 
+   ENDIF
+   USE
+   IF !COMOMER
+      USE (pathpro+'\'+OP_SUC+'\STOCK') ORDER TAG ARTICULO ALIAS STOS EXCL
+   ENDIF
+ELSE
+   IF USED("MER")
+      USE IN MER
+   ENDIF
+   IF !COMOMER
+      USE (pathpro+'\'+OP_SUC+'\STOCK') ORDER TAG ARTICULO ALIAS STOS EXCL
+   ENDIF
+ENDIF
+IF COMOMER
+   IF USED("MER")
+      SELE MER
+      USE
+   ENDIF
+   USE (pathpro+'\'+OP_SUC+'\STOCK') ORDER TAG ARTICULO ALIAS MER IN 14
+*  USE (pathpro+'\'+OP_SUC+'\STOCK') ORDER TAG ARTICULO ALIAS MER AGAIN IN 14   
+   =OPMER(.T.)
+ENDIF
+RETURN MEN_LIN(BOTOM)

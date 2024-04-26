@@ -1,0 +1,47 @@
+FUNCTION FLRIMPR1
+PARAMETER SHIT
+IF SHIT
+	? PAIP
+	IF FILREM=3
+		?? SUCU+'-'+ZERO(ELARTICULO,8)
+		?? PAIP
+		?? LAMERCA
+	ELSE
+		IF FILFEC=3
+			?? ELARTICULO
+		else
+			IF FILvia=3
+				?? ELremito
+			endif
+		ENDIF
+	ENDIF
+	?? paip
+	?? str(can,xacdigi)
+	?? PAIP
+	tcan=tcan+can
+	store nul to can
+	IF FILFEC=3 .or. filvia=3
+		?? STR(REM,XACDIGI)
+		?? PAIP
+		TREM=TREM+REM
+		STORE NUL TO REM
+	ENDIF
+	?? STR(TOT,XACDIGI,2)
+	?? PAIP
+	TTOT=TTOT+TOT
+	ENDIF
+	STORE 0 TO TOT
+	IF FILREM=3
+		ELARTICULO=REX.REMITO
+		=REM.FECHAEM
+	ELSE
+		IF FILFEC=3
+			ELARTICULO=REM.FECHAEM
+		else
+			IF FILvia=3
+				ELARTICULO=REM.CODVIA
+				ELREMITO=VIA.VIAJANTE
+			endif
+		ENDIF
+	ENDIF
+RETURN .T.

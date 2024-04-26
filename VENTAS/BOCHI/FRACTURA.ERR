@@ -1,0 +1,65 @@
+Compiling c:\sistemas\ventas\bochi\presu\icre.spr
+Error in line 866: If/else/endif mismatch.
+
+Program c:\sistemas\personas\clientes\cli.prg has the following errors:
+    Screen Set ICRE1 - Undefined
+
+Program c:\sistemas\control\ctrl2_ca.prg has the following errors:
+    Unknown YAMI1 - Undefined
+
+Program c:\sistemas\control\ctrl2_el.prg has the following errors:
+    Unknown YAMI1 - Undefined
+
+Program c:\sistemas\control\ctrl2_in.prg has the following errors:
+    Proc./Func. XPRC - Undefined
+
+Program c:\sistemas\control\ctrl2_li.prg has the following errors:
+    Proc./Func. LDTT - Undefined
+    Program LRUB0 - Undefined
+    Proc./Func. LTMA - Undefined
+
+Program c:\sistemas\control\ctrl2_pa.prg has the following errors:
+    Proc./Func. LDTT - Undefined
+    Program LRUB0 - Undefined
+    Proc./Func. LTMA - Undefined
+
+Program c:\sistemas\control\ctrl2_va.prg has the following errors:
+    Screen Set ORDMER - Undefined
+
+Screen Set c:\sistemas\ventas\bochi\ideb.spr has the following errors:
+    Unknown XACI - Undefined
+    Unknown DISP_ND - Undefined
+
+Program c:\sistemas\ventas\bochi\iniprin.prg has the following errors:
+    Proc./Func. ABOPRIN - Undefined
+
+Program c:\sistemas\personas\iper_do.prg has the following errors:
+    Unknown IMPUTRAF - Undefined
+    Screen Set ICOBCUOT - Undefined
+    Unknown OPHOR - Undefined
+    Unknown OPCCP - Undefined
+    Report LCCP - Undefined
+    Proc./Func. LCCP10 - Undefined
+    Proc./Func. ICOB - Undefined
+    Unknown ELITPT - Undefined
+
+Program c:\sistemas\ctactecl\lccl.prg has the following errors:
+    Unknown QUERYCCL - Undefined
+    Unknown LCCLPR1 - Undefined
+
+Program c:\sistemas\mercader\tapiplas\lmer.prg has the following errors:
+    Unknown GRL2 - Undefined
+
+Program c:\sistemas\mercader\tapiplas\lmerpt.prg has the following errors:
+    Unknown REOPMER - Undefined
+
+Report c:\sistemas\mixta\lmixi.frx has the following errors:
+    Unknown LMIX0 - Undefined
+
+Program c:\sistemas\ventas\bochi\presu\fractu.prg has the following errors:
+    Proc./Func. MODCOMIR - Undefined
+    Proc./Func. CALCOMIS - Undefined
+
+Screen Set c:\sistemas\icre.spr has the following errors:
+    Unknown XACI - Undefined
+

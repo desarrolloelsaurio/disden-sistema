@@ -1,0 +1,9 @@
+#DEFINE PAIP   "|"                               && PAIP
+FUNCTION LPER20
+? PAIP
+?? CODCLI
+?? PAIP
+?? CLIENTE
+?? PAIP
+CASOS=CASOS+1
+RETURN .T.

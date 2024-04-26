@@ -1,0 +1,12 @@
+FUNCTION COND
+	PARAM ION
+	IF GETENV("PRN")="LASER"
+		??? CHR(27)
+		??? CHR(38)
+		??? CHR(107)
+		??? CHR(50)
+		??? IIF(ION,CHR(83),CHR(115))
+	ELSE
+		??? IIF(ION,CHR(15),CHR(18))
+	ENDIF
+RETURN .T.

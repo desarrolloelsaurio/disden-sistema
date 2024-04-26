@@ -1,0 +1,8 @@
+FUNCTION DISP_ND
+PARAMETER D_LETRA
+      IF SUCU='0002'
+         DO lDEBi1B
+      ELSE
+         DO lDEBi1
+      ENDIF
+RETURN .T.

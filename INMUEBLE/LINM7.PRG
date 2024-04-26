@@ -1,0 +1,9 @@
+FUNCTION LINM7
+#DEFINE PAIP   "|"                               && PAIP
+? PAIP
+?? DOMICILIO
+?? PAIP
+?? EVAL(VAR_IMPR)
+?? PAIP
+CASOS=CASOS+1
+RETURN .T.

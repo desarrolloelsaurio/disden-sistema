@@ -1,0 +1,11 @@
+FUNCTION LCLICA0
+#DEFINE PAIP   "|"                               && PAIP
+? PAIP
+?? CODCLI
+?? PAIP
+?? CLIENTE
+?? PAIP
+?? STR(COLUMNA,XACDIGI)
+?? PAIP
+M.TOTAL=M.TOTAL+COLUMNA
+RETURN .T.

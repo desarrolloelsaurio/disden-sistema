@@ -1,0 +1,35 @@
+FUNCTION QPOVIA
+IF M.QP_CPO="BUQUE"
+   IF ELIBUQ(Q_TEX,Q_REN,Q_COL)
+      M.QP_SALIDA=PER.CODCLI
+   ENDIF
+ELSE
+   IF M.QP_CPO="CLIENTE"
+      IF ELICLI(Q_TEX,Q_REN,Q_COL)
+         M.QP_SALIDA=PER.CODCLI
+      ENDIF
+   ELSE
+      IF M.QP_CPO="PROCOD"
+         IF ELIPRO(Q_TEX,Q_REN,Q_COL)
+            M.QP_SALIDA=PER.CODCLI
+         ENDIF
+      ELSE
+      IF M.QP_CPO="GAS"      
+         IF ELIGAS(Q_TEX,Q_REN,Q_COL)
+            M.QP_SALIDA=LEFT(MIX.TEXTO2,11)
+         ENDIF
+         ELSE
+      IF M.QP_CPO="PAG"
+         IF ELIPAG(Q_TEX,Q_REN,Q_COL)
+            M.QP_SALIDA=LEFT(MIX.TEXTO2,2)
+         ENDIF
+ELSE
+         IF ELIRUB(Q_TEX,Q_REN,Q_COL)
+            M.QP_SALIDA=RUB.CODRUB
+         ENDIF
+ENDIF
+         ENDIF
+      ENDIF
+   ENDIF
+ENDIF
+RETURN .T.

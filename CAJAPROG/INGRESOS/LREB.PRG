@@ -1,0 +1,154 @@
+*********************************************************************************
+*-- Programa: LREB.PRG
+*-- Fecha   : 03-31-93 11:21am
+*-- Version : G. REINER
+*-- Notas   : DERIVA A LISTADO DE RECIBOS
+********************************************************************************
+parameter vaaqu
+#DEFINE CRLF CHR(13)+CHR(10)                     && CRLF
+CANT_MAX=9
+DIME TEXTO[CANT_MAX,2], VARIABLE[CANT_MAX], Habilitado[CANT_MAX],habilant[cant_max]
+TEXTO[1,1]=' RECIBO '
+TEXTO[2,1]='FECHA OPERACION'
+TEXTO[3,1]='CLIENTE'
+TEXTO[4,1]='ORIGEN'
+TEXTO[5,1]=UPPER(XAUSS)
+TEXTO[6,1]=UPPER(XADOLS)
+TEXTO[7,1]='CHEQUES'
+TEXTO[8,1]='TARJETAS'
+TEXTO[9,1]='TOTAL'
+
+TEXTO[1,2]=8
+TEXTO[2,2]=8
+TEXTO[3,2]=30
+TEXTO[4,2]=21
+TEXTO[5,2]=XACDIGI
+TEXTO[6,2]=XACDIGI
+TEXTO[7,2]=XACDIGI
+TEXTO[8,2]=XACDIGI
+TEXTO[9,2]=XACDIGI
+
+STORE '' TO FISC
+store "" to ttque
+store .t. to habilitado
+store 1 to FILREB,FILCLI,FILFEC
+if !vaaqu
+   do while queryREB()
+   ENDdo
+else
+   TTQUE=CHR(13)+CHR(10)+;
+     "FECHA "+DTOC(M.FECINI)
+   STORE .T. TO VARIABLE,HABILITADO
+   STORE .F. TO VARIABLE[2],HABILITADO[2]
+   FISC="CAJ.FECHAOP={"+DTOC(M.FECINI)+"} .AND. CAJ.SUCRSAL='"+SUCU+"'"
+   =LREBZ0("(Seg£n Base de Caja)"+CRLF+QUECAJA(SUCU))
+   =OPCAJ(JANNRO,.F.,.T.)
+   FISC="CAJ.FECHAOP={"+DTOC(M.FECINI)+"} .AND. EMPTY(CAJ.SUCRSAL)"
+   =LREBZ0("(Seg£n Base de Caja)"+CRLF+QUECAJA("-"))
+   =OPCAJ(JANNRO,.F.,.T.)
+   FISC="CAJ.FECHAOP={"+DTOC(M.FECINI)+"}"
+   =LREBZ0("(Seg£n Base de Caja)"+CRLF+QUECAJA())
+   IF SSTM2="CAJAARRI"
+      IF LAST()#27
+         GO TOP
+         NUINI=CAJ.NUMERE
+         GO BOTT
+         NUFIN=CAJ.NUMERE
+         =OPCAJ(JANNRO,.F.,.T.)
+         TTQUE=CHR(13)+CHR(10)+;
+           "RECIBOS "+NUINI+" AL "+NUFIN
+         STORE .T. TO VARIABLE,HABILITADO
+         FISC="CAJ.NUMERE>='"+NUINI+"' .AND. CAJ.NUMERE<='"+NUFIN+"'"
+         =LREBZ0("(Seg£n Base de Caja)")
+         IF LAST()#27
+            =OPCAJ(JANNRO,.F.,.T.)
+            =LREBCCL()
+            IF LAST()#27
+               =LREBCCH()
+            ENDIF
+         ENDIF
+      ENDIF
+   ENDIF
+   =OPCAJ(JANNRO,.F.,.T.)
+ENDIF
+RETURN
+
+FUNCTION LREBCCL
+#DEFINE CRLF CHR(13)+CHR(10)                     && CRLF
+=WORKING()
+=DOTALK()
+=OPCCL()
+SET ORDER TO
+SELE CCL
+=FLOCK("CCL") .OR. FLOK("CCL")
+TMP=GENTMP()
+SORT ON NUMERORE FOR FECHAOP=M.FECINI .AND. COMPRRE="RE" TO (TMP)
+TT="INGRESOS DE CAJA"+;
+  CRLF+;
+  "FECHA "+DTOC(FECINI)+;
+  CRLF+;
+  "(Seg£n Base de Cuentas Corrientes)"
+SELE CCL
+USE (TMP) ALIAS CCL
+GO TOP
+ELCLI=CODCLI
+ELFOR=NUMERORE
+SET ORDER TO TAG CODCLI IN PER
+set relation to CODCLI INTO PER
+ACLA=PAIP+;
+  PADC("NUMERO",14)+PAIP+;
+  PADC("CLIENTE",IIF(PORPAN,15,30))+PAIP+;
+  PADC("ORIGEN",20)+PAIP+;
+  PADC("MONTO",XACDIGI)+PAIP
+linea=REPL("=",LEN(acla))
+STORE NUL TO CASOS,TTL,PARC
+=UNTALK()
+=UNWORK()
+IF PORPAN
+   DO LrebCCLP
+ELSE
+   DO LrebCCLI
+ENDIF
+SELE CCL
+=REOPCCL()
+RETURN
+
+FUNCTION LREBCCH
+#DEFINE CRLF CHR(13)+CHR(10)                     && CRLF
+=WORKING()
+=DOTALK()
+=OPCCH()
+SET ORDER TO
+SELE CCH
+=FLOCK("CCH") .OR. FLOK("CCH")
+TMP=GENTMP()
+SORT ON NUMERE FOR FECHAOP=M.FECINI .AND. COMPRE="RE" TO (TMP)
+TT="INGRESOS DE VALORES DIFERIDOS"+;
+  CRLF+;
+  "FECHA "+DTOC(FECINI)+;
+  CRLF+;
+  "(Seg£n Base de Cartera de Cheques)"
+SELE CCH
+USE (TMP) ALIAS CCH
+GO TOP
+SET ORDER TO TAG CODCLI IN PER
+set relation to CODCLI INTO PER
+ACLA=PAIP+;
+  PADC("NUMERO",14)+PAIP+;
+  PADC("CLIENTE",IIF(PORPAN,15,30))+PAIP+;
+  PADC("ORIGEN",20)+PAIP+;
+  PADC("DETALLE",20)+PAIP+;
+  IIF(PORPAN,"",PADC("NUMERO",15))+PAIP+;
+  PADC("TARJETAS",XACDIGI)+PAIP+;
+  PADC("CHEQUES",XACDIGI)+PAIP
+linea=REPL("=",LEN(acla))
+STORE NUL TO CASOS,TTLCHE,TTLTAR,PARCHE,PARTAL
+=UNTALK()
+=UNWORK()
+IF PORPAN
+   DO LrebCCHP
+ELSE
+   DO LrebCCHI
+ENDIF
+=REOPCCH()
+RETURN

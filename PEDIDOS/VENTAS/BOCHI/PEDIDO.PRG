@@ -1,0 +1,13 @@
+PROCEDURE PEDIDO
+#DEFINE BOTOM  "  "+repl("°",78)                 && BOTOM
+ULPR=HORA_ULP(PROGRAM())
+PE_DIJO=ALLTRIM(PROMPT())
+DO CASE
+CASE PE_DIJO="Ingresa Pedido"
+DO PED.SPR
+CASE PE_DIJO="Reindexa Base"
+DO XPED
+CASE PE_DIJO="Listados por Pantalla"
+CASE PE_DIJO="Listados por Impresora"
+ENDCASE
+RETURN MEN_LIN(BOTOM)

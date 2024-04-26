@@ -1,0 +1,15 @@
+* ษออออออออออออออออออออออออออออป
+* บ PROCEDIMIENTO : PORCEN.PRG บ
+* บ COMENTARIO    :            บ
+* ศออออออออออออออออออออออออออออผ
+FUNCTION PORCEN
+	PARAMETER P_N1,P_N2,P_RDN,P_N3
+	IF TYPE("P_RDN")#"N"
+	RETURN P_N1+P_N1*P_N2/100
+ENDIF
+IF EMPTY(P_N3)
+RETURN ROUND(P_N1+P_N1*P_N2/100,P_RDN)
+ELSE
+P_N1=P_N1+P_N1*P_N2/100
+RETURN ROUND(P_N1+P_N1*P_N3/100,P_RDN)
+ENDIF

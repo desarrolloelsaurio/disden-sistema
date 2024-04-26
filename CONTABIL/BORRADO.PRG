@@ -1,0 +1,14 @@
+*
+*                           BORRADO DE SALDOS
+*
+* BORRADO.PRG
+*
+IF CONFIRM1("BORRAR SALDOS") .AND. CLAVE()
+   WAIT "BORRANDO..." WIND NOWA
+   SELE BAL
+   REPL ALL DEBE1 with 0,DEBE2 with 0,DEBE3 with 0,DEBE4 with 0,DEBE5 with 0,DEBE6 with 0,DEBE7 with 0,DEBE8 with 0,DEBE9 with 0,DEBE10 with 0,DEBE11 with 0,DEBE12 with 0
+   REPL ALL HABER1 with 0,HABER2 with 0,HABER3 with 0,HABER4 with 0,HABER5 with 0,HABER6 with 0,HABER7 with 0,HABER8 with 0,HABER9 with 0,HABER10 with 0,HABER11 with 0,HABER12 with 0
+   WAIT CLEA
+ENDIF
+=MEN_LIN(SYSNOMBRE)
+return

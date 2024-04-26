@@ -1,0 +1,72 @@
+* ÚÄ FUNCION  ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+* ³  Description: ICOB0         ³
+* ³       Author: G. REINER     ³
+* ³ Date created: 11-04-92      ³
+* ³ Time created: 02:25:33pm    ³
+* ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+FUNCTION ICOB0
+	TOMON=TOMONANT
+	VUELTO=NADA-TOMON
+	SELE CAJ
+	SCAT MEMV BLAN
+	SELE CCL
+	SCAT MEMV BLAN
+	M.codcli=FAC.CODCLI
+	M.CAJA='00'
+	M.FECHAOP=date()
+	M.COMPR='FA N§ '+FAC.FACTURA
+	M.COMPRE='RE'
+	M.MONEDA=xauss
+	M.NUMERE=NADAREC
+	M.FECHA=DATE()
+	M.USUARIO=USADOR
+	*
+	M.fechave=date()
+	M.detalle="Pago efec FA N§"+FAC.FACTURA
+	M.comprre='RE'
+	M.FECHA=DATE()
+	M.USUARIO=USADOR
+	M.NUMERORE=NADAREC
+	IF !EMPTY(EFECAUS)
+		IF M.EFECAUS>TOMON
+			VUELTO=M.EFECAUS-TOMON
+			M.EFECAUS=TOMON
+		ENDIF
+		M.MONTO=efecaus
+		M.MONEDA=xaUSS
+		M.EQUIVALE=efecaus/xacotiz
+        STORE IIF(SSTM2="CAJAARRI","0000",SUCU) TO M.SUCRSAL		
+		=agrabar("caj")
+		M.MONTO=efecaus
+		M.EQUIVALE=efecaus/xacotiz
+		=agrabar("ccl")
+	ENDIF
+	IF !EMPTY(EFECDOL)
+		IF EMPTY(VUELTO)
+			VUELTO=M.EFECDOL*XACOTIZ+M.EFECAUS-TOMON
+			M.EFECDOL=EFECDOL-VUELTO
+		ENDIF
+		M.MONTO=efecdol
+		M.MONEDA=xadols
+		M.EQUIVALE=efecdol
+                  STORE IIF(SSTM2="CAJAARRI","0000",SUCU) TO M.SUCRSAL		
+		=AGRABAR("CAJ")
+		M.comprre='RE'
+		M.MONTO=efecdol
+		M.MONEDA=xadols
+		M.EQUIVALE=efecdol
+		=AGRABAR("CCL")
+	ENDIF
+	IF !EMPTY(REDONDEO)
+		M.MONTO=REDONDEO
+		M.MONEDA=xaUSS
+		M.EQUIVALE=efecaus/xacotiz
+		STORE NUL TO RESPUESTA
+		IF ELIGAS("",-1,1)
+		ENDIF
+		M.GASTO=MIX.TEXTO2
+		                  STORE IIF(SSTM2="CAJAARRI","0000",SUCU) TO M.SUCRSAL
+		=AGRABAR("CAJ")
+	ENDIF
+    =RESTACCL(FAC.CODCLI,FAC.FACTURA,M.REDONDEO+M.EFECAUS+M.EFECDOL*XACOTIZ,.T.)
+RETURN .T. 

@@ -1,0 +1,3 @@
+FUNCTION VAR_MAR
+	PUBL MARpop,iMARr,iMARc,iMARla,iMARan,cMARc,cMARr,cMARan,cMARla,MARpopc,MARpopr,vMARc,vMARr,vMARan,vMARla,mMARc,mMARr,mMARla,mMARan
+RETURN

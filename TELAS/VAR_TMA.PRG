@@ -1,0 +1,3 @@
+FUNCTION VAR_TMA
+	PUBL TMApop,TMApopc,TMApopr,ordTMA
+RETURN .T.

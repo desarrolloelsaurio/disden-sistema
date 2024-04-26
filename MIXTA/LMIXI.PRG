@@ -1,0 +1,12 @@
+***********************
+*-- PROGRAMA: LMIXI.PRG
+***********************
+STORE "" TO M.TT,M.ACLA,M.LINEA,casos,masuno
+=LMIXP0() 
+IF _WINDOWS
+   TT=MENSAJE[9]
+   REPO FORM LMIXI FOR FILTRO=OTROS[7] TO PRIN PROMPT
+ELSE
+   =XPRN1(4,"MIX","LMIXP1()",MENSAJE[9],ULPR)
+ENDIF
+RETURN .T.

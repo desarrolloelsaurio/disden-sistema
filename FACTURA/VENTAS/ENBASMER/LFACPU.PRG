@@ -1,0 +1,35 @@
+*****************************************************
+*-- Programa: LFACPU.PRG
+*-- Fecha   : 08-26-92 10:36am
+*-- Version : GOYO REINER
+*-- Notas   : LISTADO ULTIMA OPERACION DE FACTURACION
+*-- Modificaci¢n GOYO 12-25-92 10:38am
+*****************************************************
+STORE HORA_ULP(PROGRAM()) TO ULPR
+=CHEQSEG()
+STORE "" TO CASOS,ACLA,LINEA,TT
+=LFACPU0()
+=WIN0()
+PAG=1
+=CABPAN()
+=TIT_LIN(1)
+STORE '' TO KODCLI,KLIENTE,FEKHA,FAKTURA
+=LFACPU1()
+SCAN
+	IF ROW()>21
+		IF !FIN_LIN(1,NUL)
+			EXIT
+		ENDIF
+		CLEA
+		STOR PAG+1 TO PAG
+		=CABPAN()
+		=TIT_LIN(2)
+	ENDIF
+   =LFACPU1(KODCLI#FAC.CODCLI)
+ENDSCAN
+=LFACPU1(.T.)
+=FIN_LIN(2,CASOS)
+=RELEWIN("WIN")
+=IAUD("")
+=REOPFAC()
+RETURN MEN_LIN(BOTOM)

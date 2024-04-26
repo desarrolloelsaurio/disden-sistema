@@ -1,0 +1,47 @@
+********************************************************************************
+*-- Programa: LRECP.PRG
+*-- Fecha   : 05-20-92 02:32am
+*-- Version : G. REINER
+*-- Notas   : DERIVA A LISTADOS DE REMITOS
+********************************************************************************
+PARAMETER PORPAN
+CANT_MAX=7
+DIME TEXTO[CANT_MAX,2], VARIABLE[CANT_MAX], Habilitado[CANT_MAX],habilant[cant_max]
+TEXTO[1,2] =14
+TEXTO[2,2] =8
+TEXTO[3,2] =20
+TEXTO[4,2] =14
+TEXTO[5,2] =8
+TEXTO[6,2] =14
+TEXTO[7,2] =8
+TEXTO[1,1] ='REMITO'
+TEXTO[2,1] ='FECHA EMISION'
+TEXTO[3,1] ='PROVEEDOR'
+TEXTO[4,1] ='N§ PEDIDO;'
+TEXTO[5,1] ='F. PEDIDO'
+TEXTO[6,1] ='N§ FACTURA'
+TEXTO[7,1] ='F. FACTURA'+space(10)
+STORE HAYCAMPO("DISCRIM","MER") TO HAYDISC
+STORE "" TO TTQUE
+STORE .T. TO HABILITADO
+STORE 1 TO FILEMP,FILFAC,FILPRO,FILFEC,FILGAS,FILPAG,FILMON,FILMER,FILVEN
+FISC=''
+DO WHILE QUERYREC(PORPAN)
+   IF FILMER#1
+      IF FILFAC=3 .OR. FILFEC=3 .OR. FILPRO=3
+         =IIF(PORPAN,LRECPR(),LRECIR())
+      ELSE
+         TT=TTQUE
+         =IIF(PORPAN,LRECPY(),LRECIY())
+      ENDIF
+   ELSE
+      =ACOPY(HABILITADO,HABILANT)
+      DO WHILE CFGFAC() .AND. FILFAC#2
+         =IIF(PORPAN,LRECPZ(),LRECIZ())
+         STORE .F. TO VARIABLE
+      ENDDO
+      STORE .F. TO VARIABLE
+      =ACOPY(HABILANT,HABILITADO)
+   ENDIF
+ENDDO
+RETURN

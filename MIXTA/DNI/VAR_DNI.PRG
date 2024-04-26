@@ -1,0 +1,3 @@
+FUNCTION var_DNI
+	PUBL DNIpop,DNIpopc,DNIpopr,ORDDNI
+RETURN .T.

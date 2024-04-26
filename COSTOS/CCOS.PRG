@@ -1,0 +1,59 @@
+*******************************************************************************
+*-- Programa: CCOS.PRG
+*-- Fecha   : 11-19-92 03:15am
+*-- Version : G. REINER
+*-- Notas   : CORRIGE COSTO
+********************************************************************************
+=UNWORK()
+=MEN_LIN('[ESC] PARA SALIR - Ctrl+H para AYUDA')
+DEFI WIND WIN FROM 5,10 TO 22,68 FOOT JANNAME TITL ' Correcci¢n de Costos ' shad colo sche 3
+
+ON KEY LABEL Ctrl+D WAIT MER.MERCA WIND NOWA
+ON KEY LABEL Ctrl+H DO CCOSHELP
+ON KEY LABEL Ctrl+P DO CCOSMPRO
+ON KEY LABEL Ctrl+X KEYBOARD CHR(23)
+ON KEY LABEL Ctrl+M DO CCOSMMAR
+
+BROW FIELD ;
+ARTICULO:R,;
+TEXTO=LEFT(MER.MERCA,20):R,;
+COSTOAU:P="9,999,999.99":H=PADC(ALLTRIM(UPPER(XAUSS)),12),;
+COSTODOL:P="9,999,999.99":H=PADC(ALLTRIM(UPPER(XADOLS)),12) ;
+WIND WIN
+
+ON KEY LABEL Ctrl+D
+ON KEY LABEL Ctrl+H
+ON KEY LABEL Ctrl+M
+ON KEY LABEL Ctrl+P
+ON KEY LABEL Ctrl+X
+RETURN
+procedure CCOSHELP
+	=movewin(12,NUL,21,43,'AYUDA',' AYUDA ')
+	@ 1,1 SAY 'Ctrl D  Muestra Denominaci¢n Completa'
+	@ 2,1 SAY 'Ctrl H  Esta Ayuda'
+	@ 3,1 SAY 'Ctrl M  Muestra Marca'
+	@ 4,1 SAY 'Ctrl P  Muestra Proveedor'
+	@ 5,1 SAY 'Ctrl X  Sale de Correcci¢n'
+	@ 6,1 say 'ENTER  Fin Ayuda'
+	=inkey(NUL,'HM')
+	=relewin("ayuda")
+return
+PROCEDURE CCOSMMAR
+=XSEEK(MER.MARCA,'MI1','MARCOD')
+WAIT 'Marca:'+mi1.texto1 wind nowa
+return .t.
+PROCEDURE CCOSMPRO
+SALIDA=''
+IF !EMPTY(MER.PRO1) .AND. XSEEK(MER.PRO1,'PRO','PROCOD')
+SALIDA='PROVEEDOR 1:'+ALLTRIM(PRO.PROVEEDOR)+" ("+ALLTRIM(MER.PRO1)+")"
+ENDIF
+IF !EMPTY(MER.PRO2) .AND. XSEEK(MER.PRO2,'PRO','PROCOD')
+SALIDA=SALIDA+IIF(EMPTY(SALIDA),"",CHR(13)+CHR(10))+'PROVEEDOR 2:'+ALLTRIM(PRO.PROVEEDOR)+" ("+ALLTRIM(MER.PRO2)+")"
+ENDIF
+IF !EMPTY(MER.PRO3) .AND. XSEEK(MER.PRO3,'PRO','PROCOD')
+SALIDA=SALIDA+IIF(EMPTY(SALIDA),"",CHR(13)+CHR(10))+'PROVEEDOR 3:'+ALLTRIM(PRO.PROVEEDOR)+" ("+ALLTRIM(MER.PRO2)+")"
+ENDIF
+=POPCARTE(SALIDA)
+=INKEY(NUL,'HM')
+=RELEWIN("POPCARTE")
+RETURN

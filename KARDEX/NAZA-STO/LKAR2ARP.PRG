@@ -1,0 +1,103 @@
+* ษอออออออออออออออออออออออออออออออออออออออออออออออ
+* บ PROCEDIMIENTO : LKAR2ARP.PRG
+* บ COMENTARIO    : LISTADO DE KARDEX (1 ARTICULO)    
+* ฬอออออออออออออออออออออออออออออออออออออออออออออออ
+* บ AUTOR      : GOYO REINER
+* บ FECHA      : 08-20-93
+* บ HORA       : 00:45:57am
+* บ COPYRIGHT  : 1993 by GREGORIO REINER
+* ศอออออออออออออออออออออออออออออออออออออออออออออออ
+#DEFINE ONE    1                                 && ONE
+#DEFINE TWO    2                                 && TWO
+#DEFINE NUL    0                                 && NUL
+#DEFINE BOTOM  "  "+repl("ฐ",78)                 && BOTOM
+#DEFINE PAIP   "|"                               && PAIP
+
+STORE HORA_ULP(PROGRAM()) TO ULPR
+IF CHEQSEG()
+	STOR NUL TO CASOS
+	=WIN0()
+	PAG=ONE
+	=CABPAN()
+	=TIT_LIN(ONE)
+	SELE kars
+	STORE 0 TO M.ENT,M.SAL,M.VEZ
+	SCAN
+		if KARS.fechaop<m.fecini
+			M.ENT=M.ENT+KARS.ENTRADA
+			M.SAL=M.SAL+KARS.SALIDA
+		ELSE
+		   IF KARS.FECHAOP>M.FECFIN
+		      EXIT
+		   ELSE
+			=LAVEZ()
+			IF ROW()>21
+				IF !FIN_LIN(ONE,NUL,;
+					PAIP+SPACE(8)+PAIP+;
+					PADR("SUBTOTAL",42)+PAIP+;
+					STR(M.ENT,XACDIGI,2)+PAIP+;
+					STR(M.SAL,XACDIGI,2)+PAIP)
+					EXIT
+				ENDIF
+				CLEA
+				STOR PAG+ONE TO PAG
+				=CABPAN()
+				=TIT_LIN(TWO)
+			ENDIF
+			ENDIF
+			=lkar1ar0()
+		ENDIF
+	ENDSCAN
+	=LAVEZ()
+	=FIN_LIN(TWO,CASOS,;
+	PAIP+SPACE(8)+PAIP+;
+	PADR("SUBTOTAL",42)+PAIP+;
+	STR(M.ENT,XACDIGI,2)+PAIP+;
+	STR(M.SAL,XACDIGI,2)+PAIP,.T.)
+	? M.LINEA
+	SCAN WHILE !EOF()
+			M.ENT=M.ENT+KARS.ENTRADA
+			M.SAL=M.SAL+KARS.SALIDA
+	ENDSCAN
+	=FIN_LIN(TWO,CASOS,;
+	PAIP+SPACE(8)+PAIP+;
+	PADR("TOTAL",42)+PAIP+;
+	STR(M.ENT,XACDIGI,2)+PAIP+;
+	STR(M.SAL,XACDIGI,2)+PAIP,.T.)
+	IF M.SAL>M.ENT
+		=FIN_LIN(TWO,CASOS,;
+		PAIP+SPACE(8)+PAIP+;
+		PADR("STOCK",42)+PAIP+;
+		STR(0,XACDIGI,2)+PAIP+;
+		STR(M.ENT-M.SAL,XACDIGI,2)+PAIP)
+	ELSE
+		=FIN_LIN(TWO,CASOS,;
+		PAIP+SPACE(8)+PAIP+;
+		PADR("STOCK",42)+PAIP+;
+		STR(M.ENT-M.SAL,XACDIGI,2)+PAIP+;
+		STR(0,XACDIGI,2)+PAIP)
+	ENDIF
+	=RELEWIN("WIN")
+	=IAUD("")
+ELSE
+	=IAUDI()
+ENDIF
+RETURN MEN_LIN(BOTOM)
+
+FUNCTION LAVEZ
+	IF EMPTY(VEZ)
+		VEZ=1
+		IF !EMPTY(M.SAL) .OR. ;
+			!EMPTY(M.ENT)
+			? PAIP
+			?? M.FECINI
+			?? PAIP
+			?? PADR("MOVIMIENTOS AL "+DTOC(M.FECINI),42)
+			?? PAIP
+			?? STR(M.ENT,XACDIGI,2)
+			?? PAIP
+			?? STR(M.SAL,XACDIGI,2)
+			?? PAIP
+		ENDIF
+	ENDIF
+RETURN .T.

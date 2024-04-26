@@ -1,0 +1,43 @@
+FUNCTION LKAR1OC
+#DEFINE BOTOM  "  "+repl("°",78)                 && BOTOM
+#DEFINE PAIP   "|"                               && PAIP
+#DEFINE NUL    0                                 && NUL
+#DEFINE CRLF CHR(13)+CHR(10)                     && CRLF
+
+EXTERNAL PROCEDURE LKAR1OC0
+=OPTELS()
+=OPAVIS()
+=OPKARS()
+STORE NUL TO M.CORINI
+IF ELICOT("a Listar") .and. LAST()#27
+   M.CORINI=COR.NUMERO
+   =WORKING()
+   =DOTALK()
+   SELE KARS
+   TMP=GENTMP()
+   LAREF="O.C. N§ "+ZERO(M.CORINI,8)
+   SORT ON FECHAOP,;
+   TELCODPRO,;
+   AVICODPRO ;
+   TO (TMP) ;
+   FOR REFERENCIA=LAREF
+   SELE KARS
+   USE (TMP) ALIAS KARS
+   SET ORDER TO TAG AVICODPRO IN AVIS
+   SET ORDER TO TAG TELCODPRO IN TELS
+   STORE "" TO M.LINEA,M.CASOS
+   TT="Listado de Kardex"+;
+   crlf+;
+   "Orden de Corte N§ "+alltrim(str(m.corini))
+   ACLA=" FECHA  "+PAIP+;
+   PADC("CODIGO",20)+PAIP+;
+   PADC("MATERIAL",30)+PAIP+;
+   PADC("ENTRADA",XACDIGI)+PAIP+;   
+   PADC("SALIDA",XACDIGI)+PAIP+;
+   "UNID"
+   =UNWORK()
+   =UNTALK()
+   =XPRN1(4,"KARS","LKAR1OC0()",ZERO(M.CORINI,8),"LKAR1OC")
+   =OPKARS(.T.)
+ENDIF
+RETURN MEN_LIN(BOTOM)

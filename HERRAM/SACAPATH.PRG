@@ -1,0 +1,8 @@
+function sacapath
+	archivo=getfile("pjx","ARCHIVO A MODIFICAR")
+	IF !EMPTY(ARCHIVO) .AND. LAST()#27
+		USE (ARCHIVO)
+		REPL ALL NAME WITH SUBSTR(NAME,RAT('\',NAME)+1)
+		USE
+	ENDIF
+RETURN .T.

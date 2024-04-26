@@ -1,0 +1,112 @@
+W
+
+Processor is 80486
+Select area:  1, Database in Use: C:\SISTEMAS\CAJA\CAJAA\CAJA.DBF    Alias: CAJA
+           Code page:   0
+ Structural CDX file:   C:\SISTEMAS\CAJA\CAJAA\CAJA.CDX
+           Index tag:   CAJA       Collate: Machine   Key: CAJA
+           Index tag:   GASTO      Collate: Machine   Key: GASTO
+           Index tag:   CODCLI     Collate: Machine   Key: CODCLI
+           Index tag:   FECHAOP    Collate: Machine   Key: FECHAOP
+           Index tag:   COMPR      Collate: Machine   Key: COMPR   For: PROVEEDOR
+       Lock(s): Exclusive USE
+
+Select area:  2, Database in Use: C:\SISTEMAS\CAJA\CAJAA\CAJAANT.DBF    Alias: CAJAANT
+           Code page:   0
+       Lock(s): Exclusive USE
+
+Select area:  3, Database in Use: C:\SISTEMAS\CAJA\CAJAA\CTACTEBA.DBF    Alias: CTACTEBA
+           Code page:   0
+       Lock(s): Exclusive USE
+
+Select area:  4, Database in Use: C:\SISTEMAS\CAJA\CAJAA\ORDENPAG.DBF    Alias: ORDENPAG
+           Code page:   0
+ Structural CDX file:   C:\SISTEMAS\CAJA\CAJAA\ORDENPAG.CDX
+           Index tag:   NUMERO     Collate: Machine   Key: NUMERO
+       Lock(s): Exclusive USE
+
+Select area:  5, Database in Use: C:\SISTEMAS\CAJA\CAJAA\CAJADIA.DBF    Alias: CAJADIA
+           Code page:   0
+ Structural CDX file:   C:\SISTEMAS\CAJA\CAJAA\CAJADIA.CDX
+           Index tag:   FECHAOP    Collate: Machine   Key: FECHAOP
+       Lock(s): Exclusive USE
+
+Select area:  6, Database in Use: C:\SISTEMAS\CAJA\CAJAA\CAJAA.DBF    Alias: CAJAA
+           Code page:   0
+ Structural CDX file:   C:\SISTEMAS\CAJA\CAJAA\CAJAA.CDX
+           Index tag:   BASE       Collate: Machine   Key: FIELD_BASE   For: FIELD_TYPE="B"
+           Index tag:   CAMPO      Collate: Machine   Key: FIELD_BASE+FIELD_NAME
+       Lock(s): Exclusive USE
+
+Select area:  7, Database in Use: C:\SISTEMAS\CAJA\CAJAA\RECIBOX.DBF    Alias: RECIBOX
+           Code page:   0
+ Structural CDX file:   C:\SISTEMAS\CAJA\CAJAA\RECIBOX.CDX
+           Index tag:   RECIBO     Collate: Machine   Key: RECIBO
+       Lock(s): Exclusive USE
+
+Select area:  8, Database in Use: C:\SISTEMAS\CAJA\CAJAA\TARJEDAT.DBF    Alias: TARJEDAT
+           Code page:   0
+ Structural CDX file:   C:\SISTEMAS\CAJA\CAJAA\TARJEDAT.CDX
+           Index tag:   CODCLI     Collate: Machine   Key: CODCLI+TARJETA
+       Lock(s): Exclusive USE
+
+Select area:  9, Database in Use: C:\SISTEMAS\CAJA\CAJAA\RECIBOS.DBF    Alias: RECIBOS
+           Code page:   0
+ Structural CDX file:   C:\SISTEMAS\CAJA\CAJAA\RECIBOS.CDX
+           Index tag:   RECIBO     Collate: Machine   Key: RECIBO
+           Index tag:   FECHAOP    Collate: Machine   Key: FECHAOP
+           Index tag:   COD_OPER1  Collate: Machine   Key: COD_OPER1
+       Lock(s): Exclusive USE
+
+Select area: 10, Database in Use: C:\SISTEMAS\CAJA\CAJAA\TARJETAS.DBF    Alias: TARJETAS
+           Code page:   0
+ Structural CDX file:   C:\SISTEMAS\CAJA\CAJAA\TARJETAS.CDX
+           Index tag:   FACTURA    Collate: Machine   Key: FACTURA
+           Index tag:   RECIBO     Collate: Machine   Key: RECIBO
+       Lock(s): Exclusive USE
+
+Currently Selected Database:
+Select area: 11, Database in Use: C:\SISTEMAS\CAJA\CAJAA\CHEQUES.DBF    Alias: CHEQUES
+           Code page:   0
+ Structural CDX file:   C:\SISTEMAS\CAJA\CAJAA\CHEQUES.CDX
+           Index tag:   CODCLI     Collate: Machine   Key: CODCLI
+           Index tag:   RECIBO     Collate: Machine   Key: RECIBO
+       Lock(s): Exclusive USE
+
+File search path: 
+Default disk drive: C:
+Print file/device:  PRN:
+Work area =  11
+Margin    =   0
+Decimals  =   2
+Memowidth =  50
+Typeahead =  20
+Blocksize =  64
+Reprocess =       0
+Refresh   =   0 SECONDS
+DOS memory available = 416k
+DOS memory utilized = 0k
+
+Code page: 0
+Collating sequence: Machine
+Compiler code page: 0
+Date format: American
+Macro Hot Key = SHIFT+F10
+UDF parameters are passed by: VALUE
+Textmerge Options
+          Delimiters:  Left = <<  Right = >>
+          Show
+
+Alternate  - off   Console    - on    Fixed      - off   Safety     - off   
+ANSI       - off   Cursor     - on    Heading    - on    Space      - on    
+Bell       - on    Debug      - on    Help       - on    Status     - off   
+Blink      - on    Deleted    - off   Intensity  - on    Sticky     - on    
+Brstatus   - off   Device     - scrn  Lock       - off   Sysmenus   - on    
+Carry      - off   Dosmem     - off   Logerrors  - on    Talk       - off   
+Century    - off   Echo       - off   Mouse      - on    Textmerge  - off   
+Clear      - on    Escape     - on    Multilocks - off   Title      - off   
+Color      - on    Exact      - off   Near       - off   Unique     - off   
+Compatible - off   Exclusive  - on    Optimize   - on    
+Confirm    - off   Fields     - off   Print      - off   
+
+

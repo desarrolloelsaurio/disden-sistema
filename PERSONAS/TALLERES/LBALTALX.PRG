@@ -1,0 +1,128 @@
+* ษออออออออออออออออออออออออออออออออออออออออออออออออป
+* บ PROCEDIMIENTO : LBALTALX.PRG                   บ
+* บ COMENTARIO    : BALANCE DE TALLERES VALORIZADO บ
+* ฬออออออออออออออออออออออออออออออออออออออออออออออออน
+* บ AUTOR      : GOYO REINER & R. 'EL BATA'        บ
+* บ FECHA      : 25-09-95                          บ
+* ศออออออออออออออออออออออออออออออออออออออออออออออออผ
+FUNCTION LBALTALX
+#DEFINE CRLF CHR(13)+CHR(10)                   && CRLF
+#DEFINE NUL    0                               && NUL
+#DEFINE PAIP   "|"                             && PAIP
+*OPTAR=ALGUN(30,"Lกmites del Listado","Todos los Talleres;Un Taller")
+OPTAR=4
+if !empty(optar)
+   if optar>1
+      if !EMPTY(ELITALS("a Listar",-1,1))
+         m.eltal=PER.CODCLI
+      else
+         =noselec("TALLER")
+         store "" to m.eltal
+      endif
+   endif
+   =WORKING()
+   =DOTALK()
+   *** NUEVA OPCION: UN TALLER VALORIZADO
+   SET ORDER TO TAG TALCOD IN PER
+   SET ORDER TO TAG NUMERO IN COR
+   SELE FAX
+   SET RELA TO NUMERO INTO COR
+   TMP =GENTMP()
+   SORT ON FAX.NUMERO FIELDS NUMERO ,;
+     POSIC ,;
+     PSC ,;
+     PRC,;
+     COR.ARTICULO ,;
+     EF ,SF ,;
+     EEC,SSC ,;
+     REMITO ,;
+     EST.MONTO FOR ;
+     FAX.TALLER=ELTAL .AND. ;
+     ((YEAR(EF)=M.XANIO .AND. MONTH(EF)=M.XMES) .OR. ;
+     (YEAR(SF)=M.XANIO .AND. MONTH(SF)=M.XMES)) ;
+     TO (TMP)
+   =PRXAREA(.T.)
+   USE (TMP) ALIAS TMP
+   REPL ALL MONTO WITH 0
+   * ACA TENGO LA SALIDA Y LA ENTRADA DEL TALLER SELECCIONADO
+   *                  EN EL RANGO DE FECHAS SELECCIONADO
+   * TENGO QUE RELACIONAR TMP (FAX) ARTICULO TO COR (CON INDICE NUMERO)
+   SELE TMP
+   INDEX ON NUMERO TAG NUMERO
+   SET ORDER TO TAG NUMERO
+   SELE CO1
+   SET RELA TO NUMERO INTO TMP
+   TMP1=GENTMP()
+   COPY TO (TMP1) FOR !EOF("TMP")
+   =PRXAREA(.T.)
+   USE (TMP1) ALIAS TMP1
+   INDEX ON STR(NUMERO)+COLOR TAG NUCOL UNIQ
+   SET ORDER TO TAG NUCOL
+   =OFF_RELA()
+ 
+   SELE TMP
+   INDEX ON ARTICULO TAG ARTICULO
+   SET ORDER TO TAG ARTICULO
+   SELE EST
+   SET RELA TO LEFT(ARTICULO, 10) INTO TMP
+   TMP2=GENTMP()
+   SORT ON ARTICULO TO (TMP2) FOR !EOF("TMP")
+   =PRXAREA(.T.)
+   USE (TMP2) ALIAS TMP2
+   INDEX ON ARTICULO+PRC TAG ARTIPROC
+   SET ORDER TO TAG ARTIPROC
+   =OFF_RELA()
+ 
+   SELE TMP                &&   ES FAX
+   SCAN FOR !EMPTY(SSC)
+      SELE TMP1            &&   ES CO1
+      SCAN FOR NUMERO=TMP.NUMERO
+         LACOSA=TMP.ARTICULO+"/"+TMP1.COLOR+SPACE(2)+TMP.PRC
+         IF SEEK(LACOSA,"TMP2")
+            REPL TMP.MONTO WITH TMP.MONTO+(TMP.SSC*TMP2.MONTO)
+         ENDIF
+      ENDSCAN
+      SELE TMP
+   ENDSCAN
+   SELE TMP
+   =UNTALK()
+   =UNWORK()
+   TT="BALANCE VALORIZADO DE TALLERES"+;
+     CRLF+"MES DE "+QMES(M.XMES)+;
+     CRLF+"AฅO:"+STR(M.XANIO,4)+;
+     CRLF+"TALLER:"+ALLTR(PER.CLIENTE)
+ 
+   STORE NUL TO CASOS
+ 
+   M.ACLAPAN=PAIP+;
+     PADC("O. C. Nง",10)+PAIP+;
+     PADC("REMITO",15)+PAIP+;
+     PADC("ARTICULO",10)+PAIP+;
+     PADC("PROCESO",10)+PAIP+;
+     PADC("ENTRADA",XACDIGI-2)+PAIP+;
+     PADC("SALIDA",XACDIGI-2)+PAIP+;
+     "DIAS"+PAIP+;
+     PADC("MONTO",XACDIGI)+PAIP
+ 
+   M.ACLAPRN=PAIP+;
+     PADC("O. C. Nง",10)+PAIP+;
+     PADC("REMITO",15)+PAIP+;
+     PADC("ARTICULO",10)+PAIP+;
+     PADC("DESCRIPCION",30)+PAIP+;
+     PADC("PROCESO",30)+PAIP+;
+     PADC("ENTRADA",XACDIGI-2)+PAIP+;
+     PADC("SALIDA",XACDIGI-2)+PAIP+;
+     "DIAS"+PAIP+;
+     PADC("MONTO",XACDIGI)+PAIP
+ 	
+ 	DIME PICULIN[4]
+ 	STORE REPL("9", XACDIGI-2) TO PICULIN[1], PICULIN[2]
+ 	STORE "@Z 9999" TO PICULIN[3]
+ 	STORE REPL("9",XACDIGI-3)+".99"  TO PICULIN[4]
+ 
+   =XPRN1(4, "TMP", "LBALTAX0()", "BAL. TALL. VAL.", "LBALTAX", 4, @PICULIN)
+ 
+   =OFF_RELA()
+   =OFf_TMP()
+ENDIF
+RETURN

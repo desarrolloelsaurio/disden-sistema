@@ -1,0 +1,178 @@
+*       *********************************************************
+*       *
+*       * 11/07/97            LISTAS.PRG              8:47:18
+*       *
+*       *********************************************************
+*       *
+*       *********************************************************
+
+CLEA
+=SETEOS()
+=GETPATH()
+RELE SSTM,JANNAME,USADOR,COEFSEG,XACANCHO,XACHOJA,SSTM1,LARGO,LARGOIM,SUCU
+RELE IVA09,IVA18,IVA118,IVA109,PC9,PC18,PC27,IVA127
+rele xacdigi,ULPR
+PUBL SSTM,JANNAME,USADOR,COEFSEG,XACANCHO,XACHOJA,SSTM1,LARGO,LARGOIM,SUCU
+RELE IVA09,IVA18,IVA118,IVA109,PC9,PC18,PC27,IVA127
+publ xacdigi,ULPR
+=OPMIX()
+=OPAUD()
+=OPSEG()
+=OPDOC()
+=var_dni()
+=VAR_PAG()
+=VAR_MER()
+=VAR_PRO()
+IF GETENV("EQUIPO")="MICASA"
+	rest from d:\sistemas\ventas\BOCHI\posic ADDI
+ELSE
+	rest from posic ADDI
+ENDIF
+=GETPATH()
+*** DEFINICION DE VARIABLES
+SSTM="LISTAS"
+SSTM1="DIS-DEN"
+JANNAME="DIS-DEN Odontología"
+USADOR=GETENV("USERNAME")
+LARGOIM=80
+COEFSEG=1
+XACANCHO=GETNU1(PADR(USADOR,10)+PADR("XACANCHO",20),"FOXPER")
+XACHOJA=GETNU1(PADR(USADOR,10)+PADR("XACHOJA",20),"FOXPER")
+SUCU="0001-"
+IVA09=10.5/100
+IVA109=1+IVA09
+PC9="10.5 %"
+IVA18=21/100
+IVA118=1+IVA18
+PC18="21 %"
+IVA27=IVA18+IVA09
+PC27="31.5 %"
+IVA127=1+IVA27
+STORE .T. TO CAGPOP,CIUPOP,CTDPOP,IVACOD,PRVPOP,PROPOP,DNIPOP,ZONPOP
+STORE .T. TO CLIPOP
+M.PORLISMAY=GETNU1("PORLISMAY","FOXGRL")
+M.PORLISMIN=GETNU1("PORLISMIN","FOXGRL")
+M.FLETE=GETNU1("FLETE","FOXGRL")
+STORE 0 TO ELDTO,descuento
+store .t. to m.esa
+M.tesubo=0
+
+*       *********************************************************
+*       *                      Menu Definition
+*       *********************************************************
+
+DEFI MENU MAIN
+DEFI PAD Princip1 OF MAIN PROMPT "\<Cátedras    " COLOR SCHEME 3 
+DEFI PAD Princip2 OF MAIN PROMPT "\<Presupuestos" COLOR SCHEME 3 
+DEFI PAD Princip3 OF MAIN PROMPT "\<Salida" COLOR SCHEME 3 
+
+ON PAD Princip1 OF MAIN ACTI POPU estudiantes
+ON PAD Princip2 OF MAIN ACTI POPU presupuest
+ON SELE PAD Princip3 OF MAIN CANCEL
+
+DEFI POPUP presupuest MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF presupuest PROMPT "Por \<Pantalla"
+DEFI BAR 2 OF presupuest PROMPT "Por \<Impresora"
+ON SELE BAR 1 OF presupuest do presup with "P"
+ON SELE BAR 2 OF presupuest do presup with "I"
+
+DEFI POPUP estudiantes MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF estudiantes PROMPT "\<Mantenimiento"
+DEFI BAR 2 OF estudiantes PROMPT "\<Pantalla"
+DEFI BAR 3 OF estudiantes PROMPT "\<Impresora"
+ON SELE BAR 1 OF estudiantes do mestud
+ON SELE BAR 2 OF estudiantes do lestud   with "P"
+ON SELE BAR 3 OF estudiantes do lestud   with "I"
+
+*       *********************************************************
+*       *                 Cleanup Code & Procedures
+*       *********************************************************
+
+DO WHILE .T.
+	UNLO ALL
+	ACTI MENU MAIN
+	IF LAST()=27 .AND. GETENV("USERNAME")="GOYO"
+		IF INKEY(0)=27
+			EXIT
+		ENDIF
+	ENDIF
+ENDDO
+SET SYSM TO DEFA
+RETURN
+
+procedure lestud
+para pordonde
+=OPEST()
+if pordonde="P"
+	repo form LESTUD PREV FOR !EMPTY(DENOM)
+else
+	repo form LESTUD TO PRIN PROM FOR !EMPTY(DENOM) NOCO
+endif
+return
+
+procedure mestud
+=opest()
+=opmer()
+SET ORDER TO TAG ARTICULO
+on key label F10 keyb chr(23)
+ON KEY LABEL F2 DO ELIMER1
+ON KEY LABEL F3 DO ELIMER2 
+
+DEFI WIND WIN FROM 1,1 TO 37,80
+
+SELE EST
+BROW FIEL ;
+	ARTICULO:P="@!":14:V=MEROK() , ; 
+	DENOM:H="DESCRIPCION":R:40, ;
+	PRECIO:P="99,999.99":W=(!EMPTY(ARTICULO)):V=!EMPTY(PRECIO), ;
+	IVA=PRECIO*IVA118 :R:P="999,999.99"  ;
+	TITL " -- ESTUDIANTES --- " ;
+	FONT "ARIAL",9 ;
+	COLOR RGB(255,0,0,255,255,255) ;
+WIND WIN
+RELE WIND WIN
+ON KEY LABEL F10 
+ON KEY LABEL F2
+ON KEY LABEL F3
+RELE WIND WIN
+return
+
+FUNCTION MEROK
+REPL ARTICULO WITH ZERO(VAL(ARTICULO),10)
+IF XSEEK(ARTICULO,"MER","ARTICULO")
+	REPL PRECIO WITH SAYPRE("-")
+	if empty(denom)
+		REPL DENOM WITH MER.MERCA
+	endif
+ELSE
+	REPL PRECIO WITH 0
+	REPL DENOM WITH SPACE(1)
+ENDIF
+RETURN .T.
+ 
+FUNCTION ELIMER1
+PUSH KEY CLEA
+STORE NUL TO RESPUESTA
+IF ELIMER("a Incluir",-1,1)
+	SELE EST
+	REPL ARTICULO WITH MER.ARTICULO
+	REPL DENOM WITH MER.MERCA
+	pop key
+	RETURN MEROK()
+ENDIF
+SET ORDER TO TAG ARTICULO IN MER
+POP KEY
+RETURN .T.
+
+FUNCTION ELIMER2
+PUSH KEY CLEA
+IF SEEKTECX(40,"MER","MER.MERCA","MER.ARTICULO","MERCA","EST",.F.,1,1,.T.)
+	SELE EST
+	REPL ARTICULO WITH MER.ARTICULO
+	REPL DENOM     WITH MER.MERCA
+	pop key
+	RETURN MEROK()
+ENDIF
+SET ORDER TO TAG ARTICULO IN MER
+POP KEY
+RETURN .T.

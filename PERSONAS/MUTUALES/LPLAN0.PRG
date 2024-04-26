@@ -1,0 +1,11 @@
+FUNCTION LPLAN0
+#DEFINE PAIP   "|"                               && PAIP
+? PAIP
+?? CODPLAN
+?? PAIP
+?? PLAN
+?? PAIP
+?? SAYMIX(TAR,"TARCOD")
+?? PAIP
+M.CASOS=M.CASOS+1
+RETURN .T.

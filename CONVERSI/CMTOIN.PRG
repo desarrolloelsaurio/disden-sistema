@@ -1,0 +1,3 @@
+FUNCTION cmtoin
+PARAMETERS value
+RETURN(value * 0.393701)

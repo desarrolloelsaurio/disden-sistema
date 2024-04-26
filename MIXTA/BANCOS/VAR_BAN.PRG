@@ -1,0 +1,3 @@
+FUNCTION var_ban
+	PUBL BANpop,BANpopc,BANpopr,ORDBAN
+RETURN .T.

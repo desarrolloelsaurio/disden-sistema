@@ -1,0 +1,1 @@
+for %%i in (CAJA DISENIO LILIANA PUESTO1 PUESTO2 PUESTO3 PUESTO4 PUESTO5 VICTOR) do copy %1 \\%%i\c\sistemas\ 

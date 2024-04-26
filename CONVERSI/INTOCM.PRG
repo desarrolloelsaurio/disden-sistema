@@ -1,0 +1,3 @@
+FUNCTION intocm
+PARAMETERS value
+RETURN(value * 2.5399986)

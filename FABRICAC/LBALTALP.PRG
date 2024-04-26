@@ -1,0 +1,78 @@
+* ษออออออออออออออออออออออออออออออออออออออป
+* บ PROCEDIMIENTO : LBALTALP             บ
+* บ COMENTARIO    : BALANCE DE TALLERES  บ
+* ฬออออออออออออออออออออออออออออออออออออออน
+* บ AUTOR      : GOYO REINER             บ
+* บ FECHA      : 08-20-93                บ
+* บ HORA       : 00:45:57am              บ
+* บ COPYRIGHT  : 1993 by GREGORIO REINER บ
+* ศออออออออออออออออออออออออออออออออออออออผ
+#DEFINE ONE    1                                 && ONE
+#DEFINE TWO    2                                 && TWO
+#DEFINE NUL    0                                 && NUL
+#DEFINE BOTOM  "  "+repl("ฐ",78)                 && BOTOM
+#DEFINE PAIP   "|"                               && PAIP
+#DEFINE CRLF CHR(13)+CHR(10)                     && CRLF
+
+STORE HORA_ULP(PROGRAM()) TO ULPR
+IF CHEQSEG()
+	TTA=TT
+	=WIN0()
+	PAG=ONE
+	=CABPAN()
+	SELE FAX
+	ELTALLER=FAX.CLIENTE
+	TT=TTA+;
+	CRLF+;
+	ALLTRIM(ELTALLER)
+	=TIT_LIN(ONE)
+	SCAN
+		IF FAX.CLIENTE#ELTALLER
+			IF !FIN_LIN(ONE,CASOS,;
+				PARSE("TOTAL TALLER",STR(TEEC,XACDIGI-2)+PAIP+;
+                STR(TSSC,XACDIGI-2)+PAIP+;
+				STR(TDIA/CASOS,4)+PAIP,LEN(ACLA)))
+				EXIT
+			ENDIF
+			CLEA
+			STOR PAG+ONE TO PAG
+         	ELTALLER=FAX.CLIENTE
+			TT=TTA+;
+			CRLF+;
+			ALLTRIM(ELTALLER)
+			=CABPAN()
+			=TIT_LIN(ONE)
+			STORE TTEEC+TEEC TO TTEEC
+			STORE TTSSC+TSSC TO TTSSC
+			STORE TTDIA+TDIA TO TTDIA
+			STORE TTCASOS+CASOS TO TTCASOS
+			STORE NUL TO TEEC,TSSC,CASOS,TDIA
+		ENDIF
+		IF ROW()>21
+			IF !FIN_LIN(ONE,NUL,;
+				PARSE("SUBTOTAL TALLER",STR(TEEC,XACDIGI-2)+PAIP+;
+				STR(TSSC,XACDIGI-2)+PAIP+;
+				STR(TDIA/CASOS,4)+PAIP,LEN(ACLA)))
+				EXIT
+			ENDIF
+			CLEA
+			STOR PAG+ONE TO PAG
+			=CABPAN()
+			=TIT_LIN(TWO)
+		ENDIF
+		=LBALTAL0()
+	ENDSCAN
+	=FIN_LIN(TWO,CASOS,PARSE("TOTAL TALLER",;
+	STR(TEEC,XACDIGI-2)+PAIP+;
+	STR(TSSC,XACDIGI-2)+PAIP+;
+	STR(TDIA/CASOS,4)+PAIP,LEN(ACLA)),.T.)
+	=FIN_LIN(TWO,TTCASOS,PARSE("TOTAL",;
+	STR(TTEEC,XACDIGI-2)+PAIP+;
+	STR(TTSSC,XACDIGI-2)+PAIP+;
+	STR(TTDIA/TTCASOS)+PAIP,LEN(ACLA)))
+	=RELEWIN("WIN")
+	=IAUD(QMES(M.XMES)+"-"+STR(M.XANIO,4))
+ELSE
+	=IAUDI()
+ENDIF
+RETURN MEN_LIN(BOTOM)

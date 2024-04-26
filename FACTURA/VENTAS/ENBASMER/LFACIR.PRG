@@ -1,0 +1,66 @@
+*********************************************
+*-- Programa: LFACIR.PRG
+*-- Fecha   : 05-29-92 06:33pm
+*-- Version : G. REINER
+*-- Notas   : LISTADO DE RESUMEN DE FACTURAS
+*********************************************
+ULPR=HORA_ULP(PROGRAM())
+=CHEQSEG()
+store nul to can,tcan,TOT,TTOT,TFAC,FAC
+STORE "" TO ELARTICULO,LAMERCA,ACLA,LAFACTURA,LNS,TT
+=LFACR0()
+STOR NUL TO CASOS
+=CABPRI()
+_PCOPIES=1
+PRINTJOB
+=CABPRI1()
+=TIT_LIN(3)
+SCAN
+	ELCORTE=LFACR1()
+	IF ELCORTE#ELARTICULO
+		=lfacr3()
+	ENDIF
+	IF _PLINENO>63
+		=TLFACIR1("SUBTOTAL")
+		EJECT PAGE
+		=cabpri1()
+		=TIT_LIN(4)
+	ENDI
+	=lfacr2()
+ENDSCAN
+=lfacr3()
+=TLFACIR1("TOTAL")
+ENDP
+=FINIMP()
+=iaud((FISC))
+=REOPFAC()
+RETURN MEN_LIN(BOTOM)
+
+FUNCTION TLFACIR1
+	PARAMETER COSA
+	PRIVATE COSA
+	? LNS
+	? PAIP
+	IF FILFAC=3
+		?? PADR(COSA,13)
+		?? PAIP
+		?? SPACE(8)
+	ELSE
+		IF FILFEC=3
+			?? PADR(COSA,8)
+		else
+			IF FILvia=3 .or. filcli=3
+				?? PADR(COSA,30)
+			endif
+		ENDIF
+	ENDIF
+	?? PAIP
+	?? STR(TCAN,XACDIGI)
+	?? PAIP
+	IF FILFEC=3 .OR. FILVIA=3 .or. filcli=3
+		?? STR(TFAC,XACDIGI)
+		?? PAIP
+	ENDIF
+	?? STR(TTOT,XACDIGI,2)
+	?? PAIP
+RETURN .T.

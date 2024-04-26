@@ -1,0 +1,15 @@
+FUNCTION PRILIN
+	PARAMETER COSA
+	=CABPRI1()
+	? TT
+	IF COSA=2 .OR. COSA=4
+		?? ' - '
+		?? 'Continuaci¢n'
+	endif
+	? ALLTRIM(JANNAME)
+	?
+	LE_LINEE=IIF(COSA>2,LNS,LINEA)
+	? LE_LINEE
+	? ACLA
+	? LE_LINEE
+RETURN .T.

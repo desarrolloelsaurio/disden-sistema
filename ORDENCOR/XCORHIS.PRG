@@ -1,0 +1,38 @@
+*************************************************
+*-- Programa: XCORHIS.PRG
+*-- Fecha   : 07-14-94 03:32pm
+*-- Version : G. REINER
+*-- Notas   : RESTAURA BASE DE CORTE (HISTORICA)
+**************************************************
+ULPR=HORA_ULP(PROGRAM())
+IF CHEQSEG()
+	IF FUERARED()#27
+		=men_lin('Generando Nuevo Indice de Ordenes de '+korte+" Hist¢ricas")
+		=OPFABHIS()
+		=OPCORHIS()
+		=FLOCK("CORHIS") .or. FLOK("CORHIS")
+		=FLOCK("CO1HIS") .or. FLOK("CO1HIS")
+		=FLOCK("FAXHIS") .or. FLOK("FAXHIS")
+		=DOTALK()
+		=OPFABHIS(.T.)
+		=OPCORHIS(.T.)
+		SELE CORHIS
+		INDE ON NUMERO TAG NUMERO
+		INDE ON ARTICULO TAG ARTICULO
+		SELE CO1HIS
+		INDE ON NUMERO TAG NUMERO
+		=OPCORHIS(.F.,.T.)
+		SELE FAXHIS
+		INDE ON NUMERO TAG NUMERO
+		INDE ON REMITO TAG REMITO
+		INDE ON NUMERO TAG NUMTRU For TIPO="@"
+		INDE ON REMITO TAG REMTRU For TIPO="@"
+		INDE ON STR(NUMERO)+STR(POSIC) TAG ORDEN For TIPO="@"
+		=OPFABHIS(.F.,.T.)
+		=UNTALK()
+		=IAUD('INDEXA')
+	ENDIF
+ELSE
+	=IAUDI()
+ENDIF
+RETURN MEN_LIN(BOTOM)

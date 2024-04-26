@@ -1,0 +1,9 @@
+FUNCTION LMERX0
+#DEFINE PAIP   "|"                               && PAIP
+? PAIP
+?? LEFT(ARTICULO,10)
+?? PAIP
+?? MERCA
+?? PAIP
+CASOS=CASOS+1
+RETURN .T.

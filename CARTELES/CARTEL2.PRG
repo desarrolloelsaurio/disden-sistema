@@ -1,0 +1,16 @@
+******************************************
+*-- Programa: CARTEL2.PRG
+*-- Fecha   : 06/29/91 09:41am
+*-- Version : G. REINER
+*-- Notas   : IMPRIME CARTEL INFORMATIVO
+*****************************************
+FUNCTION CARTEL2
+	PARAMETER XT1,XT2,XT3,XT4,EXPE
+	PRIVATE XT1,XT2,XT3,XT4,EXPE
+	MXLEN=MAX(LEN(XT1),LEN(XT2),LEN(XT3),LEN(XT4))+4
+RETURN EFECT21(WLROW()+INT((WROW()-2)/2),;
+	WLCOL()+INT((WCOL()-MXLEN)/2),;
+	PADC(XT1,MXLEN),;
+	PADC(XT2,MXLEN),;
+	PADC(XT3,MXLEN),;
+	PADC(XT4,MXLEN),EXPE)

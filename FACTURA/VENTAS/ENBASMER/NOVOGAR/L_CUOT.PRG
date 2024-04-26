@@ -1,0 +1,34 @@
+FUNCTION L_CUOT
+	TABE=1
+	IF COSA
+	    IF USED("CUOTAS")
+	       SELE CUOTAS
+   	       SCAN
+   			?? CUOTAS.FECHAVE AT TABE
+			?? ':'
+			?? IIF(FAC.MONEDA=LEFT(XADOLS,1),"U$S",'$')
+			?? STR(CUOTAS.MONTO,7,2)
+			TABE=TABE+20
+			IF TABE>42
+				TABE=1
+				?
+			ENDIF
+	    ENDSCAN
+	    SELE FAC
+	    ELSE
+	    IF TYPE("LASCUOTAS")="N"
+		FOR A=1 TO M.LASCUOTAS
+			?? FEC[A] AT TABE
+			?? ':'
+			?? IIF(FAC.MONEDA=LEFT(XADOLS,1),"U$S",'$')
+			?? STR(NAD[A],7,2)
+			TABE=TABE+20
+			IF TABE>42
+				TABE=1
+				?
+			ENDIF
+		NEXT
+		ENDIF
+		ENDIF
+	ENDIF
+RETURN .T.

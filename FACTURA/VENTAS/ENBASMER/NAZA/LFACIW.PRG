@@ -1,0 +1,75 @@
+********************************************************************************
+*-- Programa: LFACIW.PRG
+*-- Fecha   : 07-20-92 06:53pm
+*-- Version : G. REINER
+*-- Notas   : LISTADO DE FACTURAS - SUMA UNIDADES
+********************************************************************************
+PARAMETER LAGUITA
+STORE HORA_ULP(PROGRAM()) TO ULPR
+IF CHEQSEG()
+	STORE "" TO ELIVA,CANT_EL,ACLA,MES1,MES2,LNEA,SUMA,TIT,PUNTERO,ANO1,ELCORTE,ELTEXTO,ELTEXTO1,KTIPO,ANO2
+ 	=LFACPW0()
+	STOR NUL TO CASOS
+	=CABPRI()
+	_PCOPIES=1
+	PRINTJOB
+	=CABPRI1()
+	stor nul TO casos
+	TT='Estad¡stica de Ventas'+ttque
+	=TIT_(1)
+	=linfacpw()
+	=titfacpw()
+	=linfacpw()
+	STORE NUL TO SUMA
+	GO TOP
+	=CORFACPW()
+	SCAN
+		IF KTIPO='111'
+			CONTROL=fac.codcli
+		ELSE
+			IF KTIPO='231'
+				CONTROL=fax.articulo
+			ELSE
+				CONTROL=left(fax.articulo,3)
+			ENDIF
+		ENDIF
+		IF ELCORTE#CONTROL
+			=IMPFACPW()
+			=CORFACPW()
+		ENDIF
+		IF _PLINENO>63
+			=LINFACPW()
+			EJECT PAGE
+			=cabpri1()
+			=TIT_(2)
+			=linfacpw()
+			=titfacpw()
+			=linfacpw()
+		ENDI
+		JODES=MONTH(FAC.FECHAEM)
+		SHANA=YEAR(FAC.FECHAEM)-ANO2
+		SHANA=IIF(SHANA>CANT_EL .OR. SHANA<1,0,SHANA)
+		PUNTERO=SHANA*12+JODES-MES1+1
+		PUNTERO=IIF(PUNTERO<1,1,PUNTERO)
+		CUANTOS=ABS(IIF(LAGUITA,FAX.CANTIDAD*FAX.MONTO1*ELIVA[PER.CONDIVA],FAX.CANTIDAD))
+		if fac.tipo="NC"
+			LNEA[PUNTERO]=LNEA[PUNTERO]-CUANTOS
+			SUMA[PUNTERO]=SUMA[PUNTERO]-CUANTOS
+		ELSE
+			LNEA[PUNTERO]=LNEA[PUNTERO]+CUANTOS
+			SUMA[PUNTERO]=SUMA[PUNTERO]+CUANTOS
+		ENDIF
+	ENDSCAN
+	=IMPFACPW()
+	=LINFACPW()
+	=TOTFACPW()
+	=FIN_LIN(4)
+	ENDP
+	=FINIMP()
+	=REOPFAC()
+	=REOPMER()
+	=IAUD(FISC)
+ELSE
+	=IAUDI()
+ENDIF
+RETURN MEN_LIN(BOTOM)

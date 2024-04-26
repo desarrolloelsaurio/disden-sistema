@@ -1,0 +1,19 @@
+* ษออออออออออออออออออออออออออออออออออออออออออออออออป
+* บ PROCEDIMIENTO : LIVAVM.PRG                     บ
+* บ COMENTARIO    : LISTADO DE IVA POR MERCADERIAS บ
+* ศออออออออออออออออออออออออออออออออออออออออออออออออผ
+FUNCTION LIVAVM
+	PARAMETER PORPAN
+	DIJO=BAR()
+	ULPR=HORA_ULP(PROGRAM())
+	=CHEQSEG()
+	STORE TT TO TTANT
+	STORE "" TO TT
+	STORE FISC TO FIANT
+	FISC=QWMER(DIJO)
+	IF FISC#".F."
+		FISC=QW_FISC(FISC,FIANT)+" .AND. !DELE()"
+		TT=TTANT+CHR(13)+CHR(10)+TT
+		=IIF(PORPAN,LIVAVMP(),LIVAVMI())
+	ENDIF
+RETURN .T.

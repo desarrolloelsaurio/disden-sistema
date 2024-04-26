@@ -1,0 +1,3 @@
+FUNCTION VAR_SER
+	PUBL SERpop,iSERc,iSERr,iSERla,iSERan,cSERc,cSERr,cSERla,cSERan,SERpopc,SERpopr,vSERc,vSERr,vSERan,vSERla,mSERc,mSERr,mSERla,mSERan,ORDSER
+RETURN .T.

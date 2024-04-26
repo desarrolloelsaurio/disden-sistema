@@ -1,0 +1,30 @@
+***********************************
+*-- Programa: OPCOMSS.PRG
+*-- Fecha   : 05/28/91 01:53am
+*-- Version : G. REINER
+*-- Notas   : ABRE ARCHIVO COMSOS PARA STOCK
+***********************************
+#DEFINE BOTOM  "  "+repl("°",78)                 && BOTOM
+#DEFINE ABA    "Abriendo Base de "               && ABA
+PARAMETER A_REOP,A_EXCL
+IF A_REOP
+	=REOPXXX("COMS")
+ENDIF
+IF USED("COMS")
+	IF A_EXCL
+		USE IN COMS
+		USE (PATH+"\COMPSTOC") ORDER TAG COMCODPRO ALIAS COMS EXCL		
+	ELSE
+		SELE COMS
+	ENDIF
+ELSE
+	=MEN_LIN(ABA+" Productos Terminados")
+	=PRXAREA(.T.)
+	IF A_EXCL
+		USE (PATH+"\COMPSTOC") ORDER TAG COMCODPRO ALIAS COMS EXCL
+	ELSE
+		USE (PATH+"\COMPSTOC") ORDER TAG COMCODPRO ALIAS COMS
+	ENDIF
+ENDIF
+RETURN IIF(COMSPOP,DEFPOGRL(COMSPOPR,COMSPOPC,"COMSPOP","COMS.COMPRA",30,'Elija '+ABIO),.T.) .AND. ;
+MEN_LIN(BOTOM)

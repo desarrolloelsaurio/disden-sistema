@@ -1,0 +1,33 @@
+********************************************
+*-- Programa: LFARIZ.PRG
+*-- Fecha   : 09-29-92 02:00pm
+*-- Version : G. REINER
+*-- Notas   : LISTADO DE FACTURAS DE COMPRA
+********************************************
+STORE HORA_ULP(program()) TO ULPR
+=CHEQSEG()
+dime ttl[CANT_MAX],ctrl[CANT_MAX]
+hay=.f.
+STORE PAIP TO TT,ACLA
+=LFARPZ0()
+STOR NUL TO CASOS
+=CABPRI()
+_PCOPIES=1
+PRINTJOB
+=CABPRI1()
+=TIT_LIN(3)
+SCAN
+	IF _PLINENO>63
+		=FIN_LIN(3,NUL,FIN_SUM('SUBTOTAL',@TTL))
+		=CABPRI1()
+		=TIT_LIN(4)
+	ENDI
+	=LFARPZ2()
+ENDSCAN
+=FIN_LIN(4,CASOS,FIN_SUM('TOTAL',@TTL))
+EJECT PAGE
+ENDP
+=FINIMP()
+=IAUD(FISC)
+=REOPFAR()
+RETURN MEN_LIN(BOTOM)

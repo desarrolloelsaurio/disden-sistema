@@ -1,0 +1,30 @@
+FUNCTION LREBZ2
+EXTERNAL ARRAY TEX
+IF HAY
+   STORE NUL TO TOMON
+   IF !EMPTY(CAJ.NROCHE)
+      M.TOMON=CAJ.MONTO
+      IF CAJA="00"
+         TEX[7]=TEX[7]+M.TOMON
+         TTL[7]=TTL[7]+M.TOMON
+      ELSE
+         TEX[8]=TEX[8]+M.TOMON
+         TTL[8]=TTL[8]+M.TOMON
+      ENDIF
+   ELSE
+      IF CAJ.MONEDA=LEFT(XADOLS,1)
+         M.TOMON=CAJ.MONTO
+         TEX[6]=TEX[6]+M.TOMON
+         TTL[6]=TTL[6]+M.TOMON         
+      ELSE
+         IF CAJ.MONEDA=LEFT(XAUSS,1)
+            M.TOMON=CAJ.MONTO
+            TEX[5]=TEX[5]+M.TOMON
+            TTL[5]=TTL[5]+M.TOMON
+         ENDIF
+      ENDIF
+   ENDIF
+   TEX[9]=TEX[9]+M.TOMON
+   TTL[9]=TTL[9]+M.TOMON   
+ENDIF
+RETURN .T.

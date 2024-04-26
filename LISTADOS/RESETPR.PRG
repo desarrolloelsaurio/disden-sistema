@@ -1,0 +1,7 @@
+FUNCTION RESETPR
+	IF GETENV("PRN")="BROTHER"
+		??? CHR(27)
+		??? CHR(13)
+		??? CHR(69)
+	ENDIF
+RETURN .T.

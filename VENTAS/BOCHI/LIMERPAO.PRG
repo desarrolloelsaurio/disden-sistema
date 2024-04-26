@@ -1,0 +1,20 @@
+***************************************************
+*-- Programa: LIMERPAO.PRG
+*-- Fecha   : 26/9/89
+*-- Version : G. REINER
+*-- Notas   : GENERA LISTADO DE MERCADERIAS 1 X 1
+**************************************************
+DEFI WIND WIN FROM 0,0 TO 24,79 NONE
+SELE MER
+ACTI WIND WIN
+DO TITULO WITH 1,'LISTADO DATOS MERCADERIAS'
+SCAN FOR INKEY()#83 .AND. LASTKEY()#83
+   WAIT 'BUSCANDO' WIND NOWA
+   IF LEN(ALLT(ARTIC))#3
+			WAIT CLEA
+      DO LIMERUN WITH RECNO()
+   ENDI
+ENDSCAN
+WAIT CLEA
+DEAC WIND ALL
+RETURN

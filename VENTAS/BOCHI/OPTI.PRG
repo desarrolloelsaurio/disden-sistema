@@ -1,0 +1,5 @@
+DEFI BAR 3 OF prime1 PROM ' Porcentaje Por Proveedor '
+DEFI BAR 4 OF prime1 PROM ' Porcentaje Por Caracter¡stica (3 1¦ letras) '
+DEFI BAR 5 OF prime1 PROM ' Porcentaje Mercader¡as con IVA '
+DEFI BAR 6 OF prime1 PROM ' Porcentaje Mercader¡as sin IVA '
+DEFI BAR 7 OF prime1 PROM ' Porcentaje Mercader¡as Especiales '

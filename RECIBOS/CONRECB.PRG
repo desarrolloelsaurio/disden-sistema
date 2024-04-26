@@ -1,0 +1,56 @@
+PROCEDURE CONRECB
+* Lista consistencia de recibos entre recibos emitidos
+* y cuenta corriente del cliente
+EXTERNAL PROCEDURE LCONREC0
+#DEFINE PICUMAX "9,999,999,999,999.99"           && PICUMAX
+=WORKING()
+=DOTALK()
+=OPRECI()
+=OPCCL()
+=OPCLI()
+=OPCCLH()
+SELE RECI
+=FLOCK() .OR. FLOK()
+TMP=GENTMP()
+COPY TO (TMP)
+=UNLO_PRX("RECI",TMP)
+DELE FOR RIGHT(CODCLI,7)="CONTADO"
+SCAN FOR !DELE()
+   IF XSEEK(tmp.RECIBO,"CCL","NUMERORE")
+      SELE TMP
+      DELE 
+   ELSE
+      IF XSEEK(tmp.RECIBO,"CCLH","NUMERORE")
+         SELE TMP
+         DELE 
+      ENDIF
+   ENDIF
+ENDSCAN
+SELE TMP
+=UNTALK()
+=UNWORK()
+IF EMPTY(RECC())
+   =WNCL("Todos los Recibos se encuentran en Cta. Cte.",60)
+ELSE
+   TT="Recibos no encontrados en Cuenta Corriente ni Hist¢rico"
+   ACLAPRN=PAIP+" FECHA  "+;
+   PAIP+PADC("RECIBO",14)+;
+   PAIP+PADC("C. CLIENTE",10)+;
+   PAIP+PADC("CLIENTE",30)+;
+   PAIP+PADC("PESOS",XACDIGI)+;
+   PAIP+PADC("DOLARES",XACDIGI)+;
+   PAIP+PADC("TARJETA",XACDIGI)+;
+   PAIP+PADC("CHEQUES",XACDIGI)+;
+   PAIP+PADC("FACTURA",14)+;
+   PAIP+PADC("TOTAL",XACDIGI)+PAIP
+   ACLAPAN=PAIP+" FECHA  "+;
+   PAIP+PADC("RECIBO",14)+;
+   PAIP+PADC("C. CLIENTE",10)+;
+   PAIP+PADC("FACTURA",14)+;
+   PAIP+PADC("TOTAL",XACDIGI)+PAIP
+   =xprn1(4,"tmp","LCONREC0()","CONSISTENCIA DE RECIBOS","LCONREC",.T.)
+ENDIF   
+=off_tmp()
+=untalk()
+=unwork()
+RETURN MEN_LIN(BOTOM)

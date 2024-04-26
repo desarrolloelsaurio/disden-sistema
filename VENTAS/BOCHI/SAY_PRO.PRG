@@ -1,0 +1,11 @@
+
+function SAY_PRO
+	parameters REGISTRO
+	IF !EMPTY(REGISTRO)
+		GO REGISTRO IN pro
+		L_COSA=PRO.FIRMA
+	ELSE
+		L_COSA=SPACE(20)
+	ENDIF
+return L_COSA
+

@@ -1,0 +1,182 @@
+
+Structure for database: C:\SISTEMAS\CAJA\CAJAA\CAJA.DBF
+Number of data records:    9682
+Date of last update   : 24/10/95
+Code Page             : 0
+Field  Field Name  Type       Width    Dec    Index  Collate
+    1  CAJA        Character      2            Asc   Machine
+    2  PROVEEDOR   Logical        1                  
+    3  GASTO       Character     11            Asc   Machine
+    4  CODCLI      Character     10            Asc   Machine
+    5  FECHAOP     Date           8            Asc   Machine
+    6  COMPR       Character     20            Asc   Machine
+    7  COMPRE      Character      2                  
+    8  NUMERE      Character     14                  
+    9  MONTO       Numeric       14      2           
+   10  MONEDA      Character      1                  
+   11  EQUIVALE    Numeric       14      2           
+   12  NROCHE      Character     10                  
+   13  FECHADE     Date           8                  
+   14  PROCOD      Character     10                  
+   15  BANCO       Character     20                  
+   16  FECHA       Date           8                  
+   17  USUARIO     Character     10                  
+   18  SUCRSAL     Character      4                  
+** Total **                     168
+
+Structure for database: C:\SISTEMAS\CAJA\CAJAA\CAJAANT.DBF
+Number of data records:      57
+Date of last update   : 13/01/94
+Code Page             : 0
+Field  Field Name  Type       Width    Dec    Index  Collate
+    1  CAJA        Character      2                  
+    2  PROVEEDOR   Logical        1                  
+    3  GASTO       Character     11                  
+    4  CODCLI      Character     10                  
+    5  FECHAOP     Date           8                  
+    6  COMPR       Character     20                  
+    7  COMPRE      Character     10                  
+    8  NUMERE      Character     14                  
+    9  MONTO       Numeric       14      2           
+   10  MONEDA      Character      1                  
+   11  EQUIVALE    Numeric       14      2           
+   12  NROCHE      Character     10                  
+   13  FECHADE     Date           8                  
+   14  PROCOD      Character     10                  
+   15  BANCO       Character     20                  
+   16  FECHA       Date           8                  
+   17  USUARIO     Character     10                  
+** Total **                     172
+
+Structure for database: C:\SISTEMAS\CAJA\CAJAA\CTACTEBA.DBF
+Number of data records:       0
+Date of last update   : 04/05/94
+Code Page             : 0
+Field  Field Name  Type       Width    Dec    Index  Collate
+    1  CODBAN      Numeric        4                  
+    2  TARCOD      Character      2                  
+    3  FECHADEP    Date           8                  
+    4  DETALLE     Character     30                  
+    5  FECHAVEN    Date           8                  
+    6  CODCLI      Character     10                  
+    7  PROCOD      Character     10                  
+    8  NROCHEQ     Numeric       10                  
+    9  HORAS       Numeric        3                  
+   10  MONTO       Numeric       14      2           
+   11  FECHA       Date           8                  
+   12  USUARIO     Character     10                  
+** Total **                     118
+
+Structure for database: C:\SISTEMAS\CAJA\CAJAA\ORDENPAG.DBF
+Number of data records:       0
+Date of last update   : 09/10/95
+Code Page             : 0
+Field  Field Name  Type       Width    Dec    Index  Collate
+    1  NUMERO      Numeric       10            Asc   Machine
+    2  FECHAOP     Date           8                  
+    3  PROCOD      Character     10                  
+    4  EFECTIVO    Numeric       12      2           
+    5  CHEQUES     Numeric       12      2           
+    6  DOLARES     Numeric       12      2           
+    7  TARJETA     Numeric       12      2           
+    8  NINT        Numeric       14                  
+    9  DETALLE     Character     30                  
+   10  BANCO       Numeric        4                  
+   11  GASTO       Character     11                  
+   12  FECHA       Date           8                  
+   13  USUARIO     Character     10                  
+   14  VIAJE       Numeric       10                  
+** Total **                     164
+
+Structure for database: C:\SISTEMAS\CAJA\CAJAA\CAJADIA.DBF
+Number of data records:       4
+Date of last update   : 24/10/95
+Code Page             : 0
+Field  Field Name  Type       Width    Dec    Index  Collate
+    1  FECHAOP     Date           8            Asc   Machine
+    2  SUCURSAL    Character      4                  
+    3  E_PESOS     Numeric       14      2           
+    4  S_PESOS     Numeric       14      2           
+    5  E_DOLARES   Numeric       14      2           
+    6  S_DOLARES   Numeric       14      2           
+    7  E_TARJETA   Numeric       14      2           
+    8  S_TARJETA   Numeric       14      2           
+    9  E_CHEQUE3   Numeric       14      2           
+   10  S_CHEQUE3   Numeric       14      2           
+   11  S_CHECUEP   Numeric       14      2           
+   12  FECHA       Date           8                  
+   13  USUARIO     Character     10                  
+** Total **                     157
+
+Structure for database: C:\SISTEMAS\CAJA\CAJAA\CAJAA.DBF
+Number of data records:     116
+Date of last update   : 24/10/95
+Code Page             : 0
+Field  Field Name  Type       Width    Dec    Index  Collate
+    1  FIELD_NAME  Character     10                  
+    2  FIELD_TYPE  Character      1                  
+    3  FIELD_LEN   Numeric        3                  
+    4  FIELD_DEC   Numeric        3                  
+    5  FIELD_BASE  Character      8                  
+** Total **                      26
+
+Structure for database: C:\SISTEMAS\CAJA\CAJAA\RECIBOX.DBF
+Number of data records:       0
+Date of last update   : 22/10/95
+Code Page             : 0
+Field  Field Name  Type       Width    Dec    Index  Collate
+    1  RECIBO      Character     14            Asc   Machine
+    2  FACTURA     Character     14                  
+    3  COD_OPECCL  Character     10                  
+    4  COD_OPECCH  Character     10                  
+    5  COD_OPETAR  Character     10                  
+** Total **                      59
+
+Structure for database: C:\SISTEMAS\CAJA\CAJAA\TARJEDAT.DBF
+Number of data records:       1
+Date of last update   : 24/10/95
+Code Page             : 0
+Field  Field Name  Type       Width    Dec    Index  Collate
+    1  CODCLI      Character     10            Asc   Machine
+    2  TARJETA     Character      2                  
+    3  CLITXTNT    Character     40                  
+    4  FECHA       Date           8                  
+    5  USUARIO     Character     10                  
+** Total **                      71
+
+Structure for database: C:\SISTEMAS\CAJA\CAJAA\RECIBOS.DBF
+Number of data records:       5
+Date of last update   : 24/10/95
+Code Page             : 0
+Field  Field Name  Type       Width    Dec    Index  Collate
+    1  RECIBO      Character     14            Asc   Machine
+    2  FECHAOP     Date           8            Asc   Machine
+    3  CODCLI      Character     10                  
+    4  PESOS       Numeric       14      2           
+    5  DOLARES     Numeric       14      2           
+    6  TARJETAS    Numeric       14      2           
+    7  CHEQUES     Numeric       14      2           
+    8  FECHA       Date           8                  
+    9  USUARIO     Character     10                  
+   10  FACTURA     Character     14                  
+   11  COD_OPER1   Character     10                  
+   12  TARJETA     Character      2                  
+** Total **                     133
+
+Structure for database: C:\SISTEMAS\CAJA\CAJAA\TARJETAS.DBF
+Number of data records:       1
+Date of last update   : 24/10/95
+Code Page             : 0
+Field  Field Name  Type       Width    Dec    Index  Collate
+    1  FACTURA     Character     14            Asc   Machine
+    2  RECIBO      Character     14            Asc   Machine
+    3  CODCLI      Character     10                  
+    4  TARJETA     Character      2                  
+    5  NUMERO      Character     20                  
+    6  FORMULARIO  Character     20                  
+    7  MONTO       Numeric       14      2           
+    8  COD_OPER1   Character     10                  
+    9  COD_OPER    Character     10                  
+   10  FECHA       Date           8                  
+   11  USUARIO     Character     10                  
+** Total **                     133

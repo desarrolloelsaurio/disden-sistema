@@ -1,0 +1,7 @@
+FUNCTION LRESPT2
+	FOR A=1 TO C_LAR
+		IF TYPE("TEXTO[A,4]")#"L"                    
+			TTL[A]=TTL[A]+EVAL(TEXTO[A,4])
+		ENDIF
+	NEXT
+RETURN .T.

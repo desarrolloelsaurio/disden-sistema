@@ -1,0 +1,10 @@
+FUNCTION LARA1
+#DEFINE PAIP   "|"                               && PAIP
+	? PAIP
+	?? SAYMIX(LEFT(TEXTO1,2),"TARCOD")
+	?? PAIP
+	?? SAYMIX(LEFT(TEXTO2,2),"UNICOD")
+	?? PAIP
+	?? STR(NU1,XACDIGI,2)
+	CASOS=IMPUSE()
+RETURN .T.

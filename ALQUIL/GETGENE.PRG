@@ -1,0 +1,13 @@
+* ษอออออออออออออออออออออออออออออป
+* บ PROCEDIMIENTO : GETGENE.PRG บ
+* บ COMENTARIO    :             บ
+* ศอออออออออออออออออออออออออออออผ
+FUNCTION GETGENE
+IF GETENV("EQUIPO")="RAFULS"
+   REST FROM F:\PUBLIC\GENE ADDI
+ELSE
+   IF GETENV("EQUIPO")="MICASA" .OR. GETENV("EQUIPO")="NOVOLAP" .OR. GETENV("EQUIPO")="GOYOLAP"
+      REST FROM GENE ADDI
+   ENDIF
+ENDIF
+RETURN GETPATH()

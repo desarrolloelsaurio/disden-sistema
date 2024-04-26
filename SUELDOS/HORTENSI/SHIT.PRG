@@ -1,0 +1,21 @@
+    function ALI 
+    RETURN .T.
+    function FILTCO 
+    RETURN .T.
+    function CO 
+    RETURN .T.
+    function CT 
+    RETURN .T.
+    function TITU 
+    RETURN .T.
+    function HTHOR 
+    RETURN .T.
+    function TTHOR 
+    RETURN .T.
+
+FUNCTION LHISI7
+RETURN .T.
+FUNCTION LLIQI4
+RETURN .T.
+FUNCTION gmin2
+RETURN .T.

@@ -1,0 +1,66 @@
+********************************************************************************
+*-- Programa: LCO1.PRG
+*-- Fecha   : 07-28-92 03:42pm
+*-- Version : G. REINER
+*-- Notas   : DERIVA A LISTADOS DE ORDENES DE CORTE (MERCADERIAS)
+********************************************************************************
+PARAMETER PORPAN
+CANT_MAX=7
+DIME TEXTO[CANT_MAX,2], VARIABLE[CANT_MAX], HABILITADO[CANT_MAX],HABILANT[CANT_MAX]
+ 
+TEXTO[1,2]=10
+TEXTO[2,2]=11
+TEXTO[3,2]=5
+TEXTO[4,2]=XACDIGI
+TEXTO[5,2]=XACDIGI
+TEXTO[6,2]=XACDIGI
+TEXTO[7,2]=10
+ 
+TEXTO[1,1]='N§ O. '+UPPER(KORTE)
+TEXTO[2,1]='ARTICULO'
+TEXTO[3,1]='TALLE'
+TEXTO[4,1]='N§ INICIAL'
+TEXTO[5,1]='N§ CORTADO'
+TEXTO[6,1]='N§ FINAL'
+TEXTO[7,1]='USUARIO        '
+ 
+STORE "" TO TTQUE,FISC
+STORE .T. TO HABILITADO
+STORE 1 TO FILCOR,FILMER,FILTAL
+ 
+DO WHILE QUERYCO1(PORPAN)
+	IF FILCOR=3
+		STORE {} TO FECINI,FECFIN
+		IF ENTRE_FE("L¡mites del Listado")
+			FISC=QW_FISC(FISC,"BETW(COR.FECHAINI,{"+DTOC(FECINI)+"},{"+DTOC(FECFIN)+"})")
+			TTQUE=TTQUE+QW_TT("Entre el "+dtoc(fecini)+" y el "+dtoc(fecfin))
+			SELE CO1
+			STORE "" TO ACLA,LINEA,CASOS,TT
+			=LCO1R0()
+			=LGRL2(PORPAN, "TMP", "LCO1R1()", FISC, "LCO1R", .T., REPL("9", XACDIGI)) 
+			=OFF_RELA()
+			=OFF_TMP()
+		ENDIF
+	ELSE
+		=ACOPY(HABILITADO,HABILANT)
+		STORE {} TO FECINI,FECFIN
+		IF ENTRE_FE("L¡mites del Listado")
+			FISC=QW_FISC(FISC,"BETW(COR.FECHAINI,{"+DTOC(FECINI)+"},{"+DTOC(FECFIN)+"})")
+			TTQUE=TTQUE+QW_TT("Resumen por Orden de Corte")+;
+				QW_TT("Entre el "+dtoc(fecini)+" y el "+dtoc(fecfin))
+			DO WHILE CFGFAC()
+				STORE "" TO TMP,CASOS,ACLA,LINEA,TT, NPIC, LOSPIC
+				DIME LOSPIC[4]
+				=LCO1Z0()
+				=LGRL2(PORPAN, "TMP", "LCO1Z1()", FISC, "LCO1Z", NPIC, @LOSPIC) 
+				STORE .F. TO VARIABLE
+				=OFF_TMP()
+				=OFF_RELA()
+			ENDDO
+		ENDIF
+		STORE .F. TO VARIABLE
+		=ACOPY(HABILANT,HABIITADO)
+	ENDIF
+ENDDO
+SET ORDER TO TAG ARTICULO IN MER
+RETURN

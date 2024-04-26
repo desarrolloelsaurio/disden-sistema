@@ -1,0 +1,16 @@
+FUNCTION DESDE
+DEFI POPU cli1 FROM 18,60 MESS 'DESDE DONDE EMPIEZA ?'
+DEFI BAR 1 OF cli1 PROM ' Desde el principio '
+DEFI BAR 2 OF cli1 PROM ' Desde Ficha N§'
+ON SELE POPU cli1 DO resp1
+respuesta=0
+ACTI POPU cli1
+IF respuesta=2
+	DO infic WITH finmer,'DE PARA INICIO LISTADO '
+	IF LAST()=27
+	   RESPUESTA=1
+	ENDIF
+ELSE
+	respuesta=1
+ENDI
+RETURN RESPUESTA

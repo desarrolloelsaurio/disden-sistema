@@ -1,0 +1,17 @@
+* ษออออออออออออออออออออออออออออออออออออออออป
+* บ PROCEDIMIENTO : ELIPRO.PRG             บ
+* บ COMENTARIO    : SELECCIONA PROVEEDOR   บ
+* ศออออออออออออออออออออออออออออออออออออออออผ
+* 11-15-93 04:32pm
+* LA FUNCION PARAELI PERMITE EL INGRESO DEL PRIMER TEXTO
+#DEFINE NUL    0                                 && NUL
+FUNCTION ELIPRO
+PARA MSG,R1,C1
+IF !USED("PER")
+   =OPPRO()
+ENDIF   
+STORE NUL TO RESPUESTA
+=IIF(EMPTY(MSG),.T.,WNCL("Proveedor "+MSG))
+SELE PER
+RESPUESTA=IIF(PROPOP,PARAELI("PROVEEDO",1),ELIPER1('Proveedor '+MSG,'PER','PROCOD',10,"R"))
+RETURN WCL() .AND. IIF(LAST()=27 .OR. READKEY()=12,.F.,RESPUESTA)

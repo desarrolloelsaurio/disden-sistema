@@ -1,0 +1,32 @@
+DO OPJAN
+SET PRINTER TO FILE C:\SUCIO.TXT
+SET PRINTER ON
+SET DEVICE TO PRIN
+SCAN
+   ?? 'CHR('
+   B=ASC(LEFT(EMPRESA,1))
+   ?? ALLTRIM(STR(B))
+   ?? ')+'
+   ?? 'CHR('
+   B=ASC(SUBSTR(EMPRESA,2,1))
+   ?? ALLTRIM(STR(B))
+   ?? ')+'
+   ?? 'CHR('
+   B=ASC(LEFT(DOMICILIO,1))
+   ?? ALLTRIM(STR(B))
+   ?? ')+'
+   ?? 'CHR('
+   B=ASC(SUBSTR(DOMICILIO,2,1))
+   ?? ALLTRIM(STR(B))
+   ?? ')+'
+   ?? 'CHR('
+   B=ASC(LEFT(LOCALIDAD,1))
+   ?? ALLTRIM(STR(B))
+   ?? ')+'
+   ?? 'CHR('
+   B=ASC(SUBSTR(LOCALIDAD,2,1))
+   ?? ALLTRIM(STR(B))
+   ?? ')+'
+ENDSCAN
+DO ABPR
+RETURN

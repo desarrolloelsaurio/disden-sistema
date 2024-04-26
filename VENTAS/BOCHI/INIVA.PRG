@@ -1,0 +1,17 @@
+******************************************
+*-- Programa: INIVA.PRG
+*-- Fecha   : 28/07/1990
+*-- Version : G. REINER
+*-- Notas   : INGRESA PORCENTAJE DE IVA
+******************************************
+DEFI WIND WIN FROM 6,28 TO 10,75 DOUB
+SET MESS TO 'INGRESA PORCENTAJE DE I.V.A.'
+ACTI WIND WIN
+@ 1,1 SAY 'PORCENTAJE DE I.V.A.'
+@ 1,30 GET PORCIVA PICT '9999.99'
+READ
+PIVA100=PORCIVA/100
+PIVA=1+PIVA100
+SET MESS TO ""
+DEAC WIND ALL
+RETURN

@@ -1,0 +1,72 @@
+************************************************************
+*-- Programa: LFACPY.PRG
+*-- Fecha   : 06-02-92 04:17am
+*-- Version : GOYO REINER
+*-- Notas   : LISTADO DE MERCADERIA VENDIDA
+**********************************************************************
+STORE HORA_ULP(PROGRAM()) TO ULPR
+IF CHEQSEG()
+	CCS=GENTMP()
+	=LFACPO(CCS)
+	SELE LIS
+	stor nul TO casos,TC,TP
+	LARGOR1=iif(filart=1,12,iif(filart=2,41,20))
+	TEXTO1=IIF(FILART=1,'ARTICULO',IIF(FILART=2,'RUBRO-SUBRUBRO','RUBRO'))
+	SALIDA=IIF(FILART=1,PAIP+SPACE(30)+PAIP+SPACE(10)+PAIP,PAIP)
+	acla=paip+padc(TEXTO1,LARGOR1)+PAIP
+	IF FILART=1
+		ACLA=ACLA+PADC("DESCRIPCION",30)+PAIP+PADC("MARCA",10)+PAIP
+	ENDIF
+	ACLA=ACLA+PADC("CANTIDAD",10)+PAIP+PADC("MONTO",14)+PAIP
+	LINEA=REPL("=",LEN(ACLA))
+	pag=1
+	TT='Ranking de Productos'+IIF(!EMPTY(TT),CHR(13)+chr(10)+tt,'')
+	=UNWORK()
+	=win0()
+	=cabpan()
+	=TIT_LIN(1)
+	SCAN
+		IF ROW()>21
+			IF !FIN_LIN(1,NUL,PAIP+PADR("SUBTOTAL",LARGOR1)+SALIDA+STR(TC,10)+PAIP+STR(TP,14,2)+PAIP)
+				EXIT
+			ENDIF
+			CLEA
+			STOR pag+1 TO pag
+			=cabpan()
+			=TIT_LIN(2)
+		ENDIF
+		? PAIP
+		IF FILART=1
+			=XSEEK(LIS.MERCA,'MER','ARTICULO')
+			?? SUBSTR(lis.MERCA,9)
+			?? PAIP
+			?? mer.merca
+			?? PAIP
+			?? left(MI1.TEXTO1,10)
+		ELSE
+			RUVRO=STR(VAL(LEFT(LIS.MERCA,3)))
+			=XSEEK(RUVRO,'RUB','CODRUB')
+			NADA=RUB.RUBRO
+			IF FILART=2
+				SUBVR=STR(VAL(SUBSTR(LIS.MERCA,5,3)))
+				=XSEEK(RUVRO+SUBVR,'RUB','TODOS')
+				NADA=NADA+'/'+RUB.RUBRO
+			ENDIF
+			?? NADA
+		ENDIF
+		?? PAIP
+		?? STR(LIS.CANTIDAD,10)
+		TC=TC+LIS.CANTIDAD
+		?? PAIP
+		?? STR(LIS.MONTO,14,2)
+		TP=TP+LIS.MONTO
+		?? PAIP
+	ENDSCAN
+	=FIN_LIN(2,CASOS,PAIP+PADR("TOTAL",LARGOR1)+SALIDA+STR(TC,10)+PAIP+STR(TP,14,2)+PAIP)
+	=RELEWIN("win")
+	=REOPFAC()
+	=IAUD(fisc)
+ELSE
+	=iaudI()
+ENDIF
+RETURN MEN_LIN(BOTOM)

@@ -1,0 +1,31 @@
+**************************************
+*-- Programa: OPTMA.PRG
+*-- Fecha   : 19/02/96 12:02
+*-- Version : G. REINER
+*-- Notas   : ABRE ARCHIVO TELAS MADRE
+**************************************
+#DEFINE BOTOM  "  "+repl("°",78)                 && BOTOM
+#DEFINE ABA    "Abriendo Base de "               && ABA
+PARAMETER A_REOP,A_EXCL
+IF A_REOP
+	=REOPXXX("TMA")
+ENDIF
+IF USED("TMA")
+	IF A_EXCL
+		USE IN TMA
+		=PRXAREA(.T.)
+		USE (PATHPRO+"\TELMADRE") ORDER TAG CODMADRE ALIAS TMA EXCL
+	ELSE
+		SELE TMA
+	ENDIF
+ELSE
+	=MEN_LIN(ABA+"Tela Madre")
+	=PRXAREA(.T.)
+	IF A_EXCL
+		USE (PATHPRO+"\TELMADRE") ORDER TAG CODMADRE ALIAS TMA EXCL
+	ELSE
+		USE (PATHPRO+"\TELMADRE") ORDER TAG CODMADRE ALIAS TMA
+	ENDIF
+ENDIF
+RETURN IIF(TELPOP,DEFPOGRL(2,30,"TMAPOP","TMA.TELMADRE",40,'Elija Tela Madre'),.T.) .AND. ;
+OPTHI() .AND. MEN_LIN(BOTOM)

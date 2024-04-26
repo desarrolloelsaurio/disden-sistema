@@ -1,0 +1,134 @@
+********************************************************
+*-- Programa: LCCPIZ.PRG
+*-- Fecha   : 05-25-92 05:28pm
+*-- Version : G. REINER
+*-- Notas   : IMPRESION CUENTAS CORRIENTES POR IMPRESORA
+*********************************************************
+STOR HORA_ULP(PROGRAM()) TO ULPR
+IF CHEQSEG()
+	DIME TTL[CANT_MAX],CTRL[CANT_MAX]
+	STORE .F. TO HAY,ACLA,LINEA,TT
+	=LCCPPZ0()
+	STOR NUL TO CASOS
+	=CABPRI()
+	_PCOPIES=1
+	PRINTJOB
+	=CABPRI1()
+	=TIT_(3)
+	GO TOP
+	ELPRO=CCP.PROCOD
+	ELPRO1=PRO.PROVEEDOR
+	STORE 0 TO DB,HB,CUT
+	? ELPRO1
+	?? ":"
+	?? ELPRO
+	=_LIN(.T.)
+	SCAN
+		IF ELPRO#CCP.PROCOD
+			=LCCP22()
+			ELPRO=CCP.PROCOD
+			ELPRO1=PRO.PROVEEDOR
+			STORE 0 TO DB,HB,CUT
+			? LINEA
+			IF _PLINENO<59
+				? ELPRO1
+				?? ":"
+				?? ELPRO
+				=_LIN(.T.)
+			ENDIF
+		ENDIF
+		IF _PLINENO>63
+			=TLCCPIZ(1,NUL,'SUBTOTAL')
+			EJECT PAGE
+			=CABPRI1()
+			=TIT_(4)
+			? ELPRO1
+			?? ":"
+			?? ELPRO
+			=_LIN(.T.)
+		ENDI
+		=LCCPPZ1()
+	ENDSCAN
+	ENDP
+	=LCCP22()
+	=TLCCPIZ(2,CASOS,'TOTAL')
+	=FINIMP()
+	=IAUD(FISC)
+	=REOPCCP()
+ELSE
+	=IAUDI()
+ENDIF
+RETURN MEN_LIN(BOTOM)
+
+FUNCTION TLCCPIZ
+	PARAMETER COSA,COSA1,COSA2
+	PRIVATE COSA,COSA1,COSA2
+	IF !HAY
+	RETURN FIN_LIN(COSA,COSA1)
+ELSE
+	VEZ=1
+	? LINEA
+	? PAIP
+	FOR A=1 TO CANT_MAX
+		IF VARIABLE[A]
+			IF VEZ=1
+				VEZ=2
+				?? PADR(COSA2,TEXTO[A,2])
+				?? PAIP
+			ELSE
+				IF CTRL[A]
+					IF A=8
+						?? STR(TTL[A],XACDIGI,2)
+						?? PAIP
+						?? STR(TTL[9],XACDIGI,2)
+						?? PAIP
+						?? STR(TTL[12],XACDIGI,2)
+						?? PAIP
+						?? STR(TTL[11],XACDIGI,2)
+						?? PAIP
+					ELSE
+						?? STR(TTL[A],XACDIGI,2)
+						?? PAIP
+					ENDIF
+				ELSE
+					?? SPACE(TEXTO[A,2])
+					?? PAIP
+				ENDIF
+			ENDIF
+		ENDIF
+		ENDF
+	ENDIF
+RETURN .T.
+FUNCTION LCCP22
+	VEZ=1
+	? LINEA
+	? PAIP
+	FOR A=1 TO CANT_MAX
+		IF VARIABLE[A]
+			IF VEZ=1
+				VEZ=2
+				?? LEFT(ELPRO,TEXTO[A,2])
+				?? PAIP
+			ELSE
+				IF CTRL[A]
+					IF A=8
+						?? STR(DB,XACDIGI,2)
+						?? PAIP
+						?? STR(HB,XACDIGI,2)
+						?? PAIP
+						?? STR(CUT,XACDIGI,2)
+						?? PAIP
+						?? STR(DB-HB,XACDIGI,2)
+						?? PAIP
+					ELSE
+						?? SPACE(XACDIGI)
+						?? PAIP
+					ENDIF
+				ELSE
+					?? SPACE(TEXTO[A,2])
+					?? PAIP
+				ENDIF
+			ENDIF
+		ENDIF
+	NEXT
+RETURN .T.

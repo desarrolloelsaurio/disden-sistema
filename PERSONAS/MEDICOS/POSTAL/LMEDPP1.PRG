@@ -1,0 +1,10 @@
+SELE MED
+SET ORDER TO TAG IIF(TYPE("ORDMED")#'L' .OR. ORDMED,'CODMED','MEDICOS')
+fisc=fisc+' .and. !empty(postal)'
+SCAN FOR &fisc
+	DO mMEDj
+	IF LASTKEY()=27
+		EXIT
+	ENDIF
+ENDSCAN
+RETURN

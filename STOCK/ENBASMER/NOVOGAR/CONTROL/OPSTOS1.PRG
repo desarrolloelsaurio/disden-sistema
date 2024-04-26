@@ -1,0 +1,30 @@
+**************************************
+*-- Programa: OPSTOS.PRG
+*-- Fecha   : 9 DE JUNIO DE 1993
+*-- Version : G. REINER
+*-- Notas   : ABRE ARCHIVO DE STOCK OTRAS SUCURSALES
+*             DESDE CASA CENTRAL
+****************************************************
+PARAMETER OP_SUC1,OP_SUC2
+USE IN 25
+USE IN 14
+IF NEGOCIO(OP_SUC1)
+   =OPMER()
+ELSE   
+   USE (pathpro+'\'+OP_SUC1+'\STOCK') ORDER TAG ARTICULO ALIAS MER IN 14
+   IF MERPOP
+	   IF MERPOP1
+		  =DEFPOGRL(MERPOPR,MERPOPC,"MERPOP","MER.MERCA",40,"Elija la mercader¡a")
+       ELSE
+		  =DEFPOGRL(MERPOPR,MERPOPC,"MERPOP","MER.ARTICULO",20,"Elija la mercader¡a")
+   	   ENDIF
+   ELSE
+	  RELE POPU MERPOP
+   ENDIF
+ENDIF
+IF NEGOCIO(OP_SUC2)
+   =OPMERS()
+ELSE
+   USE (pathpro+'\'+OP_SUC2+'\STOCK') ORDER TAG ARTICULO ALIAS STOS IN 25
+ENDIF   
+RETURN MEN_LIN(BOTOM)

@@ -1,0 +1,115 @@
+***************************************************************************
+*-- Programa: INDATKAR.PRG
+*-- Fecha   : 03/01/90
+*-- Version : G. REINER
+*-- Notas   : INGRESO DATOS KARDEX
+********************************************************************************
+SELE KAR
+FINMER=RECCOUNT("MER")
+DEFI WIND WIN FROM 13,0 TO 22,79 DOUB
+ACTI WIND WIN
+STOR 1 TO PP
+STOR DATE() TO FECHA
+STOR SPACE(30) TO DETALLE
+STOR 0 TO CLIENTE
+STOR 0 TO MERCA
+STOR 0 TO CANTIDA
+ 
+@ 0,0 TO 7,60 DOUB
+@ 1,1 SAY "Nro INGRESO" COLOR w+/n
+@ 1,20 GET PP PICT "9999999";
+  MESS "'0' Para Menu"
+READ
+IF PP>0
+   @ 2,1 SAY "FECHA" COLOR w+/n
+   @ 2,20 GET fecha;
+     MESS ' '
+   @ 3,1 SAY "DETALLE" COLOR w+/n
+   @ 3,20 GET detalle PICT "@X"
+   READ
+   @ 4,1 SAY "FICHA MERCADERIAS" COLOR w+/n
+   STOR .T. TO SIGUE
+   DO WHIL SIGUE
+      @ 4,20 GET MERCA
+      READ
+      IF MERCA>0 .AND. MERCA<FINMER
+         GO MERCA IN MER
+         IF LEN(RTRIM(MER.ARTIC))>3
+            @ 4,20 GET MER.DETALLE
+            CLEAR GETS
+            STOR .F. TO SIGUE
+         ELSE
+            STOR 0 TO MERCA
+         ENDI
+      ELSE
+         STOR 0 TO MERCA
+      ENDI
+   ENDD
+   @ 5,1 SAY "CANTIDAD" COLOR w+/n
+   @ 5,20 GET cantida PICT "999999999.99"
+   READ
+   @ 6,1 SAY "PROVEEDOR" COLOR w+/n
+   STOR 0 TO RESPUESTA
+   SELE PRO
+   SET ORDER TO TAG FIRMA
+   ACTI SCREEN
+   DO WHIL EMPTY(RESPUESTA)
+      ACTI POPU PROPOP
+   ENDD
+   GO TOP
+   SKIP RESPUESTA-1
+   @ 6,20 GET PRO.FIRMA
+   CLEAR GETS
+   STOR .F. TO SIGUE
+   SELE KAR
+   ACTI WIND WIN
+   APPEND BLANK
+   IF PP=1
+      REPL KKKKAR WITH .T.
+   ELSE
+      REPL KKKKAR WITH .F.
+   ENDI
+   REPL KKKCANTIDA WITH CANTIDA
+   REPL KKKMERCA WITH MERCA
+   REPL KKKCLIENTE WITH CLIENTE
+   REPL KKKDETALLE WITH DETALLE
+   REPL KKKFECHA WITH FECHA
+   REPL KKKINGRESO WITH 'S'
+ENDI
+DEAC WIND ALL
+RETURN
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

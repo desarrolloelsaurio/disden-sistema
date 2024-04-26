@@ -1,0 +1,40 @@
+********************************************************************************
+*-- Programa: LFACPO.PRG
+*-- Fecha   : 06-12-92 03:45pm
+*-- Version : GOYO REINER
+*-- Notas   : GENERA ARCHIVO PARA LISTADO DE MERCADERIA VENDIDA
+********************************************************************************
+PARAMETER ARCHIVO
+=LFACPOX()
+tmp=GENTMP()
+INDE ON ARTICULO to (tmp) COMPACT for eval(fisc)
+CREATE TABLE (ARCHIVO) (MERCA C(20), CANTIDAD N(8), MONTO N(12,2))
+USE
+SELE 25
+USE (ARCHIVO) ALIAS LIS EXCL
+SELE FAX
+GO TOP
+XERCA=LAMER(FAX.ARTICULO)
+M.MERCA=FAX.ARTICULO
+STORE 0 TO M.MONTO,M.CANTIDAD
+SCAN
+	? RECNO()
+	IF lamer(FAX.ARTICULO)#XERCA
+		INSERT INTO LIS FROM MEMV
+		XERCA=LAMER(FAX.ARTICULO)
+		M.MERCA=FAX.ARTICULO
+		STORE NUL TO M.MONTO,M.CANTIDAD
+	ENDIF
+	M.CANTIDAD=M.CANTIDAD+FAX.CANTIDAD
+	M.MONTO=M.MONTO+FAX.MONTO*FAX.CANTIDAD
+ENDSCAN
+INSERT INTO LIS FROM MEMV
+SELE LIS
+if filmer=2
+	INDE ON CANTIDAD tag merca of nada.tmp desc comp
+else
+	INDE ON monto tag merca of nada.tmp desc comp
+endif
+SET ORDER TO TAG MERCA
+=UNTALK()
+RETURN .T.

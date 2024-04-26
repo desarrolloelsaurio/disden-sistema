@@ -1,0 +1,97 @@
+*******************************************************************************
+*-- Programa: LCCPPX.PRG
+*-- Fecha   : 05-13-92 04:41pm
+*-- Version : G. REINER
+*-- Notas   : LISTADO DE RESUMEN DE SALDOS
+********************************************************************************
+STOR HORA_ULP(PROGRAM()) TO ULPR
+IF CHEQSEG()
+	=WORKING()
+	NADA=GENTMP()
+	SET ORDER TO PROCOD IN PRO
+	SELE CCP
+	SET RELA TO PROCOD INTO PRO
+	IF ".T."=FISC
+		INDE ON DTOS(FECHAOP) TO (NADA) comp
+	ELSE
+		INDE ON DTOS(FECHAOP) TO (NADA) FOR EVAL(FISC) comp
+	ENDIF
+	IF FILFEC=3
+		ACLA=PAIP+PADC("FECHA",8)+PAIP+PADC("DEBE",13)+PAIP+PADC("HABER",13)+PAIP+PADC("SALDO",13)+PAIP
+	ENDIF
+	LNS=REPL("=",LEN(ACLA))
+	TT='Listado de Saldos'+ttque
+	=unwork()
+	=WIN0()
+	pag=1
+	=CABPAN()
+	=tit_lns(1)
+	SELE CCP
+	STORE NUL TO GDEBE,GHABER,DEBE,HABER
+	PICU='99,999,999.99'
+	GO TOP
+	IF FILFEC=3
+		ELTEXTO=CCP.FECHAOP
+		ELCORTE=CCP.FECHAOP
+	ENDIF
+	SCAN
+		IF ELCORTE#CCP.FECHAOP
+			=FLCCPPX1()
+		ENDIF
+		IF ROW()=21
+			IF TLCCPPX1("SUBTOTAL")=27
+				EXIT
+			ENDIF
+			CLEA
+			STOR pag+1 TO pag
+			=CABPAN()
+			=tit_lns(2)
+		ENDIF
+		IF COMPR='NC' .OR. COMPR='RE'
+			HABER=HABER+MONTO
+		ELSE
+			DEBE=DEBE+MONTO
+		ENDIF
+	ENDSCAN
+	if last()#27
+		=FLCCPPX1()
+		=TLCCPPX1("TOTAL")
+	endif
+	=relewin("WIN")
+	=REOPCCP()
+ELSE
+	=iaudi()
+ENDIF
+RETURN MEN_LIN(BOTOM)
+
+function TLCCPPX1
+	parameter cosa
+	private cosa
+	? LNS
+	? PAIP
+	?? PADR(COSA,IIF(FILFEC=3,8,30))
+	?? PAIP
+	?? GDEBE PICT PICU
+	?? PAIP
+	?? GHABER PICT PICU
+	?? PAIP
+	?? GDEBE-GHABER PICT PICU
+	?? PAIP
+RETURN INKEY(NUL)
+
+FUNCTION FLCCPPX1
+	? PAIP
+	?? ELTEXTO
+	?? PAIP
+	?? DEBE PICT PICU
+	GDEBE=GDEBE+DEBE
+	?? PAIP
+	?? HABER PICT PICU
+	GHABER=GHABER+HABER
+	?? PAIP
+	?? DEBE-HABER PICT PICU
+	?? PAIP
+	STORE NUL TO DEBE,HABER
+	ELTEXTO=CCP.FECHAOP
+	ELCORTE=CCP.FECHAOP
+RETURN .T.

@@ -1,0 +1,77 @@
+Screen Set h:\disden\sistemas\ventas\bochi\acporc.spr has the following errors:
+    Unknown PIDECLAV - Undefined
+
+Program h:\disden\sistemas\personas\clientes\cli.prg has the following errors:
+    Screen Set ICRE1 - Undefined
+
+Program h:\disden\sistemas\control\ctrl2_ca.prg has the following errors:
+    Unknown YAMI1 - Undefined
+
+Program h:\disden\sistemas\control\ctrl2_el.prg has the following errors:
+    Unknown YAMI1 - Undefined
+
+Program h:\disden\sistemas\control\ctrl2_in.prg has the following errors:
+    Proc./Func. XPRC - Undefined
+
+Program h:\disden\sistemas\control\ctrl2_li.prg has the following errors:
+    Proc./Func. LDTT - Undefined
+    Proc./Func. LBAN0 - Undefined
+    Proc./Func. LCLIJ - Undefined
+    Program LRUB0 - Undefined
+    Proc./Func. LTMA - Undefined
+
+Program h:\disden\sistemas\control\ctrl2_pa.prg has the following errors:
+    Proc./Func. LDTT - Undefined
+    Proc./Func. LBAN0 - Undefined
+    Proc./Func. LCLIJ - Undefined
+    Program LRUB0 - Undefined
+    Proc./Func. LTMA - Undefined
+
+Program h:\disden\sistemas\control\ctrl2_va.prg has the following errors:
+    Screen Set ORDMER - Undefined
+
+Screen Set h:\disden\sistemas\ventas\bochi\icre.spr has the following errors:
+    Unknown XACI - Undefined
+
+Screen Set h:\disden\sistemas\ventas\bochi\ideb.spr has the following errors:
+    Unknown XACI - Undefined
+    Unknown DISP_ND - Undefined
+
+Program h:\disden\sistemas\ventas\bochi\iniprin.prg has the following errors:
+    Proc./Func. ABOPRIN - Undefined
+
+Program h:\disden\sistemas\ctactecl\lanaccli.prg has the following errors:
+    Unknown PIDECLAV - Undefined
+
+Report h:\disden\sistemas\mixta\lmixi.frx has the following errors:
+    Unknown LMIX0 - Undefined
+
+Program h:\disden\sistemas\ventas\bochi\facturam.prg has the following errors:
+    Unknown PIDECLAV - Undefined
+
+Program h:\disden\sistemas\mercader\tapiplas\lmer.prg has the following errors:
+    Unknown GRL2 - Undefined
+
+Program h:\disden\sistemas\mercader\tapiplas\lmerpt.prg has the following errors:
+    Unknown REOPMER - Undefined
+
+Program h:\disden\sistemas\personas\iper_do.prg has the following errors:
+    Unknown PIDECLAV - Undefined
+    Unknown IMPUTRAF - Undefined
+    Screen Set ICOBCUOT - Undefined
+    Unknown OPHOR - Undefined
+    Unknown OPCCP - Undefined
+    Report LCCP - Undefined
+    Proc./Func. LCCP10 - Undefined
+    Proc./Func. ICOB - Undefined
+    Unknown ELITPT - Undefined
+
+Program h:\disden\sistemas\ctactecl\lccl.prg has the following errors:
+    Unknown QUERYCCL - Undefined
+    Unknown LCCLPR1 - Undefined
+
+Screen Set h:\disden\sistemas\notacred\clientes\bochi\dev.spr has the following errors:
+    Unknown GETNUCSG - Undefined
+    Unknown GETNUPRE - Undefined
+    Report LDEVCSG - Undefined
+

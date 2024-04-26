@@ -1,0 +1,141 @@
+PROCEDURE LRANK
+#DEFINE PAIP   "|"                            && PAIP
+#DEFINE CRLF CHR(13)+CHR(10)                  && CRLF
+#DEFINE BOTOM  "  "+repl("°",78)              && BOTOM
+DO WHILE .T.
+   =MEN_LIN("Seleccione el Campo sobre el que se realiza el Resumen - [ESC] Fin")
+   M.OPRANK=ALGUN(30," Tipo de Resumen ",;
+     "Por \<Rubro;Por \<Temporada;Por \<Sexo;Por \<L¡nea;Por \<Molder¡a;Por Mar\<ca;Sali\<da")
+   =MEN_LIN(BOTOM)
+   DO CASE
+   CASE M.OPRANK=1                            && RESUMEN POR RUBRO
+      =WORKING()
+      =DOTALK()
+      TMP=GENTMP()
+      SET ORDER TO TAG RUBCOD IN MIX
+      SELE MER
+      SET RELA TO RUBRO INTO MIX
+      ACLA=PAIP+PADC("RUBRO",20)+PAIP+PADC("CANT.",10)+PAIP
+      TT="Resumen de Ventas por Rubro"
+      ELPR="R"
+      =LRANKX("LRANK0(1)",.F.,.T.)
+   CASE M.OPRANK=2                            && RESUMEN POR temporada
+      =WORKING()
+      =DOTALK()
+      TMP=GENTMP()
+      SET ORDER TO TAG ARTIRED IN MER
+      SELE FAC
+      SET RELA TO NROITE INTO MER ADDI
+      ACLA=PAIP+PADC("TEMPORADA",20)+PAIP+PADC("CANT.",10)+PAIP
+      TT="Resumen de Ventas por Temporada"
+      REPL ALL CODZON WITH MER.TEMPORADA
+      ELPR="T"
+      =LRANKX("LRANK0(2)",.T.)
+   CASE M.OPRANK=3                            && RESUMEN POR sexo
+      =WORKING()
+      =DOTALK()
+      TMP=GENTMP()
+      ACLA=PAIP+PADC("SEXO",20)+PAIP+PADC("CANT.",10)+PAIP
+      TT="Resumen de Ventas por Sexo"
+      SET ORDER TO TAG ARTIRED IN MER
+      SELE FAC
+      SET RELA TO NROITE INTO MER ADDI
+      REPL ALL CODZON WITH MER.sexo
+      ELPR="S"
+      =LRANKX("LRANK0(3)",.T.)
+   CASE M.OPRANK=4                            && RESUMEN POR linea
+      =WORKING()
+      =DOTALK()
+      TMP=GENTMP()
+      SET ORDER TO TAG LINCOD IN MIX
+      SELE MER
+      SET RELA TO LINEA INTO MIX
+      SET ORDER TO TAG ARTIRED IN MER
+      ACLA=PAIP+PADC("LINEA",20)+PAIP+PADC("CANT.",10)+PAIP
+      TT="Resumen de Ventas por L¡nea"
+      ELPR="L"
+      =LRANKX("LRANK0(4)")
+   CASE M.OPRANK=5                            && RESUMEN POR molderia
+      =WORKING()
+      =DOTALK()
+      TMP=GENTMP()
+      SET ORDER TO TAG MATCOD IN MIX
+      SELE MER
+      SET RELA TO MATERIAL INTO MIX
+      ACLA=PAIP+PADC("MOLDERIA",20)+PAIP+PADC("CANT.",10)+PAIP
+      TT="Resumen de Ventas por Molder¡a"
+      ELPR="M"
+      =LRANKX("LRANK0(5)")
+   CASE M.OPRANK=6                            && RESUMEN POR MARCA
+      =WORKING()
+      =DOTALK()
+      TMP=GENTMP()
+      SET ORDER TO TAG MARCOD IN MIX
+      SELE MER
+      SET RELA TO MARCA INTO MIX
+      SET ORDER TO TAG ARTIRED IN MER
+      ACLA=PAIP+PADC("MARCA",20)+PAIP+PADC("CANT.",10)+PAIP
+      TT="Resumen de Ventas por Marca"
+      ELPR="A"
+      =LRANKX("LRANK0(6)")
+   CASE M.OPRANK=7 .OR. M.OPRANK=0
+      EXIT
+   ENDCASE
+ENDDO
+RETURN MEN_LIN(BOTOM)
+
+FUNCTION LRANKX
+PARAMETER ELPRO,SALTEA_ALGO,ESRUBRO
+IF !SALTEA_ALGO
+   SET ORDER TO TAG ARTIRED IN MER
+   SELE FAC
+   IF ESRUBRO
+      SET RELA TO left(GRUPO2,3) INTO MIX
+   REPL ALL CODCLI WITH MIX.TEXTO1,;
+     CODZON WITH MIX.TEXTO2
+   INDEX ON CODZON TAG CODCLI
+   ELSE
+      SET RELA TO NROITE INTO MER ADDI
+   REPL ALL CODCLI WITH MIX.TEXTO1,;
+     CODZON WITH MIX.TEXTO2
+   INDEX ON CODCLI TAG CODCLI
+   ENDIF
+ELSE
+   INDEX ON CODZON TAG CODCLI
+ENDIF
+SELE FAC
+SET ORDER TO TAG CODCLI
+=FLOCK() .OR. FLOK()
+IF !SALTEA_ALGO
+   TOTAL ON CODCLI TO (TMP) FIEL CANT
+ELSE
+   TOTAL ON CODZON TO (TMP) FIEL CANT
+ENDIF
+UNLO IN FAC
+=PRXAREA(.T.)
+USE (TMP) ALIAS TMP EXCL
+DELE FOR EMPTY(CANT)
+PACK
+INDEX ON CANT TAG CANT DESC
+SET ORDER TO TAG CANT
+=HAZ_TIT()
+DO WHILE .T.
+   M.PORDONDE=ALGUN(30," Salida del Listado ",;
+     "Por \<Pantalla;Por \<Impresora;\<Archivo ASCII;\<Men£ Anterior")
+   DO CASE
+   CASE M.PORDONDE=1
+      =LGRLP("TMP",ELPRO,"","LRES"+ELPR+"P",.T.,REPL("9",10))
+   CASE M.PORDONDE=2
+      =LGRLI("TMP",ELPRO,"","LRES"+ELPR+"I",.T.,REPL("9",10))
+   CASE M.PORDONDE=3
+      M.ENASCII=.T.
+      =LGRLI("TMP",ELPRO,"","LRES"+ELPR+"A",.T.,REPL("9",10))
+   OTHERWISE
+      EXIT
+   ENDCASE
+ENDDO
+=OFF_TMP()
+=OFF_RELA()
+=UNWORK()
+=UNTALK()
+RETURN .T.

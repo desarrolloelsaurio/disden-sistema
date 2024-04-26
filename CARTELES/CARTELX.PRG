@@ -1,0 +1,26 @@
+function cartelx
+parameter t_tex
+EL_ANCHO=LEN(T_TEX)*2.3+2
+LA_IZQ=SCOLS()-EL_ANCHO-10
+
+	DEFINE WINDOW MENS ;
+		AT 0.429, LA_IZQ ;
+		SIZE 4.071,EL_ANCHO ;
+		FONT "MS Sans Serif", 8 ;
+		FLOAT ;
+		NOCLOSE ;
+		MINIMIZE ;
+		NONE HALF SHAD ;
+		FILL FILE "\WINDOWS\BMP\COARSE.BMP"
+	ACTIVATE WINDOW MENS 
+
+@ 0.786,2.667 SAY T_TEX ;
+	FONT "Arial", 16 ;
+	STYLE "BT" ;
+	COLOR RGB(255,255,255,,,,)
+@ 1.000,2.800 SAY T_TEX ;
+	FONT "Arial", 16 ;
+	STYLE "BT" ;
+	COLOR RGB(0,0,0,,,,)
+
+RETURN .t.

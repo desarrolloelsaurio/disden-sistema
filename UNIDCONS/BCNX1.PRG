@@ -1,0 +1,52 @@
+***************************************
+*-- Programa: BCNX.prg
+*-- Fecha   : 01-22-92 11:12am
+*-- Version : R. 'EL BATA'
+*-- Notas   : BORRA DATOS DE UNIDADES
+**************************************
+STOR HORA_ULP(PROGRAM()) TO ULPR
+IF CHEQSEG()
+	=MOVEWIN(MCNXR,MCNXC,MCNXR+MCNXLA,MCNXC+MCNXAN,'WIN'," Selecciona Unidad ")
+	SELE CNS
+	STORE 25 TO COL
+	SCAT MEMVAR
+	=MCNS(.T.)
+	STORE NUL TO KOK
+	IF CONFIRMA("El Consorcio",.T.,MCNXR+MCNXLA,MCNXC+10)
+		=MOVEWIN(ICNXR,ICNXC,ICNXR+ICNXLA,ICNXC+ICNXAN,'WIN1'," Correcci¢n de Unidades ")
+		STOR " Borrado de Unidades - " TO me1
+		STOR 20 TO COL
+		CLEA
+		SELE CNX
+		SCAT MEMV BLAN
+		NADA = CNS.CONSORCIO
+		@ 1,COL GET M.NADA
+		CLEAR GETS
+		IF XSEEK (CNS.CONCOD,"CNX","CONCOD")
+			SCAN WHILE CNX.CONCOD=CNS.CONCOD
+				ACTI WIND WIN1
+				SCAT MEMV
+				=MCNX(.T.)
+				=MEN_LIN("Elija la Unidad - [] Sig. - [ENTER] Borra - [ESC] Sale")
+				nada=NUL
+				DO WHILE NADA#13 .AND. NADA#24 .AND. NADA#27
+					NADA=INKEY(NUL,"HM")
+				ENDDO
+				IF NADA = 13
+					IF CONFIRMA("BORRAR LA UNIDAD",.T.,MCNXR+MCNXLA,MCNXC+10)
+						DELE
+					ENDIF
+				ENDIF
+			ENDSCAN
+		ELSE
+			=men_lin('EL CONSORCIO '+ALLTRIM(cns.consorcio)+'No posee UNIDADES - Enter para continuar')
+			=EXISTE(' CONSORCIO SIN UNIDADES ')
+			=INKEY(NUL,'HM')
+		ENDIF
+		=RELEWIN('WIN1')
+	ENDIF
+	=RELEWIN('WIN')
+ELSE
+	=IAUDI()
+ENDIF
+RETURN MEN_LIN(BOTOM)

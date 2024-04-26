@@ -1,0 +1,16 @@
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+ Database File: C:\SISTEMAS\HERRAM\STRUBASE.DBF
+   Last Update: 08/27/95
+     # Records: 0
+      # Fields: 5  Bytes/Record: 26
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+ Field  FieldName  Type  Width  Decimals
+컴컴컴  컴컴컴컴�  컴컴  컴컴�  컴컴컴컴
+   1    FIELD_NAME  C    010     000
+   2    FIELD_TYPE  C    001     000
+   3    FIELD_LEN   N    003     000
+   4    FIELD_DEC   N    003     000
+   5    FIELD_BASE  C    008     000
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+
+

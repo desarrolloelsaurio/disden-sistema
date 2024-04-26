@@ -1,0 +1,41 @@
+FUNCTION FIN_LNS
+PARAMETER FI_COSA,FI_CO1,FI_COS2,SIGUEDELARGO
+PRIVATE FI_COSA,FI_CO1,FI_COS2
+
+#DEFINE BOTOM  "  "+repl("°",78)                 && BOTOM
+#DEFINE NUL    0                                 && NUL
+
+IF LASTKEY()#27
+   ? LEFT(LNS,LEN(LNS)-4)
+   ?? IIF(FI_COSA=2 .OR. FI_COSA=4,'====','\\\\')
+   IF PARAMETER()>2 .AND. TYPE("FI_COS2")#'L'
+      ? FI_COS2
+   ENDIF
+   IF !EMPTY(FI_CO1)
+      _WRAP=.F.
+      ? "Cantidad:"+ALLTRIM(STR(FI_CO1))
+      IF SYS(102)#'ON'
+         ON KEY LABEL F10
+      ENDIF
+   ENDIF
+   IF FI_COSA<3
+      _RMARGIN=80
+      _WRAP=.F.
+ 
+      IF !SIGUEDELARGO
+         =INKEY(NUL,'HM')
+      ENDIF
+   ELSE
+      IF !SIGUEDELARGO
+         EJECT PAGE
+         IF FI_COSA=3 .AND. TYPE("M.HOJASUELTA")#"U" .AND. M.HOJASUELTA
+            ON KEY
+            WAIT "CAMBIE LA HOJA Y PULSE [ENTER] CUANDO ESTE LISTA LA IMPRESORA" WIND
+            ON KEY DO ABPR
+         ENDIF
+      ENDIF
+      _RMARGIN=80
+      ?
+   ENDIF
+ENDIF
+RETURN LASTKEY()#27

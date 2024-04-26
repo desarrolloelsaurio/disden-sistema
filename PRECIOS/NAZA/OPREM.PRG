@@ -1,0 +1,22 @@
+*************************************
+*-- Programa: OPREM.PRG
+*-- Fecha   : 07/04/91 10:57am
+*-- Version : G. REINER
+*-- Notas   : ABRE ARCHIVO REMITOS
+*************************************
+IF USED("REX")
+	SELE REX
+ELSE
+	=MEN_LIN(ABA+'REMITOS')
+	SELE 25
+	USE (PATHVEN+'\REMITDAT') ORDER TAG REMITO ALIAS REX
+ENDIF
+IF USED("REM")
+	SELE REM
+ELSE
+	=MEN_LIN(ABA+'REMITOS')
+	SELE 24
+	USE (PATHVEN+'\REMITO') ORDER TAG REMITO ALIAS REM
+ENDIF
+=MEN_LIN(BOTOM)
+RETURN

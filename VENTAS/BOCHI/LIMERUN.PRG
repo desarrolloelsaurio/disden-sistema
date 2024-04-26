@@ -1,0 +1,59 @@
+********************************************************************************
+*-- Name....: LIMERUN
+*-- Date....: 21/9/89
+*-- Version.: G. REINER
+*-- Notes...: LISTADO INDIVIDUAL MARCADERIAS
+********************************************************************************
+PARAMETER FF
+ 
+DO FICHA WITH 18,1,FF
+@ 4,8 TO 17,73 DOUB
+ 
+STOR IIF(IVA='S',1.15,1) TO IIVV
+@ 5,10 SAY "ARTICULO" COLOR w+/n
+@ 5,32 GET artic PICT "@X"
+@ 6,10 SAY "DENOMINACION PRODUCTO" COLOR w+/n
+@ 6,32 GET detalle PICT "@XXXX"
+@ 7,10 SAY "PROVEEDOR" COLOR w+/n
+IF !EMPTY(MER.PROVEEDOR)
+GO mer.proveedor IN PRO
+@ 7,32 GET PRO.FIRMA
+ELSE
+@ 7,32 SAY "PROV. INEXISTENTE"
+ENDIF
+@ 8,10 SAY "COSTO" COLOR w+/n
+@ 8,32 GET costo PICT "9999999.99"
+@ 9,10 SAY "% COSTO REAL" COLOR w+/n
+@ 9,32 GET costor PICT "999.99"
+STOR costo+(costor*costo/100) to cc
+@ 9,50 get cc PICT '9999999.99'
+@ 10,10 SAY "% MAYORISTA" COLOR w+/n
+@ 10,32 GET may PICT "999.99"
+STOR CC+(CC*MAY/100) TO CCM
+@ 10,50 GET CCM PICT '9999999.99'
+@ 11,10 SAY "% MAYORISTA 30 Dias" COLOR w+/n
+@ 11,32 GET may30 PICT "999.99"
+STOR CC+(CC*MAY30/100) TO CCM3
+@ 11,50 GET CCM3 PICT '9999999.99'
+@ 12,10 SAY "% MINORISTA" COLOR w+/n
+@ 12,32 GET min PICT "999.99"
+STOR CC+(CC*MIN/100)*IIVV TO CCMI
+@ 12,50 GET CCMI PICT '9999999.99'
+@ 13,10 SAY "% MINORISTA 30 Dias" COLOR w+/n
+@ 13,32 GET min30 PICT "999.99"
+STOR CC+(CC*MIN30/100)*IIVV TO CCMI3
+@ 13,50 GET CCMI3 PICT '9999999.99'
+@ 14,10 SAY 'I.V.A.' COLOR W+/N
+@ 14,32 GET IVA PICT 'X'
+@ 15,10 SAY "MARCA" COLOR w+/n
+@ 15,32 GET mrk PICT "@X"
+@ 16,10 SAY 'CANTIDAD ' COLOR W+/N
+@ 16,32 GET CANT PICT '@X'
+CLEAR GETS
+DO TIT1 WITH 23," Toque tecla para continuar - '0' para Men£ ",'w+/n'
+=INKEY(0,'HM')
+IF LASTKEY()=48
+   GO BOTT
+ENDI
+set clock off
+RETURN

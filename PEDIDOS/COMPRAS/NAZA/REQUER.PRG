@@ -1,0 +1,404 @@
+* DISPARA PROCEDIMIENTOS DE ORDENES DE REQUERIMIENTO
+* G. REINER EN FUNCION DE LO QUE HABIA EN STOCK.MNX -> MPR -> PRG
+* 03/10/95 12:18
+#DEFINE BOTOM  "  "+repl("°",78)                 && BOTOM
+#DEFINE NUL    0                                 && NUL
+
+PROCEDURE REQUER
+ULPR=HORA_ULP(PROGRAM())
+RQ_DIJO=ALLTRIM(PROMPT())
+DO CASE
+CASE RQ_DIJO="Cabecera"
+   RESPUESTA='CABREQ#5#40#Cabecera de Ordenes de Requerimiento#3;
+#\<Datos Administrativos;
+#\<Legajo;
+#Cierra \<Orden'
+=DEFPOP()
+ON SELE POPU CABREQ DO CABREQ
+ACTI POPU CABREQ
+RELE POPU CABREQ
+ULPR=HORA_ULP(PROGRAM())
+CASE RQ_DIJO="Mercader¡a"
+RESPUESTA='MERREQ#5#40#Mercader¡a de Ordenes de Requerimiento#3'
+
+#IF "NOVO" $ CURD()
+respuesta=respuesta+"#\<Mercader¡as"
+#ELSE
+respuesta=respuesta+"#\<Av¡os;
+#\<Telas;
+#\<Compra;
+#Ot\<ros Prod."
+#ENDIF
+
+respuesta=respuesta+';
+#-;
+#\<Modifica Precios'
+=DEFPOP()
+ON SELE POPU MERREQ DO MERREQ
+ACTI POPU MERREQ
+RELE POPU MERREQ
+ULPR=HORA_ULP(PROGRAM())
+CASE RQ_DIJO="Borra O.R."
+   DO BORORE.SPR WITH 1
+   UNLO ALL
+CASE RQ_DIJO="Cambia Fecha de Promesa"
+   DO BORORE.SPR WITH 5
+   UNLO ALL
+CASE RQ_DIJO="Autorizaciones"
+   RESPUESTA='AUTORZ#5#40#Gesti¢n de Autorizaci¢n#3;
+#Aut. \<Borrar O.R. Completa;
+#Aut. B\<orrar Todos los Pagos O.R.;
+#Aut. \<Correcci¢n Pago;
+#\<Aut. Agregado Pago;
+#Aut. \<Modificaci¢n Fecha Promesa'
+   =DEFPOP()
+   ON SELE POPU AUTORZ DO AUTORZ
+   ACTI POPU AUTORZ
+   RELE POPU AUTORZ
+   ULPR=HORA_ULP(PROGRAM())
+   UNLO ALL
+CASE RQ_DIJO="Pagos"
+   RESPUESTA='PAGS#5#40#Gesti¢n de Pagos#3;
+#\<Ingresa Pagos;
+#\<Corrige un Pago;
+#\<Agrega un Pago;
+#Borra \<Todos los Pagos";
+#-;
+#Lista por \<Pantalla;
+#Lista por \<Impresora;
+#-;
+#Reinde\<xa'
+   =DEFPOP()
+   ON SELE POPU PAGS DO PAGS
+   ACTI POPU PAGS
+   RELE POPU PAGS
+   ULPR=HORA_ULP(PROGRAM())
+   UNLO ALL
+CASE LEFT(RQ_DIJO,12)="Listado por "
+   RESPUESTA='LIREQ#5#40#Gesti¢n de Pagos#3;
+#\<Listados \<Comunes;
+#\<Informe de Pendientes;
+#Pendientes por \<Art¡culo;
+#Pendientes por Fecha de \<Promesa;
+#Ordenes \<Vencidas;
+#Listados por \<Art¡culo'
+#IF "PROD" $ CURD()
+RESPUESTA=RESPUESTA+'#C\<onciliaci¢n con O.C.'
+#ENDIF
+   =DEFPOP()
+   ON SELE POPU LIREQ DO LIREQ WITH (RQ_DIJO="Listado por Pantalla")
+   ACTI POPU LIREQ
+   RELE POPU LIREQ
+   ULPR=HORA_ULP(PROGRAM())
+   UNLO ALL
+CASE RQ_DIJO="Restaura Datos"
+   =WORKING()
+   =DOTALK()
+   =OPTELS()
+   SELE TELS
+   =FLOCK() .OR. FLOK()
+   REPL ALL STKENTPEN WITH NUL
+   =OPAVIS()
+   SELE AVIS
+   =FLOCK() .OR. FLOK()
+   REPL ALL STKENTPEN WITH NUL   
+   =OPCOMS()
+   SELE COMS
+   =FLOCK() .OR. FLOK()
+   REPL ALL STKENTPEN WITH NUL   
+   =OPOTRS()
+   SELE OTRS
+   =FLOCK() .OR. FLOK()
+   REPL ALL STKENTPEN WITH NUL   
+   =OPREQ()
+   SELE REQ
+   =FLOCK() .OR. FLOK()
+   SET ORDER TO TAG NUMERO
+   SELE REQX
+   =FLOCK() .OR. FLOK()
+   SET ORDER TO TAG NUMERO
+   SET RELA TO NUMERO INTO REQ
+   SCAN FOR !REQ.COMPLETO .AND. !DELE() .AND. REQX.RECIBIDO<REQX.PEDIDO
+      =AJSTOCK(REQX.PEDIDO-REQX.RECIBIDO,700+ELCOD(.T.))
+   ENDSCAN
+   UNLO ALL   
+   =OFF_RELA()   
+   =UNTALK()
+   =UNWORK()
+ENDCASE
+ULPR=HORA_ULP(PROGRAM())
+UNLO ALL
+RETURN MEN_LIN(BOTOM)
+
+*************************************************
+*************** INICIO DE PROCEDIMIENTOS ANEXOS *
+*************************************************
+
+PROCEDURE AUTORZ
+* AUTORIZACIONES
+ULPR=HORA_ULP(PROGRAM())
+AU_DIJO=ALLTRIM(PROMPT())
+DO CASE
+CASE AU_DIJO="Aut. Borrar O.R. Completa"
+   DO AUTBOR.SPR WITH 1
+CASE AU_DIJO="Aut. Borrar Todos los Pagos O.R."
+   DO AUTBOR.SPR WITH 2
+CASE AU_DIJO="Aut. Correcci¢n Pago"
+   DO AUTBOR.SPR WITH 3
+CASE AU_DIJO="Aut. Agregado Pago"
+   DO AUTBOR.SPR WITH 4
+CASE AU_DIJO="Aut. Modificaci¢n Fecha Promesa"
+   DO AUTBOR.SPR WITH 5
+ENDCASE
+ULPR=HORA_ULP(PROGRAM())
+RETURN MEN_LIN(BOTOM)
+
+PROCEDURE PAGS
+* PAGOS
+ULPR=HORA_ULP(PROGRAM())
+PG_DIJO=ALLTRIM(PROMPT())
+DO CASE
+CASE PG_DIJO="Ingresa Pagos"
+   DO PAG.SPR
+CASE PG_DIJO="Corrige un Pago"
+   DO BORORE.SPR WITH 3
+CASE PG_DIJO="Agrega un Pago"
+   DO BORORE.SPR WITH 4
+CASE PG_DIJO="Borra Todos los Pagos"
+   DO BORORE.SPR WITH 2
+CASE LEFT(PG_DIJO,10)="Lista por "
+   RESPUESTA='LIPAG#5#40#Listado de Pagos#3;
+#\<Completo;
+#\<Pendientes'
+   =DEFPOP()
+   ON SELE POPU LIPAG DO LIPAG WITH (PG_DIJO="Lista por Pantalla")
+   ACTI POPU LIPAG
+   RELE POPU LIPAG
+   ULPR=HORA_ULP(PROGRAM())
+CASE PG_DIJO="Reindexa"
+   DO XPAG
+ENDCASE
+ULPR=HORA_ULP(PROGRAM())
+RETURN MEN_LIN(BOTOM)
+
+FUNCTION LIPAG
+PARAMETER PPN
+ULPR=HORA_ULP(PROGRAM())
+PAG_DIJO=ALLTRIM(PROMPT())
+DO CASE
+CASE PAG_DIJO="Completo"
+   DO QUERYPAG.SPR WITH PPN
+CASE PAG_DIJO="Pendientes"
+   DO QUERYPAG.SPR WITH PPN,.T.
+ENDCASE
+ULPR=HORA_ULP(PROGRAM())
+UNLO ALL
+RETURN MEN_LIN(BOTOM)
+
+FUNCTION LIREQ
+PARAMETER PPN
+ULPR=HORA_ULP(PROGRAM())
+REQ_DIJO=ALLTRIM(PROMPT())
+DO CASE
+CASE REQ_DIJO="Listados Comunes"
+   DO QUERYREQ.SPR WITH PPN,.F.
+CASE REQ_DIJO="Informe de Pendientes"
+   RESPUESTA="INFOPEN#7#50#Informe de Pendientes#3;
+#\<Av¡os;
+#\<Telas;
+#P\<roductos Terminados;
+#\<Productos Terminados (Agrupado);
+#\<Completo"
+   =DEFPOP()
+   ON SELE POPU INFOPEN DO INFOPEN WITH PPN
+   ACTI POPU INFOPEN
+   RELE POPU INFOPEN
+   ULPR=HORA_ULP(PROGRAM())
+CASE REQ_DIJO="Pendientes por Art¡culo"
+   RESPUESTA="PENXART#7#50#Informe de Pendientes#3;
+#\<Av¡os;
+#\<Telas;
+#\<Productos Terminados;
+#\<Otros Productos"
+   =DEFPOP()
+   ON SELE POPU PENXART DO PENXART WITH PPN
+   ACTI POPU PENXART
+   RELE POPU PENXART
+   ULPR=HORA_ULP(PROGRAM())
+CASE REQ_DIJO="Pendientes por Fecha de Promesa"
+   RESPUESTA="PENXFEC#7#50#Informe de Pendientes#3;
+#\<Av¡os;
+#\<Telas;
+#\<Productos Terminados;
+#\<Completo"
+   =DEFPOP()
+   ON SELE POPU PENXFEC DO PENXFEC WITH PPN
+   ACTI POPU PENXFEC
+   RELE POPU PENXFEC
+   ULPR=HORA_ULP(PROGRAM())
+CASE REQ_DIJO="Listados por Art¡culo"
+   DO QUERYREQ.SPR WITH PPN,.F.,.T.," Listado de Ordenes de Requerimiento por Art¡culo "
+CASE REQ_DIJO="Conciliaci¢n con O.C."
+   RESPUESTA="CONC#7#50#Conciliaci¢n con Ordenes de Corte#3;
+#\<Completo;
+#C\<ompleto Resumido;
+#\<Por Temporada;
+#Por \<Temporada Resumido"
+   =DEFPOP()
+   ON SELE POPU CONC DO CONC WITH PPN
+   ACTI POPU CONC
+   RELE POPU CONC
+   ULPR=HORA_ULP(PROGRAM())
+CASE REQ_DIJO="Ordenes Vencidas"
+   RESPUESTA="ORDVEN#7#50#Ordenes Vencidas#3;
+#\<Av¡os;
+#\<Telas;
+#\<Productos Terminados;
+#\<Completo"
+   =DEFPOP()
+   ON SELE POPU ORDVEN DO ORDVEN WITH PPN
+   ACTI POPU ORDVEN
+   RELE POPU ORDVEN
+   ULPR=HORA_ULP(PROGRAM())
+ENDCASE
+ULPR=HORA_ULP(PROGRAM())
+RETURN MEN_LIN(BOTOM)
+
+FUNCTION INFOPEN
+PARAMETER PRPN
+ULPR=HORA_ULP(PROGRAM())
+INF_DIJO=ALLTRIM(PROMPT())
+DO CASE
+CASE INF_DIJO="Av¡os"
+   DO LPEND WITH PRPN,1
+CASE INF_DIJO="Telas"
+   DO LPEND WITH PRPN,2
+CASE INF_DIJO="Productos Terminados (Agrupado)"
+   DO LPEND WITH PRPN,3
+CASE INF_DIJO="Productos Terminados"
+   DO LPEND WITH PRPN,4
+CASE INF_DIJO="Completo"
+   DO LPEND WITH PRPN,5
+ENDCASE
+ULPR=HORA_ULP(PROGRAM())
+RETURN MEN_LIN(BOTOM)
+
+FUNCTION PENXART
+PARAMETER PRPN
+ULPR=HORA_ULP(PROGRAM())
+INF_DIJO=ALLTRIM(PROMPT())
+DO CASE
+CASE INF_DIJO="Av¡os"
+   DO LPENREQ.SPR WITH "A",PRPN
+CASE INF_DIJO="Telas"
+   DO LPENREQ.SPR WITH "T",PRPN
+CASE INF_DIJO="Productos Terminados"
+   DO LPENREQ.SPR WITH "C",PRPN
+CASE INF_DIJO="Otros Productos"
+   DO LPENREQ.SPR WITH "O",PRPN
+ENDCASE
+ULPR=HORA_ULP(PROGRAM())
+RETURN MEN_LIN(BOTOM)
+
+FUNCTION PENXFEC
+PARAMETER PRPN
+ULPR=HORA_ULP(PROGRAM())
+INF_DIJO=ALLTRIM(PROMPT())
+DO CASE
+CASE INF_DIJO="Av¡os"
+   DO LPEND WITH PRPN,1,.T.
+CASE INF_DIJO="Telas"
+   DO LPEND WITH PRPN,2,.T.
+CASE INF_DIJO="Productos Terminados"
+   DO LPEND WITH PRPN,4,.T.
+CASE INF_DIJO="Completo"
+   DO LPEND WITH PRPN,5,.T.
+ENDCASE
+ULPR=HORA_ULP(PROGRAM())
+RETURN MEN_LIN(BOTOM)
+
+FUNCTION ORDVENC
+PARAMETER PRPN
+ULPR=HORA_ULP(PROGRAM())
+INF_DIJO=ALLTRIM(PROMPT())
+DO CASE
+CASE INF_DIJO="Av¡os"
+   DO LREQVENI with "A",PPN
+CASE INF_DIJO="Telas"
+   DO LREQVENI with "T",PPN
+CASE INF_DIJO="Productos Terminados"
+   DO LREQVENI with "C",PPN
+CASE INF_DIJO="Completo"
+   DO LREQVENI with "X",PPN
+ENDCASE
+ULPR=HORA_ULP(PROGRAM())
+RETURN MEN_LIN(BOTOM)
+
+FUNCTION CONC
+PARAMETER PRPN
+ULPR=HORA_ULP(PROGRAM())
+INF_DIJO=ALLTRIM(PROMPT())
+DO CASE
+CASE INF_DIJO="Completo Resumido"
+   DO CONCILIA WITH PRPN,.F.,.T.
+CASE INF_DIJO="Por Temporada Resumido"
+   DO CONCILIA WITH PRPN,.T.,.T.
+CASE INF_DIJO="Por Temporada"
+   DO CONCILIA WITH PRPN,.T.
+CASE INF_DIJO="Completo"
+   DO CONCILIA WITH PRPN
+ENDCASE
+ULPR=HORA_ULP(PROGRAM())
+RETURN MEN_LIN(BOTOM)
+
+
+FUNCTION CABREQ
+ULPR=HORA_ULP(PROGRAM())
+INF_DIJO=ALLTRIM(PROMPT())
+DO CASE
+CASE INF_DIJO="Datos Administrativos"
+   DO REQ.SPR WITH .F.,.T.
+   UNLO ALL
+CASE INF_DIJO="Legajo"
+   DO REQ_LEG.SPR WITH .T.
+   UNLO ALL
+CASE INF_DIJO="Cierra Orden"
+   STORE .T. TO ESPROPIO
+   DO CLOSORD.SPR WITH .T.,.T.," Cierra Orden de Requerimiento "
+   UNLO ALL
+ENDCASE
+RETURN MEN_LIN(BOTOM)
+
+
+FUNCTION MERREQ
+ULPR=HORA_ULP(PROGRAM())
+INF_DIJO=ALLTRIM(PROMPT())
+DO CASE
+#IF "NOVO" $ CURD()
+CASE INF_DIJO="Mercader¡as"
+   DO REQ_MER.SPR WITH .T.,.T.
+   UNLO ALL
+#ELSE
+CASE INF_DIJO="Av¡os"
+   DO REQ_AVI.SPR WITH .T.,.T.
+   UNLO ALL
+CASE INF_DIJO="Telas"
+   DO REQ_TEL.SPR WITH .T.,.T.
+   UNLO ALL
+CASE INF_DIJO="Compra"
+   DO REQ_COMS.SPR WITH .T.,.T.
+   UNLO ALL
+CASE INF_DIJO="Otros Prod."
+   DO REQ_OTR.SPR WITH .T.,.T.
+   UNLO ALL
+#ENDIF
+CASE INF_DIJO="Modifica Precios"
+   IF ESJEFE(2)
+      STORE .T. TO ESPROPIO
+      DO MODPREQ.SPR WITH .T.,.T.," Modifica Precios Orden de Requerimiento "
+   ELSE
+      =IAUDI()
+   ENDIF
+   UNLO ALL
+ENDCASE
+RETURN MEN_LIN(BOTOM)

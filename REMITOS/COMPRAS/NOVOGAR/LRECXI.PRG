@@ -1,0 +1,39 @@
+********************************************************************************
+*-- Programa: LRECXI.PRG
+*-- Fecha   : 02-08-93 02:10pm
+*-- Version : GOYO REINER
+*-- Notas   : LISTADO DE REMITOS DE COMPRA (UN PRODUCTO) POR IMPRESORA
+********************************************************************************
+STORE HORA_ULP(program()) TO ULPR
+IF CHEQSEG()
+	STORE "" TO ACLA,LINEA,TT
+	STORE NUL TO CASOS,CP,CE,TP,TTL
+	=LRECX0()
+	=CABPRI()
+	_PCOPIES=1
+	PRINTJOB
+	=cabpri1()
+	=TIT_LIN(3)
+	SCAN
+	IF _PLINENO>63
+		=FIN_LIN(3,NUL,;
+		PAIP+SPACE(8)+PAIP+;
+		PADR("SUBTOTAL",14)+PAIP+STR(CP,XACDIGI)+PAIP+SPACE(14)+PAIP+;
+		SPACE(8)+PAIP+SPACE(XACDIGI)+PAIP+STR(TTL,XACDIGI,2)+PAIP)
+		=cabpri1()
+		=TIT_LIN(4)
+	ENDI
+	=LRECX1()
+	ENDSCAN
+	=FIN_LIN(4,CASOS,;
+	PAIP+SPACE(8)+PAIP+;
+	PADR("TOTAL",14)+PAIP+STR(CP,XACDIGI)+PAIP+SPACE(14)+PAIP+;
+	SPACE(8)+PAIP+SPACE(XACDIGI)+PAIP+STR(TTL,XACDIGI,2)+PAIP)
+	ENDP
+	=FINIMP()
+	=iaud(ALLTRIM(MER.ARTICULO)+PAIP+MER.MERCA)
+	=REOPREC()
+ELSE
+	=iaudI()
+ENDIF
+RETURN MEN_LIN(BOTOM)

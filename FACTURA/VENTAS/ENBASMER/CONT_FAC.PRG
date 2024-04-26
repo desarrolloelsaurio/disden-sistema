@@ -1,0 +1,30 @@
+********************************************************************************
+*-- Programa: CONT_FAC.PRG
+*-- Fecha   : 08-25-92 11:06am
+*-- Version : G. REINER
+*-- Notas   : CUENTA FACTURAS PA'VER SI FALTA ALGUNA
+********************************************************************************
+PARAMETER PORPAN
+STORE NUL TO RESPUESTA
+NUMERO=0
+ESNUMERO=(TYPE("FAC.FACTURA")="N")
+=CABPRIR()
+PRINT
+? "FACTURAS FALTANTES:"
+?
+SELE FAC
+SCAN
+	NUMERO=NUMERO+1
+	FASTURA=IIF(ESNUMERO,FAC.FACTURA,VAL(RIGHT(ALLTRIM(FAC.FACTURA),8)))
+	IF FASTURA#NUMERO
+		? 'FALTA DESDE LA '
+		?? Q_FAC(NUMERO,"FAC.FACTURA",IIF(ESNUMERO,.F.,LEFT(FAC.FACTURA,1)))
+		?? ' HASTA LA '
+		?? Q_FAC(FASTURA-1,"FAC.FACTURA",IIF(ESNUMERO,.F.,LEFT(FAC.FACTURA,1)))
+		NUMERO=FASTURA
+	ENDIF
+ENDSCAN
+ENDP
+EJECT PAGE
+=FINIMP()
+RETURN

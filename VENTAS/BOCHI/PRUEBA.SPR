@@ -1,0 +1,96 @@
+m.currarea = SELECT()
+IF USED("mixta")
+	SELECT mixta
+	SET ORDER TO TAG "ciutex"
+ELSE
+	SELECT 0
+	USE (LOCFILE("f:\sistemas\ventas\ventasa\mixta.dbf","DBF","Where is mixta?"));
+		AGAIN ALIAS mixta ;
+		ORDER TAG "ciutex"
+ENDIF
+
+
+*       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+*       º                                                         º
+*       º               Windows Window definitions                º
+*       º                                                         º
+*       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
+*
+
+IF NOT WEXIST("_16p0qslhh")
+	DEFINE WINDOW _16p0qslhh ;
+		AT 8.143, 42.200 ;
+		SIZE 26.846,50.800 ;
+		FONT "MS Sans Serif", 8 ;
+		FLOAT ;
+		NOCLOSE ;
+		MINIMIZE ;
+		SYSTEM
+ENDIF
+
+
+*       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+*       º                                                         º
+*       º          PRUEBA/Windows Setup Code - SECTION 2          º
+*       º                                                         º
+*       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
+*
+
+#REGION 1
+copy fiel texto1 to array x
+copy fiel to array y
+
+
+*       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+*       º                                                         º
+*       º              PRUEBA/Windows Screen Layout               º
+*       º                                                         º
+*       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
+*
+
+#REGION 1
+IF WVISIBLE("_16p0qslhh")
+	ACTIVATE WINDOW _16p0qslhh SAME
+ELSE
+	ACTIVATE WINDOW _16p0qslhh NOSHOW
+ENDIF
+@ 0.077,0.200 GET z ;
+ 	PICTURE "@&T" ;
+	FROM x ;
+	SIZE 26.538,50.000 ;
+	DEFAULT 1 ;
+	FONT "MS Sans Serif", 8
+
+IF NOT WVISIBLE("_16p0qslhh")
+	ACTIVATE WINDOW _16p0qslhh
+ENDIF
+
+READ CYCLE
+
+RELEASE WINDOW _16p0qslhh
+
+*       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
+*       º                                                         º
+*       º                Windows Closing Databases                º
+*       º                                                         º
+*       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
+*
+
+IF USED("mixta")
+	SELECT mixta
+	USE
+ENDIF
+
+SELECT (m.currarea)
+
+
+#REGION 0
+
+SET READBORDER &rborder
+
+IF m.talkstat = "ON"
+	SET TALK ON
+ENDIF
+IF m.compstat = "ON"
+	SET COMPATIBLE ON
+ENDIF

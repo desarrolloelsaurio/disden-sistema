@@ -1,0 +1,12 @@
+#DEFINE BOTOM  "  "+repl("°",78)                 && BOTOM
+FUNCTION ACTALLE
+	=OPPRO()
+	=OPTALS()
+	DO WHILE .T.
+		NROOCOR=INFIC(9999," N§ de Orden de Corte ")
+		IF EMPTY(NROOCOR) .OR. LAST()=27
+			EXIT
+		ENDIF
+		=IIF(OPOCO(NROOCOR),CHANGTAL(),WNCL("No Existe la Orden de Corte N§ "+ALLTR(STR(NROOCOR))))
+	ENDDO
+RETURN CLOSDBF("OCO")

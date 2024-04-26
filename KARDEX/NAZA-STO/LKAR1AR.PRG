@@ -1,0 +1,153 @@
+FUNCTION LKAR1AR
+PARAMETER QUELISTA,PORPAN,FEC2,QUELISTA1
+* QUELISTA= 1-2-3-4 (Avios,Telas,P.Term,Otros)
+* PORPAN
+* FEC2 = .T. -> ENTRE FECHAS
+* QUELISTA1= 1-> UNO SOLO
+*          = 2-> ENTRE CODIGOS
+
+#DEFINE BOTOM  "  "+repl("°",78)                 && BOTOM
+#DEFINE PAIP   "|"                               && PAIP
+#DEFINE NUL    0                                 && NUL
+#DEFINE CRLF CHR(13)+CHR(10)                     && CRLF
+
+=OPTELS()
+=OPAVIS()
+=OPCOMS()
+=OPKARS()
+STORE NUL TO M.RESPUESTA,M.OK
+STORE "" TO M.CODINI,M.CODFIN
+DO CASE
+CASE QUELISTA=1
+   ELCAMPO="KARS.AVICODPRO='"
+   ELCAMPO1="AVIS.AVICODPRO"
+   ELCAMPO2="AVIS.AVIO"   
+   TTUNO="AVIO:"
+   LABASE="AVIS"
+   IF QUELISTA1=1
+      IF ELIAVIS("Listar",-1,1)
+         M.CODINI=AVIS.AVICODPRO
+         M.CODFIN=AVIS.AVICODPRO         
+      ELSE
+         =NOSELEC("AVIO")
+         STORE 1 TO M.OK
+      ENDIF
+   ELSE
+      IF !ENTRECOD("de Av¡o a Listar",20,"L¡mites del Listado","C. AVIO")
+         =NOSELEC("AVIO")
+         STORE 1 TO M.OK
+      ENDIF
+   ENDIF
+   SET ORDER TO TAG AVICODPRO IN AVIS
+   M.CODINI=ALLTRIM(M.CODINI)
+   M.CODFIN=ALLTRIM(M.CODFIN)   
+   FIS1="AVIS.AVICODPRO>='"+;
+   M.CODINI+;
+   "' .AND. AVIS.AVICODPRO<='"+;
+   M.CODFIN+"'"
+CASE QUELISTA=2
+   ELCAMPO="KARS.TELCODPRO='"
+   ELCAMPO1="TELS.TELCODPRO"
+   ELCAMPO2="TELS.TELA"   
+   TTUNO="TELA:"
+   LABASE="TELS"
+   IF QUELISTA1=1
+      IF ELITELS("Listar",-1,1)
+         M.CODINI=TELS.TELCODPRO
+         M.CODFIN=TELS.TELCODPRO         
+      ELSE
+         =NOSELEC("TELA")
+         STORE 1 TO M.OK
+      ENDIF
+   ELSE
+      IF !ENTRECOD("de Tela a Listar",20,"L¡mites del Listado","C. TELA")
+         =NOSELEC("TELA")
+         STORE 1 TO M.OK
+      ENDIF
+   ENDIF
+   SET ORDER TO TAG TELCODPRO IN TELS
+   M.CODINI=ALLTRIM(M.CODINI)
+   M.CODFIN=ALLTRIM(M.CODFIN)   
+   FIS1="TELS.TELCODPRO>='"+;
+   M.CODINI+;
+   "' .AND. TELS.TELCODPRO<='"+;
+   M.CODFIN+"'"
+CASE QUELISTA=3
+   ELCAMPO="KARS.COMCODPRO='"
+   ELCAMPO1="COMS.COMCODPRO"
+   ELCAMPO2="COMS.COMPRA"   
+   TTUNO="COMPRA:"
+   LABASE="COMS"
+   IF QUELISTA1=1
+      IF ELICOMS("Listar",-1,1)
+         M.CODINI=COMS.COMCODPRO
+         M.CODFIN=COMS.COMCODPRO         
+      ELSE
+         =NOSELEC("COMPRA")
+         STORE 1 TO M.OK
+      ENDIF
+   ELSE
+      IF !ENTRECOD("de Producto Terminado a Listar",20,"L¡mites del Listado","C.P.TERM.")
+         =NOSELEC("P. TERMINADO")
+         STORE 1 TO M.OK
+      ENDIF
+   ENDIF
+   SET ORDER TO TAG COMCODPRO IN COMS
+   M.CODINI=ALLTRIM(M.CODINI)
+   M.CODFIN=ALLTRIM(M.CODFIN)   
+   FIS1="COMS.COMCODPRO>='"+;
+   M.CODINI+;
+   "' .AND. COMS.COMCODPRO<='"+;
+   M.CODFIN+"'"
+OTHERWISE
+   ELCAMPO="KARS.OTRCODPRO='"
+   ELCAMPO1="OTRS.OTRCODPRO"
+   ELCAMPO2="OTRS.OTRO"   
+   TTUNO="OTRO PROD.:"
+   LABASE="OTRS"
+   IF QUELISTA1=1
+      IF ELIOTRS("Listar",-1,1)
+         M.CODINI=OTRS.OTRCODPRO
+         M.CODFIN=OTRS.OTRCODPRO         
+      ELSE
+         =NOSELEC("OTRO PROD.")
+         STORE 1 TO M.OK
+      ENDIF
+   ELSE
+      IF !ENTRECOD("de Producto Terminado a Listar",20,"L¡mites del Listado","C.P.TERM.")
+         =NOSELEC("P. TERMINADO")
+         STORE 1 TO M.OK
+      ENDIF
+   ENDIF
+   SET ORDER TO TAG OTRCODPRO IN OTRS
+   M.CODINI=ALLTRIM(M.CODINI)
+   M.CODFIN=ALLTRIM(M.CODFIN)   
+   FIS1="OTRS.OTRCODPRO>='"+;
+   M.CODINI+;
+   "' .AND. OTRS.OTRCODPRO<='"+;
+   M.CODFIN+"'"
+ENDCASE
+if empty(ok)
+   STORE {} TO M.FECINI,M.FECFIN
+   STORE .T. TO M.SALOK
+   IF FEC2
+      STORE {} TO M.FECINI,M.FECFIN
+      M.SALIDA=ENTRE_FE("a Listar")
+   ELSE
+      M.FECINI=INFEC("WIN"," Fecha de Inicio ")
+   ENDIF
+   =MEN_LIN(BOTOM)
+   SELE (LABASE)
+   SCAN FOR &FIS1
+      TTDOS=ALLTRIM(EVAL(ELCAMPO2))+;
+      CRLF+;
+      ALLTRIM(EVAL(ELCAMPO1))
+      FISC=ELCAMPO+EVAL(ELCAMPO1)+"'"
+      DO LKAR1AR1
+      SELE (LABASE)
+      IF LAST()=27
+      EXIT
+      ENDIF
+   ENDSCAN
+ENDIF
+RETURN MEN_LIN(BOTOM)

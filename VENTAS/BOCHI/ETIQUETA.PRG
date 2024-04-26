@@ -1,0 +1,314 @@
+*       *********************************************************
+*       *
+*       * 05/14/03            ETIQUETAS
+*       *
+*       *********************************************************
+*       *
+*       * Copyright (c) 1995 Company Name
+*       * Address
+*       * City,     Zip
+*       *********************************************************
+ACTI SCRE
+CLEA
+=SETEOS()
+MODI WIND SCREEN TITL "ETIQUETAS - DIS DEN ODONTOLOGIA "
+=GETPATH()
+=OPMIX()
+=OPAUD()
+=OPSEG()
+=var_prv()
+=VAR_CLI()
+=var_dni()
+=var_iva()
+=var_cag()
+=var_int()
+=VAR_ZON()
+RELE SSTM,JANNAME,USADOR,COEFSEG,XACANCHO,XACHOJA,SSTM1,LARGO,LARGOIM
+RELE ULPR
+PUBL SSTM,JANNAME,USADOR,COEFSEG,XACANCHO,XACHOJA,SSTM1,LARGO,LARGOIM
+PUBL ULPR
+*** DEFINICION DE VARIABLES
+USADOR=GETENV("USERNAME")
+LARGOIM=80
+IF GETENV("EQUIPO")="MICASA"
+   rest from d:\sistemas\ventas\novogar\posic ADDI
+ELSE
+   rest from posic ADDI
+ENDIF
+=GETPATH()
+COEFSEG=1
+XACANCHO=GETNU1(PADR(USADOR,10)+PADR("XACANCHO",20),"FOXPER")
+XACHOJA=GETNU1(PADR(USADOR,10)+PADR("XACHOJA",20),"FOXPER")
+SSTM="VENTAS"
+SSTM1="DIS-DEN"
+JANNAME="DIS-DEN Odontología"
+STORE .T. TO CAGPOP,CIUPOP,CTDPOP,IVACOD,MERPOP,PRVPOP,PROPOP,DNIPOP,ZONPOP,Agepop
+STORE .F. TO CLIPOP
+
+*       *********************************************************
+*       *
+*       *                      Menu Definition
+*       *
+*       *********************************************************
+*
+
+DEFI MENU MAIN
+DEFI PAD etiquesha OF MAIN PROM "\<Etiquetas" COLOR SCHEME 3
+DEFI PAD finishela OF MAIN PROM "\<Salida"    COLOR SCHEME 3
+ON PAD etiquesha OF MAIN ACTI POPUP etiquetas
+ON SELE PAD finishela OF MAIN cancel
+
+DEFI POPUP etiquetas MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF etiquetas PROM "\<Un Cliente"
+DEFI BAR 2 OF etiquetas PROM "\<Por Agrupación"
+DEFI BAR 3 OF etiquetas PROM "\<Todos los Clientes"
+DEFI BAR 4 OF etiquetas PROM "Por \<Localidad"
+DEFI BAR 5 OF etiquetas PROM "Por \<Letra"
+DEFI BAR 6 OF etiquetas PROM "Por \<Cumpleaños"
+
+ON SELE BAR 1 OF etiquetas DO DISPLBL WITH 1,2,.F.,.F.,"C",.F.,"CLIENTES"
+ON BAR 2 OF etiquetas ACTI POPUP poragrupac
+ON BAR 3 OF etiquetas ACTI POPUP todosloscl
+ON BAR 4 OF etiquetas ACTI POPUP porlocal
+ON BAR 5 OF etiquetas ACTI POPUP porletra
+ON BAR 6 OF etiquetas ACTI POPUP porcumple
+
+DEFI POPUP poragrupac MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF poragrupac PROM "\<Completo"
+DEFI BAR 2 OF poragrupac PROM "\<Desde un Cliente"
+DEFI BAR 3 OF poragrupac PROM "Desde - \<Hasta"
+DEFI BAR 4 OF poragrupac  PROM "\<Letra"
+ON SELE BAR 1 OF poragrupac DO DISPLBL WITH 2,2,.T.,.F.,"C",.F.,"CLIENTES"
+ON SELE BAR 2 OF poragrupac DO DISPLBL WITH 2,2,.F.,.F.,"C",.F.,"CLIENTES"
+ON SELE BAR 3 OF poragrupac DO DISPLBL WITH 2,2,.f.,.t.,"C",.F.,"CLIENTES"
+ON SELE BAR 4 OF poragrupac DO DISPLBL WITH 2,2,.T.,.t.,"C",.T.,"CLIENTES"
+
+DEFI POPUP todosloscl MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF todosloscl PROM "\<Completo"
+DEFI BAR 2 OF todosloscl PROM "\<Desde un Cliente"
+DEFI BAR 3 OF todosloscl PROM "Desde - \<Hasta"
+ON SELE BAR 1 OF todosloscl DO DISPLBL WITH 3,2,.T.,.F.,"C",.F.,"CLIENTES"
+ON SELE BAR 2 OF todosloscl DO DISPLBL WITH 3,2,.F.,.F.,"C",.F.,"CLIENTES"
+ON SELE BAR 3 OF todosloscl DO DISPLBL WITH 3,2,.f.,.t.,"C",.F.,"CLIENTES"
+
+DEFI POPUP porlocal MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF porlocal PROM "\<Completo"
+DEFI BAR 2 OF porlocal PROM "\<Desde un Cliente"
+DEFI BAR 3 OF porlocal PROM "Desde - \<Hasta"
+ON SELE BAR 1 OF porlocal DO DISPLBL WITH 7,2,.T.,.F.,"C",.F.,"CLIENTES"
+ON SELE BAR 2 OF porlocal DO DISPLBL WITH 7,2,.T.,.F.,"C",.T.,"CLIENTES"
+ON SELE BAR 3 OF porlocal DO DISPLBL WITH 7,2,.T.,.F.,"C",.T.,"CLIENTES"
+
+DEFI POPUP porletra MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF porletra PROM "\<Completo"
+DEFI BAR 2 OF porletra PROM "\<Desde un Cliente"
+DEFI BAR 3 OF porletra PROM "Desde - \<Hasta"
+ON SELE BAR 1 OF porletra DO DISPLBL WITH 5,2,.T.,.F.,"C",.F.,"CLIENTES"
+ON SELE BAR 2 OF porletra DO DISPLBL WITH 5,2,.F.,.F.,"C",.F.,"CLIENTES"
+ON SELE BAR 3 OF porletra DO DISPLBL WITH 5,2,.f.,.t.,"C",.F.,"CLIENTES"
+
+DEFI POPUP porcumple MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF porcumple PROM "\<Completo"
+DEFI BAR 2 OF porcumple PROM "\<Desde un Cliente"
+DEFI BAR 3 OF porcumple PROM "Desde - \<Hasta"
+ON SELE BAR 1 OF porcumple DO DISPLBL WITH 6,2,.T.,.F.,"C",.F.,"CLIENTES"
+ON SELE BAR 2 OF porcumple DO DISPLBL WITH 6,2,.F.,.F.,"C",.F.,"CLIENTES"
+ON SELE BAR 3 OF porcumple DO DISPLBL WITH 6,2,.f.,.t.,"C",.F.,"CLIENTES"
+
+DEFI POPUP encabezado MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF encabezado PROM "\<Un Cliente"
+DEFI BAR 2 OF encabezado PROM "Por \<Agrupación"
+DEFI BAR 3 OF encabezado PROM "\<Todos los Clientes"
+DEFI BAR 4 OF encabezado PROM "Por \<Zona"
+DEFI BAR 5 OF encabezado PROM "Por \<Letra"
+ON SELE BAR 1 OF encabezado DO DISPLBL WITH 1,1,.F.,.F.,"C",.F.,"CLIENTES"
+ON BAR 2 OF encabezado ACTI POPUP _qyn16z3vt
+ON BAR 3 OF encabezado ACTI POPUP _qyn170gxs
+ON BAR 4 OF encabezado ACTI POPUP _qyn171f66
+ON BAR 5 OF encabezado ACTI POPUP _qyn172a8v
+
+DEFI POPUP _qyn16z3vt MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF _qyn16z3vt PROM "\<Completo"
+DEFI BAR 2 OF _qyn16z3vt PROM "\<Desde un Cliente"
+DEFI BAR 3 OF _qyn16z3vt PROM "Desde - \<Hasta"
+ON SELE BAR 1 OF _qyn16z3vt DO DISPLBL WITH 2,1,.T.,.F.,"C",.F.,"CLIENTES"
+ON SELE BAR 2 OF _qyn16z3vt DO DISPLBL WITH 2,1,.F.,.F.,"C",.F.,"CLIENTES"
+ON SELE BAR 3 OF _qyn16z3vt DO DISPLBL WITH 2,1,.F.,.T.,"C",.F.,"CLIENTES"
+
+DEFI POPUP _qyn170gxs MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF _qyn170gxs PROM "\<Completo"
+DEFI BAR 2 OF _qyn170gxs PROM "\<Desde un Cliente"
+DEFI BAR 3 OF _qyn170gxs PROM "Desde - \<Hasta"
+ON SELE BAR 1 OF _qyn170gxs DO DISPLBL WITH 3,1,.T.,.F.,"C",.F.,"CLIENTES"
+ON SELE BAR 2 OF _qyn170gxs DO DISPLBL WITH 3,1,.F.,.F.,"C",.F.,"CLIENTES"
+ON SELE BAR 3 OF _qyn170gxs DO DISPLBL WITH 3,1,.f.,.t.,"C",.F.,"CLIENTES"
+
+DEFI POPUP _qyn171f66 MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF _qyn171f66 PROM "\<Cliente"
+DEFI BAR 2 OF _qyn171f66 PROM "\<Desde un Cliente"
+DEFI BAR 3 OF _qyn171f66 PROM "Desde - \<Hasta"
+ON SELE BAR 1 OF _qyn171f66 DO DISPLBL WITH 4,1,.T.,.F.,"C",.F.,"CLIENTES"
+ON SELE BAR 2 OF _qyn171f66 DO DISPLBL WITH 4,1,.F.,.F.,"C",.F.,"CLIENTES"
+ON SELE BAR 3 OF _qyn171f66 DO DISPLBL WITH 4,1,.f.,.t.,"C",.F.,"CLIENTES"
+
+DEFI POPUP _qyn172a8v MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF _qyn172a8v PROM "\<Completo"
+DEFI BAR 2 OF _qyn172a8v PROM "\<Desde un Cliente"
+DEFI BAR 3 OF _qyn172a8v PROM "Desde  - \<Hasta"
+ON SELE BAR 1 OF _qyn172a8v DO DISPLBL WITH 5,1,.t.,.F.,"C",.F.,"CLIENTES"
+ON SELE BAR 2 OF _qyn172a8v DO DISPLBL WITH 5,1,.F.,.F.,"C",.F.,"CLIENTES"
+ON SELE BAR 3 OF _qyn172a8v DO DISPLBL WITH 5,1,.f.,.t.,"C",.F.,"CLIENTES"
+
+*************
+DEFI POPUP mailes MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF mailes PROM "\<Un Interesado"
+DEFI BAR 2 OF mailes PROM "\<Por Agrupación"
+DEFI BAR 3 OF mailes PROM "\<Todos los Interesados"
+DEFI BAR 4 OF mailes PROM "Por \<Zona"
+DEFI BAR 5 OF mailes PROM "Por \<Letra"
+
+ON SELE BAR 1 OF mailes DO DISPLBL WITH 1,4,.F.,.F.,"I"
+ON BAR 2 OF mailes ACTI POPUP PORAGRUPAI
+ON BAR 3 OF mailes ACTI POPUP TODOSLOSCI
+ON BAR 4 OF mailes ACTI POPUP PORZONI
+ON BAR 5 OF mailes ACTI POPUP PORLETRI
+
+DEFI POPUP PORAGRUPAI MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF PORAGRUPAI PROM "\<Completo"
+DEFI BAR 2 OF PORAGRUPAI PROM "\<Desde un Cliente"
+DEFI BAR 3 OF PORAGRUPAI PROM "Desde - \<Hasta"
+ON SELE BAR 1 OF PORAGRUPAI DO DISPLBL WITH 2,4,.T.,.F.,"I"
+ON SELE BAR 2 OF PORAGRUPAI DO DISPLBL WITH 2,4,.F.,.F.,"I"
+ON SELE BAR 3 OF PORAGRUPAI DO DISPLBL WITH 2,4,.f.,.t.,"I"
+
+DEFI POPUP TODOSLOSCI MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF TODOSLOSCI PROM "\<Completo"
+DEFI BAR 2 OF TODOSLOSCI PROM "\<Desde un Cliente"
+DEFI BAR 3 OF TODOSLOSCI PROM "Desde - \<Hasta"
+ON SELE BAR 1 OF TODOSLOSCI DO DISPLBL WITH 3,4,.T.,.F.,"I"
+ON SELE BAR 2 OF TODOSLOSCI DO DISPLBL WITH 3,4,.F.,.F.,"I"
+ON SELE BAR 3 OF TODOSLOSCI DO DISPLBL WITH 3,4,.f.,.t.,"I"
+
+DEFI POPUP PORZONI MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF PORZONI PROM "\<Completo"
+DEFI BAR 2 OF PORZONI PROM "\<Desde un Cliente"
+DEFI BAR 3 OF PORZONI PROM "Desde - \<Hasta"
+ON SELE BAR 1 OF PORZONI DO DISPLBL WITH 4,4,.T.,.F.,"I"
+ON SELE BAR 2 OF PORZONI DO DISPLBL WITH 4,4,.F.,.F.,"I"
+ON SELE BAR 3 OF PORZONI DO DISPLBL WITH 4,4,.f.,.t.,"I"
+
+DEFI POPUP PORLETRI MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF PORLETRI PROM "\<Completo"
+DEFI BAR 2 OF PORLETRI PROM "\<Desde un Cliente"
+DEFI BAR 3 OF PORLETRI PROM "Desde - \<Hasta"
+ON SELE BAR 1 OF PORLETRI DO DISPLBL WITH 5,4,.T.,.F.,"I"
+ON SELE BAR 2 OF PORLETRI DO DISPLBL WITH 5,4,.F.,.F.,"I"
+ON SELE BAR 3 OF PORLETRI DO DISPLBL WITH 5,4,.f.,.t.,"I"
+
+DEFI POPUP encabezado MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF encabezado PROM "\<Un Cliente"
+DEFI BAR 2 OF encabezado PROM "Por \<Agrupación"
+DEFI BAR 3 OF encabezado PROM "\<Todos los Clientes"
+DEFI BAR 4 OF encabezado PROM "Por \<Zona"
+DEFI BAR 5 OF encabezado PROM "Por \<Letra"
+ON SELE BAR 1 OF encabezado DO DISPLBL WITH 1,1,.F.,.F.,"I"
+ON BAR 2 OF encabezado ACTI POPUP _goy16z3vt
+ON BAR 3 OF encabezado ACTI POPUP _qyn170gxs
+ON BAR 4 OF encabezado ACTI POPUP _qyn171f66
+ON BAR 5 OF encabezado ACTI POPUP _qyn172a8v
+
+DEFI POPUP _goy16z3vt MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF _goy16z3vt PROM "\<Completo"
+DEFI BAR 2 OF _goy16z3vt PROM "\<Desde un Cliente"
+DEFI BAR 3 OF _goy16z3vt PROM "Desde - \<Hasta"
+ON SELE BAR 1 OF _goy16z3vt DO DISPLBL WITH 2,1,.T.,.F.,"I"
+ON SELE BAR 2 OF _goy16z3vt DO DISPLBL WITH 2,1,.F.,.F.,"I"
+ON SELE BAR 3 OF _goy16z3vt DO DISPLBL WITH 2,1,.F.,.T.,"I"
+
+DEFI POPUP _goy170gxs MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF _goy170gxs PROM "\<Completo"
+DEFI BAR 2 OF _goy170gxs PROM "\<Desde un Cliente"
+DEFI BAR 3 OF _goy170gxs PROM "Desde - \<Hasta"
+ON SELE BAR 1 OF _goy170gxs DO DISPLBL WITH 3,1,.T.,.F.,"I"
+ON SELE BAR 2 OF _goy170gxs DO DISPLBL WITH 3,1,.F.,.F.,"I"
+ON SELE BAR 3 OF _goy170gxs DO DISPLBL WITH 3,1,.f.,.t.,"I"
+
+DEFI POPUP _goy171f66 MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF _goy171f66 PROM "\<Cliente"
+DEFI BAR 2 OF _goy171f66 PROM "\<Desde un Cliente"
+DEFI BAR 3 OF _goy171f66 PROM "Desde - \<Hasta"
+ON SELE BAR 1 OF _goy171f66 DO DISPLBL WITH 4,1,.T.,.F.,"I"
+ON SELE BAR 2 OF _goy171f66 DO DISPLBL WITH 4,1,.F.,.F.,"I"
+ON SELE BAR 3 OF _goy171f66 DO DISPLBL WITH 4,1,.f.,.t.,"I"
+
+DEFI POPUP _goy172a8v MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF _goy172a8v PROM "\<Completo"
+DEFI BAR 2 OF _goy172a8v PROM "\<Desde un Cliente"
+DEFI BAR 3 OF _goy172a8v PROM "Desde  - \<Hasta"
+ON SELE BAR 1 OF _goy172a8v DO DISPLBL WITH 5,1,.t.,.F.,"I"
+ON SELE BAR 2 OF _goy172a8v DO DISPLBL WITH 5,1,.F.,.F.,"I"
+ON SELE BAR 3 OF _goy172a8v DO DISPLBL WITH 5,1,.f.,.t.,"I"
+
+DEFI POPUP GENBASDA MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF GENBASDA PROM "\<Un Cliente"
+DEFI BAR 2 OF GENBASDA PROM "\<Por Agrupación"
+DEFI BAR 3 OF GENBASDA PROM "\<Todos los Clientes"
+DEFI BAR 4 OF GENBASDA PROM "Por \<Zona"
+DEFI BAR 5 OF GENBASDA PROM "Por \<Letra"
+ON SELE BAR 1 OF GENBASDA DO DISPLBL WITH 1,3,.F.,.F.,"C",.T.,"CLIENTES"
+ON BAR 2 OF GENBASDA ACTI POPUP GENporagr
+ON BAR 3 OF GENBASDA ACTI POPUP GENtodos
+ON BAR 4 OF GENBASDA ACTI POPUP GENporzo
+ON BAR 5 OF GENBASDA ACTI POPUP GENporlet
+
+DEFI POPUP GENporagr MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF GENporagr PROM "\<Completo"
+DEFI BAR 2 OF GENporagr PROM "\<Desde un Cliente"
+DEFI BAR 3 OF GENporagr PROM "Desde - \<Hasta"
+ON SELE BAR 1 OF GENporagr DO DISPLBL WITH 2,3,.T.,.F.,"C",.F.,"CLIENTES"
+ON SELE BAR 2 OF GENporagr DO DISPLBL WITH 2,3,.F.,.F.,"C",.F.,"CLIENTES"
+ON SELE BAR 3 OF GENporagr DO DISPLBL WITH 2,3,.f.,.t.,"C",.F.,"CLIENTES"
+
+DEFI POPUP GENtodos MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF GENtodos PROM "\<Completo"
+DEFI BAR 2 OF GENtodos PROM "\<Desde un Cliente"
+DEFI BAR 3 OF GENtodos PROM "Desde - \<Hasta"
+ON SELE BAR 1 OF GENtodos DO DISPLBL WITH 3,3,.T.,.F.,"C",.F.,"CLIENTES"
+ON SELE BAR 2 OF GENtodos DO DISPLBL WITH 3,3,.F.,.F.,"C",.F.,"CLIENTES"
+ON SELE BAR 3 OF GENtodos DO DISPLBL WITH 3,3,.f.,.t.,"C",.F.,"CLIENTES"
+
+DEFI POPUP GENporzo MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF GENporzo PROM "\<Completo"
+DEFI BAR 2 OF GENporzo PROM "\<Desde un Cliente"
+DEFI BAR 3 OF GENporzo PROM "Desde - \<Hasta"
+ON SELE BAR 1 OF GENporzo DO DISPLBL WITH 4,3,.T.,.F.,"C",.F.,"CLIENTES"
+ON SELE BAR 2 OF GENporzo DO DISPLBL WITH 4,3,.F.,.F.,"C",.F.,"CLIENTES"
+ON SELE BAR 3 OF GENporzo DO DISPLBL WITH 4,3,.f.,.t.,"C",.F.,"CLIENTES"
+
+DEFI POPUP GENporlet MARGIN RELATIVE SHADOW COLOR SCHEME 4
+DEFI BAR 1 OF GENporlet PROM "\<Completo"
+DEFI BAR 2 OF GENporlet PROM "\<Desde un Cliente"
+DEFI BAR 3 OF GENporlet PROM "Desde - \<Hasta"
+ON SELE BAR 1 OF GENporlet DO DISPLBL WITH 5,3,.T.,.F.,"C",.F.,"CLIENTES"
+ON SELE BAR 2 OF GENporlet DO DISPLBL WITH 5,3,.F.,.F.,"C",.F.,"CLIENTES"
+ON SELE BAR 3 OF GENporlet DO DISPLBL WITH 5,3,.f.,.t.,"C",.F.,"CLIENTES"
+
+*******
+
+*******
+****
+
+*       *********************************************************
+*       *
+*       *                 Cleanup Code & Procedures
+*       *
+*       *********************************************************
+*
+
+DO WHILE LAST()#27
+   UNLO ALL
+   ACTI MENU MAIN
+ENDDO
+SET SYSM TO DEFA
+RETURN
+

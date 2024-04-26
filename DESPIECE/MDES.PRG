@@ -1,0 +1,46 @@
+***************************************
+*-- Programa: MDES.PRG
+*-- Fecha   : 06-29-92 07:18pm
+*-- Version : G. REINER
+*-- Notas   : MUESTRA DESPIECE DE AVIOS
+***************************************
+CLEA
+m.tipo=IIF(m.tipo="A",abio,tella)
+m.articulo=mer.articulo
+@ 1,1 SAY 'TIPO' COLO SCHE 3
+IF m.tipo=LEFT(abio,1)
+	@ 2,1 SAY PADR(UPPER(abio),15) COLO SCHE 3
+	=XSEEK(DES.AVI,'AVI','AVICOD')
+	NADA2=AVI.AVIOS
+	NAD5=AVI.UNIDAD
+	NADA10=UNID[NAD5]
+	NADA21=ALLTRIM(UNID[AVI.UNIDAD])
+	@ 2,COL1 GET NADA2
+ELSE
+	@ 2,1 SAY PADR(UPPER(tella),15) COLO SCHE 3
+	=XSEEK(DES.AVI,'TEL','TELCOD')
+	NADA2=TEL.TELA
+	NAD5=TEL.UNIDAD
+	NADA10=UNID[NAD5]
+	NADA21=ALLTRIM(UNID[AVI.UNIDAD])
+	@ 2,COL1 GET NADA2
+ENDI
+@ 3,1 SAY 'TALLE' COLO SCHE 3
+@ 3,COL1 GET M.TALLE PICT '9999'
+
+@ 4,1 SAY 'CANTIDAD A USAR' COLO SCHE 3
+@ 4,col1 GET m.cantidad pict '99999999.99'
+
+nada=unid[m.unidad]
+@ 5,1 SAY 'UNIDAD' COLO SCHE 3
+@ 5,col1 GET nada
+
+@ 6,1 SAY 'FRACCION DEL ENTERO' COLO SCHE 3
+@ 6,col1 GET m.fraccion pict '9999999.99'
+
+ORIG=IIF(ORIGINAL,"SI","NO")
+@ 7,1 SAY 'DESPIECE ORIGINAL ?' COLO SCHE 3
+@ 7,col1 GET ORIG
+
+CLEAR GETS
+RETURN

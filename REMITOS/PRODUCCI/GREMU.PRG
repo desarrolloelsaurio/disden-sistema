@@ -1,0 +1,102 @@
+***************************************
+*-- PROGRAMA: GREMU.PRG
+*-- FECHA   : 07-19-94 06:39pm
+*-- VERSION : G. REINER
+*-- NOTAS   : GENERA REMITO DE TRANSPORTE
+*-- SOLO UN PRODUCTO Y PARA MUESTRAS
+***************************************
+#DEFINE CRLF CHR(13)+CHR(10)                     && CRLF
+
+STORE HORA_ULP(PROGRAM()) TO ULPR
+IF CHEQSEG()
+	IF EMPTY(COR.FECHAFIN)
+		=MCORX(.F.,.T.)
+		COL=21
+		IF confirma("Generar Remito de Producto Terminado",.T.,20,0)
+			=MOVEWIN(10,10,17,70,"WIN"," GENERA REMITO DE PRODUCTO TERMINADO ")
+			@ 1,1 say 'REMITO N§'
+			@ 2,1 SAY 'TALLER'
+			@ 3,1 SAY 'FECHA'
+			@ 4,1 SAY "ARTICULO"
+			@ 4,20 SAY ALLTRIM(COR.ARTICULO)+"-"+;
+			ALLTRIM(SAYGRL(COR.ARTICULO,"MER","ARTIRED","MER.MERCA"))
+			SELE DOC
+			=FLOCK() .OR. FLOK()
+			PUNMAR=20
+			GOTO PUNMAR IN DOC
+			STOR DOC.NUMERO TO M.NUREM,M.NUREMI
+			UNLO IN DOC
+			@ 1,20 GET M.NUREM
+			READ
+			IF LAST()#27
+				ELCOSO="X0031-"+ZERO(M.NUREM,8)
+				IF !XSEEK(ELCOSO,"REM","REMITO")
+				    @ 1,32 SAY M.ELCOSO
+					SELE CO1
+					SEEK COR.NUMERO
+					STORE NUL TO RESPUESTA
+					IF !EMPTY(ELITALS("DEL REMITO",-1,1))
+						NADA=PER.CLIENTE
+						@ 2,20 GET NADA
+						CLEA GETS
+						@ 3,20 GET LAFECHA MESS 'Fecha del Remito' defa date()
+						read
+						IF LAST()#27 .AND. !EMPTY(LAFECHA)
+							=MEN_LIN("GENERANDO REMITO - ESPERE POR FAVOR")
+							SELE CO1
+							SCAT MEMV
+							SELE COR
+							SCAT MEMV
+							M.REMITO=M.ELCOSO
+							M.FECHAOP=M.LAFECHA
+							M.TALLER=PER.CODCLI
+							M.NUMOT=COR.NUMERO
+							M.NUMERO=COR.NUMERO
+							M.TIPO="@"
+							M.PRC="MTAL"
+							=AGRABAR("REM")
+							M.POSIC=9999
+							M.AVI=""
+							M.CANTIDAD=1
+							STORE NUL TO M.REMANENTE,M.VERTIENTE,M.MONTO
+							=AGRABAR("FAX")
+							SELE DOC
+							=FLOCK() .OR. FLOK()
+							REPL NUMERO WITH M.NUREM+1
+							UNLO IN DOC
+							M.LEG=CRLF+;
+							REPL("-",70)+;
+							CRLF+;
+							DTOC(M.LAFECHA)+": GENERADO POR EL SISTEMA"+;
+							CRLF+;
+							"ENVIO DE PRODUCTOS TERMINADOS PARA MUESTRA"+CRLF
+							M.LEG=M.LEG+;
+							"A TALLER   :"+ALLTRIM(PER.CLIENTE)+" ("+ALLTRIM(PER.CODCLI)+")"+CRLF+;
+							"POR REMITO :"+M.REMITO+CRLF+;
+							"USUARIO    :"+M.USADOR+CRLF+;
+                            REPL("-",70)
+                            SELE COR
+                            =FLOCK("COR") .OR. FLOK("COR")
+                            REPL LEGAJO WITH LEGAJO+CRLF+M.LEG+CRLF
+                            UNLO IN COR
+							=IAUD(M.REMITO)
+							IF IMPRIME("EL REMITO",.T.,10,10)
+								DO LREMIF
+							ENDIF
+						ENDIF
+					ENDIF
+				ELSE
+					=cartel("EL REMITO N§ "+ALLTRIM(STR(M.NUREM)),"EXISTE","IMPOSIBLE GENERARLO NUEVAMENTE","POR FAVOR REINTENTE")
+				ENDIF
+			ENDIF
+		ENDIF
+	ELSE
+		=cartel("LA ORDEN DE CORTE N§ "+ALLTRIM(STR(COR.NUMERO)),"HA SIDO FINALIZADA EL DIA "+DTOC(COR.FECHAFIN),"IMPOSIBLE GENERAR REMITOS","PULSE [ENTER] PARA CONTINUAR")
+	ENDIF
+ELSE
+	=IAUDI()
+ENDIF
+DEAC WIND ALL
+=RELEWIN("WIN")
+UNLO ALL
+RETURN MEN_LIN(BOTOM)

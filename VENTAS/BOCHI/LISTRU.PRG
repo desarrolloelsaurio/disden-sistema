@@ -1,0 +1,14 @@
+CLEA
+CC=0
+DO WHIL CC<10
+   CC=CC+1
+   B=STR(CC)
+   SELE VAL(B)
+   A=DBF()
+   A=SUBSTR(A,AT(":",A)+1)
+   A=LEFT(A,AT(".",A))
+   ? A
+   A=A+'TXT'
+   DISP STRU TO FILE &A
+ENDD
+RETURN

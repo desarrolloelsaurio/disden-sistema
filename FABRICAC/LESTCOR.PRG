@@ -1,0 +1,59 @@
+PROCEDURE LESTCOR
+#DEFINE BOTOM  "  "+repl("°",78)                 && BOTOM
+#DEFINE NUL    0                                 && NUL
+#DEFINE PAIP   "|"                               && PAIP
+LE_DIJO=ALLTRIM(PROMPT())
+STORE .T. TO M.OK
+STORE .F. TO M.PASO
+IF LE_DIJO='por N£mero'
+	STORE NUL TO M.NUMINI,NUMFIN
+	IF ENTRENUM("De Orden de Corte",10,"L¡mites de Ordenes de Corte","N§ O.C.")
+		FISC="COR.NUMERO>="+;
+		ALLTRIM(STR(M.NUMINI))+" .AND. ;
+		COR.NUMERO<="+;
+		ALLTRIM(STR(M.NUMFIN))
+	ELSE
+		STORE .F. TO M.OK
+	ENDIF
+ELSE
+	IF LE_DIJO="por Art¡culo entre Fechas"
+		STORE NUL TO M.RESPUESTA
+		IF !EMPTY(ELIMER("a Listar",-1,1))
+			FISC="COR.ARTICULO='"+LEFT(MER.ARTICULO,10)+"'"
+			STORE .T. TO M.PASO
+		ELSE
+			STORE .F. TO M.OK
+		ENDIF
+	ENDIF
+
+	IF LE_DIJO="por Rubro entre Fechas"
+		STORE NUL TO M.RESPUESTA
+		IF !EMPTY(ELIRUB("a Listar",-1,1))
+			FISC="LEFT(COR.ARTICULO,3)='"+LEFT(MIX.TEXTO2,3)+"'"
+			STORE .T. TO M.PASO
+		ELSE
+			STORE .F. TO M.OK
+		ENDIF
+	ENDIF
+
+	IF M.OK
+		STORE {} TO M.FECINI,M.FECFIN
+		IF ENTRE_FE("a Listar")
+			FISC=FISC+;
+			IIF(PASO," .AND. " ,"")+;
+			"COR.FECHAINI>={"+;
+			DTOC(M.FECINI)+"} .AND. ;
+			COR.FECHAINI<={"+;
+			DTOC(M.FECFIN)+"}"
+		ELSE
+			STORE .F. TO M.OK
+		ENDIF
+	ENDIF
+ENDIF
+IF OK
+	SELE COR
+	SCAN FOR &FISC .AND. ;
+  	   LESTCOR1()
+	ENDSCAN
+ENDIF
+RETURN MEN_LIN(BOTOM)

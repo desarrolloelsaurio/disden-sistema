@@ -1,0 +1,17 @@
+FUNCTION LIMP0
+	#DEFINE PAIP   "|"                             && PAIP
+	IF PROVEEDOR#0
+		? PAIP
+		?? ARTIC
+		?? PAIP
+		?? DETALLE
+		?? PAIP
+		IF EMPTY(TMP.PROVEEDOR)
+			?? SPACE(20)
+		ELSE
+			GO TMP.PROVEEDOR IN PRO
+			?? LEFT(PRO.FIRMA,20)
+		ENDIF
+		?? PAIP
+	ENDIF
+RETURN .T.

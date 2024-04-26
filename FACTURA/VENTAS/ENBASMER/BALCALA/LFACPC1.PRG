@@ -1,0 +1,62 @@
+* ÚÄ FUNCTION ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+* ³  DESCRIPTION: LFACPC1                                                           ³
+* ³       AUTOR: G. REINER                                                   ³
+* ³ DATE CREATED: 11-26-92                                                   ³
+* ³ TIME CREATED: 02:26:41PM                                                 ³
+* ³    COPYRIGHT: SISTEMAS INFORMATICOS S.R.L.                               ³
+* ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+FUNCTION LFACPC1
+	SELE FAX
+	iF SEEK(FAC.FACTURA)
+		STORE NUL TO TOTAL
+		SCAN WHILE FAX.FACTURA=FAC.FACTURA
+			=XSEEK(FAX.ARTICULO,'MER','ARTICULO')
+			TOTAL=TOTAL+ABS(MER.COSTO*FAX.CANTIDAD)
+		ENDSCAN
+	else
+		total=0
+	endif
+	?PAIP
+	=iif(variable[1],qout(IIF(TYPE("FAC.FACTURA")="C",FAC.FACTURA,SUCU+'-'+ZERO(FAC.FACTURA,8))+paip),'')
+	=IIF(VARIABLE[2],QOUT(DTOC(FAC.FECHAEM)+PAIP),'')
+	=IIF(VARIABLE[3],QOUT(FAC.TIPO+PAIP),'')
+	=IIF(VARIABLE[4],QOUT(LEFT(PER.CLIENTE,TEXTO[4,2])+PAIP),'')
+	=IIF(VARIABLE[5],QOUT(LEFT(VIA.VIAJANTE,TEXTO[5,2])+PAIP),'')
+	SUMA=ESDEBE(FAC.TIPO)
+	IF VARIABLE[6]
+		IF SUMA
+			?? STR(TOTAL,XACDIGI,2)
+			TTL[6]=TTL[6]+TOTAL
+		ELSE
+			?? STR(0-TOTAL,XACDIGI,2)
+			TTL[6]=TTL[6]-TOTAL
+		ENDIF
+		?? PAIP
+		CTRL[6]=.T.
+	ENDIF
+	IF VARIABLE[7]
+		IF SUMA
+			?? STR(FAC.MONTOBRU,XACDIGI,2)
+			TTL[7]=TTL[7]+FAC.MONTOBRU
+		ELSE
+			?? STR(0-ABS(FAC.MONTOBRU),XACDIGI,2)
+			TTL[7]=TTL[7]-ABS(FAC.MONTOBRU)
+		ENDIF
+		?? PAIP
+		CTRL[7]=.T.
+	ENDIF
+	IF VARIABLE[8] .AND. VARIABLE[7] .AND. VARIABLE[8]
+		IF SUMA
+			?? STR(FAC.MONTOBRU-TOTAL,XACDIGI,2)
+			TTL[8]=TTL[8]+FAC.MONTOBRU-TOTAL
+		ELSE
+			?? STR(0-(ABS(FAC.MONTOBRU)-TOTAL),XACDIGI,2)
+			TTL[8]=TTL[8]-(ABS(FAC.MONTOBRU)-TOTAL)
+		ENDIF
+		?? PAIP
+		CTRL[8]=.T.
+	ENDIF
+	CASOS=CASOS+1
+	sele fac
+RETURN .T.
+

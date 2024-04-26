@@ -1,0 +1,63 @@
+********************************************************************************
+*-- Programa: LIMERCAT.PRG
+*-- Fecha   : 17/01/90
+*-- Version : G. REINER
+*-- Notas   : INGRESA MARCAS Y CANTIDAD DE PRODUCTOS
+********************************************************************************
+DECLARE QUE[10],CUANTO[10]
+DEFI WIND WIN FROM 3,0 TO 18,49 DOUB
+DEFI WIND AYUDA FROM 19,0 TO 22,79 DOUB
+DO AYUDA
+ACTI WIND WIN
+@ 0,1 SAY DETALLE COLO SCHE 24
+@ 2,10 SAY 'MARCA DE CATEDRA' COLO SCHE 24
+@ 2,30 SAY 'CANTIDAD' COLO SCHE 24
+FOR C=1 TO 10
+   @ C+2,1 SAY C PICT '99' COLOR W+/N
+   QUE[C]=SUBSTR(MRK,C,1)
+   CUANTO[C]=SUBSTR(CANT,(C-1)*2+1,2)
+   @ C+2,16 GET QUE[C]
+   @ C+2,35 GET CUANTO[C]
+NEXT
+READ
+A=QUE[1]+QUE[2]+QUE[3]+QUE[4]+QUE[5]+QUE[6]+QUE[7]+QUE[8]+QUE[9]+QUE[10]
+REPL MRK WITH A
+A=CUANTO[1]+CUANTO[2]+CUANTO[3]+CUANTO[4]+CUANTO[5]+CUANTO[6]+CUANTO[7]+CUANTO[8]+CUANTO[9]+CUANTO[10]
+REPL CANT WITH A
+DEAC WIND ALL
+RETURN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

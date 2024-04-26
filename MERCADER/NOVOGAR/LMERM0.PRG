@@ -1,0 +1,95 @@
+* ษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
+* บ PROCEDIMIENTO : LMERM0.PRG                                               บ
+* บ COMENTARIO    : GENERA INDICE PARA LISTADO DE MERCADERIAS (DETALE)       บ
+* ฬออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน
+* บ AUTOR      : GOYO REINER                                                 บ
+* บ FECHA      : 08-30-93                                                    บ
+* บ HORA       : 03:20:25am                                                  บ
+* บ COPYRIGHT  : 1993 by GREGORIO REINER                                     บ
+* ศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
+FUNCTION LMERM0
+	PARAMETER L_PORPAN,L_CAMPOS,L_PROG
+	=WORKING()
+	=DOTALK()
+	IF EMPTY(L_PROG) .OR. L_PROG="LMERPJ"
+		FISC=QW_FISC(FISC,"!EMPTY(MER.MERCA1)")
+	ELSE
+		IF L_PROG="LMERPC"
+			FISC=QW_FISC(FISC,"!EMPTY(MER.CAR1)")
+		ENDIF
+	ENDIF
+	SELE MER
+	SET ORDER TO
+	SET ORDER TO TAG TODOS IN RUB
+	SET ORDER TO TAG MARCOD IN MI1
+	SET RELA TO STR(RUBRO)+STR(SUBRUBRO) INTO RUB
+	IF EMPTY(L_PROG) .or. ;
+		L_PROG="LMERPP" .or. ;
+		L_PROG="LMERPJ" .or. ;
+		L_PROG="LMERI"
+		SET RELA TO MARCA INTO MI1 ADDI
+	ELSE
+		IF L_PROG="LMERPC"
+			SET ORDER TO TAG ALICOD IN MI1
+			SET RELA TO ALIM INTO MI1 ADDI
+		ENDIF
+	ENDIF
+	=FLOCK("RUB") .OR. FLOK("RUB")
+	=FLOCK("MI1") .OR. FLOK("MI1")
+	=FLOCK() .OR. FLOCK()
+	L_ORDEN=IIF(TYPE("ORDRUB")#'L' .OR. ORDRUB,"MER.RUBRO,MER.SUBRUBRO","RUB.PALISTAR")+","+;
+	IIF(TYPE("ORDMER")#'L' .OR. ORDMER,"MER.MODELO","MER.MERCA")+","+;
+	IIF(TYPE("ORDMAR")#'L' .OR. ORDMAR,"MER.MARCA","MI1.TEXTO1")
+
+	TMP=GENTMP()
+
+	SORT ON &L_ORDEN ;
+	FIEL &L_CAMPOS FOR &FISC ;
+	TO (TMP)
+
+	UNLO ALL
+	SELE MER
+	USE
+	USE (TMP) ALIAS MER EXCL
+
+	ACLA=PAIP+PADC("ARTICULO",LEN(ARTICULO))+PAIP
+	IF !EMPTY(L_PROG)
+		IF L_PROG="LMERPP"
+			ACLA=ACLA+PADC("DENOMINACION",30)+PAIP+PADC("MARCA",20)+paip
+		ELSE
+			IF L_PROG="LMERPC"
+				ACLA=ACLA+PADC("DENOMINACION",15)+PAIP+PADC("ALIMENTACION",20)+paip+PADC("CARACTERISTICA",20)+PAIP
+			ELSE
+				IF L_PROG="LMERI"
+					ACLA=SUBSTR(ACLA,2)+PADC("RUBRO",15)+;
+					PAIP+PADC("SUBRUBRO",15)+;
+					PAIP+PADC("MARCA",15)+;
+					paip+PADC("MERCADERIA",30)+;
+					"|TEMPORADA|"+;
+					PADC("LINEA",15)+;
+					"|ELEC"
+					SET ORDER TO TAG LINCOD IN MIX
+					SET RELA TO LINEA INTO MIX
+					REPL ALL DETALLE WITH MIX.TEXTO1
+					SET RELA OFF INTO MIX
+		        ELSE
+		           IF L_PROG="LIMPINT"
+			          ACLA=ACLA+PADC("DENOMINACION",30)+;
+			          PAIP+PADC("MARCA",20)+paip+" IMP. "+PAIP
+		           ENDIF
+				ENDIF
+			ENDIF
+		ENDIF
+	ELSE
+		ACLA=ACLA+PADC("MARCA",20)+paip
+		lg=IIF(PORPAN,80,IIF(MIN(XACANCHO,XACHOJA)=80,pds[1],pds[2]))
+		largor=lg-LEN(acla)-3
+		acla=acla+PADC("DESCRIPCION",largor)+paip
+		SET MEMO TO LARGOR
+		LARMEM=LARGOR
+	ENDIF
+	STOR REPL("=",LEN(ACLA)) TO LNS
+	STOR LEN(ACLA) TO LARGO
+	STOR NUL TO CASOS
+	=UNTALK()
+RETURN UNWORK()

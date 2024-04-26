@@ -1,0 +1,16 @@
+#DEFINE CRLF CHR(13)+CHR(10)                     && CRLF
+#DEFINE PAIP   "|"                               && PAIP
+FUNCTION LDESN0
+	? PAIP
+	?? AVICODPRO
+	?? PAIP
+	?? TELCODPRO
+	?? PAIP
+	?? LEFT(AVIO, IIF(PORPAN, 18, 40))
+	?? PAIP
+	?? IIF(TIPOLIS="E", "", STR(TALLE,4)+PAIP)
+	?? CANTIDAD PICT "99.999"
+	?? PAIP
+	?? SAYMIX(UNIDAD,"MDDCOD",4)
+	?? PAIP
+RETURN .T.

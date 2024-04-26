@@ -1,0 +1,25 @@
+********************************************************************************
+*-- Programa: GENHIKAR.PRG
+*-- Fecha   : 19.05.90
+*-- Version : G. REINER
+*-- Notas   : GENERA HISTORICO DE KARDEX POR MES
+********************************************************************************
+STOR 0 TO RESPUESTA
+DEFI WIND WLI from 10,1 to 17,78 DOUB
+ACTI WIND WLI
+DO TIT1 WITH 1,"MES QUE MANDA A HISTORICO",'I'
+@ 4,1 SAY "INGRESE Nro DE MES A MANDAR A HISTORICO " GET RESPUESTA RANGE 0,12
+READ
+IF !EMPTY(RESPUESTA)
+   A=CONFIRM1('EL MES '+STR(RESPUESTA,3),4)
+   IF A
+      SELE 6
+      USE ..\VENTASA\KKH ALIAS KAR
+      APPEND FROM ..\VENTASA\KKK FOR MONTH(KKKFECHA)=RESPUESTA
+      USE ..\VENTASA\KKK ORDER TAG KKKFECHA ALIAS KAR
+      DELETE ALL FOR MONTH(KKKFECHA)=RESPUESTA
+   ENDI
+ENDI
+DEAC WIND WLI
+RETURN
+ 

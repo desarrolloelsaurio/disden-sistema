@@ -1,0 +1,152 @@
+FUNCTION LREM
+PARAMETER PPAN
+#DEFINE CRLF CHR(13)+CHR(10)                   && CRLF
+#DEFINE PAIP   "|"                               && PAIP
+LR_DIJO=ALLTRIM(PROMPT())
+DO CASE
+CASE LR_DIJO="Listados Comunes"
+   =LREMZ(PORP)
+CASE LR_DIJO="Telas no Cortadas en Talleres"
+EXTERNAL PROCEDURE LREMT0
+   =OPCID()
+   =WORKING()
+   =DOTALK()
+   TMP=GENTMP()
+   SELE FAX
+   SET ORDER TO
+   =FLOCK() .OR. FLOK()
+   SORT ON NUMERO TO (TMP) FOR ;
+     TIPO="@" .AND. ;
+     PRC="00012     " .AND. ;
+     EMPTY(SF) ;
+     FIELD NUMERO,TALLER
+   =UNLO_PRX("FAX",TMP)
+   CREATE CURSOR TEMPORAL ;
+     (TALLER C(10),;
+     NUMERO N(10,0),;
+     TELCODPRO C(20),;
+     ENTRADA N(15,2),;
+     SALIDA N(15,2),;
+     FECHA D(8),;
+     USUARIO C(10))
+   ************************
+   *** BUSCA EN REMITOS ***
+   ************************   
+   SELE TMP
+   SCAN
+      SELE REM
+      SET ORDER TO TAG NUMOT
+      SEEK TMP.NUMERO
+      SCAN WHILE TMP.NUMERO=REM.NUMOT
+         SELE REX
+         SET ORDER TO TAG REMITO
+         SEEK REM.REMITO
+         SCAN WHILE REX.REMITO=REM.REMITO
+            IF !EMPTY(REX.TELCODPRO)
+               M.NUMERO=REM.NUMOT
+               M.TALLER=REM.TALLER
+               M.ENTRADA=0
+               M.SALIDA=REX.CANTIDAD
+               M.TELCODPRO=REX.TELCODPRO
+               =AGRABAR("TEMPORAL")
+            ENDIF
+         ENDSCAN
+         SELE REM
+      ENDSCAN
+      SELE TMP
+   ENDSCAN
+   ********************
+   *** BUSCA EN CID ***
+   ********************   
+   SELE TMP
+   SCAN
+      SELE CID
+      SET ORDE TO TAG CORTE
+      SEEK TMP.NUMERO
+      SCAN WHILE TMP.NUMERO=CID.CORTE
+         SELE CIX
+         SET ORDER TO TAG NUMERO
+         SEEK CID.NUMERO
+         SCAN WHILE CIX.NUMERO=CID.NUMERO
+            IF !EMPTY(CIX.TELCODPRO)
+               SCAT MEMV
+               M.TALLER=TMP.TALLER
+               M.NUMERO=CID.CORTE
+               =AGRABAR("TEMPORAL")
+            ENDIF
+         ENDSCAN
+         SELE CID
+      ENDSCAN
+      SELE TMP
+   ENDSCAN
+   SELE TEMPORAL
+   INDEX ON STR(CORTE)+TALLER+TELCODPRO TAG CORTE
+   SET ORDER TO TAG CORTE
+   TMP1=GENTMP()
+   TOTAL ON STR(CORTE)+TALLER+TELCODPRO TO (TMP1) FIELD ENTRADA,SALIDA
+   =PRXAREA(.T.)
+   USE (TMP1) ALIAS TMP1
+   ACLAPAN=PAIP+PADC("CORTE",8)+PAIP+;
+   PADC("ARTICULO",10)+PAIP+;
+   PADC("TALLER",10)+PAIP+;
+   PADC("CODIGO TELA",20)+PAIP+;
+   PADC("CANTIDAD",XACDIGI)+PAIP
+   ACLAPRN=PAIP+PADC("CORTE",8)+PAIP+;
+   PADC("ARTICULO",10)+PAIP+;   
+   PADC("DESCRIPCION",30)+PAIP+;         
+   PAIP+PADC("TALLER",20)+PAIP+;
+   PADC("CODIGO TELA",20)+PAIP+;
+   PADC("TELA",40)+PAIP+;
+   PADC("CANTIDAD",XACDIGI)+PAIP
+   TT="TELA ENVIADA A TALLERES"+;
+   CRLF+;
+   "CORTES PENDIENTES"
+   INDEX ON NUMERO TAG NUMERO
+   SET ORDER TO TAG NUMERO
+   =XPRN1(4,"TMP1","LREMT0()","TELAS NO CORTADAS","LREMT0")
+   =UNTALK()
+   =UNWORK()
+   =OFF_TMP()
+OTHERWISE
+   IF PORP
+      =CARTEL2("EL LISTADO SOLICITADO",;
+        "ESTA SOLO DISPONIBLE ",;
+        "POR IMPRESORA",;
+        "PULSE CUALQUIER TECLA PARA CONTINUAR")
+   ELSE
+      STORE {} TO M.FECINI,M.FECFIN
+      IF ENTRE_FE("LIMITES DEL LISTADO")
+         =WORKING()
+         =DOTALK()
+         SELE COR
+         =FLOCK("COR") .OR. FLOK("COR")
+         TMP=GENTMP()
+         SORT ON NUMERO TO (TMP) ;
+           FOR FECHAINI>=M.FECINI .AND. ;
+           FECHAINI<=M.FECFIN .AND. ;
+           EMPTY(FECHAFIN)
+         ACLA=PAIP+;
+           PADC("NUMERO",10)+PAIP+;
+           PADC("ARTICULO",10)+PAIP+;
+           " INICIO "+PAIP
+         FOR A=1 TO 8
+            ACLA=ACLA+PADC("REMITO",6)+STR(A,2)+"/E/R"+PAIP
+         NEXT
+         STORE NUL TO CASOS
+         M.LINEA=REPL("=",LEN(ACLA))
+         TT="CONTROL DE REMITOS EMITIDOS"+;
+           CRLF+;
+           "ORDENES DE CORTE INICIADAS"+;
+           CRLF+;
+           "ENTRE EL "+DTOC(M.FECINI)+" AL "+DTOC(M.FECFIN)
+         SELE COR
+         USE (TMP) ALIAS COR EXCL
+         SET ORDER TO TAG NUMTRU IN FAX
+         =UNTALK()
+         =UNWORK()
+         =LREMCI()
+      ENDIF
+      =REOPCOR()
+   ENDIF
+ENDCASE
+RETURN MEN_LIN(BOTOM)

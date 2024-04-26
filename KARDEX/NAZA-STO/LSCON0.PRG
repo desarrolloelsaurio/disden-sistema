@@ -1,0 +1,22 @@
+FUNCTION LSCON0
+	#DEFINE PAIP   "|"                             && PAIP
+	#DEFINE NUL    0                               && NUL
+	?PAIP
+	IF QTIP= "A"
+		??AVICODPRO
+		??PAIP
+		??IIF(PORPAN, LEFT(AVIO,15), AVIO)
+	ELSE
+		??TELCODPRO
+		??PAIP
+		??IIF(PORPAN, LEFT(TELA,15), TELA)
+	ENDIF
+	??PAIP
+	??STR(STOCK, XACDIGI)
+	??PAIP
+	??STR(MONTO, XACDIGI, 3)
+	??PAIP
+	??STR(STOCK*MONTO, XACDIGI+2,2)
+	??PAIP
+	M.TOTAL=M.TOTAL+STOCK*MONTO
+RETURN

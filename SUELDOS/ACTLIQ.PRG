@@ -1,0 +1,36 @@
+********************************************************************************
+*-- Programa: ACTLIQ.PRG
+*-- Fecha   : 01/09/91 05:10pm
+*-- Version : G. REINER
+*-- Notas   : ACTUALIZA LOS DATOS DE LIQUIDACION
+********************************************************************************
+ulpr=PROGRAM()
+@ 0,34 SAY TIME() COLOR I
+@ 0,46 SAY PADC(PROGRAM(),10,' ') COLOR I
+DEFINE WINDOW win FROM 4,17 TO 17,66 TITL ' Datos de la Liquidaci¢n ' DOUBLE SHAD COLOR SCHE 8
+ACTI WINDOW win
+@ 1,2 SAY 'QUINCENA A LIQUIDAR     ' COLOR SCHE 3
+@ 2,2 SAY 'N§ DE MES A LIQUIDAR    ' COLOR SCHE 3
+@ 3,2 SAY 'A¥O DE LA LIQUIDACION   ' COLOR SCHE 3
+@ 4,2 SAY 'FECHA DE LA LIQUIDACION ' COLOR SCHE 3
+@ 5,2 SAY 'PERIODO A LIQUIDAR      ' COLOR SCHE 3
+@ 6,2 SAY 'FECHA DE PAGO           ' COLOR SCHE 3
+@ 7,2 SAY 'N§ RECIBO INICIAL       ' COLOR SCHE 3
+@ 8,2 SAY 'PERIODO HAB JUBIL.      ' COLOR SCHE 3
+@ 9,2 SAY 'DEPOSITADO EN BANCO     ' COLOR SCHE 3
+@ 10,2 SAY 'FECHA DE DEPOSITO H JUB ' COLOR SCHE 3
+@ 1,26 GET quialiq PICT '9' RANGE 1,2
+@ 2,26 GET mesaliq PICT '99' RANGE 1,12
+@ 3,26 GET anoaliq PICT '9999'
+@ 4,26 GET fechaliq
+@ 5,26 GET peraliq PICTURE 'XXXXXXXXXXXXXXXXXXXX'
+@ 6,26 GET fepag
+@ 7,26 GET recaliq PICT '999999'
+@ 8,26 GET perjub PICTURE 'XXXXXXXXXXXXXXXXXXXX'
+@ 9,26 GET bcodep PICTURE 'XXXXXXXXXXXXXXXXXXXX'
+@ 10,26 GET fecdep
+READ
+fliz=fechaliq
+RELE WIND win
+@ 24,0 SAY SPACE(80)
+RETURN

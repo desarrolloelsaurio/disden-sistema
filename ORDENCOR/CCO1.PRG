@@ -1,0 +1,111 @@
+****************************************
+*-- Programa: CCO1
+*-- Fecha   : 06/20/91 01:10pm
+*-- Version : G. REINER
+*-- Notas   : CORRIGE ORDENES DE CORTE
+***************************************
+#DEFINE NUL    0                                 && NUL
+#DEFINE BOTOM  "  "+repl("°",78)                 && BOTOM
+#DEFINE PAIP   "|"                               && PAIP
+#DEFINE CTRLOP  "Ctrl - H para Operaciones")
+
+STORE RECNO("MER") TO ff
+ULPR=HORA_ULP(PROGRAM())
+IF CHEQSEG()
+	=men_lin("Buscando Orden de "+korte+" - Espere por Favor")
+	SELE CO1
+	SET ORDER TO TAG NUMERO
+	=FLOCK("CO1") .or. flok("CO1")
+	FISC=COR.NUMERO
+	IF SEEK(FISC)
+		=movewin(0,17,23,66,'win1',;
+		'O. '+UPPER(KORTE)+' N§:'+alltrim(STR(FISC))+'/ARTICULO:'+ALLTRIM(MER.MERCA)+'-'+COR.ARTICULO)
+		SET DELE OFF
+		SET ORDER TO TAG SUECOD IN MIX
+		SET RELA TO COLOR INTO MIX
+		ON KEY LABEL Ctrl+H DO CCO1HELP
+		ON KEY LABEL Ctrl+X KEYBOARD CHR(23)
+		ON KEY LABEL Ctrl+B DO CCO1DELE
+		ON KEY LABEL Ctrl+C DO CCO1COLO
+		ON KEY LABEL Ctrl+Q DO CCO1QUES
+		=MEN_LIN(CTRLOP)
+
+		BROW FIEL COLOR:H="COLOR":R,;
+		MIX.TEXTO1:H="DENOMINACION":R,;
+		TALLE:P="99.99":B=XATALMIN,XATALMAX:;
+		V=EMPTY(MOD(CO1.TALLE,XATALSTEP)):;
+		E="EL SALTO DEL TALLE NO ES EXACTO",;
+		CANTIDAD=CANTINI,;
+		ESBORR=IIF(DELE()," SI "," NO "):H="BORR":R ;
+        FREEZE TALLE ;
+		IN win1 ;
+		KEY FISC
+
+		=relewin("WIN1")
+		ON KEY LABEL Ctrl+H
+		ON KEY LABEL Ctrl+X
+		ON KEY LABEL Ctrl+B
+		ON KEY LABEL Ctrl+C
+		ON KEY LABEL Ctrl+Q
+	ENDIF
+	=REOPCOR()
+	UNLO IN CO1
+ELSE
+	=IAUDI()
+ENDI
+SET DELE ON
+RETURN MEN_LIN(BOTOM)
+
+PROCEDURE CCO1help
+	=movewin(10,0,18,40,'AYUDA',' AYUDA ')
+	@ 1,1 SAY 'Ctrl B  Borra Registro'
+	@ 2,1 SAY 'Ctrl Q  Muestra Orden de '+korte
+	@ 3,1 SAY 'Ctrl C  Corrige Color'
+	@ 4,1 SAY 'Ctrl X  Sale de Correcci¢n'
+	@ 5,1 say 'ENTER  Fin Ayuda'
+	=inkey(0,'HM')
+	=relewin("ayuda")
+return
+PROCEDURE CCO1QUES
+	=MCORX()
+	=MEN_LIN(CTRLOP)
+RETURN
+PROCEDURE CCO1COLO
+	STORE NUL TO RESPUESTA
+	IF !EMPTY(ELISUE("CORRECTO",ROW(),1))
+		COSA=LEFT(MIX.TEXTO2,2)
+		SET ORDER TO TAG SUECOD IN MIX
+		ARTI=COR.ARTICULO+'/'+COSA
+		IF XSEEK(ARTI,'MER','ARTICULO')
+			SELE CO1
+			REPL COLOR WITH COSA
+			=REPUSE()
+		ELSE
+			=CARTEL('EL ARTICULO',ARTI,'NO EXISTE','DELE DE ALTA Y REINTENTE')
+		ENDIF
+	ELSE
+		SET ORDER TO TAG SUECOD IN MIX
+	ENDIF
+	=MEN_LIN("Ctrl - H para Operaciones")
+RETURN
+
+PROCEDURE CCO1DELE
+ANTALIAS=ALIAS()
+SELE CO1
+UNLO IN CO1
+REGISTRO=STR(RECNO())
+=LOCK() .OR. LOK()
+IF DELE()
+   RECA
+ELSE
+   DELE RECO RECNO()
+ENDIF
+GO TOP
+GO BOTT
+GO VAL(REGISTRO)
+UNLO IN CO1
+=FLOCK() .OR. FLOK()
+IF !EMPTY(ANTALIAS)
+	SELE (ANTALIAS)
+ENDIF
+RETURN

@@ -1,0 +1,19 @@
+****************************************
+*-- PROGRAMA: OPMED.PRG
+*-- FECHA   : 06/12/91 01:50PM
+*-- VERSION : G. REINER
+*-- NOTAS   : ABRE ARCHIVO MEDICOS
+****************************************
+IF USED("PER")
+   SELE PER
+   SET ORDER TO TAG MEDICO
+ELSE
+   =MEN_LIN(ABA+'M‚dicos')
+   SELE 21
+   USE (PATHPRO+'\PERSONAS') ORDER TAG MEDICO ALIAS PER
+ENDIF
+IF MEDPOP
+   =DEFPOPER(MEDPOPR,MEDPOPC)
+ENDIF
+=MEN_LIN(BOTOM)
+RETURN

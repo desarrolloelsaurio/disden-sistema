@@ -1,0 +1,17 @@
+**************************************
+*-- Programa: OPIAC.PRG
+*-- Fecha   : 06/06/91 11:51am
+*-- Version : R. 'EL BATA'.
+*-- Notas   : ABRE ARCHIVO DE INDICES DE ACTUALIZACION
+*-- MODIF GOYO 04-28-93 02:46pm (ADAPTACION POPUP A MOUSE)
+****************************************
+IF USED("IAC")
+	SELE IAC
+	SET ORDER TO TAG ACTUAL
+ELSE
+	=MEN_LIN(ABA+'Actualizaci¢n')
+	SELE 15
+	USE (PATHALQ+'\ACTUALIZ') ORDER TAG ACTUAL ALIAS IAC
+	=DEFPOGRL(IACPOPR,IACPOPC,"IACPOP",'IAC.CODACT+"-"+STR(IAC.ANIO,4)',15)
+ENDIF
+RETUR MEN_LIN(BOTOM)

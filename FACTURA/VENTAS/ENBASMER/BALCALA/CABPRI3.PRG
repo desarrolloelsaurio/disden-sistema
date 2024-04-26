@@ -1,0 +1,25 @@
+function cabpri3
+parameter copias
+Xa=''
+IF TYPE("ENASCII")#"U" .AND. ENASCII
+	 XA=ENASCII()
+ENDIF
+	SET DEVICE TO PRINT
+	SET CONSOLE OFF
+	SET PRINTER ON
+IF !EMPTY(XA)
+   SET PRINTER TO (XA)
+ENDIF
+	_PEJECT="NONE"
+	_PLINENO=NUL
+	_PAGENO=1
+	_PSCODE='{27}{64}{27}{67}{54}'
+	_PLENGTH=54
+	_PLOFFSET=NUL
+	_ALIGNMENT='LEFT'
+	_PADVANCE="LINEFEEDS"
+	_wrap=.F.
+	_rmargin=255
+	_lmargin=NUL
+	_PCOPIES=copias
+return .t.	

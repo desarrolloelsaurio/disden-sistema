@@ -1,0 +1,13 @@
+FUNCTION ARRASTIT
+	PARAMETER ARR_COL
+	ARR_TXT=""
+	IF TYPE("ARRASANIO")#"U" .AND. TYPE("ARRASMES")#"U"
+	    IF left(AP,1)="A"
+		   ARR_TXT=IIF(ARRASANIO,"Acumula Saldos Balance Anterior","")
+		   IF !EMPTY(ARR_TXT)
+		      ? PADC(ARR_TXT,ARR_COL)
+		      C=C+1
+		   ENDIF
+		ENDIF
+	ENDIF
+RETURN .T.

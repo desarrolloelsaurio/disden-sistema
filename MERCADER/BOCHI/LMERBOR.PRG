@@ -1,0 +1,24 @@
+FUNCTION LMERBOR
+* LISTADO DE MERCADERIA BORRADA
+PARAMETER PORPAN
+=OPPER()
+=OPMIX()
+M.PORLISMAY=GETNU1("PORLISMAY","FOXGRL")
+M.PORLISMIN=GETNU1("PORLISMIN","FOXGRL")
+M.FLETE=GETNU1("FLETE","FOXGRL")
+=oprub()
+=oppro()
+=opmer()
+SELE MER
+SET ORDER TO TAG RUBRO
+SET DELE OFF
+TT="Listado de Mercaderías"
+tt1="Mercadería Borrada"
+if porpan
+   repo form lmer1 prev FOR DELE()
+else
+   repo form lmer1 noconsole to prin FOR DELE()
+endif
+=OFF_TMP()
+SET DELE ON
+RETURN .T.

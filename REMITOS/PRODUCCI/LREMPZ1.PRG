@@ -1,0 +1,15 @@
+#DEFINE PAIP   "|"                               && PAIP
+FUNCTION LREMPZ1
+	? PAIP
+	?? REM.FECHAOP
+	?? PAIP
+	?? REM.REMITO
+	?? PAIP
+	?? PER.CLIENTE
+	?? PAIP
+	?? STR(REM.NUMOT)
+	?? PAIP
+	?? REM.USUARIO
+	?? PAIP
+	CASOS=CASOS+1
+RETURN .T.

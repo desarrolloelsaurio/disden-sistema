@@ -1,0 +1,70 @@
+#DEFINE BOTOM  "  "+repl("°",78)                 && BOTOM
+#DEFINE PAIP   "|"                               && PAIP
+#DEFINE CRLF CHR(13)+CHR(10)                     && CRLF
+FUNCTION LRECBE
+PARAMETER QUELIS
+* 1. EMITIDOS
+* 2. PENDIENTES
+* 3. COBRADOS
+M.MESANIO=MESANIO("Mes a Listar",.t.)
+	IF !EMPTY(M.MESANIO)
+		M.ELMES=VAL(LEFT(M.MESANIO,2))
+		M.ELANIO=VAL(RIGHT(M.MESANIO,4))
+		=WORKING()
+		=DOTALK()
+		SELE RECB
+		TMP=GENTMP()
+		SET ORDER TO TAG INQCOD IN PER
+		SET RELA TO CODCLI INTO PER
+		DO CASE
+		CASE QUELIS=1
+		TT="Listado de Recibos Bancarios Emitidos"+;
+		CRLF+;
+		"MES:"+QMES(M.ELMES)+' de '+alltrim(str(m.elanio))
+
+		SORT ON PER.CLIENTE,NUMERO ;
+		TO (TMP) FOR ;
+		RMES=ELMES .AND. RANIO=ELANIO
+		CASE QUELIS=2
+		TT="Listado de Recibos Bancarios Pendientes de Cobro"+;
+		CRLF+;
+		"MES:"+QMES(M.ELMES)+' de '+alltrim(str(m.elanio))
+
+		SORT ON PER.CLIENTE,NUMERO ;
+		TO (TMP) FOR ;
+		RMES=ELMES .AND. RANIO=ELANIO .AND. ;
+		!PAGADA
+		CASE QUELIS=3
+		TT="Listado de Recibos Bancarios Cobrados"+;
+		CRLF+;
+		"MES:"+QMES(M.ELMES)+' de '+alltrim(str(m.elanio))
+
+		SORT ON PER.CLIENTE,NUMERO ;
+		TO (TMP) FOR ;
+		RMES=ELMES .AND. RANIO=ELANIO .AND. ;
+		PAGADA
+		ENDCASE
+		SET RELA OFF INTO PER
+		=PRXAREA(.T.)
+		USE (TMP) ALIAS TMP
+		=UNTALK()
+		=UNWORK()
+		ACLA=PAIP+;
+		" NUMERO "+;
+		PAIP+;
+		PADC("INQUILINO",IIF(PORPAN,20,30))+;
+		PAIP+;
+		PADC("INMUEBLE",IIF(PORPAN,10,40))+;
+		PAIP+;
+		PADC(DTOC(FVENC1),XACDIGI)+;
+		PAIP+;
+		PADC(DTOC(FVENC2),XACDIGI)+;
+		PAIP+;
+		PADC(DTOC(FVENC3),XACDIGI)+;
+		PAIP
+		M.LINEA=REPL("=",LEN(M.ACLA))
+		=IIF(PORPAN,LRECBEP(),LRECBEI())
+		SELE TMP
+		=OFF_TMP()
+	ENDIF
+RETURN MEN_LIN(BOTOM)

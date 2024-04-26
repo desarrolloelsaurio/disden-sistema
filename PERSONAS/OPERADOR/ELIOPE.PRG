@@ -1,0 +1,28 @@
+* ษออออออออออออออออออออออออออออออออออออออออป
+* บ PROCEDIMIENTO : ELIOPE.PRG             บ
+* บ COMENTARIO    : SELECCIONA Operador    บ
+* ศออออออออออออออออออออออออออออออออออออออออผ
+* 12-08-94 07:38pm
+FUNCTION ELIOPE
+PARA MSG,R1,C1
+IF USED("OPE")
+   SELE OPE
+ELSE
+   SELE PER
+ENDIF
+IF OPEPOP
+   SET ORDER TO TAG OPERADOR
+      IF USED("OPE")
+      ACTI POPU OPEPOP
+   ELSE
+      ACTI POPUP PERPOP
+   ENDIF
+   STOR !EMPTY(RESPUESTA) TO RESPUESTA
+ELSE
+   IF USED("OPE")
+      RESPUESTA=ELIPER1('Operador '+MSG,'OPE','OPECOD',10,"O")
+   ELSE
+      RESPUESTA=ELIPER1('Operador '+MSG,'PER','OPECOD',10,"O")
+   ENDIF
+ENDIF
+RETURN IIF(LAST()=27 .OR. READKEY()=12,.F.,RESPUESTA)

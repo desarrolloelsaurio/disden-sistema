@@ -1,0 +1,44 @@
+set confirm on
+set excl on
+set talk on
+
+*** REINDEXA.INI must exist ***
+
+STORE FOPEN('REINDEXA.INI') TO file_handle
+do while !feof(file_handle)
+	laBase = allt(FREAD(file_handle,255))
+	if !empty(laBase)   	
+		use laBase exclusive
+		reindex
+	endif
+enddo 
+= FCLOSE(file_handle)	&& Close the file
+return
+
+
+cuantosArch = 0
+dime losArch(1)
+=agregaArch("cccli")
+=agregaArch("ccclih")
+=agregaArch("factudat")
+=agregaArch("factura")
+=agregaArch("merca")
+=agregaArch("mixta")
+=agregaArch("personas")
+=agregaArch("recibo")
+=agregaArch("ccstock")
+=agregaArch("lotes")
+for i=1 to cuantosArch
+	?losArch(i)
+	use "\\willy\archivos\sistemas\ventas\ventasa\"+losArch(i) exclusive
+	reindex
+next
+use
+return
+
+function agregaArch
+para qcosa
+cuantosArch = cuantosArch + 1
+dime losArch(cuantosArch)
+losArch(cuantosArch) = qcosa
+return

@@ -1,0 +1,32 @@
+* ษอออออออออออออออออออออออออออออป
+* บ PROCEDIMIENTO : QW_PER.PRG  บ
+* บ COMENTARIO    :             บ
+* ศอออออออออออออออออออออออออออออผ
+FUNCTION QW_CLI
+	PARAMETER REN,COL,CUAL
+	PRIVATE REN,COL,CUAL
+	#DEFINE NUL    0                               && NUL
+	IF FILCLI=2
+		STORE NUL TO RESPUESTA
+		DO CLIGRL WITH REN-7,COL,IIF(SSTM2="EXPENSAS","Consorcista",;
+		IIF(SSTM2="ALQUILER","Inquilino","Cliente"))+" a Listar",.T.
+		ON SELE POPU CLIGRL DO RESP1
+		ACTI POPU CLIGRL
+		RELE POPU CLIGRL
+		STORE '' TO FISC,TT
+		CH=BAR()
+		FISC=QWCLI(BAR(),CUAL)
+		IF FISC#".F."
+			QUECLI=FISC
+			TTCLI=TT
+		ELSE
+			STORE 1 TO FILCLI
+		ENDIF
+	ELSE
+		IF FILCLI=1
+			IF SSTM2="EXPENSAS"
+				QUECLI='LEFT(CCL.CODCLI,1)="C"'
+			ENDIF
+		ENDIF
+	ENDIF
+RETURN FILCLI=1 .OR. (FILCLI=2 .AND. CH#8)

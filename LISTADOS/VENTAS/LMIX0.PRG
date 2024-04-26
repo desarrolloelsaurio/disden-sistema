@@ -1,0 +1,17 @@
+FUNCTION LMIX0
+PARAMETER EL_LIS
+#DEFINE PAIP   "|"                               && PAIP
+
+? PAIP
+?? " "
+IF EL_LIS=1
+?? LEFT(TEXTO2,3)
+ELSE
+?? LEFT(TEXTO2,2)
+ENDIF
+?? " "
+?? PAIP
+?? TEXTO1
+?? PAIP
+STORE M.CASOS+1 TO M.CASOS
+RETURN .T.

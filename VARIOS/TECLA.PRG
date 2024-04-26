@@ -1,0 +1,7 @@
+FUNCTION TECLA
+PARAMETER SHIT
+if last()#27
+  =INKEY(0,'HM')
+endif
+RELE FIN
+RETURN .T.

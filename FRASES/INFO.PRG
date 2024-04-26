@@ -1,0 +1,16 @@
+WAN=WONTOP()
+=WIN0()
+@ 1,1 SAY "BASE                 :"
+@ 1,10 SAY DBF()
+@ 2,1 SAY "ALIAS                :"
+@ 2,10 SAY ALIAS()
+@ 3,1 SAY "ORDEN                :"
+@ 3,10 SAY ORDER()
+@ 4,1 SAY "CANTIDAD DE REGISTROS :"
+@ 4,10 SAY STR(RECC(),7)
+=INKEY(0,"HM")
+RELE WIND WIN0
+IF !EMPTY(WAN)
+ACTI WIND (WAN)
+ENDIF
+RETURN

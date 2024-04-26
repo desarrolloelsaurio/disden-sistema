@@ -1,0 +1,13 @@
+* ษออออออออออออออออออออออออออออออป
+* บ PROCEDIMIENTO : SAVPOALQ.PRG บ
+* บ COMENTARIO    :              บ
+* ศออออออออออออออออออออออออออออออผ
+FUNCTION SAVPOALQ
+IF GETENV("EQUIPO")="RAFULS"
+   SAVE TO ("F:\USR\"+GETENV("USERNAME")+"\POSICALQ.MEM")
+ELSE
+   IF GETENV("EQUIPO")="MICASA" .OR. GETENV("EQUIPO")="NOVOLAP" .OR. GETENV("EQUIPO")="GOYOLAP"
+      SAVE TO POSIC
+   ENDIF
+ENDIF
+RETURN .T.

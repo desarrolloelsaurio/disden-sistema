@@ -1,0 +1,23 @@
+#DEFINE BOTOM  "  "+repl("°",78)                 && BOTOM
+#DEFINE ABA    "Abriendo Base de "               && ABA
+#DEFINE NUL    0                                 && NUL
+#DEFINE PAIP   "|"                               && PAIP
+ 
+FUNCTION LPENDF0
+? PAIP
+?? ELPRO
+?? PAIP
+?? SAYPER(ELPRO,"PROCOD")
+?? PAIP
+?? STR(ELPEN,XACDIGI)
+?? PAIP
+?? STR(ELTOT,XACDIGI)
+?? PAIP
+?? STR(TOMON,XACDIGI)
+?? PAIP
+TTOMON=TTOMON+TOMON
+ELTTOT=ELTTOT+ELTOT
+PPEN=PPEN+ELPEN
+STORE NUL TO M.TOMON,M.ELTOT,M.ELPEN
+ELPRO=TMP.USUARIO
+RETURN .T.
