@@ -1,3 +1,4 @@
+otro 
 ya=seco()
 archivo = "ccclih"
 aremo = "f:\sistemas\ventas\ventasa\"+archivo
