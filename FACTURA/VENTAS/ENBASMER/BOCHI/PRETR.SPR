@@ -1,12 +1,12 @@
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є 23/10/2023             PRETR.SPR               12:53:47 є
+*       є 29/04/2024             PRETR.SPR               14:32:52 є
 *       є                                                         є
 *       ЗДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД¶
 *       є                                                         є
 *       є GOYO REINER                                             є
 *       є                                                         є
-*       є Copyright (c) 2023 G. REINER                            є
+*       є Copyright (c) 2024 G. REINER                            є
 *       є 1є DE MAYO 2134                                         є
 *       є ROSARIO, SF  2000                                       є
 *       є ARGENTINA                                         є
@@ -144,7 +144,7 @@ ENDIF
 	STYLE "B" ;
 	PICTURE "@K!" ;
 	WHEN GRL_F2("M.CODCLI","a Facturar",10,20,30,"PER","CLIENTE","codcli","clientes",10,20) .AND. SGET("FAC") ;
-	VALID _6qp0rn3fu() ;
+	VALID _6w00v6j3d() ;
 	MESSAGE "Seleccione cliente a Facturar"+TEX_EFES ;
 	ERROR "CLIENTE INEXISTENTE" ;
 	COLOR ,RGB(255,255,255,0,128,0)
@@ -177,7 +177,7 @@ ENDIF
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
 	WHEN LAST()#27 ;
-	VALID _6qp0rn3fw()
+	VALID _6w00v6j3e()
 @ 8.250,31.000 GET m.eldto ;
 	SIZE 0.950,20.500 ;
 	DEFAULT " " ;
@@ -185,16 +185,18 @@ ENDIF
 	STYLE "B" ;
 	PICTURE "99,999.99" ;
 	WHEN !empty(m.monto) ;
-	VALID _6qp0rn3g3() ;
+	VALID _6w00v6j3f() ;
 	MESSAGE "Ingrese Porcentaje de Bonificaciуn" ;
 	ERROR "VALORES INACEPTABLES" ;
 	COLOR ,RGB(255,255,255,0,128,0)
-@ 9.750,31.000 SAY m.DESCUENTO ;
+@ 9.750,31.000 GET m.DESCUENTO ;
 	SIZE 0.950,20.500 ;
+	DEFAULT " " ;
 	FONT "Arial", 12 ;
 	STYLE "B" ;
 	PICTURE "9999999.99" ;
-	COLOR RGB(255,255,255,0,128,0)
+	VALID _6w00v6j3j() ;
+	COLOR ,RGB(255,255,255,0,128,0)
 @ 14.750,31.429 SAY m.MONTONET ;
 	SIZE 0.950,20.500 ;
 	FONT "Arial", 12 ;
@@ -209,14 +211,14 @@ ENDIF
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
 	WHEN last()#27 ;
-	VALID _6qp0rn3gw()
+	VALID _6w00v6j4b()
 
 IF NOT WVISIBLE("fac")
 	ACTIVATE WINDOW fac
 ENDIF
 
 READ CYCLE ;
-	SHOW _6qp0rn3h4()
+	SHOW _6w00v6j50()
 
 RELEASE WINDOW fac
 
@@ -499,7 +501,7 @@ RETURN .T.
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _6QP0RN3FU           m.codcli VALID                     є
+*       є _6W00V6J3D           m.codcli VALID                     є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -512,7 +514,7 @@ RETURN .T.
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _6qp0rn3fu     &&  m.codcli VALID
+FUNCTION _6w00v6j3d     &&  m.codcli VALID
 #REGION 1
 IF LAST()=27 .OR. ;
      EMPTY(M.CODCLI)
@@ -535,7 +537,7 @@ RETURN .F.
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _6QP0RN3FW           m.imar VALID                       є
+*       є _6W00V6J3E           m.imar VALID                       є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -548,7 +550,7 @@ RETURN .F.
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _6qp0rn3fw     &&  m.imar VALID
+FUNCTION _6w00v6j3e     &&  m.imar VALID
 #REGION 1
 if m.imar=1
 IF EMPTY(M.CODCLI)
@@ -663,7 +665,7 @@ return .t.
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _6QP0RN3G3           m.eldto VALID                      є
+*       є _6W00V6J3F           m.eldto VALID                      є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -676,7 +678,7 @@ return .t.
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _6qp0rn3g3     &&  m.eldto VALID
+FUNCTION _6w00v6j3f     &&  m.eldto VALID
 #REGION 1
 IF M.ELDTO<0 .OR. M.ELDTO>100
    RETURN .F.
@@ -692,7 +694,31 @@ RETURN SGET("FAC")
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _6QP0RN3GW           m.OKFAC VALID                      є
+*       є _6W00V6J3J           m.DESCUENTO VALID                  є
+*       є                                                         є
+*       є Function Origin:                                        є
+*       є                                                         є
+*       є From Platform:       Windows                            є
+*       є From Screen:         PRETR,     Record Number:   12     є
+*       є Variable:            m.DESCUENTO                        є
+*       є Called By:           VALID Clause                       є
+*       є Object Type:         Field                              є
+*       є Snippet Number:      4                                  є
+*       є                                                         є
+*       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
+*
+FUNCTION _6w00v6j3j     &&  m.DESCUENTO VALID
+#REGION 1
+ELDTO=100*m.descuento/m.montonet
+***   M.DESCUENTO=M.MONTONET*ELDTO/100
+M.MONTONET=M.MONTONET-M.DESCUENTO
+M.MONTOBRU=M.MONTONET/IVA118
+M.MONTOIVA=M.MONTONET-M.MONTOBRU
+RETURN SGET("FAC")
+
+*       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
+*       є                                                         є
+*       є _6W00V6J4B           m.OKFAC VALID                      є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -701,11 +727,11 @@ RETURN SGET("FAC")
 *       є Variable:            m.OKFAC                            є
 *       є Called By:           VALID Clause                       є
 *       є Object Type:         Push Button                        є
-*       є Snippet Number:      4                                  є
+*       є Snippet Number:      5                                  є
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _6qp0rn3gw     &&  m.OKFAC VALID
+FUNCTION _6w00v6j4b     &&  m.OKFAC VALID
 #REGION 1
 if m.OKFAC=1
    STORE "" TO M.ESA,M.NUMERO,M.ELNUM
@@ -820,7 +846,7 @@ RETU .T.
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _6QP0RN3H4           Read Level Show                    є
+*       є _6W00V6J50           Read Level Show                    є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -828,11 +854,11 @@ RETU .T.
 *       є From Platform:       Windows                            є
 *       є From Screen:         PRETR                              є
 *       є Called By:           READ Statement                     є
-*       є Snippet Number:      5                                  є
+*       є Snippet Number:      6                                  є
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _6qp0rn3h4     && Read Level Show
+FUNCTION _6w00v6j50     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *
@@ -861,12 +887,6 @@ IF SYS(2016) = "FAC" OR SYS(2016) = "*"
 		SIZE 0.950,28.750, 0.000 ;
 		FONT "Arial", 12 ;
 		STYLE "B" ;
-		COLOR RGB(255,255,255,0,128,0)
-	@ 9.750,31.000 SAY m.DESCUENTO ;
-		SIZE 0.950,20.500, 0.000 ;
-		FONT "Arial", 12 ;
-		STYLE "B" ;
-		PICTURE "9999999.99" ;
 		COLOR RGB(255,255,255,0,128,0)
 	@ 14.750,31.429 SAY m.MONTONET ;
 		SIZE 0.950,20.500, 0.000 ;
