@@ -1,3 +1,8 @@
+parameter traza
+trzfile = FCREATE('trz.txt')
+=FWRITE(trzfile, traza)
+=FCLOSE(trzfile)				
+
 CLEAR
 =SETEOS()
 RELE SSTM,JANNAME,USADOR,COEFSEG,XACANCHO,XACHOJA,SSTM1,LARGO,LARGOIM,SUCU
@@ -25,6 +30,11 @@ negrisimo = .F.
 =VAR_MER()
 =VAR_PRO()
 =VAR_DOLA()
+
+
+public factraza
+factraza = .F.
+
 
 *IF GETENV("EQUIPO")="MICASA"
 *   rest from d:\sistemas\ventas\BOCHI\posic ADDI
