@@ -1,6 +1,6 @@
 *       *********************************************************
 *       *                                                         
-*       * 21/03/2024             XANUM.SPR               11:06:09 
+*       * 09/05/2024             XANUM.SPR               16:02:22 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
@@ -122,7 +122,7 @@ ENDIF
 	DEFAULT " " ;
 	FONT "Arial", 14 ;
 	PICTURE "@K 99999999" ;
-	WHEN _6ux0nsoyp() ;
+	WHEN _6wa0ydmje() ;
 	VALID last()=27 .or. M.eloknum > 0 ;
 	MESSAGE "Número de la Próxima Factura" ;
 	ERROR "NUMERO INCORRECTO"
@@ -133,7 +133,7 @@ ENDIF
 	SIZE 2.923,7.600,0.800 ;
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
-	VALID _6ux0nsoyy()
+	VALID _6wa0ydmjm()
 
 IF NOT WVISIBLE("win")
 	ACTIVATE WINDOW win
@@ -157,7 +157,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NSOYP           M.ELOKNUM WHEN                     
+*       * _6WA0YDMJE           M.ELOKNUM WHEN                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -170,7 +170,7 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nsoyp     &&  M.ELOKNUM WHEN
+FUNCTION _6wa0ydmje     &&  M.ELOKNUM WHEN
 #REGION 1
 SELE DOC
 GO (EL_REGISTRO)
@@ -179,7 +179,7 @@ M.ELOKNUM=DOC.NUMERO
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NSOYY           M.OPCION VALID                     
+*       * _6WA0YDMJM           M.OPCION VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -192,7 +192,7 @@ M.ELOKNUM=DOC.NUMERO
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nsoyy     &&  M.OPCION VALID
+FUNCTION _6wa0ydmjm     &&  M.OPCION VALID
 #REGION 1
 IF LAST()#27 .AND. M.OPCION=1
    REPL DOC.NUMERO WITH M.ELOKNUM

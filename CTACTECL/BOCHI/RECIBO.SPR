@@ -1,6 +1,6 @@
 *       *********************************************************
 *       *                                                         
-*       * 21/03/2024            RECIBO.SPR               11:06:05 
+*       * 09/05/2024            RECIBO.SPR               16:02:13 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
@@ -121,7 +121,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		STYLE "B" ;
 		PICTURE "@K!" ;
 		WHEN PER_F2("M.CODCLI","a Facturar",10,20,"codcli","clientes",10,20) .AND. SGET("FAC") ;
-		VALID _6ux0nslv1() ;
+		VALID _6wa0ydfmb() ;
 		MESSAGE "Seleccione cliente a Facturar" ;
 		ERROR "CLIENTE INEXISTENTE" ;
 		COLOR ,RGB(255,255,255,0,128,0)
@@ -176,14 +176,14 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		DEFAULT 1 ;
 		FONT "MS Sans Serif", 8 ;
 		WHEN last()#27 ;
-		VALID _6ux0nslvy()
+		VALID _6wa0ydfn0()
 	
 	IF NOT WVISIBLE("fac")
 		ACTIVATE WINDOW fac
 	ENDIF
 	
 	READ CYCLE ;
-		SHOW _6ux0nslw3()
+		SHOW _6wa0ydfn8()
 	
 	RELEASE WINDOW fac
 	
@@ -309,7 +309,7 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		DEFAULT " " ;
 		PICTURE "@K!" ;
 		WHEN PER_F2("M.CODCLI","a Facturar",10,20,"codcli","clientes",10,20) .AND. SGET("FAC") ;
-		VALID _6ux0nslwz() ;
+		VALID _6wa0ydfo9() ;
 		MESSAGE "Seleccione cliente a Facturar" ;
 		ERROR "CLIENTE INEXISTENTE"
 	@ 3,11 SAY IIF(EMPTY(M.CODCLI),"",PER.CLIENTE) ;
@@ -339,7 +339,7 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		SIZE 1,6,1 ;
 		DEFAULT 1 ;
 		WHEN last()#27 ;
-		VALID _6ux0nsly4()
+		VALID _6wa0ydfpq()
 	@ 7,1 SAY "N§ CUIT" ;
 		SIZE 1,7, 0
 	
@@ -348,7 +348,7 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	ENDIF
 	
 	READ CYCLE ;
-		SHOW _6ux0nslyr()
+		SHOW _6wa0ydfpr()
 	
 	RELEASE WINDOW fac
 	
@@ -378,7 +378,7 @@ ENDCASE
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NSLV1           m.codcli VALID                     
+*       * _6WA0YDFMB           m.codcli VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -391,7 +391,7 @@ ENDCASE
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nslv1     &&  m.codcli VALID
+FUNCTION _6wa0ydfmb     &&  m.codcli VALID
 #REGION 1
 IF LAST()=27 .OR. ;
 EMPTY(M.CODCLI)
@@ -413,7 +413,7 @@ RETURN .F.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NSLVY           m.imar VALID                       
+*       * _6WA0YDFN0           m.imar VALID                       
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -426,7 +426,7 @@ RETURN .F.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nslvy     &&  m.imar VALID
+FUNCTION _6wa0ydfn0     &&  m.imar VALID
 #REGION 1
 if m.imar=1
    sele doc
@@ -476,7 +476,7 @@ return .t.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NSLW3           Read Level Show                    
+*       * _6WA0YDFN8           Read Level Show                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -488,7 +488,7 @@ return .t.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nslw3     && Read Level Show
+FUNCTION _6wa0ydfn8     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *
@@ -529,7 +529,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NSLWZ           m.codcli VALID                     
+*       * _6WA0YDFO9           m.codcli VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -542,7 +542,7 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nslwz     &&  m.codcli VALID
+FUNCTION _6wa0ydfo9     &&  m.codcli VALID
 #REGION 1
 IF LAST()=27 .OR. ;
 EMPTY(M.CODCLI)
@@ -564,7 +564,7 @@ RETURN .F.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NSLY4           m.imar VALID                       
+*       * _6WA0YDFPQ           m.imar VALID                       
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -577,7 +577,7 @@ RETURN .F.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nsly4     &&  m.imar VALID
+FUNCTION _6wa0ydfpq     &&  m.imar VALID
 #REGION 1
 if m.imar=1
    sele doc
@@ -607,7 +607,7 @@ return .t.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NSLYR           Read Level Show                    
+*       * _6WA0YDFPR           Read Level Show                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -619,7 +619,7 @@ return .t.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nslyr     && Read Level Show
+FUNCTION _6wa0ydfpr     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *

@@ -1,6 +1,6 @@
 *       *********************************************************
 *       *                                                         
-*       * 21/03/2024           CALCOMIR.SPR              11:05:21 
+*       * 09/05/2024           CALCOMIR.SPR              16:01:20 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
@@ -38,8 +38,8 @@ SET READBORDER ON
 *       *********************************************************
 *
 
-IF NOT WEXIST("_6ux0nrncm")
-	DEFINE WINDOW _6ux0nrncm ;
+IF NOT WEXIST("_6wa0ycaog")
+	DEFINE WINDOW _6wa0ycaog ;
 		AT 0.000, 0.000 ;
 		SIZE 21.769,90.600 ;
 		TITLE "COMISIONES" ;
@@ -82,10 +82,10 @@ store 0 to m.comision, M.COMISIP
 *
 
 #REGION 1
-IF WVISIBLE("_6ux0nrncm")
-	ACTIVATE WINDOW _6ux0nrncm SAME
+IF WVISIBLE("_6wa0ycaog")
+	ACTIVATE WINDOW _6wa0ycaog SAME
 ELSE
-	ACTIVATE WINDOW _6ux0nrncm NOSHOW
+	ACTIVATE WINDOW _6wa0ycaog NOSHOW
 ENDIF
 @ 1.308,4.400 SAY "Recibo Nro" ;
 	FONT "Arial", 16 ;
@@ -128,14 +128,14 @@ ENDIF
 	DEFAULT 1 ;
 	FONT "Arial", 12 ;
 	STYLE "B" ;
-	VALID _6ux0nrney()
+	VALID _6wa0ycarb()
 @ 18.231,33.600 GET m.opta ;
 	PICTURE "@*HT Detalles" ;
 	SIZE 1.600,15.125,3.250 ;
 	DEFAULT 1 ;
 	FONT "Arial", 12 ;
 	STYLE "B" ;
-	VALID _6ux0nrnf7()
+	VALID _6wa0ycarh()
 @ 12.385,4.600 SAY "Comisión" ;
 	FONT "Arial", 16 ;
 	STYLE "BT"
@@ -157,15 +157,15 @@ ENDIF
 	FONT "Arial", 16 ;
 	STYLE "BT"
 
-IF NOT WVISIBLE("_6ux0nrncm")
-	ACTIVATE WINDOW _6ux0nrncm
+IF NOT WVISIBLE("_6wa0ycaog")
+	ACTIVATE WINDOW _6wa0ycaog
 ENDIF
 
 READ CYCLE ;
-	WHEN _6ux0nrnf8() ;
-	SHOW _6ux0nrnf9()
+	WHEN _6wa0ycaro() ;
+	SHOW _6wa0ycarp()
 
-RELEASE WINDOW _6ux0nrncm
+RELEASE WINDOW _6wa0ycaog
 
 #REGION 0
 
@@ -192,7 +192,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NRNEY           m.opta VALID                       
+*       * _6WA0YCARB           m.opta VALID                       
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -205,7 +205,7 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nrney     &&  m.opta VALID
+FUNCTION _6wa0ycarb     &&  m.opta VALID
 #REGION 1
 replace comision with m.comision
 replace comisiP  with m.comisiP
@@ -213,7 +213,7 @@ replace comisiP  with m.comisiP
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NRNF7           m.opta VALID                       
+*       * _6WA0YCARH           m.opta VALID                       
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -226,7 +226,7 @@ replace comisiP  with m.comisiP
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nrnf7     &&  m.opta VALID
+FUNCTION _6wa0ycarh     &&  m.opta VALID
 #REGION 1
 a=sele()
 sele tmp2
@@ -239,7 +239,7 @@ sele (a)
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NRNF8           Read Level When                    
+*       * _6WA0YCARO           Read Level When                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -251,7 +251,7 @@ sele (a)
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nrnf8     && Read Level When
+FUNCTION _6wa0ycaro     && Read Level When
 *
 * When Code from screen: CALCOMIR
 *
@@ -283,7 +283,7 @@ show gets
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NRNF9           Read Level Show                    
+*       * _6WA0YCARP           Read Level Show                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -295,15 +295,15 @@ show gets
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nrnf9     && Read Level Show
+FUNCTION _6wa0ycarp     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *
 * Show Code from screen: CALCOMIR
 *
 #REGION 1
-IF SYS(2016) = "_6UX0NRNCM" OR SYS(2016) = "*"
-	ACTIVATE WINDOW _6ux0nrncm SAME
+IF SYS(2016) = "_6WA0YCAOG" OR SYS(2016) = "*"
+	ACTIVATE WINDOW _6wa0ycaog SAME
 	@ 1.385,33.600 SAY ccl.numerore ;
 		SIZE 0.957,20.500, 0.000 ;
 		FONT "Arial", 14

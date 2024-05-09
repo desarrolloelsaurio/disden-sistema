@@ -1,6 +1,6 @@
 *       *********************************************************
 *       *                                                         
-*       * 21/03/2024           ELIMERCA.SPR              11:05:28 
+*       * 09/05/2024           ELIMERCA.SPR              16:01:32 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
@@ -38,8 +38,8 @@ SET READBORDER ON
 *       *********************************************************
 *
 
-IF NOT WEXIST("_6ux0nrsms")
-	DEFINE WINDOW _6ux0nrsms ;
+IF NOT WEXIST("_6wa0ycjem")
+	DEFINE WINDOW _6wa0ycjem ;
 		AT 14.000, 11.000 ;
 		SIZE 9.286,106.000 ;
 		TITLE "ARTICULO" ;
@@ -53,7 +53,7 @@ ENDIF
 
 
 #REGION 1
-DEFINE POPUP _6ux0nrsnp ;
+DEFINE POPUP _6wa0ycjh3 ;
 	PROMPT FIELD merca +" .... "+ articulo ;
 	SCROLL
 
@@ -65,28 +65,28 @@ DEFINE POPUP _6ux0nrsnp ;
 *
 
 #REGION 1
-IF WVISIBLE("_6ux0nrsms")
-	ACTIVATE WINDOW _6ux0nrsms SAME
+IF WVISIBLE("_6wa0ycjem")
+	ACTIVATE WINDOW _6wa0ycjem SAME
 ELSE
-	ACTIVATE WINDOW _6ux0nrsms NOSHOW
+	ACTIVATE WINDOW _6wa0ycjem NOSHOW
 ENDIF
 @ 0.071,0.200 GET m.eleli ;
  	PICTURE "@&T" ;
-	POPUP _6ux0nrsnp ;
+	POPUP _6wa0ycjh3 ;
 	SIZE 7.875,65.750 ;
 	DEFAULT " " ;
 	FONT "Courier New", 10 ;
 	STYLE "B" ;
 	COLOR RGB(255,255,0,0,128,128),RGB(255,255,0,0,128,128)
 
-IF NOT WVISIBLE("_6ux0nrsms")
-	ACTIVATE WINDOW _6ux0nrsms
+IF NOT WVISIBLE("_6wa0ycjem")
+	ACTIVATE WINDOW _6wa0ycjem
 ENDIF
 
 READ CYCLE
 
-RELEASE WINDOW _6ux0nrsms
-RELEASE POPUPS _6ux0nrsnp
+RELEASE WINDOW _6wa0ycjem
+RELEASE POPUPS _6wa0ycjh3
 
 #REGION 0
 

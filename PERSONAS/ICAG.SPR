@@ -1,6 +1,6 @@
 *       *********************************************************
 *       *                                                         
-*       * 21/03/2024             ICAG.SPR                11:05:32 
+*       * 09/05/2024             ICAG.SPR                16:01:39 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
@@ -28,47 +28,9 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 	*
 	
 	#REGION 1
-	** Start of inserted file \SISTEMAS\DEFINES.PRG ********************************start
-	#DEFINE BOTOM  "  "+repl("°",78)                 && BOTOM
-	#DEFINE ABA    "Abriendo Base de "               && ABA
-	#DEFINE NUL    0                                 && NUL
-	#DEFINE PICUMAX "9,999,999,999,999.99"           && PICUMAX
-	#DEFINE PICUMA1 "9,999,999,999,999"              && PICUMA1
-	#DEFINE PAIP   "|"                               && PAIP
-	#DEFINE FOLC  ".F."                              && FOLC
-	#DEFINE CRLF CHR(13)+CHR(10)                     && CRLF
-	#DEFINE FOLL  .F.                                && FOLL
-	#DEFINE TRUC  ".T."                              && TRUC
-	#DEFINE TRUL  .T.                                && TRUL
-	#DEFINE IMPRIMIENDO  PADC(' IMPRIMIENDO LOS DATOS REQUERIDOS - [TECLA] Interrumpe ',80,'°') && IMPRIMIENDO
-	#DEFINE ELYES  "SI"                              && ELYES
-	#DEFINE ELNOU  "NO"                              && ELNOU
-	#DEFINE ONE    1                                 && ONE
-	#DEFINE TWO    2                                 && TWO
-	#DEFINE THREE  3                                 && THREE
-	#DEFINE FOUR   4                                 && FOUR
-	#DEFINE TEX_EFES " - [F2] Popup - [F3] B£squeda" && TEX_EFES
-	#DEFINE TEX_CALC "CALCULANDO - ESPERE POR FAVOR" && TEX_CALC
-	#DEFINE GRABANDO PADC(' Grabando los datos ingresados - Espere por Favor ',80,"°")
-	#DEFINE NOVACIO "CAMPO DE INGRESO OBLIGATORIO - NO PUEDE ESTAR VACIO" && NOVACIO
-	#DEFINE NOFECHA "LAS FECHAS ESTAN ENTRE VALORES INACEPTABLES" && NOFECHA
-	#DEFINE ESPAOPC " - Barra Espac. para cambiar de Opci¢n" && ESPAOPC
-	#DEFINE ESCANUL " - [ESC] para Anular"           && ESCANUL
-	#DEFINE ESCAMEN " - [ESC] para Men£"             && ESCAMEN
-	#DEFINE ESCAFIN " - [ESC] para Fin"              && ESCAFIN
-	#DEFINE NOACVAL "LOS VALORES INGRESADOS ESTAN ENTRE LIMITES INACEPTABLES"    && NOACVAL
-	#DEFINE CONTIX  " Continuaci¢n"                  && CONTIX
-	#DEFINE RH      36 								 && RH
-	#DEFINE RP 		47 								 && RP
-	#DEFINE ENTERCON "PULSE [ENTER] PARA CONTINUAR"  && ENTERCON
-	#DEFINE ORQ      "Orden de Requerimiento"        && ORQ
-	#DEFINE ORQS     "Ordenes de Requerimiento"      && ORQS
-	#DEFINE NOSEL "NO SE HA SELECCIONADO"            && NOSEL
-	#DEFINE PIC30 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"	 && PIC30
-	#DEFINE T_REINGRE "Reingrese el DATO"	 		 && T_REINGRE
-	
-	** End of inserted file \SISTEMAS\DEFINES.PRG ************************************end
-	
+	*
+	* Inserted file \SISTEMAS\DEFINES.PRG not found!
+	*
 	=working()
 	IF TYPE("MIX_VARI")="U"
 	RELE MIX_VARI,MIX_T1,MIX_R1,MIX_C1,MIX_COD,MIX_IND,MIX_R2,MIX_C2,MIX_ALIAS,MIX_CAMPO,MIX_LARGO
@@ -480,7 +442,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		SIZE 2.923,7.600,0.000 ;
 		DEFAULT 1 ;
 		FONT "MS Sans Serif", 8 ;
-		VALID _6ux0nrwic()
+		VALID _6wa0ycpm5()
 	@ 1.000,2.000 SAY "1" ;
 		FONT "MS Sans Serif", 8 ;
 		STYLE "B"
@@ -580,7 +542,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 	ENDIF
 	
 	READ CYCLE ;
-		SHOW _6ux0nrwkg()
+		SHOW _6wa0ycpnf()
 	
 	RELEASE WINDOW icag
 	
@@ -621,47 +583,9 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	*
 	
 	#REGION 1
-	** Start of inserted file \SISTEMAS\DEFINES.PRG ********************************start
-	#DEFINE BOTOM  "  "+repl("°",78)                 && BOTOM
-	#DEFINE ABA    "Abriendo Base de "               && ABA
-	#DEFINE NUL    0                                 && NUL
-	#DEFINE PICUMAX "9,999,999,999,999.99"           && PICUMAX
-	#DEFINE PICUMA1 "9,999,999,999,999"              && PICUMA1
-	#DEFINE PAIP   "|"                               && PAIP
-	#DEFINE FOLC  ".F."                              && FOLC
-	#DEFINE CRLF CHR(13)+CHR(10)                     && CRLF
-	#DEFINE FOLL  .F.                                && FOLL
-	#DEFINE TRUC  ".T."                              && TRUC
-	#DEFINE TRUL  .T.                                && TRUL
-	#DEFINE IMPRIMIENDO  PADC(' IMPRIMIENDO LOS DATOS REQUERIDOS - [TECLA] Interrumpe ',80,'°') && IMPRIMIENDO
-	#DEFINE ELYES  "SI"                              && ELYES
-	#DEFINE ELNOU  "NO"                              && ELNOU
-	#DEFINE ONE    1                                 && ONE
-	#DEFINE TWO    2                                 && TWO
-	#DEFINE THREE  3                                 && THREE
-	#DEFINE FOUR   4                                 && FOUR
-	#DEFINE TEX_EFES " - [F2] Popup - [F3] B£squeda" && TEX_EFES
-	#DEFINE TEX_CALC "CALCULANDO - ESPERE POR FAVOR" && TEX_CALC
-	#DEFINE GRABANDO PADC(' Grabando los datos ingresados - Espere por Favor ',80,"°")
-	#DEFINE NOVACIO "CAMPO DE INGRESO OBLIGATORIO - NO PUEDE ESTAR VACIO" && NOVACIO
-	#DEFINE NOFECHA "LAS FECHAS ESTAN ENTRE VALORES INACEPTABLES" && NOFECHA
-	#DEFINE ESPAOPC " - Barra Espac. para cambiar de Opci¢n" && ESPAOPC
-	#DEFINE ESCANUL " - [ESC] para Anular"           && ESCANUL
-	#DEFINE ESCAMEN " - [ESC] para Men£"             && ESCAMEN
-	#DEFINE ESCAFIN " - [ESC] para Fin"              && ESCAFIN
-	#DEFINE NOACVAL "LOS VALORES INGRESADOS ESTAN ENTRE LIMITES INACEPTABLES"    && NOACVAL
-	#DEFINE CONTIX  " Continuaci¢n"                  && CONTIX
-	#DEFINE RH      36 								 && RH
-	#DEFINE RP 		47 								 && RP
-	#DEFINE ENTERCON "PULSE [ENTER] PARA CONTINUAR"  && ENTERCON
-	#DEFINE ORQ      "Orden de Requerimiento"        && ORQ
-	#DEFINE ORQS     "Ordenes de Requerimiento"      && ORQS
-	#DEFINE NOSEL "NO SE HA SELECCIONADO"            && NOSEL
-	#DEFINE PIC30 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"	 && PIC30
-	#DEFINE T_REINGRE "Reingrese el DATO"	 		 && T_REINGRE
-	
-	** End of inserted file \SISTEMAS\DEFINES.PRG ************************************end
-	
+	*
+	* Inserted file \SISTEMAS\DEFINES.PRG not found!
+	*
 	=working()
 	IF TYPE("MIX_VARI")="U"
 	RELE MIX_VARI,MIX_T1,MIX_R1,MIX_C1,MIX_COD,MIX_IND,MIX_R2,MIX_C2,MIX_ALIAS,MIX_CAMPO,MIX_LARGO
@@ -984,14 +908,14 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		PICTURE "@*VN \!\<Ok;\?\<No" ;
 		SIZE 1,6,0 ;
 		DEFAULT 1 ;
-		VALID _6ux0nrwrs()
+		VALID _6wa0ycpsk()
 	
 	IF NOT WVISIBLE("icag")
 		ACTIVATE WINDOW icag
 	ENDIF
 	
 	READ CYCLE ;
-		SHOW _6ux0nrwrv()
+		SHOW _6wa0ycpsm()
 	
 	RELEASE WINDOW icag
 	
@@ -1023,7 +947,7 @@ ENDCASE
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NRWIC           M.SELEC VALID                      
+*       * _6WA0YCPM5           M.SELEC VALID                      
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -1036,7 +960,7 @@ ENDCASE
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nrwic     &&  M.SELEC VALID
+FUNCTION _6wa0ycpm5     &&  M.SELEC VALID
 #REGION 1
 if M.SELEC=1
    M.CAG_SALIDA=""
@@ -1057,7 +981,7 @@ return .t.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NRWKG           Read Level Show                    
+*       * _6WA0YCPNF           Read Level Show                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -1069,7 +993,7 @@ return .t.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nrwkg     && Read Level Show
+FUNCTION _6wa0ycpnf     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *
@@ -1225,7 +1149,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NRWRS           M.SELEC VALID                      
+*       * _6WA0YCPSK           M.SELEC VALID                      
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -1238,7 +1162,7 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nrwrs     &&  M.SELEC VALID
+FUNCTION _6wa0ycpsk     &&  M.SELEC VALID
 #REGION 1
 if M.SELEC=1
    M.CAG_SALIDA=""
@@ -1257,7 +1181,7 @@ return .t.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NRWRV           Read Level Show                    
+*       * _6WA0YCPSM           Read Level Show                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -1269,7 +1193,7 @@ return .t.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nrwrv     && Read Level Show
+FUNCTION _6wa0ycpsm     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *

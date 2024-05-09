@@ -1,6 +1,6 @@
 *       *********************************************************
 *       *                                                         
-*       * 21/03/2024           INFIELES.SPR              11:05:37 
+*       * 09/05/2024           INFIELES.SPR              16:01:43 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
@@ -54,8 +54,8 @@ SET READBORDER ON
 *       *********************************************************
 *
 
-IF NOT WEXIST("_6ux0nrzx5")
-	DEFINE WINDOW _6ux0nrzx5 ;
+IF NOT WEXIST("_6wa0ycsbo")
+	DEFINE WINDOW _6wa0ycsbo ;
 		AT 0.000, 0.000 ;
 		SIZE 8.154,75.400 ;
 		FONT "MS Sans Serif", 8 ;
@@ -74,10 +74,10 @@ ENDIF
 *
 
 #REGION 1
-IF WVISIBLE("_6ux0nrzx5")
-	ACTIVATE WINDOW _6ux0nrzx5 SAME
+IF WVISIBLE("_6wa0ycsbo")
+	ACTIVATE WINDOW _6wa0ycsbo SAME
 ELSE
-	ACTIVATE WINDOW _6ux0nrzx5 NOSHOW
+	ACTIVATE WINDOW _6wa0ycsbo NOSHOW
 ENDIF
 @ 2.385,4.400 SAY "MOV. ULTIMOS" ;
 	FONT "MS Sans Serif", 8 ;
@@ -112,18 +112,18 @@ ENDIF
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
 	STYLE "B" ;
-	VALID _6ux0ns00b()
+	VALID _6wa0ycsdw()
 @ 4.769,50.200 SAY "$" ;
 	FONT "MS Sans Serif", 8 ;
 	STYLE "T"
 
-IF NOT WVISIBLE("_6ux0nrzx5")
-	ACTIVATE WINDOW _6ux0nrzx5
+IF NOT WVISIBLE("_6wa0ycsbo")
+	ACTIVATE WINDOW _6wa0ycsbo
 ENDIF
 
 READ CYCLE
 
-RELEASE WINDOW _6ux0nrzx5
+RELEASE WINDOW _6wa0ycsbo
 
 #REGION 0
 
@@ -139,7 +139,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NS00B           M.OPTA VALID                       
+*       * _6WA0YCSDW           M.OPTA VALID                       
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -152,7 +152,7 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0ns00b     &&  M.OPTA VALID
+FUNCTION _6wa0ycsdw     &&  M.OPTA VALID
 #REGION 1
 IF M.OPTA=2
 	RETURN

@@ -1,6 +1,6 @@
 *       *********************************************************
 *       *                                                         
-*       * 21/03/2024              DEV.SPR                11:05:25 
+*       * 09/05/2024              DEV.SPR                16:01:29 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
@@ -156,7 +156,7 @@ ENDIF
 	STYLE "B" ;
 	PICTURE "@K!" ;
 	WHEN GRL_F2("M.CODCLI","a Facturar",10,20,30,"PER","CLIENTE","codcli","clientes",10,20) .AND. SGET("FAC") ;
-	VALID _6ux0nrqqm() ;
+	VALID _6wa0ych8b() ;
 	MESSAGE "Seleccione cliente a Facturar"+TEX_EFES ;
 	ERROR "CLIENTE INEXISTENTE" ;
 	COLOR ,RGB(255,255,255,0,128,0)
@@ -199,15 +199,15 @@ ENDIF
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
 	WHEN LAST()#27 ;
-	VALID _6ux0nrqrd()
+	VALID _6wa0ych8x()
 @ 15.000,39.000 GET m.paanular ;
 	SIZE 0.947,17.125 ;
 	DEFAULT " " ;
 	FONT "Arial", 12 ;
 	STYLE "BI" ;
 	PICTURE IIF(ESNUM,REPL('9',14),REPL('X',14)) ;
-	WHEN _6ux0nrqrj() ;
-	VALID _6ux0nrqs1() ;
+	WHEN _6wa0ych93() ;
+	VALID _6wa0ych9p() ;
 	MESSAGE "N§ DE LA FACTURA RELACIONADA - [F4] FACTURAS DEL CLIENTE" ;
 	ERROR "FACTURA INEXISTENTE" ;
 	COLOR ,RGB(255,255,255,0,128,0)
@@ -223,8 +223,8 @@ ENDIF
 	FONT "Arial", 12 ;
 	STYLE "B" ;
 	PICTURE "99,999.99" ;
-	WHEN _6ux0nrqs8() ;
-	VALID _6ux0nrqsa() ;
+	WHEN _6wa0ych9r() ;
+	VALID _6wa0ych9t() ;
 	MESSAGE "Ingrese Porcentaje de Bonificación" ;
 	ERROR "VALORES INACEPTABLES" ;
 	COLOR ,RGB(255,255,255,0,128,0)
@@ -259,7 +259,7 @@ ENDIF
 	STYLE "B" ;
 	PICTURE "99,999.99" ;
 	WHEN IMAR=1 ;
-	VALID _6ux0nrqsn() ;
+	VALID _6wa0ych9x() ;
 	COLOR ,RGB(255,255,255,0,128,0)
 @ 25.231,73.000 GET m.OKFAC ;
 	PICTURE "@*BHN " + ;
@@ -269,14 +269,14 @@ ENDIF
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
 	WHEN last()#27 ;
-	VALID _6ux0nrqsz()
+	VALID _6wa0ycha6()
 
 IF NOT WVISIBLE("fac")
 	ACTIVATE WINDOW fac
 ENDIF
 
 READ CYCLE ;
-	SHOW _6ux0nrqt8()
+	SHOW _6wa0ychay()
 
 RELEASE WINDOW fac
 
@@ -508,7 +508,7 @@ RETURN .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NRQQM           m.codcli VALID                     
+*       * _6WA0YCH8B           m.codcli VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -521,7 +521,7 @@ RETURN .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nrqqm     &&  m.codcli VALID
+FUNCTION _6wa0ych8b     &&  m.codcli VALID
 #REGION 1
 IF LAST()=27 .OR. ;
      EMPTY(M.CODCLI)
@@ -564,7 +564,7 @@ RETURN .F.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NRQRD           m.imar VALID                       
+*       * _6WA0YCH8X           m.imar VALID                       
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -577,7 +577,7 @@ RETURN .F.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nrqrd     &&  m.imar VALID
+FUNCTION _6wa0ych8x     &&  m.imar VALID
 #REGION 1
 if m.imar=1
 	IF EMPTY(M.CODCLI)
@@ -691,7 +691,7 @@ RETURN .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NRQRJ           m.paanular WHEN                    
+*       * _6WA0YCH93           m.paanular WHEN                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -704,7 +704,7 @@ RETURN .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nrqrj     &&  m.paanular WHEN
+FUNCTION _6wa0ych93     &&  m.paanular WHEN
 #REGION 1
 IF LAST()=27
    RETURN .F.
@@ -717,7 +717,7 @@ RETURN .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NRQS1           m.paanular VALID                   
+*       * _6WA0YCH9P           m.paanular VALID                   
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -730,7 +730,7 @@ RETURN .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nrqs1     &&  m.paanular VALID
+FUNCTION _6wa0ych9p     &&  m.paanular VALID
 #REGION 1
 IF LAST()=27
 	RETURN .T.
@@ -757,7 +757,7 @@ RETURN SGET("IDEB") .AND. XSEEK(M.PAANULAR,'FAC','FACTURA')
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NRQS8           m.eldto WHEN                       
+*       * _6WA0YCH9R           m.eldto WHEN                       
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -770,14 +770,14 @@ RETURN SGET("IDEB") .AND. XSEEK(M.PAANULAR,'FAC','FACTURA')
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nrqs8     &&  m.eldto WHEN
+FUNCTION _6wa0ych9r     &&  m.eldto WHEN
 #REGION 1
 eldto=0
 retu .F.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NRQSA           m.eldto VALID                      
+*       * _6WA0YCH9T           m.eldto VALID                      
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -790,7 +790,7 @@ retu .F.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nrqsa     &&  m.eldto VALID
+FUNCTION _6wa0ych9t     &&  m.eldto VALID
 #REGION 1
 IF M.ELDTO<0 .OR. M.ELDTO>100
    RETURN .F.
@@ -817,7 +817,7 @@ RETURN SGET("FAC")
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NRQSN           m.MONTONET VALID                   
+*       * _6WA0YCH9X           m.MONTONET VALID                   
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -830,7 +830,7 @@ RETURN SGET("FAC")
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nrqsn     &&  m.MONTONET VALID
+FUNCTION _6wa0ych9x     &&  m.MONTONET VALID
 #REGION 1
 IF !EMPTY(M.MONTOBRU)
 	if per.condiva="RN"
@@ -848,7 +848,7 @@ return sget("ideb")
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NRQSZ           m.OKFAC VALID                      
+*       * _6WA0YCHA6           m.OKFAC VALID                      
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -861,7 +861,7 @@ return sget("ideb")
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nrqsz     &&  m.OKFAC VALID
+FUNCTION _6wa0ycha6     &&  m.OKFAC VALID
 #REGION 1
 if m.OKFAC=1
    STORE "" TO M.ESA,M.NUMERO,M.ELNUM
@@ -1003,7 +1003,7 @@ RETU .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NRQT8           Read Level Show                    
+*       * _6WA0YCHAY           Read Level Show                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -1015,7 +1015,7 @@ RETU .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nrqt8     && Read Level Show
+FUNCTION _6wa0ychay     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *

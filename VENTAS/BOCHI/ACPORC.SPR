@@ -1,6 +1,6 @@
 *       *********************************************************
 *       *                                                         
-*       * 21/03/2024            ACPORC.SPR               11:05:19 
+*       * 09/05/2024            ACPORC.SPR               16:01:17 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
@@ -41,8 +41,8 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 	*       *********************************************************
 	*
 	
-	IF NOT WEXIST("_6ux0nrlyk")
-		DEFINE WINDOW _6ux0nrlyk ;
+	IF NOT WEXIST("_6wa0yc7xp")
+		DEFINE WINDOW _6wa0yc7xp ;
 			AT  0.000, 0.000  ;
 			SIZE 5.304,46.111 ;
 			FONT "Arial", 14 ;
@@ -53,7 +53,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 			NOMINIMIZE ;
 			DOUBLE ;
 			COLOR RGB(,,,0,128,0)
-		MOVE WINDOW _6ux0nrlyk CENTER
+		MOVE WINDOW _6wa0yc7xp CENTER
 	ENDIF
 	
 	
@@ -82,10 +82,10 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 	*
 	
 	#REGION 1
-	IF WVISIBLE("_6ux0nrlyk")
-		ACTIVATE WINDOW _6ux0nrlyk SAME
+	IF WVISIBLE("_6wa0yc7xp")
+		ACTIVATE WINDOW _6wa0yc7xp SAME
 	ELSE
-		ACTIVATE WINDOW _6ux0nrlyk NOSHOW
+		ACTIVATE WINDOW _6wa0yc7xp NOSHOW
 	ENDIF
 	@ 1.043,1.000 SAY "Porcentaje sobre lista mayorista" ;
 		FONT "Arial", 14 ;
@@ -121,14 +121,14 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		PICTURE "99.99" ;
 		COLOR ,RGB(255,255,255,,,,)
 	
-	IF NOT WVISIBLE("_6ux0nrlyk")
-		ACTIVATE WINDOW _6ux0nrlyk
+	IF NOT WVISIBLE("_6wa0yc7xp")
+		ACTIVATE WINDOW _6wa0yc7xp
 	ENDIF
 	
 	READ CYCLE ;
-		VALID _6ux0nrm0d()
+		VALID _6wa0yc80l()
 	
-	RELEASE WINDOW _6ux0nrlyk
+	RELEASE WINDOW _6wa0yc7xp
 	
 	#REGION 0
 	
@@ -164,8 +164,8 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	*       *********************************************************
 	*
 	
-	IF NOT WEXIST("_6ux0nrm0p")
-		DEFINE WINDOW _6ux0nrm0p ;
+	IF NOT WEXIST("_6wa0yc80w")
+		DEFINE WINDOW _6wa0yc80w ;
 			FROM INT((SROW()-7)/2),INT((SCOL()-44)/2) ;
 			TO INT((SROW()-7)/2)+6,INT((SCOL()-44)/2)+43 ;
 			TITLE " Actualizaci¢n de Porcentajes " ;
@@ -190,47 +190,9 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	
 	DO OPAUD
 	DO OPMIX
-	** Start of inserted file \SISTEMAS\DEFINES.PRG ********************************start
-	#DEFINE BOTOM  "  "+repl("°",78)                 && BOTOM
-	#DEFINE ABA    "Abriendo Base de "               && ABA
-	#DEFINE NUL    0                                 && NUL
-	#DEFINE PICUMAX "9,999,999,999,999.99"           && PICUMAX
-	#DEFINE PICUMA1 "9,999,999,999,999"              && PICUMA1
-	#DEFINE PAIP   "|"                               && PAIP
-	#DEFINE FOLC  ".F."                              && FOLC
-	#DEFINE CRLF CHR(13)+CHR(10)                     && CRLF
-	#DEFINE FOLL  .F.                                && FOLL
-	#DEFINE TRUC  ".T."                              && TRUC
-	#DEFINE TRUL  .T.                                && TRUL
-	#DEFINE IMPRIMIENDO  PADC(' IMPRIMIENDO LOS DATOS REQUERIDOS - [TECLA] Interrumpe ',80,'°') && IMPRIMIENDO
-	#DEFINE ELYES  "SI"                              && ELYES
-	#DEFINE ELNOU  "NO"                              && ELNOU
-	#DEFINE ONE    1                                 && ONE
-	#DEFINE TWO    2                                 && TWO
-	#DEFINE THREE  3                                 && THREE
-	#DEFINE FOUR   4                                 && FOUR
-	#DEFINE TEX_EFES " - [F2] Popup - [F3] B£squeda" && TEX_EFES
-	#DEFINE TEX_CALC "CALCULANDO - ESPERE POR FAVOR" && TEX_CALC
-	#DEFINE GRABANDO PADC(' Grabando los datos ingresados - Espere por Favor ',80,"°")
-	#DEFINE NOVACIO "CAMPO DE INGRESO OBLIGATORIO - NO PUEDE ESTAR VACIO" && NOVACIO
-	#DEFINE NOFECHA "LAS FECHAS ESTAN ENTRE VALORES INACEPTABLES" && NOFECHA
-	#DEFINE ESPAOPC " - Barra Espac. para cambiar de Opci¢n" && ESPAOPC
-	#DEFINE ESCANUL " - [ESC] para Anular"           && ESCANUL
-	#DEFINE ESCAMEN " - [ESC] para Men£"             && ESCAMEN
-	#DEFINE ESCAFIN " - [ESC] para Fin"              && ESCAFIN
-	#DEFINE NOACVAL "LOS VALORES INGRESADOS ESTAN ENTRE LIMITES INACEPTABLES"    && NOACVAL
-	#DEFINE CONTIX  " Continuaci¢n"                  && CONTIX
-	#DEFINE RH      36 								 && RH
-	#DEFINE RP 		47 								 && RP
-	#DEFINE ENTERCON "PULSE [ENTER] PARA CONTINUAR"  && ENTERCON
-	#DEFINE ORQ      "Orden de Requerimiento"        && ORQ
-	#DEFINE ORQS     "Ordenes de Requerimiento"      && ORQS
-	#DEFINE NOSEL "NO SE HA SELECCIONADO"            && NOSEL
-	#DEFINE PIC30 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"	 && PIC30
-	#DEFINE T_REINGRE "Reingrese el DATO"	 		 && T_REINGRE
-	
-	** End of inserted file \SISTEMAS\DEFINES.PRG ************************************end
-	
+	*
+	* Inserted file \SISTEMAS\DEFINES.PRG not found!
+	*
 	M.PORLISMAY=GETNU1("PORLISMAY","FOXGRL")
 	M.PORLISMIN=GETNU1("PORLISMIN","FOXGRL")
 	M.FLETE=GETNU1("FLETE","FOXGRL")
@@ -243,10 +205,10 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	*
 	
 	#REGION 1
-	IF WVISIBLE("_6ux0nrm0p")
-		ACTIVATE WINDOW _6ux0nrm0p SAME
+	IF WVISIBLE("_6wa0yc80w")
+		ACTIVATE WINDOW _6wa0yc80w SAME
 	ELSE
-		ACTIVATE WINDOW _6ux0nrm0p NOSHOW
+		ACTIVATE WINDOW _6wa0yc80w NOSHOW
 	ENDIF
 	@ 1,1 SAY "Porcentaje sobre lista mayorista" ;
 		SIZE 1,32, 0
@@ -267,14 +229,14 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		DEFAULT " " ;
 		PICTURE "99.99"
 	
-	IF NOT WVISIBLE("_6ux0nrm0p")
-		ACTIVATE WINDOW _6ux0nrm0p
+	IF NOT WVISIBLE("_6wa0yc80w")
+		ACTIVATE WINDOW _6wa0yc80w
 	ENDIF
 	
 	READ CYCLE ;
-		VALID _6ux0nrm1k()
+		VALID _6wa0yc82l()
 	
-	RELEASE WINDOW _6ux0nrm0p
+	RELEASE WINDOW _6wa0yc80w
 	
 	#REGION 0
 	IF m.talkstat = "ON"
@@ -290,7 +252,7 @@ ENDCASE
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NRM0D           Read Level Valid                   
+*       * _6WA0YC80L           Read Level Valid                   
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -302,7 +264,7 @@ ENDCASE
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nrm0d     && Read Level Valid
+FUNCTION _6wa0yc80l     && Read Level Valid
 *
 * Valid Code from screen: ACPORC
 *
@@ -315,7 +277,7 @@ CLEA READ
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NRM1K           Read Level Valid                   
+*       * _6WA0YC82L           Read Level Valid                   
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -327,7 +289,7 @@ CLEA READ
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nrm1k     && Read Level Valid
+FUNCTION _6wa0yc82l     && Read Level Valid
 *
 * Valid Code from screen: ACPORC
 *

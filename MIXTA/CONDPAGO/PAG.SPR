@@ -1,6 +1,6 @@
 *       *********************************************************
 *       *                                                         
-*       * 21/03/2024              PAG.SPR                11:05:57 
+*       * 09/05/2024              PAG.SPR                16:02:05 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
@@ -63,7 +63,7 @@ DEFINE WINDOW mix ;
 	DOUBLE ;
 	COLOR RGB(,,,0,128,0)
 
-DEFINE WINDOW _6ux0nsfdg ;
+DEFINE WINDOW _6wa0yd8oa ;
 	AT 15.000, 79.000 ;
 	SIZE 4.000,32.833 ;
 	TITLE " SU OPCION " ;
@@ -102,47 +102,9 @@ DEFINE WINDOW control2 ;
 IF CHEQSEG()
    RELE MIX_VARI,MIX_T1,MIX_R1,MIX_C1,MIX_COD,MIX_IND,MIX_R2,MIX_C2,MIX_ALIAS,MIX_CAMPO,MIX_LARGO
    PUBL MIX_VARI,MIX_T1,MIX_R1,MIX_C1,MIX_COD,MIX_IND,MIX_R2,MIX_C2,MIX_ALIAS,MIX_CAMPO,MIX_LARGO
-** Start of inserted file \SISTEMAS\DEFINES.PRG ********************************start
-#DEFINE BOTOM  "  "+repl("°",78)                 && BOTOM
-#DEFINE ABA    "Abriendo Base de "               && ABA
-#DEFINE NUL    0                                 && NUL
-#DEFINE PICUMAX "9,999,999,999,999.99"           && PICUMAX
-#DEFINE PICUMA1 "9,999,999,999,999"              && PICUMA1
-#DEFINE PAIP   "|"                               && PAIP
-#DEFINE FOLC  ".F."                              && FOLC
-#DEFINE CRLF CHR(13)+CHR(10)                     && CRLF
-#DEFINE FOLL  .F.                                && FOLL
-#DEFINE TRUC  ".T."                              && TRUC
-#DEFINE TRUL  .T.                                && TRUL
-#DEFINE IMPRIMIENDO  PADC(' IMPRIMIENDO LOS DATOS REQUERIDOS - [TECLA] Interrumpe ',80,'°') && IMPRIMIENDO
-#DEFINE ELYES  "SI"                              && ELYES
-#DEFINE ELNOU  "NO"                              && ELNOU
-#DEFINE ONE    1                                 && ONE
-#DEFINE TWO    2                                 && TWO
-#DEFINE THREE  3                                 && THREE
-#DEFINE FOUR   4                                 && FOUR
-#DEFINE TEX_EFES " - [F2] Popup - [F3] B£squeda" && TEX_EFES
-#DEFINE TEX_CALC "CALCULANDO - ESPERE POR FAVOR" && TEX_CALC
-#DEFINE GRABANDO PADC(' Grabando los datos ingresados - Espere por Favor ',80,"°")
-#DEFINE NOVACIO "CAMPO DE INGRESO OBLIGATORIO - NO PUEDE ESTAR VACIO" && NOVACIO
-#DEFINE NOFECHA "LAS FECHAS ESTAN ENTRE VALORES INACEPTABLES" && NOFECHA
-#DEFINE ESPAOPC " - Barra Espac. para cambiar de Opci¢n" && ESPAOPC
-#DEFINE ESCANUL " - [ESC] para Anular"           && ESCANUL
-#DEFINE ESCAMEN " - [ESC] para Men£"             && ESCAMEN
-#DEFINE ESCAFIN " - [ESC] para Fin"              && ESCAFIN
-#DEFINE NOACVAL "LOS VALORES INGRESADOS ESTAN ENTRE LIMITES INACEPTABLES"    && NOACVAL
-#DEFINE CONTIX  " Continuaci¢n"                  && CONTIX
-#DEFINE RH      36 								 && RH
-#DEFINE RP 		47 								 && RP
-#DEFINE ENTERCON "PULSE [ENTER] PARA CONTINUAR"  && ENTERCON
-#DEFINE ORQ      "Orden de Requerimiento"        && ORQ
-#DEFINE ORQS     "Ordenes de Requerimiento"      && ORQS
-#DEFINE NOSEL "NO SE HA SELECCIONADO"            && NOSEL
-#DEFINE PIC30 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"	 && PIC30
-#DEFINE T_REINGRE "Reingrese el DATO"	 		 && T_REINGRE
-
-** End of inserted file \SISTEMAS\DEFINES.PRG ************************************end
-
+*
+* Inserted file \SISTEMAS\DEFINES.PRG not found!
+*
    SELE MIX
    SCAT MEMV BLAN
    SCAT TO RESPALDO BLAN
@@ -221,8 +183,8 @@ ENDIF
 	DEFAULT " " ;
 	FONT "Arial", 14 ;
 	PICTURE "!!" ;
-	WHEN _6ux0nsfhi() ;
-	VALID _6ux0nsfhm() ;
+	WHEN _6wa0yd8s9() ;
+	VALID _6wa0yd8sd() ;
 	MESSAGE "Ingrese C¢digo Cond. Pago - [ESC] para Men£"+TEX_EFES ;
 	ERROR "NO SE PUEDE TRABAJAR CON UN REGISTRO BORRADO" ;
 	COLOR ,RGB(255,255,255,0,128,0)
@@ -231,8 +193,8 @@ ENDIF
 	DEFAULT " " ;
 	FONT "Arial", 14 ;
 	PICTURE "@!" ;
-	WHEN _6ux0nsfib() ;
-	VALID _6ux0nsfif() ;
+	WHEN _6wa0yd8si() ;
+	VALID _6wa0yd8sl() ;
 	MESSAGE "Ingrese Denom. Cond. Pago - [ESC] para Men£"+TEX_EFES ;
 	ERROR "NO SE PUEDE TRABAJAR CON UN REGISTRO BORRADO" ;
 	COLOR ,RGB(255,255,255,0,128,0)
@@ -242,7 +204,7 @@ ENDIF
 	FONT "Arial", 14 ;
 	PICTURE "999" ;
 	WHEN OFF_F2() .AND. LAST()#27 .AND. !EMPTY(M.TEXTO2)  .AND. !EMPTY(M.TEXTO1) ;
-	VALID _6ux0nsfii() ;
+	VALID _6wa0yd8sq() ;
 	MESSAGE "Cantidad de Cuotas" ;
 	ERROR "CANTIDAD DE CUOTAS INACEPTABLE" ;
 	COLOR ,RGB(255,255,255,0,128,0)
@@ -252,7 +214,7 @@ ENDIF
 	FONT "Arial", 14 ;
 	PICTURE "999" ;
 	WHEN LAST()#27 .AND. !EMPTY(M.TEXTO2)  .AND. !EMPTY(M.TEXTO1) .AND. M.NU1>0 .AND. M.NU1<41 ;
-	VALID _6ux0nsfiq() ;
+	VALID _6wa0yd8su() ;
 	MESSAGE "Cantidad de d¡as desde la Operaci¢n hasta la Primera Cuota" ;
 	ERROR "CANTIDAD DE DIAS INACEPTABLE" ;
 	COLOR ,RGB(255,255,255,0,128,0)
@@ -262,7 +224,7 @@ ENDIF
 	FONT "Arial", 14 ;
 	PICTURE "999" ;
 	WHEN LAST()#27 .AND. !EMPTY(M.TEXTO2)  .AND. !EMPTY(M.TEXTO1) .AND. M.NU1>0 .AND. M.NU1<41  .AND. M.NU2>=0 ;
-	VALID _6ux0nsfiw() ;
+	VALID _6wa0yd8sy() ;
 	MESSAGE "Cantidad de d¡as entre Cuotas" ;
 	ERROR "CANTIDAD DE DIAS INACEPTABLE" ;
 	COLOR ,RGB(255,255,255,0,128,0)
@@ -298,10 +260,10 @@ ENDIF
 *
 
 #REGION 2
-IF WVISIBLE("_6ux0nsfdg")
-	ACTIVATE WINDOW _6ux0nsfdg SAME
+IF WVISIBLE("_6wa0yd8oa")
+	ACTIVATE WINDOW _6wa0yd8oa SAME
 ELSE
-	ACTIVATE WINDOW _6ux0nsfdg NOSHOW
+	ACTIVATE WINDOW _6wa0yd8oa NOSHOW
 ENDIF
 @ 0.308,1.500 GET m.OPCION ;
 	PICTURE "@*BHN " + ;
@@ -312,7 +274,7 @@ ENDIF
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
 	STYLE "B" ;
-	VALID _6ux0nsfjn() ;
+	VALID _6wa0yd8tv() ;
 	MESSAGE "Confirma las operaciones realizadas ?"
 
 
@@ -342,8 +304,8 @@ ENDIF
 IF NOT WVISIBLE("control2")
 	ACTIVATE WINDOW control2
 ENDIF
-IF NOT WVISIBLE("_6ux0nsfdg")
-	ACTIVATE WINDOW _6ux0nsfdg
+IF NOT WVISIBLE("_6wa0yd8oa")
+	ACTIVATE WINDOW _6wa0yd8oa
 ENDIF
 IF NOT WVISIBLE("mix")
 	ACTIVATE WINDOW mix
@@ -352,7 +314,7 @@ ENDIF
 
 READ CYCLE
 
-RELEASE WINDOW _6ux0nsfdg
+RELEASE WINDOW _6wa0yd8oa
 RELEASE WINDOW control2
 RELEASE WINDOW mix
 
@@ -456,7 +418,7 @@ RETURN .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NSFHI           m.TEXTO2 WHEN                      
+*       * _6WA0YD8S9           m.TEXTO2 WHEN                      
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -469,7 +431,7 @@ RETURN .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nsfhi     &&  m.TEXTO2 WHEN
+FUNCTION _6wa0yd8s9     &&  m.TEXTO2 WHEN
 #REGION 1
 M.PRIOBJ=_CUROBJ
 ON KEY LABEL F2 M.TEXTO2=QUEPOPUP("a Corregir",1,22)
@@ -478,7 +440,7 @@ RETURN EMPTY(M.TEXTO1)
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NSFHM           m.TEXTO2 VALID                     
+*       * _6WA0YD8SD           m.TEXTO2 VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -491,7 +453,7 @@ RETURN EMPTY(M.TEXTO1)
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nsfhm     &&  m.TEXTO2 VALID
+FUNCTION _6wa0yd8sd     &&  m.TEXTO2 VALID
 #REGION 1
 STORE .F. TO CAMBIO
 M.TEXTO2=LEFT(M.TEXTO2,2)
@@ -507,7 +469,7 @@ RETURN SGET("MIX")
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NSFIB           M.TEXTO1 WHEN                      
+*       * _6WA0YD8SI           M.TEXTO1 WHEN                      
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -520,7 +482,7 @@ RETURN SGET("MIX")
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nsfib     &&  M.TEXTO1 WHEN
+FUNCTION _6wa0yd8si     &&  M.TEXTO1 WHEN
 #REGION 1
 ON KEY LABEL F2 M.TEXTO1=QUEPOPUP("a Corregir",2,22)
 ON KEY LABEL F3 M.TEXTO1=SEEKTECX(20,'MIX','TEXTO1','TEXTO2',"PAGTEX",.F.,.F.,2,22)
@@ -528,7 +490,7 @@ RETURN LAST()#27 .AND. !EMPTY(M.TEXTO2)
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NSFIF           M.TEXTO1 VALID                     
+*       * _6WA0YD8SL           M.TEXTO1 VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -541,7 +503,7 @@ RETURN LAST()#27 .AND. !EMPTY(M.TEXTO2)
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nsfif     &&  M.TEXTO1 VALID
+FUNCTION _6wa0yd8sl     &&  M.TEXTO1 VALID
 #REGION 1
 IF LAST()=27
    RETURN .T.
@@ -574,7 +536,7 @@ RETURN .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NSFII           m.nu1 VALID                        
+*       * _6WA0YD8SQ           m.nu1 VALID                        
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -587,7 +549,7 @@ RETURN .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nsfii     &&  m.nu1 VALID
+FUNCTION _6wa0yd8sq     &&  m.nu1 VALID
 #REGION 1
 IF LAST()=27
    RETURN .T.
@@ -600,7 +562,7 @@ RETURN .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NSFIQ           m.nu2 VALID                        
+*       * _6WA0YD8SU           m.nu2 VALID                        
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -613,7 +575,7 @@ RETURN .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nsfiq     &&  m.nu2 VALID
+FUNCTION _6wa0yd8su     &&  m.nu2 VALID
 #REGION 1
 IF LAST()=27
    RETURN .T.
@@ -626,7 +588,7 @@ RETURN .F.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NSFIW           m.nu5 VALID                        
+*       * _6WA0YD8SY           m.nu5 VALID                        
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -639,7 +601,7 @@ RETURN .F.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nsfiw     &&  m.nu5 VALID
+FUNCTION _6wa0yd8sy     &&  m.nu5 VALID
 #REGION 1
 IF LAST()=27
    RETURN .T.
@@ -652,7 +614,7 @@ RETURN .F.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NSFJN           m.OPCION VALID                     
+*       * _6WA0YD8TV           m.OPCION VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -665,7 +627,7 @@ RETURN .F.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nsfjn     &&  m.OPCION VALID
+FUNCTION _6wa0yd8tv     &&  m.OPCION VALID
 #REGION 2
 DO CASE
 CASE M.OPCION=3

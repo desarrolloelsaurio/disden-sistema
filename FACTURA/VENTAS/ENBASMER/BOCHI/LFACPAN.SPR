@@ -1,6 +1,6 @@
 *       *********************************************************
 *       *                                                         
-*       * 21/03/2024            LFACPAN.SPR              11:05:48 
+*       * 09/05/2024            LFACPAN.SPR              16:01:52 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
@@ -41,8 +41,8 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 	*       *********************************************************
 	*
 	
-	IF NOT WEXIST("_6ux0ns870")
-		DEFINE WINDOW _6ux0ns870 ;
+	IF NOT WEXIST("_6wa0ycyzk")
+		DEFINE WINDOW _6wa0ycyzk ;
 			AT  0.000, 0.000  ;
 			SIZE 20.462,121.800 ;
 			TITLE " Total Facturado " ;
@@ -52,7 +52,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 			MINIMIZE ;
 			DOUBLE ;
 			COLOR RGB(,,,0,128,0)
-		MOVE WINDOW _6ux0ns870 CENTER
+		MOVE WINDOW _6wa0ycyzk CENTER
 	ENDIF
 	
 	
@@ -66,47 +66,9 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 	#REGION 1
 	
 	SELE TMP
-	** Start of inserted file \SISTEMAS\DEFINES.PRG ********************************start
-	#DEFINE BOTOM  "  "+repl("°",78)                 && BOTOM
-	#DEFINE ABA    "Abriendo Base de "               && ABA
-	#DEFINE NUL    0                                 && NUL
-	#DEFINE PICUMAX "9,999,999,999,999.99"           && PICUMAX
-	#DEFINE PICUMA1 "9,999,999,999,999"              && PICUMA1
-	#DEFINE PAIP   "|"                               && PAIP
-	#DEFINE FOLC  ".F."                              && FOLC
-	#DEFINE CRLF CHR(13)+CHR(10)                     && CRLF
-	#DEFINE FOLL  .F.                                && FOLL
-	#DEFINE TRUC  ".T."                              && TRUC
-	#DEFINE TRUL  .T.                                && TRUL
-	#DEFINE IMPRIMIENDO  PADC(' IMPRIMIENDO LOS DATOS REQUERIDOS - [TECLA] Interrumpe ',80,'°') && IMPRIMIENDO
-	#DEFINE ELYES  "SI"                              && ELYES
-	#DEFINE ELNOU  "NO"                              && ELNOU
-	#DEFINE ONE    1                                 && ONE
-	#DEFINE TWO    2                                 && TWO
-	#DEFINE THREE  3                                 && THREE
-	#DEFINE FOUR   4                                 && FOUR
-	#DEFINE TEX_EFES " - [F2] Popup - [F3] B£squeda" && TEX_EFES
-	#DEFINE TEX_CALC "CALCULANDO - ESPERE POR FAVOR" && TEX_CALC
-	#DEFINE GRABANDO PADC(' Grabando los datos ingresados - Espere por Favor ',80,"°")
-	#DEFINE NOVACIO "CAMPO DE INGRESO OBLIGATORIO - NO PUEDE ESTAR VACIO" && NOVACIO
-	#DEFINE NOFECHA "LAS FECHAS ESTAN ENTRE VALORES INACEPTABLES" && NOFECHA
-	#DEFINE ESPAOPC " - Barra Espac. para cambiar de Opci¢n" && ESPAOPC
-	#DEFINE ESCANUL " - [ESC] para Anular"           && ESCANUL
-	#DEFINE ESCAMEN " - [ESC] para Men£"             && ESCAMEN
-	#DEFINE ESCAFIN " - [ESC] para Fin"              && ESCAFIN
-	#DEFINE NOACVAL "LOS VALORES INGRESADOS ESTAN ENTRE LIMITES INACEPTABLES"    && NOACVAL
-	#DEFINE CONTIX  " Continuaci¢n"                  && CONTIX
-	#DEFINE RH      36 								 && RH
-	#DEFINE RP 		47 								 && RP
-	#DEFINE ENTERCON "PULSE [ENTER] PARA CONTINUAR"  && ENTERCON
-	#DEFINE ORQ      "Orden de Requerimiento"        && ORQ
-	#DEFINE ORQS     "Ordenes de Requerimiento"      && ORQS
-	#DEFINE NOSEL "NO SE HA SELECCIONADO"            && NOSEL
-	#DEFINE PIC30 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"	 && PIC30
-	#DEFINE T_REINGRE "Reingrese el DATO"	 		 && T_REINGRE
-	
-	** End of inserted file \SISTEMAS\DEFINES.PRG ************************************end
-	
+	*
+	* Inserted file \SISTEMAS\DEFINES.PRG not found!
+	*
 	STORE NUL TO NGA,NGB,IVA9A,IVA9B,IVA18A,IVA18B,TTA,TTB
 	SCAN
 	IF LEFT(FACTURA,1)="A"
@@ -144,10 +106,10 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 	*
 	
 	#REGION 1
-	IF WVISIBLE("_6ux0ns870")
-		ACTIVATE WINDOW _6ux0ns870 SAME
+	IF WVISIBLE("_6wa0ycyzk")
+		ACTIVATE WINDOW _6wa0ycyzk SAME
 	ELSE
-		ACTIVATE WINDOW _6ux0ns870 NOSHOW
+		ACTIVATE WINDOW _6wa0ycyzk NOSHOW
 	ENDIF
 	@ 1.000,13.600 SAY "FACTURACION ENTRE EL " ;
 		FONT "Arial", 12 ;
@@ -204,7 +166,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		SIZE 2.923,7.600,1.000 ;
 		DEFAULT 1 ;
 		FONT "MS Sans Serif", 8 ;
-		VALID _6ux0ns8aa()
+		VALID _6wa0ycz3g()
 	@ 10.000,30.400 SAY M.IVA9A ;
 		SIZE 0.947,16.375 ;
 		FONT "Arial", 12 ;
@@ -251,14 +213,14 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		STYLE "BI" ;
 		PICTURE "999,999,999.99"
 	
-	IF NOT WVISIBLE("_6ux0ns870")
-		ACTIVATE WINDOW _6ux0ns870
+	IF NOT WVISIBLE("_6wa0ycyzk")
+		ACTIVATE WINDOW _6wa0ycyzk
 	ENDIF
 	
 	READ CYCLE ;
-		SHOW _6ux0ns8c4()
+		SHOW _6wa0ycz3q()
 	
-	RELEASE WINDOW _6ux0ns870
+	RELEASE WINDOW _6wa0ycyzk
 	
 	#REGION 0
 	
@@ -294,8 +256,8 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	*       *********************************************************
 	*
 	
-	IF NOT WEXIST("_6ux0ns8cc")
-		DEFINE WINDOW _6ux0ns8cc ;
+	IF NOT WEXIST("_6wa0ycz4i")
+		DEFINE WINDOW _6wa0ycz4i ;
 			FROM INT((SROW()-14)/2),INT((SCOL()-78)/2) ;
 			TO INT((SROW()-14)/2)+13,INT((SCOL()-78)/2)+77 ;
 			TITLE " Total Facturado " ;
@@ -317,47 +279,9 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	#REGION 1
 	
 	SELE TMP
-	** Start of inserted file \SISTEMAS\DEFINES.PRG ********************************start
-	#DEFINE BOTOM  "  "+repl("°",78)                 && BOTOM
-	#DEFINE ABA    "Abriendo Base de "               && ABA
-	#DEFINE NUL    0                                 && NUL
-	#DEFINE PICUMAX "9,999,999,999,999.99"           && PICUMAX
-	#DEFINE PICUMA1 "9,999,999,999,999"              && PICUMA1
-	#DEFINE PAIP   "|"                               && PAIP
-	#DEFINE FOLC  ".F."                              && FOLC
-	#DEFINE CRLF CHR(13)+CHR(10)                     && CRLF
-	#DEFINE FOLL  .F.                                && FOLL
-	#DEFINE TRUC  ".T."                              && TRUC
-	#DEFINE TRUL  .T.                                && TRUL
-	#DEFINE IMPRIMIENDO  PADC(' IMPRIMIENDO LOS DATOS REQUERIDOS - [TECLA] Interrumpe ',80,'°') && IMPRIMIENDO
-	#DEFINE ELYES  "SI"                              && ELYES
-	#DEFINE ELNOU  "NO"                              && ELNOU
-	#DEFINE ONE    1                                 && ONE
-	#DEFINE TWO    2                                 && TWO
-	#DEFINE THREE  3                                 && THREE
-	#DEFINE FOUR   4                                 && FOUR
-	#DEFINE TEX_EFES " - [F2] Popup - [F3] B£squeda" && TEX_EFES
-	#DEFINE TEX_CALC "CALCULANDO - ESPERE POR FAVOR" && TEX_CALC
-	#DEFINE GRABANDO PADC(' Grabando los datos ingresados - Espere por Favor ',80,"°")
-	#DEFINE NOVACIO "CAMPO DE INGRESO OBLIGATORIO - NO PUEDE ESTAR VACIO" && NOVACIO
-	#DEFINE NOFECHA "LAS FECHAS ESTAN ENTRE VALORES INACEPTABLES" && NOFECHA
-	#DEFINE ESPAOPC " - Barra Espac. para cambiar de Opci¢n" && ESPAOPC
-	#DEFINE ESCANUL " - [ESC] para Anular"           && ESCANUL
-	#DEFINE ESCAMEN " - [ESC] para Men£"             && ESCAMEN
-	#DEFINE ESCAFIN " - [ESC] para Fin"              && ESCAFIN
-	#DEFINE NOACVAL "LOS VALORES INGRESADOS ESTAN ENTRE LIMITES INACEPTABLES"    && NOACVAL
-	#DEFINE CONTIX  " Continuaci¢n"                  && CONTIX
-	#DEFINE RH      36 								 && RH
-	#DEFINE RP 		47 								 && RP
-	#DEFINE ENTERCON "PULSE [ENTER] PARA CONTINUAR"  && ENTERCON
-	#DEFINE ORQ      "Orden de Requerimiento"        && ORQ
-	#DEFINE ORQS     "Ordenes de Requerimiento"      && ORQS
-	#DEFINE NOSEL "NO SE HA SELECCIONADO"            && NOSEL
-	#DEFINE PIC30 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"	 && PIC30
-	#DEFINE T_REINGRE "Reingrese el DATO"	 		 && T_REINGRE
-	
-	** End of inserted file \SISTEMAS\DEFINES.PRG ************************************end
-	
+	*
+	* Inserted file \SISTEMAS\DEFINES.PRG not found!
+	*
 	STORE NUL TO NGA,NGB,IVA9A,IVA9B,IVA18A,IVA18B,TTA,TTB
 	SCAN
 	IF LEFT(FACTURA,1)="A"
@@ -395,10 +319,10 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	*
 	
 	#REGION 1
-	IF WVISIBLE("_6ux0ns8cc")
-		ACTIVATE WINDOW _6ux0ns8cc SAME
+	IF WVISIBLE("_6wa0ycz4i")
+		ACTIVATE WINDOW _6wa0ycz4i SAME
 	ELSE
-		ACTIVATE WINDOW _6ux0ns8cc NOSHOW
+		ACTIVATE WINDOW _6wa0ycz4i NOSHOW
 	ENDIF
 	@ 1,16 SAY "FACTURACION ENTRE EL " ;
 		SIZE 1,21, 0
@@ -461,15 +385,15 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		PICTURE "@*HN FIN" ;
 		SIZE 1,7,1 ;
 		DEFAULT 1 ;
-		VALID _6ux0ns8ev()
+		VALID _6wa0ycz6j()
 	
-	IF NOT WVISIBLE("_6ux0ns8cc")
-		ACTIVATE WINDOW _6ux0ns8cc
+	IF NOT WVISIBLE("_6wa0ycz4i")
+		ACTIVATE WINDOW _6wa0ycz4i
 	ENDIF
 	
 	READ CYCLE
 	
-	RELEASE WINDOW _6ux0ns8cc
+	RELEASE WINDOW _6wa0ycz4i
 	
 	#REGION 0
 	IF m.talkstat = "ON"
@@ -485,7 +409,7 @@ ENDCASE
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NS8AA           M.OPCION VALID                     
+*       * _6WA0YCZ3G           M.OPCION VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -498,14 +422,14 @@ ENDCASE
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0ns8aa     &&  M.OPCION VALID
+FUNCTION _6wa0ycz3g     &&  M.OPCION VALID
 #REGION 1
 CLEA READ
 RETURN .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NS8C4           Read Level Show                    
+*       * _6WA0YCZ3Q           Read Level Show                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -517,15 +441,15 @@ RETURN .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0ns8c4     && Read Level Show
+FUNCTION _6wa0ycz3q     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *
 * Show Code from screen: LFACPAN
 *
 #REGION 1
-IF SYS(2016) = "_6UX0NS870" OR SYS(2016) = "*"
-	ACTIVATE WINDOW _6ux0ns870 SAME
+IF SYS(2016) = "_6WA0YCYZK" OR SYS(2016) = "*"
+	ACTIVATE WINDOW _6wa0ycyzk SAME
 	@ 3.462,3.000 SAY TT ;
 		SIZE 1.000,49.900, 0.000 ;
 		FONT "Arial", 16 ;
@@ -538,7 +462,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NS8EV           M.OPCION VALID                     
+*       * _6WA0YCZ6J           M.OPCION VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -551,7 +475,7 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0ns8ev     &&  M.OPCION VALID
+FUNCTION _6wa0ycz6j     &&  M.OPCION VALID
 #REGION 1
 CLEA READ
 RETURN .T.

@@ -1,6 +1,6 @@
 *       *********************************************************
 *       *                                                         
-*       * 21/03/2024           ELICLITX.SPR              11:05:27 
+*       * 09/05/2024           ELICLITX.SPR              16:01:30 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
@@ -38,8 +38,8 @@ SET READBORDER ON
 *       *********************************************************
 *
 
-IF NOT WEXIST("_6ux0nrrvg")
-	DEFINE WINDOW _6ux0nrrvg ;
+IF NOT WEXIST("_6wa0ycig7")
+	DEFINE WINDOW _6wa0ycig7 ;
 		AT 0.000, 0.000 ;
 		SIZE 6.615,94.200 ;
 		FONT "MS Sans Serif", 8 ;
@@ -58,10 +58,10 @@ ENDIF
 *
 
 #REGION 1
-IF WVISIBLE("_6ux0nrrvg")
-	ACTIVATE WINDOW _6ux0nrrvg SAME
+IF WVISIBLE("_6wa0ycig7")
+	ACTIVATE WINDOW _6wa0ycig7 SAME
 ELSE
-	ACTIVATE WINDOW _6ux0nrrvg NOSHOW
+	ACTIVATE WINDOW _6wa0ycig7 NOSHOW
 ENDIF
 @ 1.923,23.200 GET m.minimo ;
 	SIZE 1.538,68.800 ;
@@ -78,13 +78,13 @@ ENDIF
 	FONT "MS Sans Serif", 8 ;
 	STYLE "B"
 
-IF NOT WVISIBLE("_6ux0nrrvg")
-	ACTIVATE WINDOW _6ux0nrrvg
+IF NOT WVISIBLE("_6wa0ycig7")
+	ACTIVATE WINDOW _6wa0ycig7
 ENDIF
 
 READ CYCLE
 
-RELEASE WINDOW _6ux0nrrvg
+RELEASE WINDOW _6wa0ycig7
 
 #REGION 0
 

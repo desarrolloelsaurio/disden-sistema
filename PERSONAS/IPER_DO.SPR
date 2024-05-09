@@ -1,6 +1,6 @@
 *       *********************************************************
 *       *                                                         
-*       * 21/03/2024            IPER_DO.SPR              11:05:41 
+*       * 09/05/2024            IPER_DO.SPR              16:01:46 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
@@ -59,47 +59,9 @@ IF CHEQSEG()
       M.G_CARGA=M.G_CARGA+" .AND. CARGRL('PRS','INGPRS1')"
    ENDCASE
 ULPRANT=ULPR
-** Start of inserted file \SISTEMAS\DEFINES.PRG ********************************start
-#DEFINE BOTOM  "  "+repl("°",78)                 && BOTOM
-#DEFINE ABA    "Abriendo Base de "               && ABA
-#DEFINE NUL    0                                 && NUL
-#DEFINE PICUMAX "9,999,999,999,999.99"           && PICUMAX
-#DEFINE PICUMA1 "9,999,999,999,999"              && PICUMA1
-#DEFINE PAIP   "|"                               && PAIP
-#DEFINE FOLC  ".F."                              && FOLC
-#DEFINE CRLF CHR(13)+CHR(10)                     && CRLF
-#DEFINE FOLL  .F.                                && FOLL
-#DEFINE TRUC  ".T."                              && TRUC
-#DEFINE TRUL  .T.                                && TRUL
-#DEFINE IMPRIMIENDO  PADC(' IMPRIMIENDO LOS DATOS REQUERIDOS - [TECLA] Interrumpe ',80,'°') && IMPRIMIENDO
-#DEFINE ELYES  "SI"                              && ELYES
-#DEFINE ELNOU  "NO"                              && ELNOU
-#DEFINE ONE    1                                 && ONE
-#DEFINE TWO    2                                 && TWO
-#DEFINE THREE  3                                 && THREE
-#DEFINE FOUR   4                                 && FOUR
-#DEFINE TEX_EFES " - [F2] Popup - [F3] B£squeda" && TEX_EFES
-#DEFINE TEX_CALC "CALCULANDO - ESPERE POR FAVOR" && TEX_CALC
-#DEFINE GRABANDO PADC(' Grabando los datos ingresados - Espere por Favor ',80,"°")
-#DEFINE NOVACIO "CAMPO DE INGRESO OBLIGATORIO - NO PUEDE ESTAR VACIO" && NOVACIO
-#DEFINE NOFECHA "LAS FECHAS ESTAN ENTRE VALORES INACEPTABLES" && NOFECHA
-#DEFINE ESPAOPC " - Barra Espac. para cambiar de Opci¢n" && ESPAOPC
-#DEFINE ESCANUL " - [ESC] para Anular"           && ESCANUL
-#DEFINE ESCAMEN " - [ESC] para Men£"             && ESCAMEN
-#DEFINE ESCAFIN " - [ESC] para Fin"              && ESCAFIN
-#DEFINE NOACVAL "LOS VALORES INGRESADOS ESTAN ENTRE LIMITES INACEPTABLES"    && NOACVAL
-#DEFINE CONTIX  " Continuaci¢n"                  && CONTIX
-#DEFINE RH      36 								 && RH
-#DEFINE RP 		47 								 && RP
-#DEFINE ENTERCON "PULSE [ENTER] PARA CONTINUAR"  && ENTERCON
-#DEFINE ORQ      "Orden de Requerimiento"        && ORQ
-#DEFINE ORQS     "Ordenes de Requerimiento"      && ORQS
-#DEFINE NOSEL "NO SE HA SELECCIONADO"            && NOSEL
-#DEFINE PIC30 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"	 && PIC30
-#DEFINE T_REINGRE "Reingrese el DATO"	 		 && T_REINGRE
-
-** End of inserted file \SISTEMAS\DEFINES.PRG ************************************end
-
+*
+* Inserted file \SISTEMAS\DEFINES.PRG not found!
+*
 
 
 #REGION 0
@@ -193,8 +155,8 @@ ENDIF
 	DEFAULT " " ;
 	FONT "ARIAL", 8 ;
 	PICTURE REPL('!',CONTENIDO[2]+LEN(CONTENIDO[5])) ;
-	WHEN _6ux0ns2vt() ;
-	VALID _6ux0ns2vy() ;
+	WHEN _6wa0ycu8s() ;
+	VALID _6wa0ycu8u() ;
 	MESSAGE "Ingrese C¢digo de "+tipo_per+" - [ESC] para Men£"+TEX_EFES+" - [F4] Ult" ;
 	ERROR "NO SE PUEDE TRABAJAR SOBRE UN REGISTRO BORRADO"
 @ 2.077,22.667 GET m.CLIENTE ;
@@ -202,8 +164,8 @@ ENDIF
 	DEFAULT " " ;
 	FONT "ARIAL", 8 ;
 	PICTURE "@!" ;
-	WHEN _6ux0ns2wv() ;
-	VALID _6ux0ns2x0() ;
+	WHEN _6wa0ycu9g() ;
+	VALID _6wa0ycu9k() ;
 	MESSAGE "Ingrese Nombre o Raz¢n Social de "+tipo_per+TEX_EFES ;
 	ERROR "NO SE PUEDE TRABAJAR SOBRE UN REGISTRO BORRADO"
 @ 3.154,22.667 GET m.detalle ;
@@ -233,13 +195,13 @@ ELSE
 ENDIF
 @ 0.923,2.200 GET m.opcion ;
 	PICTURE "@*BHN " + ;
-		(LOCFILE("\bmp\face03.ico","BMP|ICO|PCT|ICN","Where is face03?")) + ";" + ;
-		(LOCFILE("\bmp\25.ico","BMP|ICO|PCT|ICN","Where is 25?")) + ";" + ;
-		(LOCFILE("\bmp\puerta.ico","BMP|ICO|PCT|ICN","Where is puerta?")) ;
+		(LOCFILE("..\..\..\bmp\face03.ico","BMP|ICO|PCT|ICN","Where is face03?")) + ";" + ;
+		(LOCFILE("..\..\..\bmp\25.ico","BMP|ICO|PCT|ICN","Where is 25?")) + ";" + ;
+		(LOCFILE("..\..\..\bmp\puerta.ico","BMP|ICO|PCT|ICN","Where is puerta?")) ;
 	SIZE 2.923,7.600,1.000 ;
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
-	VALID _6ux0ns2xu() ;
+	VALID _6wa0ycu9n() ;
 	MESSAGE "Confirma operaci¢n seleccionada ?"
 
 IF NOT WVISIBLE("xper")
@@ -312,7 +274,7 @@ RETURN !EMPTY(M.CLIENTE) .AND. !EMPTY(M.CODCLI)
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NS2VT           m.codcli WHEN                      
+*       * _6WA0YCU8S           m.codcli WHEN                      
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -325,7 +287,7 @@ RETURN !EMPTY(M.CLIENTE) .AND. !EMPTY(M.CODCLI)
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0ns2vt     &&  m.codcli WHEN
+FUNCTION _6wa0ycu8s     &&  m.codcli WHEN
 #REGION 1
 M.PRIOBJ=_CUROBJ
 =OFF_F2()
@@ -341,7 +303,7 @@ RETURN EMPTY(M.CLIENTE)
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NS2VY           m.codcli VALID                     
+*       * _6WA0YCU8U           m.codcli VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -354,7 +316,7 @@ RETURN EMPTY(M.CLIENTE)
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0ns2vy     &&  m.codcli VALID
+FUNCTION _6wa0ycu8u     &&  m.codcli VALID
 #REGION 1
 IF LAST()=27
    RETURN .T.
@@ -377,7 +339,7 @@ RETURN SGET("PER")
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NS2WV           m.CLIENTE WHEN                     
+*       * _6WA0YCU9G           m.CLIENTE WHEN                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -390,7 +352,7 @@ RETURN SGET("PER")
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0ns2wv     &&  m.CLIENTE WHEN
+FUNCTION _6wa0ycu9g     &&  m.CLIENTE WHEN
 #REGION 1
 ON KEY LABEL F2 M.CLIENTE=QUEPOPUP("a Corregir",2,12)
 ON KEY LABEL F3 M.CLIENTE=SEEKTECX(30,'PER','CLIENTE','CLIENTE',(CONTENIDO[4]))
@@ -398,7 +360,7 @@ RETURN LAST()#27 .AND. !NOCOD(M.CODCLI) .AND. ESPROPIO
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NS2X0           m.CLIENTE VALID                    
+*       * _6WA0YCU9K           m.CLIENTE VALID                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -411,7 +373,7 @@ RETURN LAST()#27 .AND. !NOCOD(M.CODCLI) .AND. ESPROPIO
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0ns2x0     &&  m.CLIENTE VALID
+FUNCTION _6wa0ycu9k     &&  m.CLIENTE VALID
 #REGION 1
 IF LAST()=27
    RETURN .T.
@@ -437,7 +399,7 @@ RETURN .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NS2XU           m.opcion VALID                     
+*       * _6WA0YCU9N           m.opcion VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -450,7 +412,7 @@ RETURN .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0ns2xu     &&  m.opcion VALID
+FUNCTION _6wa0ycu9n     &&  m.opcion VALID
 #REGION 2
 IF LAST()=27 .OR. EMPTY(M.CODCLI) .OR. EMPTY(PER.CLIENTE)
    CLEA READ

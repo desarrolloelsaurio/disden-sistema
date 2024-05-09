@@ -1,6 +1,6 @@
 *       *********************************************************
 *       *                                                         
-*       * 21/03/2024            ACDOLAR.SPR              11:05:18 
+*       * 09/05/2024            ACDOLAR.SPR              16:01:16 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
@@ -41,8 +41,8 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 	*       *********************************************************
 	*
 	
-	IF NOT WEXIST("_6ux0nrl61")
-		DEFINE WINDOW _6ux0nrl61 ;
+	IF NOT WEXIST("_6wa0yc6yy")
+		DEFINE WINDOW _6wa0yc6yy ;
 			AT  0.000, 0.000  ;
 			SIZE 8.957,36.889 ;
 			FONT "Arial", 14 ;
@@ -53,7 +53,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 			NOMINIMIZE ;
 			DOUBLE ;
 			COLOR RGB(,,,0,128,0)
-		MOVE WINDOW _6ux0nrl61 CENTER
+		MOVE WINDOW _6wa0yc6yy CENTER
 	ENDIF
 	
 	
@@ -84,10 +84,10 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 	*
 	
 	#REGION 1
-	IF WVISIBLE("_6ux0nrl61")
-		ACTIVATE WINDOW _6ux0nrl61 SAME
+	IF WVISIBLE("_6wa0yc6yy")
+		ACTIVATE WINDOW _6wa0yc6yy SAME
 	ELSE
-		ACTIVATE WINDOW _6ux0nrl61 NOSHOW
+		ACTIVATE WINDOW _6wa0yc6yy NOSHOW
 	ENDIF
 	@ 1.000,6.444 SAY "Dólar" ;
 		FONT "Arial", 14 ;
@@ -139,7 +139,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		DEFAULT 1 ;
 		FONT "MS Sans Serif", 8 ;
 		STYLE "B" ;
-		VALID _6ux0nrl8k()
+		VALID _6wa0yc779()
 	@ 7.217,19.556 GET m.ok ;
 		PICTURE "@*HT Salir" ;
 		SIZE 1.769,14.500,0.667 ;
@@ -147,13 +147,13 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		FONT "MS Sans Serif", 8 ;
 		STYLE "B"
 	
-	IF NOT WVISIBLE("_6ux0nrl61")
-		ACTIVATE WINDOW _6ux0nrl61
+	IF NOT WVISIBLE("_6wa0yc6yy")
+		ACTIVATE WINDOW _6wa0yc6yy
 	ENDIF
 	
 	READ CYCLE
 	
-	RELEASE WINDOW _6ux0nrl61
+	RELEASE WINDOW _6wa0yc6yy
 	
 	#REGION 0
 	
@@ -189,8 +189,8 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	*       *********************************************************
 	*
 	
-	IF NOT WEXIST("_6ux0nrla5")
-		DEFINE WINDOW _6ux0nrla5 ;
+	IF NOT WEXIST("_6wa0yc79z")
+		DEFINE WINDOW _6wa0yc79z ;
 			FROM INT((SROW()-7)/2),INT((SCOL()-44)/2) ;
 			TO INT((SROW()-7)/2)+6,INT((SCOL()-44)/2)+43 ;
 			TITLE " Actualizaci¢n de Porcentajes " ;
@@ -215,47 +215,9 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	
 	DO OPAUD
 	DO OPMIX
-	** Start of inserted file \SISTEMAS\DEFINES.PRG ********************************start
-	#DEFINE BOTOM  "  "+repl("°",78)                 && BOTOM
-	#DEFINE ABA    "Abriendo Base de "               && ABA
-	#DEFINE NUL    0                                 && NUL
-	#DEFINE PICUMAX "9,999,999,999,999.99"           && PICUMAX
-	#DEFINE PICUMA1 "9,999,999,999,999"              && PICUMA1
-	#DEFINE PAIP   "|"                               && PAIP
-	#DEFINE FOLC  ".F."                              && FOLC
-	#DEFINE CRLF CHR(13)+CHR(10)                     && CRLF
-	#DEFINE FOLL  .F.                                && FOLL
-	#DEFINE TRUC  ".T."                              && TRUC
-	#DEFINE TRUL  .T.                                && TRUL
-	#DEFINE IMPRIMIENDO  PADC(' IMPRIMIENDO LOS DATOS REQUERIDOS - [TECLA] Interrumpe ',80,'°') && IMPRIMIENDO
-	#DEFINE ELYES  "SI"                              && ELYES
-	#DEFINE ELNOU  "NO"                              && ELNOU
-	#DEFINE ONE    1                                 && ONE
-	#DEFINE TWO    2                                 && TWO
-	#DEFINE THREE  3                                 && THREE
-	#DEFINE FOUR   4                                 && FOUR
-	#DEFINE TEX_EFES " - [F2] Popup - [F3] B£squeda" && TEX_EFES
-	#DEFINE TEX_CALC "CALCULANDO - ESPERE POR FAVOR" && TEX_CALC
-	#DEFINE GRABANDO PADC(' Grabando los datos ingresados - Espere por Favor ',80,"°")
-	#DEFINE NOVACIO "CAMPO DE INGRESO OBLIGATORIO - NO PUEDE ESTAR VACIO" && NOVACIO
-	#DEFINE NOFECHA "LAS FECHAS ESTAN ENTRE VALORES INACEPTABLES" && NOFECHA
-	#DEFINE ESPAOPC " - Barra Espac. para cambiar de Opci¢n" && ESPAOPC
-	#DEFINE ESCANUL " - [ESC] para Anular"           && ESCANUL
-	#DEFINE ESCAMEN " - [ESC] para Men£"             && ESCAMEN
-	#DEFINE ESCAFIN " - [ESC] para Fin"              && ESCAFIN
-	#DEFINE NOACVAL "LOS VALORES INGRESADOS ESTAN ENTRE LIMITES INACEPTABLES"    && NOACVAL
-	#DEFINE CONTIX  " Continuaci¢n"                  && CONTIX
-	#DEFINE RH      36 								 && RH
-	#DEFINE RP 		47 								 && RP
-	#DEFINE ENTERCON "PULSE [ENTER] PARA CONTINUAR"  && ENTERCON
-	#DEFINE ORQ      "Orden de Requerimiento"        && ORQ
-	#DEFINE ORQS     "Ordenes de Requerimiento"      && ORQS
-	#DEFINE NOSEL "NO SE HA SELECCIONADO"            && NOSEL
-	#DEFINE PIC30 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"	 && PIC30
-	#DEFINE T_REINGRE "Reingrese el DATO"	 		 && T_REINGRE
-	
-	** End of inserted file \SISTEMAS\DEFINES.PRG ************************************end
-	
+	*
+	* Inserted file \SISTEMAS\DEFINES.PRG not found!
+	*
 	M.PORLISMAY=GETNU1("PORLISMAY","FOXGRL")
 	M.PORLISMIN=GETNU1("PORLISMIN","FOXGRL")
 	M.FLETE=GETNU1("FLETE","FOXGRL")
@@ -268,10 +230,10 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	*
 	
 	#REGION 1
-	IF WVISIBLE("_6ux0nrla5")
-		ACTIVATE WINDOW _6ux0nrla5 SAME
+	IF WVISIBLE("_6wa0yc79z")
+		ACTIVATE WINDOW _6wa0yc79z SAME
 	ELSE
-		ACTIVATE WINDOW _6ux0nrla5 NOSHOW
+		ACTIVATE WINDOW _6wa0yc79z NOSHOW
 	ENDIF
 	@ 1,1 SAY "Porcentaje sobre lista mayorista" ;
 		SIZE 1,32, 0
@@ -292,14 +254,14 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		DEFAULT " " ;
 		PICTURE "99.99"
 	
-	IF NOT WVISIBLE("_6ux0nrla5")
-		ACTIVATE WINDOW _6ux0nrla5
+	IF NOT WVISIBLE("_6wa0yc79z")
+		ACTIVATE WINDOW _6wa0yc79z
 	ENDIF
 	
 	READ CYCLE ;
-		VALID _6ux0nrlba()
+		VALID _6wa0yc7bk()
 	
-	RELEASE WINDOW _6ux0nrla5
+	RELEASE WINDOW _6wa0yc79z
 	
 	#REGION 0
 	IF m.talkstat = "ON"
@@ -315,7 +277,7 @@ ENDCASE
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NRL8K           m.ok VALID                         
+*       * _6WA0YC779           m.ok VALID                         
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -328,7 +290,7 @@ ENDCASE
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nrl8k     &&  m.ok VALID
+FUNCTION _6wa0yc779     &&  m.ok VALID
 #REGION 1
 if confirma(" MODIFICAR LOS PRECIOS",.t.,20,1)
 	=PUTNU1("D",M.VALDOLAR,"FOXGRL","",3)
@@ -345,7 +307,7 @@ return .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NRLBA           Read Level Valid                   
+*       * _6WA0YC7BK           Read Level Valid                   
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -357,7 +319,7 @@ return .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nrlba     && Read Level Valid
+FUNCTION _6wa0yc7bk     && Read Level Valid
 *
 * Valid Code from screen: ACDOLAR
 *

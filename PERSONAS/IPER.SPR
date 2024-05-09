@@ -1,6 +1,6 @@
 *       *********************************************************
 *       *                                                         
-*       * 21/03/2024             IPER.SPR                11:05:38 
+*       * 09/05/2024             IPER.SPR                16:01:44 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
@@ -120,7 +120,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		FILL FILE LOCFILE("\BMP\FONDO01.BMP","BMP|ICO|PCT|ICN", ;
 			"Where is fondo01?")
 	
-	DEFINE WINDOW _6ux0ns0rd ;
+	DEFINE WINDOW _6wa0ycsww ;
 		AT 24.000, 75.000 ;
 		SIZE 4.071,35.600 ;
 		TITLE " " ;
@@ -229,8 +229,8 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		FONT "Arial", 12 ;
 		STYLE "BIT" ;
 		PICTURE REPL('!',CONTENIDO[2]+LEN(CONTENIDO[5])) ;
-		WHEN _6ux0ns0wq() ;
-		VALID _6ux0ns0wu() ;
+		WHEN _6wa0yct0r() ;
+		VALID _6wa0yct0u() ;
 		MESSAGE "Ingrese C¢digo de "+tipo_per+" - [ESC] para Men£"+TEX_EFES+" - [F4] Ult" ;
 		ERROR "NO SE PUEDE TRABAJAR SOBRE UN REGISTRO BORRADO" ;
 		COLOR ,RGB(0,0,128,,,,)
@@ -240,8 +240,8 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		FONT "Arial", 12 ;
 		STYLE "BIT" ;
 		PICTURE "@!" ;
-		WHEN _6ux0ns0xk() ;
-		VALID _6ux0ns0xp() ;
+		WHEN _6wa0yct0y() ;
+		VALID _6wa0yct0z() ;
 		MESSAGE "Ingrese Nombre o Raz¢n Social de "+tipo_per+TEX_EFES ;
 		ERROR "NO SE PUEDE TRABAJAR SOBRE UN REGISTRO BORRADO" ;
 		COLOR ,RGB(0,0,128,,,,)
@@ -260,8 +260,8 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		DEFAULT 0 ;
 		FONT "Arial", 12 ;
 		STYLE "BIT" ;
-		WHEN _6ux0ns0ym() ;
-		VALID _6ux0ns0yq() ;
+		WHEN _6wa0yct19() ;
+		VALID _6wa0yct1b() ;
 		MESSAGE "Localidad del "+tipo_per+TEX_EFES ;
 		ERROR "LOCALIDAD INEXISTENTE" ;
 		COLOR ,RGB(0,0,128,,,,)
@@ -321,7 +321,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		STYLE "BIT" ;
 		PICTURE "@R 99,999,999" ;
 		WHEN ESPROPIO .AND. !empty(m.tipodoc) ;
-		VALID _6ux0ns0zg() ;
+		VALID _6wa0yct1r() ;
 		MESSAGE "Ingrese N§ de Documento del "+texto[1] ;
 		COLOR ,RGB(0,0,128,,,,)
 	@ 15.000,36.400 GET m.condiva ;
@@ -381,10 +381,10 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 	*
 	
 	#REGION 2
-	IF WVISIBLE("_6ux0ns0rd")
-		ACTIVATE WINDOW _6ux0ns0rd SAME
+	IF WVISIBLE("_6wa0ycsww")
+		ACTIVATE WINDOW _6wa0ycsww SAME
 	ELSE
-		ACTIVATE WINDOW _6ux0ns0rd NOSHOW
+		ACTIVATE WINDOW _6wa0ycsww NOSHOW
 	ENDIF
 	@ 0.500,1.400 GET m.OPCION ;
 		PICTURE "@*BHN " + ;
@@ -425,8 +425,8 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 	IF NOT WVISIBLE("control2")
 		ACTIVATE WINDOW control2
 	ENDIF
-	IF NOT WVISIBLE("_6ux0ns0rd")
-		ACTIVATE WINDOW _6ux0ns0rd
+	IF NOT WVISIBLE("_6wa0ycsww")
+		ACTIVATE WINDOW _6wa0ycsww
 	ENDIF
 	IF NOT WVISIBLE("per")
 		ACTIVATE WINDOW per
@@ -434,9 +434,9 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 	
 	
 	READ CYCLE ;
-		SHOW _6ux0ns10p()
+		SHOW _6wa0yct2p()
 	
-	RELEASE WINDOW _6ux0ns0rd
+	RELEASE WINDOW _6wa0ycsww
 	RELEASE WINDOW control2
 	RELEASE WINDOW per
 	
@@ -480,47 +480,9 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	*
 	
 	#REGION 1
-	** Start of inserted file \SISTEMAS\DEFINES.PRG ********************************start
-	#DEFINE BOTOM  "  "+repl("°",78)                 && BOTOM
-	#DEFINE ABA    "Abriendo Base de "               && ABA
-	#DEFINE NUL    0                                 && NUL
-	#DEFINE PICUMAX "9,999,999,999,999.99"           && PICUMAX
-	#DEFINE PICUMA1 "9,999,999,999,999"              && PICUMA1
-	#DEFINE PAIP   "|"                               && PAIP
-	#DEFINE FOLC  ".F."                              && FOLC
-	#DEFINE CRLF CHR(13)+CHR(10)                     && CRLF
-	#DEFINE FOLL  .F.                                && FOLL
-	#DEFINE TRUC  ".T."                              && TRUC
-	#DEFINE TRUL  .T.                                && TRUL
-	#DEFINE IMPRIMIENDO  PADC(' IMPRIMIENDO LOS DATOS REQUERIDOS - [TECLA] Interrumpe ',80,'°') && IMPRIMIENDO
-	#DEFINE ELYES  "SI"                              && ELYES
-	#DEFINE ELNOU  "NO"                              && ELNOU
-	#DEFINE ONE    1                                 && ONE
-	#DEFINE TWO    2                                 && TWO
-	#DEFINE THREE  3                                 && THREE
-	#DEFINE FOUR   4                                 && FOUR
-	#DEFINE TEX_EFES " - [F2] Popup - [F3] B£squeda" && TEX_EFES
-	#DEFINE TEX_CALC "CALCULANDO - ESPERE POR FAVOR" && TEX_CALC
-	#DEFINE GRABANDO PADC(' Grabando los datos ingresados - Espere por Favor ',80,"°")
-	#DEFINE NOVACIO "CAMPO DE INGRESO OBLIGATORIO - NO PUEDE ESTAR VACIO" && NOVACIO
-	#DEFINE NOFECHA "LAS FECHAS ESTAN ENTRE VALORES INACEPTABLES" && NOFECHA
-	#DEFINE ESPAOPC " - Barra Espac. para cambiar de Opci¢n" && ESPAOPC
-	#DEFINE ESCANUL " - [ESC] para Anular"           && ESCANUL
-	#DEFINE ESCAMEN " - [ESC] para Men£"             && ESCAMEN
-	#DEFINE ESCAFIN " - [ESC] para Fin"              && ESCAFIN
-	#DEFINE NOACVAL "LOS VALORES INGRESADOS ESTAN ENTRE LIMITES INACEPTABLES"    && NOACVAL
-	#DEFINE CONTIX  " Continuaci¢n"                  && CONTIX
-	#DEFINE RH      36 								 && RH
-	#DEFINE RP 		47 								 && RP
-	#DEFINE ENTERCON "PULSE [ENTER] PARA CONTINUAR"  && ENTERCON
-	#DEFINE ORQ      "Orden de Requerimiento"        && ORQ
-	#DEFINE ORQS     "Ordenes de Requerimiento"      && ORQS
-	#DEFINE NOSEL "NO SE HA SELECCIONADO"            && NOSEL
-	#DEFINE PIC30 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"	 && PIC30
-	#DEFINE T_REINGRE "Reingrese el DATO"	 		 && T_REINGRE
-	
-	** End of inserted file \SISTEMAS\DEFINES.PRG ************************************end
-	
+	*
+	* Inserted file \SISTEMAS\DEFINES.PRG not found!
+	*
 	EXTERNAL PROCEDURE AJCODPER
 	EXTERNAL PROCEDURE CARPER
 	EXTERNAL ARRAY TEXTO
@@ -605,7 +567,7 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		DOUBLE ;
 		COLOR SCHEME 1
 	
-	DEFINE WINDOW _6ux0ns11m ;
+	DEFINE WINDOW _6wa0yct30 ;
 		FROM 0, 0 ;
 		TO 4,32 ;
 		TITLE " SU OPCION " ;
@@ -682,16 +644,16 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		SIZE 1,10 ;
 		DEFAULT " " ;
 		PICTURE REPL('!',CONTENIDO[2]+LEN(CONTENIDO[5])) ;
-		WHEN _6ux0ns13o() ;
-		VALID _6ux0ns13t() ;
+		WHEN _6wa0yct47() ;
+		VALID _6wa0yct4r() ;
 		MESSAGE "Ingrese C¢digo de "+tipo_per+" - [ESC] para Men£"+TEX_EFES+" - [F4] Ult" ;
 		ERROR "NO SE PUEDE TRABAJAR SOBRE UN REGISTRO BORRADO"
 	@ 2,22 GET m.CLIENTE ;
 		SIZE 1,30 ;
 		DEFAULT " " ;
 		PICTURE "@!" ;
-		WHEN _6ux0ns14f() ;
-		VALID _6ux0ns14h() ;
+		WHEN _6wa0yct4v() ;
+		VALID _6wa0yct4x() ;
 		MESSAGE "Ingrese Nombre o Raz¢n Social de "+tipo_per+TEX_EFES ;
 		ERROR "NO SE PUEDE TRABAJAR SOBRE UN REGISTRO BORRADO"
 	@ 3,22 GET m.domicilio ;
@@ -745,7 +707,7 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		DEFAULT " " ;
 		PICTURE "@R 99,999,999" ;
 		WHEN ESPROPIO .AND. !empty(m.tipodoc) ;
-		VALID _6ux0ns15l() ;
+		VALID _6wa0yct4y() ;
 		MESSAGE "Ingrese N§ de Documento del "+texto[1]
 	@ 8,22 GET m.condiva ;
 		SIZE 1,2 ;
@@ -789,10 +751,10 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	*
 	
 	#REGION 2
-	IF WVISIBLE("_6ux0ns11m")
-		ACTIVATE WINDOW _6ux0ns11m SAME
+	IF WVISIBLE("_6wa0yct30")
+		ACTIVATE WINDOW _6wa0yct30 SAME
 	ELSE
-		ACTIVATE WINDOW _6ux0ns11m NOSHOW
+		ACTIVATE WINDOW _6wa0yct30 NOSHOW
 	ENDIF
 	@ 1,1 GET m.OPCION ;
 		PICTURE "@*HN \!\<SI;\<NO;\?\<ANULA" ;
@@ -827,8 +789,8 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	IF NOT WVISIBLE("control2")
 		ACTIVATE WINDOW control2
 	ENDIF
-	IF NOT WVISIBLE("_6ux0ns11m")
-		ACTIVATE WINDOW _6ux0ns11m
+	IF NOT WVISIBLE("_6wa0yct30")
+		ACTIVATE WINDOW _6wa0yct30
 	ENDIF
 	IF NOT WVISIBLE("per")
 		ACTIVATE WINDOW per
@@ -836,9 +798,9 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	
 	
 	READ CYCLE ;
-		SHOW _6ux0ns15y()
+		SHOW _6wa0yct5b()
 	
-	RELEASE WINDOW _6ux0ns11m
+	RELEASE WINDOW _6wa0yct30
 	RELEASE WINDOW control2
 	RELEASE WINDOW per
 	
@@ -873,7 +835,7 @@ ENDCASE
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NS0WQ           m.codcli WHEN                      
+*       * _6WA0YCT0R           m.codcli WHEN                      
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -886,7 +848,7 @@ ENDCASE
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0ns0wq     &&  m.codcli WHEN
+FUNCTION _6wa0yct0r     &&  m.codcli WHEN
 #REGION 1
 M.PRIOBJ=_CUROBJ
 =OFF_F2()
@@ -902,7 +864,7 @@ RETURN EMPTY(M.CLIENTE)
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NS0WU           m.codcli VALID                     
+*       * _6WA0YCT0U           m.codcli VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -915,7 +877,7 @@ RETURN EMPTY(M.CLIENTE)
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0ns0wu     &&  m.codcli VALID
+FUNCTION _6wa0yct0u     &&  m.codcli VALID
 #REGION 1
 IF LAST()=27
    RETURN .T.
@@ -938,7 +900,7 @@ RETURN .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NS0XK           m.CLIENTE WHEN                     
+*       * _6WA0YCT0Y           m.CLIENTE WHEN                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -951,7 +913,7 @@ RETURN .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0ns0xk     &&  m.CLIENTE WHEN
+FUNCTION _6wa0yct0y     &&  m.CLIENTE WHEN
 #REGION 1
 ON KEY LABEL F2 M.CLIENTE=QUEPOPUP("a Corregir",2,12)
 ON KEY LABEL F3 M.CLIENTE=SEEKTECX(30,'PER','CLIENTE','CLIENTE',(CONTENIDO[4]))
@@ -959,7 +921,7 @@ RETURN LAST()#27 .AND. !NOCOD(M.CODCLI) .AND. ESPROPIO
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NS0XP           m.CLIENTE VALID                    
+*       * _6WA0YCT0Z           m.CLIENTE VALID                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -972,7 +934,7 @@ RETURN LAST()#27 .AND. !NOCOD(M.CODCLI) .AND. ESPROPIO
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0ns0xp     &&  m.CLIENTE VALID
+FUNCTION _6wa0yct0z     &&  m.CLIENTE VALID
 #REGION 1
 IF LAST()=27
    RETURN .T.
@@ -999,7 +961,7 @@ RETURN .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NS0YM           m.localidad WHEN                   
+*       * _6WA0YCT19           m.localidad WHEN                   
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -1012,14 +974,14 @@ RETURN .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0ns0ym     &&  m.localidad WHEN
+FUNCTION _6wa0yct19     &&  m.localidad WHEN
 #REGION 1
 RETURN last()#27 .AND. ESPROPIO .and. !empty(m.CLIENTE) .and. !NOCOD(M.CODCLI) .AND. MIX_F2("M.LOCALIDAD","del "+texto[1],4,22,"SUBST(MIX.TEXTO2,7,6)","CIUTEX",4,34)
 
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NS0YQ           m.localidad VALID                  
+*       * _6WA0YCT1B           m.localidad VALID                  
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -1033,13 +995,13 @@ RETURN last()#27 .AND. ESPROPIO .and. !empty(m.CLIENTE) .and. !NOCOD(M.CODCLI) .
 *       *********************************************************
 *
 ***VALIDMIX("LOCALIDAD","M.LOCALIDAD","CIUCOD","PER",.F.,.T.,"PER") .OR. !CONTENIDO[6]
-FUNCTION _6ux0ns0yq     &&  m.localidad VALID
+FUNCTION _6wa0yct1b     &&  m.localidad VALID
 #REGION 1
 RETURN .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NS0ZG           m.nrodoc VALID                     
+*       * _6WA0YCT1R           m.nrodoc VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -1052,7 +1014,7 @@ RETURN .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0ns0zg     &&  m.nrodoc VALID
+FUNCTION _6wa0yct1r     &&  m.nrodoc VALID
 #REGION 1
 IF LAST()=27
    RETURN .T.
@@ -1074,7 +1036,7 @@ RETURN .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NS10P           Read Level Show                    
+*       * _6WA0YCT2P           Read Level Show                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -1086,7 +1048,7 @@ RETURN .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0ns10p     && Read Level Show
+FUNCTION _6wa0yct2p     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *
@@ -1130,7 +1092,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NS13O           m.codcli WHEN                      
+*       * _6WA0YCT47           m.codcli WHEN                      
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -1143,7 +1105,7 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0ns13o     &&  m.codcli WHEN
+FUNCTION _6wa0yct47     &&  m.codcli WHEN
 #REGION 1
 M.PRIOBJ=_CUROBJ
 =OFF_F2()
@@ -1159,7 +1121,7 @@ RETURN EMPTY(M.CLIENTE)
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NS13T           m.codcli VALID                     
+*       * _6WA0YCT4R           m.codcli VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -1172,7 +1134,7 @@ RETURN EMPTY(M.CLIENTE)
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0ns13t     &&  m.codcli VALID
+FUNCTION _6wa0yct4r     &&  m.codcli VALID
 #REGION 1
 IF LAST()=27
    RETURN .T.
@@ -1195,7 +1157,7 @@ RETURN .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NS14F           m.CLIENTE WHEN                     
+*       * _6WA0YCT4V           m.CLIENTE WHEN                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -1208,7 +1170,7 @@ RETURN .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0ns14f     &&  m.CLIENTE WHEN
+FUNCTION _6wa0yct4v     &&  m.CLIENTE WHEN
 #REGION 1
 ON KEY LABEL F2 M.CLIENTE=QUEPOPUP("a Corregir",2,12)
 ON KEY LABEL F3 M.CLIENTE=SEEKTECX(30,'PER','CLIENTE','CLIENTE',(CONTENIDO[4]))
@@ -1216,7 +1178,7 @@ RETURN LAST()#27 .AND. !NOCOD(M.CODCLI) .AND. ESPROPIO
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NS14H           m.CLIENTE VALID                    
+*       * _6WA0YCT4X           m.CLIENTE VALID                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -1229,7 +1191,7 @@ RETURN LAST()#27 .AND. !NOCOD(M.CODCLI) .AND. ESPROPIO
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0ns14h     &&  m.CLIENTE VALID
+FUNCTION _6wa0yct4x     &&  m.CLIENTE VALID
 #REGION 1
 IF LAST()=27
    RETURN .T.
@@ -1256,7 +1218,7 @@ RETURN .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NS15L           m.nrodoc VALID                     
+*       * _6WA0YCT4Y           m.nrodoc VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -1269,7 +1231,7 @@ RETURN .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0ns15l     &&  m.nrodoc VALID
+FUNCTION _6wa0yct4y     &&  m.nrodoc VALID
 #REGION 1
 IF LAST()=27
    RETURN .T.
@@ -1291,7 +1253,7 @@ RETURN .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NS15Y           Read Level Show                    
+*       * _6WA0YCT5B           Read Level Show                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -1303,7 +1265,7 @@ RETURN .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0ns15y     && Read Level Show
+FUNCTION _6wa0yct5b     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *

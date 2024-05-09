@@ -1,6 +1,6 @@
 *       *********************************************************
 *       *                                                         
-*       * 21/03/2024           CALCOMIF.SPR              11:05:20 
+*       * 09/05/2024           CALCOMIF.SPR              16:01:20 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
@@ -38,8 +38,8 @@ SET READBORDER ON
 *       *********************************************************
 *
 
-IF NOT WEXIST("_6ux0nrmyn")
-	DEFINE WINDOW _6ux0nrmyn ;
+IF NOT WEXIST("_6wa0ycaan")
+	DEFINE WINDOW _6wa0ycaan ;
 		AT 6.000, 19.000 ;
 		SIZE 17.077,90.200 ;
 		TITLE "COMISIONES" ;
@@ -82,10 +82,10 @@ store 0 to m.comision
 *
 
 #REGION 1
-IF WVISIBLE("_6ux0nrmyn")
-	ACTIVATE WINDOW _6ux0nrmyn SAME
+IF WVISIBLE("_6wa0ycaan")
+	ACTIVATE WINDOW _6wa0ycaan SAME
 ELSE
-	ACTIVATE WINDOW _6ux0nrmyn NOSHOW
+	ACTIVATE WINDOW _6wa0ycaan NOSHOW
 ENDIF
 @ 1.308,4.400 SAY "Factura Nro" ;
 	FONT "Arial", 16 ;
@@ -128,17 +128,17 @@ ENDIF
 	DEFAULT 1 ;
 	FONT "Arial", 12 ;
 	STYLE "B" ;
-	VALID _6ux0nrn0g()
+	VALID _6wa0ycach()
 
-IF NOT WVISIBLE("_6ux0nrmyn")
-	ACTIVATE WINDOW _6ux0nrmyn
+IF NOT WVISIBLE("_6wa0ycaan")
+	ACTIVATE WINDOW _6wa0ycaan
 ENDIF
 
 READ CYCLE ;
-	WHEN _6ux0nrn0r() ;
-	SHOW _6ux0nrn0t()
+	WHEN _6wa0ycacv() ;
+	SHOW _6wa0ycacx()
 
-RELEASE WINDOW _6ux0nrmyn
+RELEASE WINDOW _6wa0ycaan
 
 #REGION 0
 
@@ -154,7 +154,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NRN0G           m.opta VALID                       
+*       * _6WA0YCACH           m.opta VALID                       
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -167,14 +167,14 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nrn0g     &&  m.opta VALID
+FUNCTION _6wa0ycach     &&  m.opta VALID
 #REGION 1
 replace ccl.comision with m.comision
 
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NRN0R           Read Level When                    
+*       * _6WA0YCACV           Read Level When                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -186,7 +186,7 @@ replace ccl.comision with m.comision
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nrn0r     && Read Level When
+FUNCTION _6wa0ycacv     && Read Level When
 *
 * When Code from screen: CALCOMIF
 *
@@ -214,7 +214,7 @@ show gets
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NRN0T           Read Level Show                    
+*       * _6WA0YCACX           Read Level Show                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -226,15 +226,15 @@ show gets
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nrn0t     && Read Level Show
+FUNCTION _6wa0ycacx     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *
 * Show Code from screen: CALCOMIF
 *
 #REGION 1
-IF SYS(2016) = "_6UX0NRMYN" OR SYS(2016) = "*"
-	ACTIVATE WINDOW _6ux0nrmyn SAME
+IF SYS(2016) = "_6WA0YCAAN" OR SYS(2016) = "*"
+	ACTIVATE WINDOW _6wa0ycaan SAME
 	@ 1.385,33.600 SAY Fac.factura ;
 		SIZE 0.957,20.500, 0.000 ;
 		FONT "Arial", 14

@@ -1,6 +1,6 @@
 *       *********************************************************
 *       *                                                         
-*       * 21/03/2024            CARTELW.PRG              11:05:22 
+*       * 09/05/2024            CARTELW.PRG              16:01:21 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
@@ -108,12 +108,12 @@ ENDIF
 	COLOR RGB(255,255,255,,,,)
 @ 9.538,34.400 GET M.SALER ;
 	PICTURE "@*BHN " + ;
-		(LOCFILE("\bmp\face02.ico","BMP|ICO|PCT|ICN","Where is face02?")) + ";" + ;
-		(LOCFILE("\bmp\25.ico","BMP|ICO|PCT|ICN","Where is 25?")) ;
+		(LOCFILE("..\..\..\bmp\face02.ico","BMP|ICO|PCT|ICN","Where is face02?")) + ";" + ;
+		(LOCFILE("..\..\..\bmp\25.ico","BMP|ICO|PCT|ICN","Where is 25?")) ;
 	SIZE 2.923,7.600,0.400 ;
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
-	VALID _6ux0nroar()
+	VALID _6wa0ycbmy()
 
 IF NOT WVISIBLE("mens")
 	ACTIVATE WINDOW mens
@@ -147,7 +147,7 @@ RETURN ASC(IIF(SALER=1,"S","N"))
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NROAR           M.SALER VALID                      
+*       * _6WA0YCBMY           M.SALER VALID                      
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -160,7 +160,7 @@ RETURN ASC(IIF(SALER=1,"S","N"))
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nroar     &&  M.SALER VALID
+FUNCTION _6wa0ycbmy     &&  M.SALER VALID
 #REGION 1
 CLEA READ
 RETURN .T.

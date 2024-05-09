@@ -1,6 +1,6 @@
 *       *********************************************************
 *       *                                                         
-*       * 21/03/2024            ACPOPU.SPR               11:05:19 
+*       * 09/05/2024            ACPOPU.SPR               16:01:16 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
@@ -38,8 +38,8 @@ SET READBORDER ON
 *       *********************************************************
 *
 
-IF NOT WEXIST("_6ux0nrlna")
-	DEFINE WINDOW _6ux0nrlna ;
+IF NOT WEXIST("_6wa0yc7mi")
+	DEFINE WINDOW _6wa0yc7mi ;
 		AT  0.000, 0.000  ;
 		SIZE 26.000,56.400 ;
 		TITLE " Popops a Utilizar " ;
@@ -49,7 +49,7 @@ IF NOT WEXIST("_6ux0nrlna")
 		MINIMIZE ;
 		SYSTEM ;
 		COLOR RGB(,,,255,255,255)
-	MOVE WINDOW _6ux0nrlna CENTER
+	MOVE WINDOW _6wa0yc7mi CENTER
 ENDIF
 
 
@@ -61,10 +61,10 @@ ENDIF
 *
 
 #REGION 1
-IF WVISIBLE("_6ux0nrlna")
-	ACTIVATE WINDOW _6ux0nrlna SAME
+IF WVISIBLE("_6wa0yc7mi")
+	ACTIVATE WINDOW _6wa0yc7mi SAME
 ELSE
-	ACTIVATE WINDOW _6ux0nrlna NOSHOW
+	ACTIVATE WINDOW _6wa0yc7mi NOSHOW
 ENDIF
 @ 0.615,1.800 GET M.CAGPOP ;
 	PICTURE "@*C AGRUPACION" ;
@@ -156,20 +156,20 @@ ENDIF
 	COLOR ,,,,,,,,RGB(0,0,128,192,192,192),RGB(0,0,128,192,192,192)
 @ 21.615,35.800 GET M.OPCION ;
 	PICTURE "@*BHN " + ;
-		(LOCFILE("\bmp\face01.ico","BMP|ICO|PCT|ICN","Where is face01?")) + ";" + ;
-		(LOCFILE("\bmp\face03.ico","BMP|ICO|PCT|ICN","Where is face03?")) ;
+		(LOCFILE("..\..\..\bmp\face01.ico","BMP|ICO|PCT|ICN","Where is face01?")) + ";" + ;
+		(LOCFILE("..\..\..\bmp\face03.ico","BMP|ICO|PCT|ICN","Where is face03?")) ;
 	SIZE 2.923,7.600,0.800 ;
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
-	VALID _6ux0nrlpg()
+	VALID _6wa0yc7ol()
 
-IF NOT WVISIBLE("_6ux0nrlna")
-	ACTIVATE WINDOW _6ux0nrlna
+IF NOT WVISIBLE("_6wa0yc7mi")
+	ACTIVATE WINDOW _6wa0yc7mi
 ENDIF
 
 READ
 
-RELEASE WINDOW _6ux0nrlna
+RELEASE WINDOW _6wa0yc7mi
 
 #REGION 0
 
@@ -185,7 +185,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NRLPG           M.OPCION VALID                     
+*       * _6WA0YC7OL           M.OPCION VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -198,7 +198,7 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nrlpg     &&  M.OPCION VALID
+FUNCTION _6wa0yc7ol     &&  M.OPCION VALID
 #REGION 1
 CLEA READ
 RETURN .T.

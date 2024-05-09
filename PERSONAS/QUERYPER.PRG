@@ -1,6 +1,6 @@
 *       *********************************************************
 *       *                                                         
-*       * 21/03/2024           QUERYPER.PRG              11:06:02 
+*       * 09/05/2024           QUERYPER.PRG              16:02:11 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
@@ -76,47 +76,9 @@ EXTERNAL ARRAY TEXTO
 EXTERNAL ARRAY CONTENIDO
 EXTERNAL ARRAY ANTTEXTO
 =HORA_ULP(PROGRAM())
-** Start of inserted file \SISTEMAS\DEFINES.PRG ********************************start
-#DEFINE BOTOM  "  "+repl("°",78)                 && BOTOM
-#DEFINE ABA    "Abriendo Base de "               && ABA
-#DEFINE NUL    0                                 && NUL
-#DEFINE PICUMAX "9,999,999,999,999.99"           && PICUMAX
-#DEFINE PICUMA1 "9,999,999,999,999"              && PICUMA1
-#DEFINE PAIP   "|"                               && PAIP
-#DEFINE FOLC  ".F."                              && FOLC
-#DEFINE CRLF CHR(13)+CHR(10)                     && CRLF
-#DEFINE FOLL  .F.                                && FOLL
-#DEFINE TRUC  ".T."                              && TRUC
-#DEFINE TRUL  .T.                                && TRUL
-#DEFINE IMPRIMIENDO  PADC(' IMPRIMIENDO LOS DATOS REQUERIDOS - [TECLA] Interrumpe ',80,'°') && IMPRIMIENDO
-#DEFINE ELYES  "SI"                              && ELYES
-#DEFINE ELNOU  "NO"                              && ELNOU
-#DEFINE ONE    1                                 && ONE
-#DEFINE TWO    2                                 && TWO
-#DEFINE THREE  3                                 && THREE
-#DEFINE FOUR   4                                 && FOUR
-#DEFINE TEX_EFES " - [F2] Popup - [F3] B£squeda" && TEX_EFES
-#DEFINE TEX_CALC "CALCULANDO - ESPERE POR FAVOR" && TEX_CALC
-#DEFINE GRABANDO PADC(' Grabando los datos ingresados - Espere por Favor ',80,"°")
-#DEFINE NOVACIO "CAMPO DE INGRESO OBLIGATORIO - NO PUEDE ESTAR VACIO" && NOVACIO
-#DEFINE NOFECHA "LAS FECHAS ESTAN ENTRE VALORES INACEPTABLES" && NOFECHA
-#DEFINE ESPAOPC " - Barra Espac. para cambiar de Opci¢n" && ESPAOPC
-#DEFINE ESCANUL " - [ESC] para Anular"           && ESCANUL
-#DEFINE ESCAMEN " - [ESC] para Men£"             && ESCAMEN
-#DEFINE ESCAFIN " - [ESC] para Fin"              && ESCAFIN
-#DEFINE NOACVAL "LOS VALORES INGRESADOS ESTAN ENTRE LIMITES INACEPTABLES"    && NOACVAL
-#DEFINE CONTIX  " Continuaci¢n"                  && CONTIX
-#DEFINE RH      36 								 && RH
-#DEFINE RP 		47 								 && RP
-#DEFINE ENTERCON "PULSE [ENTER] PARA CONTINUAR"  && ENTERCON
-#DEFINE ORQ      "Orden de Requerimiento"        && ORQ
-#DEFINE ORQS     "Ordenes de Requerimiento"      && ORQS
-#DEFINE NOSEL "NO SE HA SELECCIONADO"            && NOSEL
-#DEFINE PIC30 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"	 && PIC30
-#DEFINE T_REINGRE "Reingrese el DATO"	 		 && T_REINGRE
-
-** End of inserted file \SISTEMAS\DEFINES.PRG ************************************end
-
+*
+* Inserted file \SISTEMAS\DEFINES.PRG not found!
+*
 IF CHEQSEG()
    SELE PER
    SCAT MEMV BLAN MEMO
@@ -208,8 +170,8 @@ ENDIF
 	DEFAULT " " ;
 	FONT "MS Sans Serif", 8 ;
 	PICTURE REPL('!',CONTENIDO[2]+1) ;
-	WHEN _6ux0nsjmn() ;
-	VALID _6ux0nsjmq() ;
+	WHEN _6wa0yddew() ;
+	VALID _6wa0yddfe() ;
 	MESSAGE "Ingrese C¢digo de "+tipo_per+" - [ESC] para Men£"+TEX_EFES ;
 	ERROR 'CODCLI DE '+UPPER(TIPO_PER)+' EXISTE'
 @ 1.126,34.625 SAY IIF(EMPTY(M.CODCLI1),"",SAYPER(M.CODCLI1,CONTENIDO[3])) ;
@@ -221,7 +183,7 @@ ENDIF
 	DEFAULT " " ;
 	FONT "MS Sans Serif", 8 ;
 	PICTURE REPL('!',CONTENIDO[2]+1) ;
-	WHEN _6ux0nsjne() ;
+	WHEN _6wa0yddfk() ;
 	VALID SGET("QUERYPER") ;
 	MESSAGE "Ingrese C¢digo de "+tipo_per+" - [ESC] para Men£"+TEX_EFES ;
 	ERROR 'CODCLI DE '+UPPER(TIPO_PER)+' EXISTE'
@@ -311,7 +273,7 @@ ENDIF
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
 	STYLE "B" ;
-	VALID _6ux0nsjno()
+	VALID _6wa0yddfv()
 @ 1.000,1.000 GET M.FILPER ;
 	PICTURE "@*RVN \<Completo;\<Entre C¢digos;\<Opciones" ;
 	SIZE 1.308,17.000,0.000 ;
@@ -319,7 +281,7 @@ ENDIF
 	FONT "MS Sans Serif", 8 ;
 	STYLE "B" ;
 	WHEN betw(_curobj,minobj,maxobj)			 ;
-	VALID _6ux0nsjnu()
+	VALID _6wa0yddgh()
 @ 1.000,20.000 GET m.filciu ;
 	PICTURE "@*RVN Todas las Ciudades;Una Ciudad;\<Opciones" ;
 	SIZE 1.308,22.000,0.000 ;
@@ -327,7 +289,7 @@ ENDIF
 	FONT "MS Sans Serif", 8 ;
 	STYLE "B" ;
 	WHEN betw(_curobj,minobj,maxobj) ;
-	VALID _6ux0nsjoi()
+	VALID _6wa0yddgl()
 @ 1.000,44.000 GET m.fildni ;
 	PICTURE "@*RVN Todos los Documentos;Un Documento;\<Opciones" ;
 	SIZE 1.308,24.000,0.000 ;
@@ -335,7 +297,7 @@ ENDIF
 	FONT "MS Sans Serif", 8 ;
 	STYLE "B" ;
 	WHEN betw(_curobj,minobj,maxobj) ;
-	VALID _6ux0nsjoo()
+	VALID _6wa0yddgq()
 @ 5.000,1.000 GET m.filiva ;
 	PICTURE "@*RVN Todas las C IVA;Una Condici¢n;\<Opciones" ;
 	SIZE 1.308,19.000,0.000 ;
@@ -343,14 +305,14 @@ ENDIF
 	FONT "MS Sans Serif", 8 ;
 	STYLE "B" ;
 	WHEN betw(_curobj,minobj,maxobj) ;
-	VALID _6ux0nsjpa()
+	VALID _6wa0yddhc()
 
 IF NOT WVISIBLE("queryper")
 	ACTIVATE WINDOW queryper
 ENDIF
 
 READ CYCLE ;
-	SHOW _6ux0nsjpd()
+	SHOW _6wa0yddhf()
 
 RELEASE WINDOW queryper
 
@@ -385,7 +347,7 @@ RETURN M.FISC
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NSJMN           m.codcli1 WHEN                     
+*       * _6WA0YDDEW           m.codcli1 WHEN                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -398,7 +360,7 @@ RETURN M.FISC
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nsjmn     &&  m.codcli1 WHEN
+FUNCTION _6wa0yddew     &&  m.codcli1 WHEN
 #REGION 1
 ON KEY LABEL F2 M.CODCLI1=QUEPOPUP("a Corregir",1,22)
 ON KEY LABEL F3 M.CODCLI1=SEEKTECX(30,'PER','CLIENTE','PER.CODCLI',CONTENIDO[4],ALIAS(),ORDER(),1,34)
@@ -406,7 +368,7 @@ RETURN .t.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NSJMQ           m.codcli1 VALID                    
+*       * _6WA0YDDFE           m.codcli1 VALID                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -419,14 +381,14 @@ RETURN .t.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nsjmq     &&  m.codcli1 VALID
+FUNCTION _6wa0yddfe     &&  m.codcli1 VALID
 #REGION 1
 M.CODCLI1=EVAL(TEXTO[4])
 RETURN SGET("QUERYPER")
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NSJNE           m.codcli2 WHEN                     
+*       * _6WA0YDDFK           m.codcli2 WHEN                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -439,7 +401,7 @@ RETURN SGET("QUERYPER")
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nsjne     &&  m.codcli2 WHEN
+FUNCTION _6wa0yddfk     &&  m.codcli2 WHEN
 #REGION 1
 ON KEY LABEL F2 M.CODCLI2=QUEPOPUP("a Corregir",1,22)
 ON KEY LABEL F3 M.CODCLI2=SEEKTECX(30,'PER','CLIENTE','PER.CODCLI',CONTENIDO[4],ALIAS(),ORDER(),1,34)
@@ -447,7 +409,7 @@ RETURN .t.
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NSJNO           m.lista VALID                      
+*       * _6WA0YDDFV           m.lista VALID                      
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -460,7 +422,7 @@ RETURN .t.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nsjno     &&  m.lista VALID
+FUNCTION _6wa0yddfv     &&  m.lista VALID
 #REGION 1
 IF M.LISTA=1 .AND. LAST()#27
    =WORKING()
@@ -502,7 +464,7 @@ RETURN SGET("QUERYPER")
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NSJNU           M.FILPER VALID                     
+*       * _6WA0YDDGH           M.FILPER VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -515,7 +477,7 @@ RETURN SGET("QUERYPER")
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nsjnu     &&  M.FILPER VALID
+FUNCTION _6wa0yddgh     &&  M.FILPER VALID
 #REGION 1
 IF READKEY()=15 .OR. READKEY()=271
    opn1=OBJNUM(m.filper)
@@ -537,7 +499,7 @@ return VAL_OBJ(.F.,3)
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NSJOI           m.filciu VALID                     
+*       * _6WA0YDDGL           m.filciu VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -550,7 +512,7 @@ return VAL_OBJ(.F.,3)
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nsjoi     &&  m.filciu VALID
+FUNCTION _6wa0yddgl     &&  m.filciu VALID
 #REGION 1
 IF READKEY()=15 .OR. READKEY()=271
    OPN1=OBJNUM(FILciu)
@@ -576,7 +538,7 @@ RETURN VAL_OBJ(.F.,3)
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NSJOO           m.fildni VALID                     
+*       * _6WA0YDDGQ           m.fildni VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -589,7 +551,7 @@ RETURN VAL_OBJ(.F.,3)
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nsjoo     &&  m.fildni VALID
+FUNCTION _6wa0yddgq     &&  m.fildni VALID
 #REGION 1
 IF READKEY()=15 .OR. READKEY()=271
    opn1=OBJNUM(FILdni)
@@ -617,7 +579,7 @@ RETURN VAL_OBJ(.F.,3)
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NSJPA           m.filiva VALID                     
+*       * _6WA0YDDHC           m.filiva VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -630,7 +592,7 @@ RETURN VAL_OBJ(.F.,3)
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nsjpa     &&  m.filiva VALID
+FUNCTION _6wa0yddhc     &&  m.filiva VALID
 #REGION 1
 IF READKEY()=15 .OR. READKEY()=271
    opn1=OBJNUM(FILiva)
@@ -658,7 +620,7 @@ RETURN VAL_OBJ(.F.,2)
 
 *       *********************************************************
 *       *                                                         
-*       * _6UX0NSJPD           Read Level Show                    
+*       * _6WA0YDDHF           Read Level Show                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -670,7 +632,7 @@ RETURN VAL_OBJ(.F.,2)
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6ux0nsjpd     && Read Level Show
+FUNCTION _6wa0yddhf     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *
