@@ -1,6 +1,6 @@
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є 09/05/2024             PRETR.SPR               12:54:01 є
+*       є 12/06/2024             PRETR.SPR               13:49:00 є
 *       є                                                         є
 *       ЗДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД¶
 *       є                                                         є
@@ -144,7 +144,7 @@ ENDIF
 	STYLE "B" ;
 	PICTURE "@K!" ;
 	WHEN GRL_F2("M.CODCLI","a Facturar",10,20,30,"PER","CLIENTE","codcli","clientes",10,20) .AND. SGET("FAC") ;
-	VALID _6wa0rnfdk() ;
+	VALID _6x80tm3tr() ;
 	MESSAGE "Seleccione cliente a Facturar"+TEX_EFES ;
 	ERROR "CLIENTE INEXISTENTE" ;
 	COLOR ,RGB(255,255,255,0,128,0)
@@ -177,7 +177,7 @@ ENDIF
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
 	WHEN LAST()#27 ;
-	VALID _6wa0rnfdo()
+	VALID _6x80tm3ug()
 @ 8.250,31.000 GET m.eldto ;
 	SIZE 0.950,20.500 ;
 	DEFAULT " " ;
@@ -185,7 +185,7 @@ ENDIF
 	STYLE "B" ;
 	PICTURE "99,999.99" ;
 	WHEN !empty(m.monto) ;
-	VALID _6wa0rnfef() ;
+	VALID _6x80tm3un() ;
 	MESSAGE "Ingrese Porcentaje de Bonificaciуn" ;
 	ERROR "VALORES INACEPTABLES" ;
 	COLOR ,RGB(255,255,255,0,128,0)
@@ -195,7 +195,7 @@ ENDIF
 	FONT "Arial", 12 ;
 	STYLE "B" ;
 	PICTURE "99999999.99" ;
-	VALID _6wa0rnfem() ;
+	VALID _6x80tm3up() ;
 	COLOR ,RGB(255,255,255,0,128,0)
 @ 14.750,31.429 SAY m.MONTONET ;
 	SIZE 0.950,22.750 ;
@@ -211,14 +211,14 @@ ENDIF
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
 	WHEN last()#27 ;
-	VALID _6wa0rnffm()
+	VALID _6x80tm3v9()
 
 IF NOT WVISIBLE("fac")
 	ACTIVATE WINDOW fac
 ENDIF
 
 READ CYCLE ;
-	SHOW _6wa0rnffr()
+	SHOW _6x80tm3vs()
 
 RELEASE WINDOW fac
 
@@ -501,7 +501,7 @@ RETURN .T.
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _6WA0RNFDK           m.codcli VALID                     є
+*       є _6X80TM3TR           m.codcli VALID                     є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -514,7 +514,7 @@ RETURN .T.
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _6wa0rnfdk     &&  m.codcli VALID
+FUNCTION _6x80tm3tr     &&  m.codcli VALID
 #REGION 1
 IF LAST()=27 .OR. ;
      EMPTY(M.CODCLI)
@@ -537,7 +537,7 @@ RETURN .F.
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _6WA0RNFDO           m.imar VALID                       є
+*       є _6X80TM3UG           m.imar VALID                       є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -550,7 +550,7 @@ RETURN .F.
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _6wa0rnfdo     &&  m.imar VALID
+FUNCTION _6x80tm3ug     &&  m.imar VALID
 #REGION 1
 if m.imar=1
 IF EMPTY(M.CODCLI)
@@ -665,7 +665,7 @@ return .t.
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _6WA0RNFEF           m.eldto VALID                      є
+*       є _6X80TM3UN           m.eldto VALID                      є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -678,7 +678,7 @@ return .t.
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _6wa0rnfef     &&  m.eldto VALID
+FUNCTION _6x80tm3un     &&  m.eldto VALID
 #REGION 1
 IF M.ELDTO<0 .OR. M.ELDTO>100
    RETURN .F.
@@ -689,12 +689,11 @@ ENDIF
 M.DESCUENTO=M.MONTONET*ELDTO/100
 M.MONTONET=M.MONTONET-M.DESCUENTO
 M.MONTOBRU=M.MONTONET/IVA118
-M.MONTOIVA=M.MONTONET-M.MONTOBRU
 RETURN SGET("FAC")
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _6WA0RNFEM           m.DESCUENTO VALID                  є
+*       є _6X80TM3UP           m.DESCUENTO VALID                  є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -707,18 +706,19 @@ RETURN SGET("FAC")
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _6wa0rnfem     &&  m.DESCUENTO VALID
+FUNCTION _6x80tm3up     &&  m.DESCUENTO VALID
 #REGION 1
-ELDTO=100*m.descuento/m.montonet
-***   M.DESCUENTO=M.MONTONET*ELDTO/100
-M.MONTONET=M.MONTONET-M.DESCUENTO
-M.MONTOBRU=M.MONTONET/IVA118
-M.MONTOIVA=M.MONTONET-M.MONTOBRU
+if empty(ELDTO)
+   ELDTO=100*m.descuento/m.montonet
+   M.MONTONET=M.MONTONET-M.DESCUENTO
+   M.MONTOBRU=M.MONTONET/IVA118
+   M.MONTOIVA=M.MONTONET-M.MONTOBRU
+endif
 RETURN SGET("FAC")
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _6WA0RNFFM           m.OKFAC VALID                      є
+*       є _6X80TM3V9           m.OKFAC VALID                      є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -731,7 +731,7 @@ RETURN SGET("FAC")
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _6wa0rnffm     &&  m.OKFAC VALID
+FUNCTION _6x80tm3v9     &&  m.OKFAC VALID
 #REGION 1
 if m.OKFAC=1
    STORE "" TO M.ESA,M.NUMERO,M.ELNUM
@@ -846,7 +846,7 @@ RETU .T.
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _6WA0RNFFR           Read Level Show                    є
+*       є _6X80TM3VS           Read Level Show                    є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -858,7 +858,7 @@ RETU .T.
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _6wa0rnffr     && Read Level Show
+FUNCTION _6x80tm3vs     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *
