@@ -1,12 +1,12 @@
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º 30/06/2022            AJUSTE.SPR               10:02:34 º
+*       º 25/02/2025            AJUSTE.SPR               15:09:31 º
 *       º                                                         º
 *       ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
 *       º                                                         º
 *       º GOYO REINER                                             º
 *       º                                                         º
-*       º Copyright (c) 2022 G. REINER                            º
+*       º Copyright (c) 2025 G. REINER                            º
 *       º 1º DE MAYO 2134                                         º
 *       º ROSARIO, SF  2000                                       º
 *       º ARGENTINA                                         º
@@ -124,7 +124,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		STYLE "B" ;
 		PICTURE "@K!" ;
 		WHEN PER_F2("M.CODCLI","a Facturar",10,20,"codcli","clientes",10,20) .AND. SGET("FAC") ;
-		VALID _6db0liwvu() ;
+		VALID _74f0whnom() ;
 		MESSAGE "Seleccione cliente a Facturar" ;
 		ERROR "CLIENTE INEXISTENTE" ;
 		COLOR ,RGB(255,255,255,0,128,0)
@@ -167,7 +167,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		DEFAULT 0 ;
 		FONT "Arial", 12 ;
 		STYLE "B" ;
-		PICTURE "9999999.99" ;
+		PICTURE "99999999.99" ;
 		WHEN LAST()#27 .AND. !EMPTY(M.CODCLI) ;
 		MESSAGE "Monto del Recibo" ;
 		COLOR ,RGB(255,255,255,0,128,0)
@@ -179,14 +179,14 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		DEFAULT 1 ;
 		FONT "MS Sans Serif", 8 ;
 		WHEN last()#27 ;
-		VALID _6db0liwwr()
+		VALID _74f0whnou()
 	
 	IF NOT WVISIBLE("fac")
 		ACTIVATE WINDOW fac
 	ENDIF
 	
 	READ CYCLE ;
-		SHOW _6db0liwxg()
+		SHOW _74f0whnp3()
 	
 	RELEASE WINDOW fac
 	
@@ -312,7 +312,7 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		DEFAULT " " ;
 		PICTURE "@K!" ;
 		WHEN PER_F2("M.CODCLI","a Facturar",10,20,"codcli","clientes",10,20) .AND. SGET("FAC") ;
-		VALID _6db0liwym() ;
+		VALID _74f0whnqv() ;
 		MESSAGE "Seleccione cliente a Facturar" ;
 		ERROR "CLIENTE INEXISTENTE"
 	@ 3,11 SAY IIF(EMPTY(M.CODCLI),"",PER.CLIENTE) ;
@@ -342,7 +342,7 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		SIZE 1,6,1 ;
 		DEFAULT 1 ;
 		WHEN last()#27 ;
-		VALID _6db0liwzm()
+		VALID _74f0whnry()
 	@ 7,1 SAY "N§ CUIT" ;
 		SIZE 1,7, 0
 	
@@ -351,7 +351,7 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	ENDIF
 	
 	READ CYCLE ;
-		SHOW _6db0liwzo()
+		SHOW _74f0whnsl()
 	
 	RELEASE WINDOW fac
 	
@@ -381,7 +381,7 @@ ENDCASE
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _6DB0LIWVU           m.codcli VALID                     º
+*       º _74F0WHNOM           m.codcli VALID                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -394,7 +394,7 @@ ENDCASE
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _6db0liwvu     &&  m.codcli VALID
+FUNCTION _74f0whnom     &&  m.codcli VALID
 #REGION 1
 IF LAST()=27 .OR. ;
 EMPTY(M.CODCLI)
@@ -416,7 +416,7 @@ RETURN .F.
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _6DB0LIWWR           m.imar VALID                       º
+*       º _74F0WHNOU           m.imar VALID                       º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -429,7 +429,7 @@ RETURN .F.
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _6db0liwwr     &&  m.imar VALID
+FUNCTION _74f0whnou     &&  m.imar VALID
 #REGION 1
 if m.imar=1
    sele doc
@@ -480,7 +480,7 @@ return .t.
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _6DB0LIWXG           Read Level Show                    º
+*       º _74F0WHNP3           Read Level Show                    º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -492,7 +492,7 @@ return .t.
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _6db0liwxg     && Read Level Show
+FUNCTION _74f0whnp3     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *
@@ -533,7 +533,7 @@ ENDIF
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _6DB0LIWYM           m.codcli VALID                     º
+*       º _74F0WHNQV           m.codcli VALID                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -546,7 +546,7 @@ ENDIF
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _6db0liwym     &&  m.codcli VALID
+FUNCTION _74f0whnqv     &&  m.codcli VALID
 #REGION 1
 IF LAST()=27 .OR. ;
 EMPTY(M.CODCLI)
@@ -568,7 +568,7 @@ RETURN .F.
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _6DB0LIWZM           m.imar VALID                       º
+*       º _74F0WHNRY           m.imar VALID                       º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -581,7 +581,7 @@ RETURN .F.
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _6db0liwzm     &&  m.imar VALID
+FUNCTION _74f0whnry     &&  m.imar VALID
 #REGION 1
 if m.imar=1
    sele doc
@@ -611,7 +611,7 @@ return .t.
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _6DB0LIWZO           Read Level Show                    º
+*       º _74F0WHNSL           Read Level Show                    º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -623,7 +623,7 @@ return .t.
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _6db0liwzo     && Read Level Show
+FUNCTION _74f0whnsl     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *

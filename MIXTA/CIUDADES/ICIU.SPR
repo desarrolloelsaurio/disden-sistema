@@ -1,12 +1,12 @@
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є 11/03/2020             ICIU.SPR                15:54:08 є
+*       є 25/02/2025             ICIU.SPR                12:16:55 є
 *       є                                                         є
 *       ЗДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД¶
 *       є                                                         є
 *       є GOYO REINER                                             є
 *       є                                                         є
-*       є Copyright (c) 2020 G. REINER                            є
+*       є Copyright (c) 2025 G. REINER                            є
 *       є 1є DE MAYO 2134                                         є
 *       є ROSARIO, SF  2000                                       є
 *       є ARGENTINA                                         є
@@ -107,8 +107,8 @@ ENDIF
 	FONT "Arial Narrow", 12 ;
 	STYLE "T" ;
 	PICTURE "@K" ;
-	WHEN _5pv0y30sv() ;
-	VALID _5pv0y30te() ;
+	WHEN _74f0qboxp() ;
+	VALID _74f0qboxq() ;
 	MESSAGE me1+'[ENTER] para Menъ' ;
 	ERROR 'CIUDAD EXISTENTE' ;
 	COLOR ,RGB(0,0,255,192,192,192)
@@ -119,7 +119,7 @@ ENDIF
 	STYLE "T" ;
 	PICTURE "@!" ;
 	WHEN LAST()#27 ;
-	VALID _5pv0y30th() ;
+	VALID _74f0qboxw() ;
 	COLOR ,RGB(0,0,255,192,192,192)
 @ 4.462,26.800 GET m.prot ;
 	SIZE 1.000,7.333 ;
@@ -127,8 +127,8 @@ ENDIF
 	FONT "Arial Narrow", 12 ;
 	STYLE "T" ;
 	PICTURE "@K !!" ;
-	WHEN _5pv0y30tl() ;
-	VALID _5pv0y30tp() ;
+	WHEN _74f0qboy4() ;
+	VALID _74f0qboy7() ;
 	COLOR ,RGB(0,0,255,192,192,192)
 @ 4.462,38.800 SAY saymix(m.prot,"prvcod") ;
 	SIZE 1.000,45.333 ;
@@ -150,14 +150,14 @@ ENDIF
 	SIZE 3.692,15.000,0.800 ;
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
-	VALID _5pv0y30u3()
+	VALID _74f0qboyy()
 
 IF NOT WVISIBLE("waca")
 	ACTIVATE WINDOW waca
 ENDIF
 
 READ CYCLE ;
-	SHOW _5pv0y30u7()
+	SHOW _74f0qboz1()
 
 RELEASE WINDOW waca
 
@@ -175,7 +175,7 @@ ENDIF
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _5PV0Y30SV           m.codpostal WHEN                   є
+*       є _74F0QBOXP           m.codpostal WHEN                   є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -188,7 +188,7 @@ ENDIF
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _5pv0y30sv     &&  m.codpostal WHEN
+FUNCTION _74f0qboxp     &&  m.codpostal WHEN
 #REGION 1
 scat memv blan
 m.codpostal=space(6)
@@ -196,7 +196,7 @@ show gets
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _5PV0Y30TE           m.codpostal VALID                  є
+*       є _74F0QBOXQ           m.codpostal VALID                  є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -209,7 +209,7 @@ show gets
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _5pv0y30te     &&  m.codpostal VALID
+FUNCTION _74f0qboxq     &&  m.codpostal VALID
 #REGION 1
 if xseek(m.codpostal,"mix","ciucod")
    scat memv
@@ -229,7 +229,7 @@ return .t.
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _5PV0Y30TH           m.texto1 VALID                     є
+*       є _74F0QBOXW           m.texto1 VALID                     є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -242,7 +242,7 @@ return .t.
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _5pv0y30th     &&  m.texto1 VALID
+FUNCTION _74f0qboxw     &&  m.texto1 VALID
 #REGION 1
 IF xseek(m.TEXTO1,"mix","ciutex")
 	WAIT WIND "LA CIUDAD EXISTE" NOWAIT
@@ -252,7 +252,7 @@ RETURN .T.
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _5PV0Y30TL           m.prot WHEN                        є
+*       є _74F0QBOY4           m.prot WHEN                        є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -265,7 +265,7 @@ RETURN .T.
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _5pv0y30tl     &&  m.prot WHEN
+FUNCTION _74f0qboy4     &&  m.prot WHEN
 #REGION 1
 if LAST()#27
 *********.AND. !EMPTY(M.NU2)
@@ -283,7 +283,7 @@ return .f.
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _5PV0Y30TP           m.prot VALID                       є
+*       є _74F0QBOY7           m.prot VALID                       є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -296,13 +296,13 @@ return .f.
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _5pv0y30tp     &&  m.prot VALID
+FUNCTION _74f0qboy7     &&  m.prot VALID
 #REGION 1
 SHOW GETS
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _5PV0Y30U3           M.RESPUX VALID                     є
+*       є _74F0QBOYY           M.RESPUX VALID                     є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -315,7 +315,7 @@ SHOW GETS
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _5pv0y30u3     &&  M.RESPUX VALID
+FUNCTION _74f0qboyy     &&  M.RESPUX VALID
 #REGION 1
 IF M.RESPUX=1
    SELE MIX
@@ -343,7 +343,7 @@ ENDIF
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _5PV0Y30U7           Read Level Show                    є
+*       є _74F0QBOZ1           Read Level Show                    є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -355,7 +355,7 @@ ENDIF
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _5pv0y30u7     && Read Level Show
+FUNCTION _74f0qboz1     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *

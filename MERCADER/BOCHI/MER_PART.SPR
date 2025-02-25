@@ -1,12 +1,12 @@
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º 11/03/2020           MER_PART.SPR              15:54:02 º
+*       º 25/02/2025           MER_PART.SPR              12:16:29 º
 *       º                                                         º
 *       ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
 *       º                                                         º
 *       º GOYO REINER                                             º
 *       º                                                         º
-*       º Copyright (c) 2020 G. REINER                            º
+*       º Copyright (c) 2025 G. REINER                            º
 *       º 1º DE MAYO 2134                                         º
 *       º ROSARIO, SF  2000                                       º
 *       º ARGENTINA                                         º
@@ -92,8 +92,8 @@ IF NOT WEXIST("mer") ;
 		COLOR RGB(,,,0,128,0)
 ENDIF
 
-IF NOT WEXIST("_5pv0y2wgb")
-	DEFINE WINDOW _5pv0y2wgb ;
+IF NOT WEXIST("_74f0qb4en")
+	DEFINE WINDOW _74f0qb4en ;
 		AT 17.000, 36.000 ;
 		SIZE 4.000,32.500 ;
 		TITLE " SU OPCION" ;
@@ -169,8 +169,8 @@ ENDIF
 	FONT "Arial", 14 ;
 	STYLE "BI" ;
 	PICTURE "@K" ;
-	WHEN _5pv0y2wj2() ;
-	VALID _5pv0y2wj8() ;
+	WHEN _74f0qb4id() ;
+	VALID _74f0qb4ih() ;
 	COLOR ,RGB(255,255,255,0,128,0)
 @ 2.308,26.800 SAY m.RUBRO ;
 	SIZE 0.958,4.889 ;
@@ -220,16 +220,16 @@ ENDIF
 *
 
 #REGION 2
-IF WVISIBLE("_5pv0y2wgb")
-	ACTIVATE WINDOW _5pv0y2wgb SAME
+IF WVISIBLE("_74f0qb4en")
+	ACTIVATE WINDOW _74f0qb4en SAME
 ELSE
-	ACTIVATE WINDOW _5pv0y2wgb NOSHOW
+	ACTIVATE WINDOW _74f0qb4en NOSHOW
 ENDIF
 @ 0.385,1.667 GET m.OPCION ;
 	PICTURE "@*BHN " + ;
-		(LOCFILE("c:\windows\bmp\face03.ico","BMP|ICO|PCT|ICN","Where is face03?")) + ";" + ;
-		(LOCFILE("c:\windows\bmp\25.ico","BMP|ICO|PCT|ICN","Where is 25?")) + ";" + ;
-		(LOCFILE("c:\windows\bmp\puerta.ico","BMP|ICO|PCT|ICN","Where is puerta?")) ;
+		(LOCFILE("\windows\bmp\face03.ico","BMP|ICO|PCT|ICN","Where is face03?")) + ";" + ;
+		(LOCFILE("\windows\bmp\25.ico","BMP|ICO|PCT|ICN","Where is 25?")) + ";" + ;
+		(LOCFILE("\windows\bmp\puerta.ico","BMP|ICO|PCT|ICN","Where is puerta?")) ;
 	SIZE 2.923,9.000,1.000 ;
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
@@ -264,8 +264,8 @@ ENDIF
 IF NOT WVISIBLE("control2")
 	ACTIVATE WINDOW control2
 ENDIF
-IF NOT WVISIBLE("_5pv0y2wgb")
-	ACTIVATE WINDOW _5pv0y2wgb
+IF NOT WVISIBLE("_74f0qb4en")
+	ACTIVATE WINDOW _74f0qb4en
 ENDIF
 IF NOT WVISIBLE("mer")
 	ACTIVATE WINDOW mer
@@ -273,9 +273,9 @@ ENDIF
 
 
 READ CYCLE ;
-	SHOW _5pv0y2wjf()
+	SHOW _74f0qb4j2()
 
-RELEASE WINDOW _5pv0y2wgb
+RELEASE WINDOW _74f0qb4en
 RELEASE WINDOW control2
 RELEASE WINDOW mer
 
@@ -327,7 +327,7 @@ RETURN LAST()#27 .AND. ;
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _5PV0Y2WJ2           m.articulo WHEN                    º
+*       º _74F0QB4ID           m.articulo WHEN                    º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -340,7 +340,7 @@ RETURN LAST()#27 .AND. ;
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _5pv0y2wj2     &&  m.articulo WHEN
+FUNCTION _74f0qb4id     &&  m.articulo WHEN
 #REGION 1
 M.PRIOBJ=_CUROBJ
 SELE MER
@@ -352,7 +352,7 @@ RETU GRL_F2("M.ARTICULO","a Corregir",;
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _5PV0Y2WJ8           m.articulo VALID                   º
+*       º _74F0QB4IH           m.articulo VALID                   º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -365,7 +365,7 @@ RETU GRL_F2("M.ARTICULO","a Corregir",;
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _5pv0y2wj8     &&  m.articulo VALID
+FUNCTION _74f0qb4ih     &&  m.articulo VALID
 #REGION 1
 IF LAST()=27 .OR. EMPTY(M.ARTICULO)
    RETURN .T.
@@ -381,7 +381,7 @@ RETURN .T.
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _5PV0Y2WJF           Read Level Show                    º
+*       º _74F0QB4J2           Read Level Show                    º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -393,7 +393,7 @@ RETURN .T.
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _5pv0y2wjf     && Read Level Show
+FUNCTION _74f0qb4j2     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *

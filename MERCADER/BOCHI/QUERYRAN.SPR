@@ -1,12 +1,12 @@
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º 11/03/2020           QUERYRAN.SPR              15:54:07 º
+*       º 25/02/2025           QUERYRAN.SPR              12:16:54 º
 *       º                                                         º
 *       ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
 *       º                                                         º
 *       º GOYO REINER                                             º
 *       º                                                         º
-*       º Copyright (c) 2020 G. REINER                            º
+*       º Copyright (c) 2025 G. REINER                            º
 *       º 1º DE MAYO 2134                                         º
 *       º ROSARIO, SF  2000                                       º
 *       º ARGENTINA                                         º
@@ -108,7 +108,7 @@ ENDIF
 	FONT "MS Sans Serif", 8 ;
 	STYLE "B" ;
 	WHEN betw(_curobj,minobj,maxobj)			 ;
-	VALID _5pv0y30ks()
+	VALID _74f0qbo2y()
 @ 1.769,28.667 GET m.filzon ;
 	PICTURE "@*RVN T\<odas las Zonas;Una \<Zona" ;
 	SIZE 1.308,20.167,0.000 ;
@@ -116,7 +116,7 @@ ENDIF
 	FONT "MS Sans Serif", 8 ;
 	STYLE "B" ;
 	WHEN betw(_curobj,minobj,maxobj) ;
-	VALID _5pv0y30lc()
+	VALID _74f0qbo3f()
 @ 5.385,29.000 SAY M.TTZON ;
 	SIZE 1.154,23.000 ;
 	FONT "MS Sans Serif", 8 ;
@@ -128,7 +128,7 @@ ENDIF
 	FONT "MS Sans Serif", 8 ;
 	STYLE "B" ;
 	WHEN betw(_curobj,minobj,maxobj) ;
-	VALID _5pv0y30li()
+	VALID _74f0qbo40()
 @ 5.000,54.500 SAY TTPRO ;
 	SIZE 1.154,22.000 ;
 	FONT "MS Sans Serif", 8
@@ -139,7 +139,7 @@ ENDIF
 	FONT "MS Sans Serif", 8 ;
 	STYLE "B" ;
 	WHEN betw(_curobj,minobj,maxobj) ;
-	VALID _5pv0y30lj()
+	VALID _74f0qbo4r()
 @ 11.154,1.667 SAY M.TTcag ;
 	SIZE 1.154,23.000 ;
 	FONT "MS Sans Serif", 8 ;
@@ -151,7 +151,7 @@ ENDIF
 	FONT "MS Sans Serif", 8 ;
 	STYLE "B" ;
 	WHEN betw(_curobj,minobj,maxobj) ;
-	VALID _5pv0y30ln()
+	VALID _74f0qbo4s()
 @ 11.154,29.667 SAY M.TTcli ;
 	SIZE 1.154,23.000 ;
 	FONT "MS Sans Serif", 8 ;
@@ -163,7 +163,7 @@ ENDIF
 	FONT "MS Sans Serif", 8 ;
 	STYLE "B" ;
 	WHEN betw(_curobj,minobj,maxobj) ;
-	VALID _5pv0y30lr()
+	VALID _74f0qbo51()
 @ 13.615,11.667 GET m.filloc ;
 	PICTURE "@*RVN Todos las \<Localidades;\<Una Localidad" ;
 	SIZE 1.308,25.667,0.000 ;
@@ -171,7 +171,7 @@ ENDIF
 	FONT "MS Sans Serif", 8 ;
 	STYLE "B" ;
 	WHEN betw(_curobj,minobj,maxobj) ;
-	VALID _5pv0y30lw()
+	VALID _74f0qbo59()
 @ 17.000,12.833 SAY M.TTloc ;
 	SIZE 1.154,23.000 ;
 	FONT "MS Sans Serif", 8 ;
@@ -182,14 +182,14 @@ ENDIF
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
 	STYLE "B" ;
-	VALID _5pv0y30m2()
+	VALID _74f0qbo5t()
 
 IF NOT WVISIBLE("queryran")
 	ACTIVATE WINDOW queryran
 ENDIF
 
 READ CYCLE ;
-	SHOW _5pv0y30mb()
+	SHOW _74f0qbo6h()
 
 RELEASE WINDOW queryran
 
@@ -207,7 +207,7 @@ ENDIF
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _5PV0Y30KS           m.filfac VALID                     º
+*       º _74F0QBO2Y           m.filfac VALID                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -220,7 +220,7 @@ ENDIF
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _5pv0y30ks     &&  m.filfac VALID
+FUNCTION _74f0qbo2y     &&  m.filfac VALID
 #REGION 1
 IF READKEY()=15 .OR. READKEY()=271
    opn1=OBJNUM(m.filfac)
@@ -239,7 +239,7 @@ RETURN VAL_OBJ(.F.,2)
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _5PV0Y30LC           m.filzon VALID                     º
+*       º _74F0QBO3F           m.filzon VALID                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -252,7 +252,7 @@ RETURN VAL_OBJ(.F.,2)
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _5pv0y30lc     &&  m.filzon VALID
+FUNCTION _74f0qbo3f     &&  m.filzon VALID
 #REGION 1
 IF READKEY()=15 .OR. READKEY()=271
    opn1=OBJNUM(FILZON)
@@ -271,7 +271,7 @@ RETURN VAL_OBJ(.F.,2)
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _5PV0Y30LI           m.filpro VALID                     º
+*       º _74F0QBO40           m.filpro VALID                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -284,7 +284,7 @@ RETURN VAL_OBJ(.F.,2)
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _5pv0y30li     &&  m.filpro VALID
+FUNCTION _74f0qbo40     &&  m.filpro VALID
 #REGION 1
 IF READKEY()=15 .OR. READKEY()=271
    opn1=OBJNUM(m.filpro)
@@ -304,7 +304,7 @@ RETURN VAL_OBJ(.F.,2)
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _5PV0Y30LJ           m.filcag VALID                     º
+*       º _74F0QBO4R           m.filcag VALID                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -317,7 +317,7 @@ RETURN VAL_OBJ(.F.,2)
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _5pv0y30lj     &&  m.filcag VALID
+FUNCTION _74f0qbo4r     &&  m.filcag VALID
 #REGION 1
 IF READKEY()=15 .OR. READKEY()=271
    opn1=objnum(m.filcag)
@@ -339,7 +339,7 @@ RETURN VAL_OBJ(.F.,2)
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _5PV0Y30LN           m.filcli VALID                     º
+*       º _74F0QBO4S           m.filcli VALID                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -352,7 +352,7 @@ RETURN VAL_OBJ(.F.,2)
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _5pv0y30ln     &&  m.filcli VALID
+FUNCTION _74f0qbo4s     &&  m.filcli VALID
 #REGION 1
 IF READKEY()=15 .OR. READKEY()=271
    opn1=OBJNUM(m.filcli)
@@ -372,7 +372,7 @@ RETURN VAL_OBJ(.F.,3)
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _5PV0Y30LR           m.filmay VALID                     º
+*       º _74F0QBO51           m.filmay VALID                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -385,7 +385,7 @@ RETURN VAL_OBJ(.F.,3)
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _5pv0y30lr     &&  m.filmay VALID
+FUNCTION _74f0qbo51     &&  m.filmay VALID
 #REGION 1
 IF READKEY()=15 .OR. READKEY()=271
    opn1=objnum(m.filMAY)
@@ -404,7 +404,7 @@ RETURN VAL_OBJ(.F.,2)
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _5PV0Y30LW           m.filloc VALID                     º
+*       º _74F0QBO59           m.filloc VALID                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -417,7 +417,7 @@ RETURN VAL_OBJ(.F.,2)
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _5pv0y30lw     &&  m.filloc VALID
+FUNCTION _74f0qbo59     &&  m.filloc VALID
 #REGION 1
 IF READKEY()=15 .OR. READKEY()=271
    opn1=OBJNUM(FILLOC)
@@ -436,7 +436,7 @@ RETURN VAL_OBJ(.F.,3)
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _5PV0Y30M2           M.OPTAR VALID                      º
+*       º _74F0QBO5T           M.OPTAR VALID                      º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -449,7 +449,7 @@ RETURN VAL_OBJ(.F.,3)
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _5pv0y30m2     &&  M.OPTAR VALID
+FUNCTION _74f0qbo5t     &&  M.OPTAR VALID
 #REGION 1
 If m.opTAR=1
    =WORKING()
@@ -584,7 +584,7 @@ RETURN MEN_LIN(BOTOM)
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _5PV0Y30MB           Read Level Show                    º
+*       º _74F0QBO6H           Read Level Show                    º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -596,7 +596,7 @@ RETURN MEN_LIN(BOTOM)
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _5pv0y30mb     && Read Level Show
+FUNCTION _74f0qbo6h     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *

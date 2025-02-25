@@ -1,12 +1,12 @@
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є 11/03/2020            ELILIST.SPR              15:54:09 є
+*       є 25/02/2025            ELILIST.SPR              12:17:02 є
 *       є                                                         є
 *       ЗДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД¶
 *       є                                                         є
 *       є GOYO REINER                                             є
 *       є                                                         є
-*       є Copyright (c) 2020 G. REINER                            є
+*       є Copyright (c) 2025 G. REINER                            є
 *       є 1є DE MAYO 2134                                         є
 *       є ROSARIO, SF  2000                                       є
 *       є ARGENTINA                                         є
@@ -39,8 +39,8 @@ SET READBORDER ON
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
 
-IF NOT WEXIST("_5pv0y320b")
-	DEFINE WINDOW _5pv0y320b ;
+IF NOT WEXIST("_74f0qbuda")
+	DEFINE WINDOW _74f0qbuda ;
 		AT 0.000, 0.000 ;
 		SIZE 8.769,30.800 ;
 		FONT "MS Sans Serif", 8 ;
@@ -59,10 +59,10 @@ ENDIF
 *
 
 #REGION 1
-IF WVISIBLE("_5pv0y320b")
-	ACTIVATE WINDOW _5pv0y320b SAME
+IF WVISIBLE("_74f0qbuda")
+	ACTIVATE WINDOW _74f0qbuda SAME
 ELSE
-	ACTIVATE WINDOW _5pv0y320b NOSHOW
+	ACTIVATE WINDOW _74f0qbuda NOSHOW
 ENDIF
 @ 1.385,3.400 GET m.cuallist ;
 	PICTURE "@*RVN Comъn;Dуlares;Dуlares en Pesos" ;
@@ -77,13 +77,13 @@ ENDIF
 	FONT "MS Sans Serif", 8 ;
 	STYLE "B"
 
-IF NOT WVISIBLE("_5pv0y320b")
-	ACTIVATE WINDOW _5pv0y320b
+IF NOT WVISIBLE("_74f0qbuda")
+	ACTIVATE WINDOW _74f0qbuda
 ENDIF
 
 READ CYCLE
 
-RELEASE WINDOW _5pv0y320b
+RELEASE WINDOW _74f0qbuda
 
 #REGION 0
 

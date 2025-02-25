@@ -1,12 +1,12 @@
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є 11/03/2020              MER.SPR                15:53:59 є
+*       є 25/02/2025              MER.SPR                12:16:18 є
 *       є                                                         є
 *       ЗДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД¶
 *       є                                                         є
 *       є GOYO REINER                                             є
 *       є                                                         є
-*       є Copyright (c) 2020 G. REINER                            є
+*       є Copyright (c) 2025 G. REINER                            є
 *       є 1є DE MAYO 2134                                         є
 *       є ROSARIO, SF  2000                                       є
 *       є ARGENTINA                                         є
@@ -92,8 +92,8 @@ IF NOT WEXIST("mer") ;
 		COLOR RGB(,,,0,128,0)
 ENDIF
 
-IF NOT WEXIST("_5pv0y2uey")
-	DEFINE WINDOW _5pv0y2uey ;
+IF NOT WEXIST("_74f0qawj3")
+	DEFINE WINDOW _74f0qawj3 ;
 		AT 20.000, 45.000 ;
 		SIZE 4.000,32.500 ;
 		TITLE " SU OPCION" ;
@@ -181,8 +181,8 @@ ENDIF
 	FONT "Arial", 10 ;
 	STYLE "BI" ;
 	PICTURE "@K" ;
-	WHEN _5pv0y2ugn() ;
-	VALID _5pv0y2ugr() ;
+	WHEN _74f0qawmt() ;
+	VALID _74f0qawn9() ;
 	COLOR ,RGB(255,255,255,0,128,0)
 @ 3.077,19.800 GET m.RUBRO ;
 	SIZE 1.000,9.333 ;
@@ -191,7 +191,7 @@ ENDIF
 	STYLE "BIT" ;
 	PICTURE "!!!" ;
 	WHEN LAST()#27 .AND. !EMPTY(M.ARTICULO) .AND. MIX_F2("M.RUBRO","del Artнculo",1,22,"LEFT(MIX.TEXTO2,2)","RUBTEX",1,31) ;
-	VALID _5pv0y2ugw() ;
+	VALID _74f0qawnr() ;
 	MESSAGE "Ingrese Rubro del Artнculo"+tex_efes ;
 	ERROR "RUBRO NO EXISTE" ;
 	COLOR ,RGB(255,255,255,,,,)
@@ -218,7 +218,7 @@ ENDIF
 	STYLE "BI" ;
 	PICTURE "@K" ;
 	WHEN LAST()#27 .AND. !EMPTY(M.ARTIC) ;
-	VALID _5pv0y2uh2() ;
+	VALID _74f0qawny() ;
 	MESSAGE "Denominaciуn Comercial del Producto" ;
 	COLOR ,RGB(255,255,255,0,128,0)
 @ 8.538,19.800 GET m.dolar ;
@@ -303,16 +303,16 @@ ENDIF
 *
 
 #REGION 2
-IF WVISIBLE("_5pv0y2uey")
-	ACTIVATE WINDOW _5pv0y2uey SAME
+IF WVISIBLE("_74f0qawj3")
+	ACTIVATE WINDOW _74f0qawj3 SAME
 ELSE
-	ACTIVATE WINDOW _5pv0y2uey NOSHOW
+	ACTIVATE WINDOW _74f0qawj3 NOSHOW
 ENDIF
 @ 0.385,1.667 GET m.OPCION ;
 	PICTURE "@*BHN " + ;
-		(LOCFILE("c:\windows\bmp\face03.ico","BMP|ICO|PCT|ICN","Where is face03?")) + ";" + ;
-		(LOCFILE("c:\windows\bmp\25.ico","BMP|ICO|PCT|ICN","Where is 25?")) + ";" + ;
-		(LOCFILE("c:\windows\bmp\puerta.ico","BMP|ICO|PCT|ICN","Where is puerta?")) ;
+		(LOCFILE("\windows\bmp\face03.ico","BMP|ICO|PCT|ICN","Where is face03?")) + ";" + ;
+		(LOCFILE("\windows\bmp\25.ico","BMP|ICO|PCT|ICN","Where is 25?")) + ";" + ;
+		(LOCFILE("\windows\bmp\puerta.ico","BMP|ICO|PCT|ICN","Where is puerta?")) ;
 	SIZE 2.923,9.000,1.000 ;
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
@@ -347,8 +347,8 @@ ENDIF
 IF NOT WVISIBLE("control2")
 	ACTIVATE WINDOW control2
 ENDIF
-IF NOT WVISIBLE("_5pv0y2uey")
-	ACTIVATE WINDOW _5pv0y2uey
+IF NOT WVISIBLE("_74f0qawj3")
+	ACTIVATE WINDOW _74f0qawj3
 ENDIF
 IF NOT WVISIBLE("mer")
 	ACTIVATE WINDOW mer
@@ -356,9 +356,9 @@ ENDIF
 
 
 READ CYCLE ;
-	SHOW _5pv0y2uh4()
+	SHOW _74f0qawu0()
 
-RELEASE WINDOW _5pv0y2uey
+RELEASE WINDOW _74f0qawj3
 RELEASE WINDOW control2
 RELEASE WINDOW mer
 
@@ -409,7 +409,7 @@ RETURN LAST()#27 .AND. ;
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _5PV0Y2UGN           m.articulo WHEN                    є
+*       є _74F0QAWMT           m.articulo WHEN                    є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -422,7 +422,7 @@ RETURN LAST()#27 .AND. ;
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _5pv0y2ugn     &&  m.articulo WHEN
+FUNCTION _74f0qawmt     &&  m.articulo WHEN
 #REGION 1
 M.PRIOBJ=_CUROBJ
 *SELE MER
@@ -436,7 +436,7 @@ RETU GRL_F2("M.ARTICULO","a Corregir",;
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _5PV0Y2UGR           m.articulo VALID                   є
+*       є _74F0QAWN9           m.articulo VALID                   є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -449,7 +449,7 @@ RETU GRL_F2("M.ARTICULO","a Corregir",;
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _5pv0y2ugr     &&  m.articulo VALID
+FUNCTION _74f0qawn9     &&  m.articulo VALID
 #REGION 1
 IF LAST()=27 .OR. EMPTY(M.ARTICULO)
    RETURN .T.
@@ -471,7 +471,7 @@ RETURN SGET("MER")
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _5PV0Y2UGW           m.RUBRO VALID                      є
+*       є _74F0QAWNR           m.RUBRO VALID                      є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -484,7 +484,7 @@ RETURN SGET("MER")
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _5pv0y2ugw     &&  m.RUBRO VALID
+FUNCTION _74f0qawnr     &&  m.RUBRO VALID
 #REGION 1
 IF EMPTY(M.RUBRO) .OR. LAST()=27
 RETURN .T.
@@ -494,7 +494,7 @@ RETURN XSEEK(M.RUBRO,"MIX","RUBCOD") .AND. CHKCAMBI(M.RUBRO,"MER") .AND. SGET("M
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _5PV0Y2UH2           m.merca VALID                      є
+*       є _74F0QAWNY           m.merca VALID                      є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -507,7 +507,7 @@ RETURN XSEEK(M.RUBRO,"MIX","RUBCOD") .AND. CHKCAMBI(M.RUBRO,"MER") .AND. SGET("M
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _5pv0y2uh2     &&  m.merca VALID
+FUNCTION _74f0qawny     &&  m.merca VALID
 #REGION 1
 IF LAST()=27 .OR. EMPTY(M.RUBRO)
 RETURN .T.
@@ -516,7 +516,7 @@ RETURN CHKCAMBI(M.MERCA,"MER")
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _5PV0Y2UH4           Read Level Show                    є
+*       є _74F0QAWU0           Read Level Show                    є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -528,7 +528,7 @@ RETURN CHKCAMBI(M.MERCA,"MER")
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _5pv0y2uh4     && Read Level Show
+FUNCTION _74f0qawu0     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *

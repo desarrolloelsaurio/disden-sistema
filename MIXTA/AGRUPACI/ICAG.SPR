@@ -1,12 +1,12 @@
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º 11/03/2020             ICAG.SPR                15:53:58 º
+*       º 25/02/2025             ICAG.SPR                12:16:11 º
 *       º                                                         º
 *       ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
 *       º                                                         º
 *       º GOYO REINER                                             º
 *       º                                                         º
-*       º Copyright (c) 2020 G. REINER                            º
+*       º Copyright (c) 2025 G. REINER                            º
 *       º 1º DE MAYO 2134                                         º
 *       º ROSARIO, SF  2000                                       º
 *       º ARGENTINA                                         º
@@ -466,19 +466,19 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		COLOR RGB(255,255,255,,,,)
 	@ 10.154,72.000 GET M.SELEC ;
 		PICTURE "@*BVN " + ;
-			(LOCFILE("c:\windows\bmp\face03.ico","BMP|ICO|PCT|ICN","Where is face03?")) + ";" + ;
-			(LOCFILE("c:\windows\bmp\25.ico","BMP|ICO|PCT|ICN","Where is 25?")) ;
+			(LOCFILE("\windows\bmp\face03.ico","BMP|ICO|PCT|ICN","Where is face03?")) + ";" + ;
+			(LOCFILE("\windows\bmp\25.ico","BMP|ICO|PCT|ICN","Where is 25?")) ;
 		SIZE 2.923,7.600,0.308 ;
 		DEFAULT 1 ;
 		FONT "MS Sans Serif", 8 ;
-		VALID _5pv0y2t9b()
+		VALID _74f0qaqqm()
 	
 	IF NOT WVISIBLE("icag")
 		ACTIVATE WINDOW icag
 	ENDIF
 	
 	READ CYCLE ;
-		SHOW _5pv0y2t9v()
+		SHOW _74f0qaqtt()
 	
 	RELEASE WINDOW icag
 	
@@ -795,7 +795,7 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		PICTURE "@*VN \!\<SI;\?\<NO" ;
 		SIZE 1,6,0 ;
 		DEFAULT 1 ;
-		VALID _5pv0y2tb9()
+		VALID _74f0qar07()
 	@ 1,7 SAY "1" ;
 		SIZE 1,1, 0
 	@ 2,7 SAY "2" ;
@@ -842,7 +842,7 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	ENDIF
 	
 	READ CYCLE ;
-		SHOW _5pv0y2tc0()
+		SHOW _74f0qar2o()
 	
 	RELEASE WINDOW icag
 	
@@ -860,7 +860,7 @@ ENDCASE
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _5PV0Y2T9B           M.SELEC VALID                      º
+*       º _74F0QAQQM           M.SELEC VALID                      º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -873,7 +873,7 @@ ENDCASE
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _5pv0y2t9b     &&  M.SELEC VALID
+FUNCTION _74f0qaqqm     &&  M.SELEC VALID
 #REGION 1
 if M.SELEC=1
    M.CAG_SALIDA=""
@@ -892,7 +892,7 @@ return .t.
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _5PV0Y2T9V           Read Level Show                    º
+*       º _74F0QAQTT           Read Level Show                    º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -904,7 +904,7 @@ return .t.
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _5pv0y2t9v     && Read Level Show
+FUNCTION _74f0qaqtt     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *
@@ -1060,7 +1060,7 @@ ENDIF
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _5PV0Y2TB9           M.SELEC VALID                      º
+*       º _74F0QAR07           M.SELEC VALID                      º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -1073,7 +1073,7 @@ ENDIF
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _5pv0y2tb9     &&  M.SELEC VALID
+FUNCTION _74f0qar07     &&  M.SELEC VALID
 #REGION 1
 if M.SELEC=1
    M.CAG_SALIDA=""
@@ -1092,7 +1092,7 @@ return .t.
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _5PV0Y2TC0           Read Level Show                    º
+*       º _74F0QAR2O           Read Level Show                    º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -1104,7 +1104,7 @@ return .t.
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _5pv0y2tc0     && Read Level Show
+FUNCTION _74f0qar2o     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *

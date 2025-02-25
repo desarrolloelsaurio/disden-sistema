@@ -1,12 +1,12 @@
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º 11/03/2020             CALC1.SPR               15:54:04 º
+*       º 25/02/2025             CALC1.SPR               12:16:39 º
 *       º                                                         º
 *       ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
 *       º                                                         º
 *       º GOYO REINER                                             º
 *       º                                                         º
-*       º Copyright (c) 2020 G. REINER                            º
+*       º Copyright (c) 2025 G. REINER                            º
 *       º 1º DE MAYO 2134                                         º
 *       º ROSARIO, SF  2000                                       º
 *       º ARGENTINA                                         º
@@ -208,14 +208,14 @@ ENDIF
 	SIZE 2.923,7.600,0.308 ;
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
-	VALID _5pv0y2y3a()
+	VALID _74f0qbclx()
 
 IF NOT WVISIBLE("win")
 	ACTIVATE WINDOW win
 ENDIF
 
 READ CYCLE ;
-	SHOW _5pv0y2y3g()
+	SHOW _74f0qbcn0()
 
 RELEASE WINDOW win
 
@@ -233,7 +233,7 @@ ENDIF
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _5PV0Y2Y3A           m.optar VALID                      º
+*       º _74F0QBCLX           m.optar VALID                      º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -246,7 +246,7 @@ ENDIF
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _5pv0y2y3a     &&  m.optar VALID
+FUNCTION _74f0qbclx     &&  m.optar VALID
 #REGION 1
 DO CASE
 CASE M.OPTAR#4
@@ -325,7 +325,7 @@ RETURN .T.
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _5PV0Y2Y3G           Read Level Show                    º
+*       º _74F0QBCN0           Read Level Show                    º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -337,7 +337,7 @@ RETURN .T.
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _5pv0y2y3g     && Read Level Show
+FUNCTION _74f0qbcn0     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *

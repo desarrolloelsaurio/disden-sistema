@@ -1,12 +1,12 @@
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º 11/03/2020           MER_TITU.SPR              15:54:01 º
+*       º 25/02/2025           MER_TITU.SPR              12:16:23 º
 *       º                                                         º
 *       ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
 *       º                                                         º
 *       º GOYO REINER                                             º
 *       º                                                         º
-*       º Copyright (c) 2020 G. REINER                            º
+*       º Copyright (c) 2025 G. REINER                            º
 *       º 1º DE MAYO 2134                                         º
 *       º ROSARIO, SF  2000                                       º
 *       º ARGENTINA                                         º
@@ -114,8 +114,8 @@ IF NOT WEXIST("xmer") ;
 		COLOR RGB(,,,0,128,0)
 ENDIF
 
-IF NOT WEXIST("_5pv0y2vdi")
-	DEFINE WINDOW _5pv0y2vdi ;
+IF NOT WEXIST("_74f0qazza")
+	DEFINE WINDOW _74f0qazza ;
 		AT 9.000, 37.000 ;
 		SIZE 4.000,32.500 ;
 		TITLE " SU OPCION" ;
@@ -191,7 +191,7 @@ ENDIF
 2,22,;
 40,"MER",;
 "MERCA","ARTICULO","MERCA",4,22) ;
-	VALID _5pv0y2vet() ;
+	VALID _74f0qb03s() ;
 	MESSAGE "ARTICULO A CORREGOR"+TEX_EFES ;
 	ERROR "ARTICULO INEXISTENTE" ;
 	COLOR ,RGB(255,255,255,0,128,0)
@@ -254,16 +254,16 @@ ENDIF
 *
 
 #REGION 3
-IF WVISIBLE("_5pv0y2vdi")
-	ACTIVATE WINDOW _5pv0y2vdi SAME
+IF WVISIBLE("_74f0qazza")
+	ACTIVATE WINDOW _74f0qazza SAME
 ELSE
-	ACTIVATE WINDOW _5pv0y2vdi NOSHOW
+	ACTIVATE WINDOW _74f0qazza NOSHOW
 ENDIF
 @ 0.385,1.667 GET m.OPCION ;
 	PICTURE "@*BHN " + ;
-		(LOCFILE("c:\windows\bmp\face03.ico","BMP|ICO|PCT|ICN","Where is face03?")) + ";" + ;
-		(LOCFILE("c:\windows\bmp\25.ico","BMP|ICO|PCT|ICN","Where is 25?")) + ";" + ;
-		(LOCFILE("c:\windows\bmp\puerta.ico","BMP|ICO|PCT|ICN","Where is puerta?")) ;
+		(LOCFILE("\windows\bmp\face03.ico","BMP|ICO|PCT|ICN","Where is face03?")) + ";" + ;
+		(LOCFILE("\windows\bmp\25.ico","BMP|ICO|PCT|ICN","Where is 25?")) + ";" + ;
+		(LOCFILE("\windows\bmp\puerta.ico","BMP|ICO|PCT|ICN","Where is puerta?")) ;
 	SIZE 2.923,9.000,1.000 ;
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
@@ -298,8 +298,8 @@ ENDIF
 IF NOT WVISIBLE("control2")
 	ACTIVATE WINDOW control2
 ENDIF
-IF NOT WVISIBLE("_5pv0y2vdi")
-	ACTIVATE WINDOW _5pv0y2vdi
+IF NOT WVISIBLE("_74f0qazza")
+	ACTIVATE WINDOW _74f0qazza
 ENDIF
 IF NOT WVISIBLE("xmer")
 	ACTIVATE WINDOW xmer
@@ -310,9 +310,9 @@ ENDIF
 
 
 READ CYCLE ;
-	SHOW _5pv0y2vff()
+	SHOW _74f0qb05e()
 
-RELEASE WINDOW _5pv0y2vdi
+RELEASE WINDOW _74f0qazza
 RELEASE WINDOW control2
 RELEASE WINDOW mer
 RELEASE WINDOW xmer
@@ -359,7 +359,7 @@ CAMBIO
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _5PV0Y2VET           m.articulo VALID                   º
+*       º _74F0QB03S           m.articulo VALID                   º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -372,7 +372,7 @@ CAMBIO
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _5pv0y2vet     &&  m.articulo VALID
+FUNCTION _74f0qb03s     &&  m.articulo VALID
 #REGION 1
 if last()=27 .or. empty(m.articulo)
 return .t.
@@ -387,7 +387,7 @@ return XSEEK(M.ARTICULO,"MER","ARTICULO") .AND. YAGRL("MER","ARTICULO")
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _5PV0Y2VFF           Read Level Show                    º
+*       º _74F0QB05E           Read Level Show                    º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -399,7 +399,7 @@ return XSEEK(M.ARTICULO,"MER","ARTICULO") .AND. YAGRL("MER","ARTICULO")
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _5pv0y2vff     && Read Level Show
+FUNCTION _74f0qb05e     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *
