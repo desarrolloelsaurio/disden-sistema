@@ -1,0 +1,62 @@
+Program c:\disden\disden~1\control\ctrl2_va.prg has the following errors:
+    Screen Set ORDMER - Undefined
+
+Program c:\disden\disden~1\control\ctrl2_ca.prg has the following errors:
+    Unknown YAMI1 - Undefined
+
+Program c:\disden\disden~1\control\ctrl2_el.prg has the following errors:
+    Unknown YAMI1 - Undefined
+
+Program c:\disden\disden~1\control\ctrl2_pa.prg has the following errors:
+    Proc./Func. LDTT - Undefined
+    Unknown LPAGX0 - Undefined
+    Proc./Func. LCLIJ - Undefined
+    Program LRUB0 - Undefined
+    Proc./Func. LTMA - Undefined
+
+Program c:\disden\disden~1\control\ctrl2_li.prg has the following errors:
+    Proc./Func. LDTT - Undefined
+    Unknown LPAGX0 - Undefined
+    Proc./Func. LCLIJ - Undefined
+    Program LRUB0 - Undefined
+    Proc./Func. LTMA - Undefined
+
+Program c:\disden\disden~1\control\ctrl2_in.prg has the following errors:
+    Proc./Func. XPRC - Undefined
+
+Program c:\disden\disden~1\personas\proveedo\pro.prg has the following errors:
+    Proc./Func. OPREC - Undefined
+    Screen Set INGPRS1 - Undefined
+
+Program c:\disden\disden~1\mixta\ciudades\ciu.prg has the following errors:
+    Unknown VGRL - Undefined
+
+Program c:\disden\disden~1\personas\agenda\age.prg has the following errors:
+    Screen Set IPER_AGE - Undefined
+
+Program c:\disden\disden~1\ventas\bochi\iniprin.prg has the following errors:
+    Proc./Func. ABOPRIN - Undefined
+
+Program c:\disden\disden~1\ventas\bochi\mercader.prg has the following errors:
+    Screen Set IMER_CAG - Undefined
+    Screen Set ACPOPU - Undefined
+
+Program c:\disden\disden~1\mercader\tapiplas\lmerpt.prg has the following errors:
+    Unknown REOPMER - Undefined
+
+Program c:\disden\disden~1\personas\ifacd.prg has the following errors:
+    Unknown OPPAG - Undefined
+    Unknown OPCCP - Undefined
+    Unknown OPFAR - Undefined
+    Unknown AJFEC - Undefined
+    Unknown AJMON - Undefined
+
+Program c:\disden\disden~1\query\qw_col.prg has the following errors:
+    Unknown QWCOL - Undefined
+
+Program c:\disden\disden~1\query\qw_lin.prg has the following errors:
+    Unknown ELILIN - Undefined
+
+Program c:\disden\disden~1\query\qw_mat.prg has the following errors:
+    Unknown QWMAT - Undefined
+

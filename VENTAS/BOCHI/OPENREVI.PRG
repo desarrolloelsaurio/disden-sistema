@@ -1,0 +1,5 @@
+clos databases
+use f:\sistemas\ventas\ventasa\personas alias per in 0 shar
+use c:\temp\ventasa\ccclih in 0
+use c:\temp\ventasa\cccli in 0
+do form screvive
