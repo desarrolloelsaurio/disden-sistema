@@ -1,12 +1,12 @@
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є 12/11/2024            ELIVEN.SPR               13:31:46 є
+*       є 15/07/2025            ELIVEN.SPR               10:01:31 є
 *       є                                                         є
 *       ЗДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД¶
 *       є                                                         є
 *       є GOYO REINER                                             є
 *       є                                                         є
-*       є Copyright (c) 2024 G. REINER                            є
+*       є Copyright (c) 2025 G. REINER                            є
 *       є 1є DE MAYO 2134                                         є
 *       є ROSARIO, SF  2000                                       є
 *       є ARGENTINA                                         є
@@ -39,8 +39,8 @@ SET READBORDER ON
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
 
-IF NOT WEXIST("_71h0szxzk")
-	DEFINE WINDOW _71h0szxzk ;
+IF NOT WEXIST("_78b0lhk74")
+	DEFINE WINDOW _78b0lhk74 ;
 		AT 32.643, 8.800 ;
 		SIZE 4.769,137.000 ;
 		FONT "MS Sans Serif", 8 ;
@@ -48,7 +48,7 @@ IF NOT WEXIST("_71h0szxzk")
 		NOCLOSE ;
 		NOMINIMIZE ;
 		PANEL
-	MOVE WINDOW _71h0szxzk CENTER
+	MOVE WINDOW _78b0lhk74 CENTER
 ENDIF
 
 
@@ -60,18 +60,18 @@ ENDIF
 *
 
 #REGION 1
-IF WVISIBLE("_71h0szxzk")
-	ACTIVATE WINDOW _71h0szxzk SAME
+IF WVISIBLE("_78b0lhk74")
+	ACTIVATE WINDOW _78b0lhk74 SAME
 ELSE
-	ACTIVATE WINDOW _71h0szxzk NOSHOW
+	ACTIVATE WINDOW _78b0lhk74 NOSHOW
 ENDIF
 @ 1.462,32.400 GET m.codven ;
 	SIZE 1.000,2.000 ;
 	DEFAULT " " ;
 	FONT "MS Sans Serif", 12 ;
 	PICTURE "@K!" ;
-	WHEN _71h0szy1g() ;
-	VALID _71h0szy1i() ;
+	WHEN _78b0lhk94() ;
+	VALID _78b0lhk97() ;
 	ERROR 'Cуdigo de vendedor invбlido, reingreselo'
 @ 1.462,39.600 SAY m.txtvende ;
 	SIZE 1.000,38.500 ;
@@ -84,20 +84,20 @@ ENDIF
 	SIZE 2.923,11.200,1.200 ;
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
-	WHEN _71h0szy1k() ;
-	VALID _71h0szy1m()
+	WHEN _78b0lhka8() ;
+	VALID _78b0lhkab()
 @ 1.231,3.200 SAY "VENDEDOR :" ;
 	FONT "MS Sans Serif", 14 ;
 	STYLE "T"
 
-IF NOT WVISIBLE("_71h0szxzk")
-	ACTIVATE WINDOW _71h0szxzk
+IF NOT WVISIBLE("_78b0lhk74")
+	ACTIVATE WINDOW _78b0lhk74
 ENDIF
 
 READ CYCLE ;
-	SHOW _71h0szy22()
+	SHOW _78b0lhkag()
 
-RELEASE WINDOW _71h0szxzk
+RELEASE WINDOW _78b0lhk74
 
 #REGION 0
 
@@ -126,7 +126,7 @@ endif
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _71H0SZY1G           m.codven WHEN                      є
+*       є _78B0LHK94           m.codven WHEN                      є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -139,14 +139,14 @@ endif
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _71h0szy1g     &&  m.codven WHEN
+FUNCTION _78b0lhk94     &&  m.codven WHEN
 #REGION 1
 m.txtvende=space(30)
 return .t.
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _71H0SZY1I           m.codven VALID                     є
+*       є _78B0LHK97           m.codven VALID                     є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -159,7 +159,7 @@ return .t.
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _71h0szy1i     &&  m.codven VALID
+FUNCTION _78b0lhk97     &&  m.codven VALID
 #REGION 1
 if seek(m.codven,"VEN")
    m.txtvende = ven.nombre
@@ -169,7 +169,7 @@ return .f.
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _71H0SZY1K           m.elok WHEN                        є
+*       є _78B0LHKA8           m.elok WHEN                        є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -182,13 +182,13 @@ return .f.
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _71h0szy1k     &&  m.elok WHEN
+FUNCTION _78b0lhka8     &&  m.elok WHEN
 #REGION 1
 show gets
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _71H0SZY1M           m.elok VALID                       є
+*       є _78B0LHKAB           m.elok VALID                       є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -201,7 +201,7 @@ show gets
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _71h0szy1m     &&  m.elok VALID
+FUNCTION _78b0lhkab     &&  m.elok VALID
 #REGION 1
 if m.elok=1
 	return .t.
@@ -210,7 +210,7 @@ return .f.
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _71H0SZY22           Read Level Show                    є
+*       є _78B0LHKAG           Read Level Show                    є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -222,15 +222,15 @@ return .f.
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _71h0szy22     && Read Level Show
+FUNCTION _78b0lhkag     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *
 * Show Code from screen: ELIVEN
 *
 #REGION 1
-IF SYS(2016) = "_71H0SZXZK" OR SYS(2016) = "*"
-	ACTIVATE WINDOW _71h0szxzk SAME
+IF SYS(2016) = "_78B0LHK74" OR SYS(2016) = "*"
+	ACTIVATE WINDOW _78b0lhk74 SAME
 	@ 1.462,39.600 SAY m.txtvende ;
 		SIZE 1.000,38.500, 0.000 ;
 		FONT "MS Sans Serif", 12 ;

@@ -1,12 +1,12 @@
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є 12/11/2024             PRETR.SPR               13:47:01 є
+*       є 15/07/2025             PRETR.SPR               10:01:29 є
 *       є                                                         є
 *       ЗДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД¶
 *       є                                                         є
 *       є GOYO REINER                                             є
 *       є                                                         є
-*       є Copyright (c) 2024 G. REINER                            є
+*       є Copyright (c) 2025 G. REINER                            є
 *       є 1є DE MAYO 2134                                         є
 *       є ROSARIO, SF  2000                                       є
 *       є ARGENTINA                                         є
@@ -144,12 +144,12 @@ ENDIF
 	STYLE "B" ;
 	PICTURE "@K!" ;
 	WHEN GRL_F2("M.CODCLI","a Facturar",10,20,30,"PER","CLIENTE","codcli","clientes",10,20) .AND. SGET("FAC") ;
-	VALID _71h0tjk8u() ;
+	VALID _78b0lhis4() ;
 	MESSAGE "Seleccione cliente a Facturar"+TEX_EFES ;
 	ERROR "CLIENTE INEXISTENTE" ;
 	COLOR ,RGB(255,255,255,0,128,0)
-@ 0.875,54.000 SAY IIF(EMPTY(M.CODCLI),"",IIF(!EMPTY(AT("MA",PER.CAG)),"MAYOR.","MINOR")) ;
-	SIZE 0.950,13.000 ;
+@ 2.125,55.857 SAY IIF(EMPTY(M.CODCLI),"",IIF(!EMPTY(AT("MA",PER.CAG)),"MAYOR.","MINOR")) ;
+	SIZE 0.950,31.500 ;
 	FONT "Arial", 12 ;
 	STYLE "B" ;
 	PICTURE "!!!!!" ;
@@ -177,7 +177,7 @@ ENDIF
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
 	WHEN LAST()#27 ;
-	VALID _71h0tjk9a()
+	VALID _78b0lhito()
 @ 8.250,31.000 GET m.eldto ;
 	SIZE 0.950,20.500 ;
 	DEFAULT " " ;
@@ -185,7 +185,7 @@ ENDIF
 	STYLE "B" ;
 	PICTURE "99,999.99" ;
 	WHEN !empty(m.monto) ;
-	VALID _71h0tjk9m() ;
+	VALID _78b0lhitv() ;
 	MESSAGE "Ingrese Porcentaje de Bonificaciуn" ;
 	ERROR "VALORES INACEPTABLES" ;
 	COLOR ,RGB(255,255,255,0,128,0)
@@ -195,7 +195,7 @@ ENDIF
 	FONT "Arial", 12 ;
 	STYLE "B" ;
 	PICTURE "99999999.99" ;
-	VALID _71h0tjk9t() ;
+	VALID _78b0lhiu5() ;
 	COLOR ,RGB(255,255,255,0,128,0)
 @ 14.750,31.429 SAY m.MONTONET ;
 	SIZE 0.950,22.750 ;
@@ -211,14 +211,14 @@ ENDIF
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
 	WHEN last()#27 ;
-	VALID _71h0tjkam()
+	VALID _78b0lhiui()
 
 IF NOT WVISIBLE("fac")
 	ACTIVATE WINDOW fac
 ENDIF
 
 READ CYCLE ;
-	SHOW _71h0tjkav()
+	SHOW _78b0lhium()
 
 RELEASE WINDOW fac
 
@@ -491,7 +491,7 @@ RETURN .T.
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _71H0TJK8U           m.codcli VALID                     є
+*       є _78B0LHIS4           m.codcli VALID                     є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -504,7 +504,7 @@ RETURN .T.
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _71h0tjk8u     &&  m.codcli VALID
+FUNCTION _78b0lhis4     &&  m.codcli VALID
 #REGION 1
 IF LAST()=27 .OR. ;
      EMPTY(M.CODCLI)
@@ -527,7 +527,7 @@ RETURN .F.
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _71H0TJK9A           m.imar VALID                       є
+*       є _78B0LHITO           m.imar VALID                       є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -540,7 +540,7 @@ RETURN .F.
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _71h0tjk9a     &&  m.imar VALID
+FUNCTION _78b0lhito     &&  m.imar VALID
 #REGION 1
 if m.imar=1
 IF EMPTY(M.CODCLI)
@@ -655,7 +655,7 @@ return .t.
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _71H0TJK9M           m.eldto VALID                      є
+*       є _78B0LHITV           m.eldto VALID                      є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -668,7 +668,7 @@ return .t.
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _71h0tjk9m     &&  m.eldto VALID
+FUNCTION _78b0lhitv     &&  m.eldto VALID
 #REGION 1
 IF M.ELDTO<0 .OR. M.ELDTO>100
    RETURN .F.
@@ -683,7 +683,7 @@ RETURN SGET("FAC")
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _71H0TJK9T           m.DESCUENTO VALID                  є
+*       є _78B0LHIU5           m.DESCUENTO VALID                  є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -696,7 +696,7 @@ RETURN SGET("FAC")
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _71h0tjk9t     &&  m.DESCUENTO VALID
+FUNCTION _78b0lhiu5     &&  m.DESCUENTO VALID
 #REGION 1
 if empty(ELDTO)
    ELDTO=100*m.descuento/m.montonet
@@ -708,7 +708,7 @@ RETURN SGET("FAC")
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _71H0TJKAM           m.OKFAC VALID                      є
+*       є _78B0LHIUI           m.OKFAC VALID                      є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -721,7 +721,7 @@ RETURN SGET("FAC")
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _71h0tjkam     &&  m.OKFAC VALID
+FUNCTION _78b0lhiui     &&  m.OKFAC VALID
 #REGION 1
 if m.OKFAC=1
    STORE "" TO M.ESA,M.NUMERO,M.ELNUM
@@ -752,7 +752,7 @@ store alltr(m.txtvende)+left(time(),rat(":",time())-1) to usador
    STORE 0 TO M.TOTCOMISIO,M.TOTCOMISIP
    SELE FAC1
    SCAN
-		IF !EMPTY(ARTICULO)
+		IF !EMPTY(ARTICULO) .and. cantidad>0
 			SCAT MEMV memo
 ***			IF PER.LOCALIDAD="2000" .AND. M.PROVEEDOR="R000000358"
 ***				M.TOTCOMISIP = M.TOTCOMISIP + M.TOTAL / 100 * M.PORCOMISIO
@@ -836,7 +836,7 @@ RETU .T.
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _71H0TJKAV           Read Level Show                    є
+*       є _78B0LHIUM           Read Level Show                    є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -848,7 +848,7 @@ RETU .T.
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _71h0tjkav     && Read Level Show
+FUNCTION _78b0lhium     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *
@@ -857,8 +857,8 @@ STORE WOUTPUT() TO currwind
 #REGION 1
 IF SYS(2016) = "FAC" OR SYS(2016) = "*"
 	ACTIVATE WINDOW fac SAME
-	@ 0.875,54.000 SAY IIF(EMPTY(M.CODCLI),"",IIF(!EMPTY(AT("MA",PER.CAG)),"MAYOR.","MINOR")) ;
-		SIZE 0.950,13.000, 0.000 ;
+	@ 2.125,55.857 SAY IIF(EMPTY(M.CODCLI),"",IIF(!EMPTY(AT("MA",PER.CAG)),"MAYOR.","MINOR")) ;
+		SIZE 0.950,31.500, 0.000 ;
 		FONT "Arial", 12 ;
 		STYLE "B" ;
 		PICTURE "!!!!!" ;
