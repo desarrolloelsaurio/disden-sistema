@@ -1,12 +1,12 @@
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º 25/02/2025           ELIMERCA.SPR              12:16:57 º
+*       º 02/10/2026           ELIMERCA.SPR              11:35:37 º
 *       º                                                         º
 *       ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
 *       º                                                         º
 *       º GOYO REINER                                             º
 *       º                                                         º
-*       º Copyright (c) 2025 G. REINER                            º
+*       º Copyright (c) 2026 G. REINER                            º
 *       º 1º DE MAYO 2134                                         º
 *       º ROSARIO, SF  2000                                       º
 *       º ARGENTINA                                         º
@@ -39,8 +39,8 @@ SET READBORDER ON
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
 
-IF NOT WEXIST("_74f0qbqoj")
-	DEFINE WINDOW _74f0qbqoj ;
+IF NOT WEXIST("_7kp0oukve")
+	DEFINE WINDOW _7kp0oukve ;
 		AT 9.000, 18.000 ;
 		SIZE 9.286,106.000 ;
 		TITLE "ARTICULO" ;
@@ -54,7 +54,7 @@ ENDIF
 
 
 #REGION 1
-DEFINE POPUP _74f0qbqri ;
+DEFINE POPUP _7kp0oukvn ;
 	PROMPT FIELD merca +" .... "+ articulo ;
 	SCROLL
 
@@ -66,28 +66,28 @@ DEFINE POPUP _74f0qbqri ;
 *
 
 #REGION 1
-IF WVISIBLE("_74f0qbqoj")
-	ACTIVATE WINDOW _74f0qbqoj SAME
+IF WVISIBLE("_7kp0oukve")
+	ACTIVATE WINDOW _7kp0oukve SAME
 ELSE
-	ACTIVATE WINDOW _74f0qbqoj NOSHOW
+	ACTIVATE WINDOW _7kp0oukve NOSHOW
 ENDIF
 @ 0.071,0.200 GET m.eleli ;
  	PICTURE "@&T" ;
-	POPUP _74f0qbqri ;
+	POPUP _7kp0oukvn ;
 	SIZE 7.875,65.750 ;
 	DEFAULT " " ;
 	FONT "Courier New", 10 ;
 	STYLE "B" ;
 	COLOR RGB(255,255,0,0,128,128),RGB(255,255,0,0,128,128)
 
-IF NOT WVISIBLE("_74f0qbqoj")
-	ACTIVATE WINDOW _74f0qbqoj
+IF NOT WVISIBLE("_7kp0oukve")
+	ACTIVATE WINDOW _7kp0oukve
 ENDIF
 
 READ CYCLE
 
-RELEASE WINDOW _74f0qbqoj
-RELEASE POPUPS _74f0qbqri
+RELEASE WINDOW _7kp0oukve
+RELEASE POPUPS _7kp0oukvn
 
 #REGION 0
 

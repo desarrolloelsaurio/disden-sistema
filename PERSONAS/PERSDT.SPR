@@ -1,12 +1,12 @@
 *       *********************************************************
 *       *                                                         
-*       * 09/05/2024            PERSDT.SPR               16:02:07 
+*       * 08/07/2026            PERSDT.SPR               13:18:21 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
 *       * Author's Name                                           
 *       *                                                         
-*       * Copyright (c) 2024 Company Name                         
+*       * Copyright (c) 2026 Company Name                         
 *       * Address                                                 
 *       * City,     Zip                                           
 *       *                                                         
@@ -118,7 +118,7 @@ DEFINE WINDOW per ;
 	FILL FILE LOCFILE("\BMP\FONDO01.BMP","BMP|ICO|PCT|ICN", ;
 		"Where is fondo01?")
 
-DEFINE WINDOW _6wa0yda6u ;
+DEFINE WINDOW _7ib0sisdf ;
 	AT 22.000, 53.000 ;
 	SIZE 4.071,35.600 ;
 	TITLE " " ;
@@ -224,8 +224,8 @@ ENDIF
 	FONT "Arial", 10 ;
 	STYLE "BT" ;
 	PICTURE REPL('!',CONTENIDO[2]+1) ;
-	WHEN _6wa0ydab0() ;
-	VALID _6wa0ydab2() ;
+	WHEN _7ib0sish7() ;
+	VALID _7ib0sish8() ;
 	MESSAGE "Ingrese C¢digo de "+tipo_per+" - [ESC] para Men£"+TEX_EFES+" - [F4] Ult" ;
 	ERROR "NO SE PUEDE TRABAJAR SOBRE UN REGISTRO BORRADO" ;
 	COLOR ,RGB(0,0,128,,,,)
@@ -235,8 +235,8 @@ ENDIF
 	FONT "Arial", 10 ;
 	STYLE "BT" ;
 	PICTURE "@!" ;
-	WHEN _6wa0ydab7() ;
-	VALID _6wa0ydaba() ;
+	WHEN _7ib0sisha() ;
+	VALID _7ib0sishb() ;
 	MESSAGE "Ingrese Nombre o Raz¢n Social de "+tipo_per+TEX_EFES ;
 	ERROR "NO SE PUEDE TRABAJAR SOBRE UN REGISTRO BORRADO" ;
 	COLOR ,RGB(0,0,128,,,,)
@@ -392,10 +392,10 @@ ENDIF
 *
 
 #REGION 2
-IF WVISIBLE("_6wa0yda6u")
-	ACTIVATE WINDOW _6wa0yda6u SAME
+IF WVISIBLE("_7ib0sisdf")
+	ACTIVATE WINDOW _7ib0sisdf SAME
 ELSE
-	ACTIVATE WINDOW _6wa0yda6u NOSHOW
+	ACTIVATE WINDOW _7ib0sisdf NOSHOW
 ENDIF
 @ 0.500,1.400 GET m.OPCION ;
 	PICTURE "@*BHN " + ;
@@ -436,8 +436,8 @@ ENDIF
 IF NOT WVISIBLE("control2")
 	ACTIVATE WINDOW control2
 ENDIF
-IF NOT WVISIBLE("_6wa0yda6u")
-	ACTIVATE WINDOW _6wa0yda6u
+IF NOT WVISIBLE("_7ib0sisdf")
+	ACTIVATE WINDOW _7ib0sisdf
 ENDIF
 IF NOT WVISIBLE("per")
 	ACTIVATE WINDOW per
@@ -445,9 +445,9 @@ ENDIF
 
 
 READ CYCLE ;
-	SHOW _6wa0ydacb()
+	SHOW _7ib0sishg()
 
-RELEASE WINDOW _6wa0yda6u
+RELEASE WINDOW _7ib0sisdf
 RELEASE WINDOW control2
 RELEASE WINDOW per
 
@@ -518,7 +518,7 @@ RETURN !EMPTY(M.CLIENTE) .AND. ;
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YDAB0           m.codcli WHEN                      
+*       * _7IB0SISH7           m.codcli WHEN                      
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -531,7 +531,7 @@ RETURN !EMPTY(M.CLIENTE) .AND. ;
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0ydab0     &&  m.codcli WHEN
+FUNCTION _7ib0sish7     &&  m.codcli WHEN
 #REGION 1
 M.PRIOBJ=_CUROBJ
 =OFF_F2()
@@ -545,7 +545,7 @@ RETURN EMPTY(M.CLIENTE)
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YDAB2           m.codcli VALID                     
+*       * _7IB0SISH8           m.codcli VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -558,7 +558,7 @@ RETURN EMPTY(M.CLIENTE)
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0ydab2     &&  m.codcli VALID
+FUNCTION _7ib0sish8     &&  m.codcli VALID
 #REGION 1
 IF LAST()=27
    RETURN .T.
@@ -588,7 +588,7 @@ RETURN .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YDAB7           m.CLIENTE WHEN                     
+*       * _7IB0SISHA           m.CLIENTE WHEN                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -601,7 +601,7 @@ RETURN .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0ydab7     &&  m.CLIENTE WHEN
+FUNCTION _7ib0sisha     &&  m.CLIENTE WHEN
 #REGION 1
 ON KEY LABEL F2 M.CLIENTE=QUEPOPUP("a Corregir",2,12)
 ON KEY LABEL F3 M.CLIENTE=SEEKTECX(30,'PER','CLIENTE','CLIENTE',(CONTENIDO[4]))
@@ -609,7 +609,7 @@ RETURN LAST()#27 .AND. !NOCOD(M.CODCLI) .AND. ESPROPIO
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YDABA           m.CLIENTE VALID                    
+*       * _7IB0SISHB           m.CLIENTE VALID                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -622,7 +622,7 @@ RETURN LAST()#27 .AND. !NOCOD(M.CODCLI) .AND. ESPROPIO
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0ydaba     &&  m.CLIENTE VALID
+FUNCTION _7ib0sishb     &&  m.CLIENTE VALID
 #REGION 1
 IF LAST()=27
    RETURN .T.
@@ -648,7 +648,7 @@ RETURN .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YDACB           Read Level Show                    
+*       * _7IB0SISHG           Read Level Show                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -660,7 +660,7 @@ RETURN .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0ydacb     && Read Level Show
+FUNCTION _7ib0sishg     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *

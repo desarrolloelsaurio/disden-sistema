@@ -1,12 +1,12 @@
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º 25/02/2025            ACPORC.SPR               12:16:17 º
+*       º 02/10/2026            ACPORC.SPR               11:35:24 º
 *       º                                                         º
 *       ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
 *       º                                                         º
 *       º GOYO REINER                                             º
 *       º                                                         º
-*       º Copyright (c) 2025 G. REINER                            º
+*       º Copyright (c) 2026 G. REINER                            º
 *       º 1º DE MAYO 2134                                         º
 *       º ROSARIO, SF  2000                                       º
 *       º ARGENTINA                                         º
@@ -42,8 +42,8 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 	*       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 	*
 	
-	IF NOT WEXIST("_74f0qavd4")
-		DEFINE WINDOW _74f0qavd4 ;
+	IF NOT WEXIST("_7kp0ouavs")
+		DEFINE WINDOW _7kp0ouavs ;
 			AT  0.000, 0.000  ;
 			SIZE 5.304,46.111 ;
 			FONT "Arial", 14 ;
@@ -54,7 +54,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 			NOMINIMIZE ;
 			DOUBLE ;
 			COLOR RGB(,,,0,128,0)
-		MOVE WINDOW _74f0qavd4 CENTER
+		MOVE WINDOW _7kp0ouavs CENTER
 	ENDIF
 	
 	
@@ -83,10 +83,10 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 	*
 	
 	#REGION 1
-	IF WVISIBLE("_74f0qavd4")
-		ACTIVATE WINDOW _74f0qavd4 SAME
+	IF WVISIBLE("_7kp0ouavs")
+		ACTIVATE WINDOW _7kp0ouavs SAME
 	ELSE
-		ACTIVATE WINDOW _74f0qavd4 NOSHOW
+		ACTIVATE WINDOW _7kp0ouavs NOSHOW
 	ENDIF
 	@ 1.043,1.000 SAY "Porcentaje sobre lista mayorista" ;
 		FONT "Arial", 14 ;
@@ -122,14 +122,14 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		PICTURE "99.99" ;
 		COLOR ,RGB(255,255,255,,,,)
 	
-	IF NOT WVISIBLE("_74f0qavd4")
-		ACTIVATE WINDOW _74f0qavd4
+	IF NOT WVISIBLE("_7kp0ouavs")
+		ACTIVATE WINDOW _7kp0ouavs
 	ENDIF
 	
 	READ CYCLE ;
-		VALID _74f0qavlt()
+		VALID _7kp0ouaw5()
 	
-	RELEASE WINDOW _74f0qavd4
+	RELEASE WINDOW _7kp0ouavs
 	
 	#REGION 0
 	
@@ -165,8 +165,8 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	*       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 	*
 	
-	IF NOT WEXIST("_74f0qavnn")
-		DEFINE WINDOW _74f0qavnn ;
+	IF NOT WEXIST("_7kp0ouaw8")
+		DEFINE WINDOW _7kp0ouaw8 ;
 			FROM INT((SROW()-7)/2),INT((SCOL()-44)/2) ;
 			TO INT((SROW()-7)/2)+6,INT((SCOL()-44)/2)+43 ;
 			TITLE " Actualizaci¢n de Porcentajes " ;
@@ -206,10 +206,10 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	*
 	
 	#REGION 1
-	IF WVISIBLE("_74f0qavnn")
-		ACTIVATE WINDOW _74f0qavnn SAME
+	IF WVISIBLE("_7kp0ouaw8")
+		ACTIVATE WINDOW _7kp0ouaw8 SAME
 	ELSE
-		ACTIVATE WINDOW _74f0qavnn NOSHOW
+		ACTIVATE WINDOW _7kp0ouaw8 NOSHOW
 	ENDIF
 	@ 1,1 SAY "Porcentaje sobre lista mayorista" ;
 		SIZE 1,32, 0
@@ -230,14 +230,14 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		DEFAULT " " ;
 		PICTURE "99.99"
 	
-	IF NOT WVISIBLE("_74f0qavnn")
-		ACTIVATE WINDOW _74f0qavnn
+	IF NOT WVISIBLE("_7kp0ouaw8")
+		ACTIVATE WINDOW _7kp0ouaw8
 	ENDIF
 	
 	READ CYCLE ;
-		VALID _74f0qavp1()
+		VALID _7kp0ouawf()
 	
-	RELEASE WINDOW _74f0qavnn
+	RELEASE WINDOW _7kp0ouaw8
 	
 	#REGION 0
 	IF m.talkstat = "ON"
@@ -253,7 +253,7 @@ ENDCASE
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QAVLT           Read Level Valid                   º
+*       º _7KP0OUAW5           Read Level Valid                   º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -265,7 +265,7 @@ ENDCASE
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qavlt     && Read Level Valid
+FUNCTION _7kp0ouaw5     && Read Level Valid
 *
 * Valid Code from screen: ACPORC
 *
@@ -278,7 +278,7 @@ CLEA READ
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QAVP1           Read Level Valid                   º
+*       º _7KP0OUAWF           Read Level Valid                   º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -290,7 +290,7 @@ CLEA READ
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qavp1     && Read Level Valid
+FUNCTION _7kp0ouawf     && Read Level Valid
 *
 * Valid Code from screen: ACPORC
 *

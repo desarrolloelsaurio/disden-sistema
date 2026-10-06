@@ -1,12 +1,12 @@
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º 25/02/2025            IPER_DO.SPR              12:16:52 º
+*       º 02/10/2026            IPER_DO.SPR              11:35:35 º
 *       º                                                         º
 *       ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
 *       º                                                         º
 *       º GOYO REINER                                             º
 *       º                                                         º
-*       º Copyright (c) 2025 G. REINER                            º
+*       º Copyright (c) 2026 G. REINER                            º
 *       º 1º DE MAYO 2134                                         º
 *       º ROSARIO, SF  2000                                       º
 *       º ARGENTINA                                         º
@@ -83,7 +83,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		SIZE 2.923,7.600,1.000 ;
 		DEFAULT 1 ;
 		FONT "MS Sans Serif", 8 ;
-		VALID _74f0qbm8k() ;
+		VALID _7kp0oujku() ;
 		MESSAGE "Confirma operaci¢n seleccionada ?"
 	
 	IF NOT WVISIBLE("xper")
@@ -176,7 +176,7 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		PICTURE "@*HN \<O K;\<N O;\<ANULA" ;
 		SIZE 1,12,1 ;
 		DEFAULT 1 ;
-		VALID _74f0qbm9r() ;
+		VALID _7kp0oujl0() ;
 		MESSAGE "Confirma operaci¢n seleccionada ?"
 	
 	IF NOT WVISIBLE("xper")
@@ -212,7 +212,7 @@ ENDCASE
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QBM8K           m.opcion VALID                     º
+*       º _7KP0OUJKU           m.opcion VALID                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -225,7 +225,7 @@ ENDCASE
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qbm8k     &&  m.opcion VALID
+FUNCTION _7kp0oujku     &&  m.opcion VALID
 #REGION 1
 IF LAST()=27 .OR. EMPTY(M.CODCLI) .OR. EMPTY(PER.CLIENTE)
    CLEA READ
@@ -247,7 +247,7 @@ RETURN sget("PER")
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QBM9R           m.opcion VALID                     º
+*       º _7KP0OUJL0           m.opcion VALID                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -260,7 +260,7 @@ RETURN sget("PER")
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qbm9r     &&  m.opcion VALID
+FUNCTION _7kp0oujl0     &&  m.opcion VALID
 #REGION 1
 IF LAST()=27 .OR. EMPTY(M.CODCLI) .OR. EMPTY(PER.CLIENTE)
    CLEA READ

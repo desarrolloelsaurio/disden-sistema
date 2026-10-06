@@ -520,6 +520,11 @@ PROCEDURE borrarec
 **	set order to tag numerore
 **	elrec=" 0001-"+zero(elrec,8)
 **	if seek(elrec)
+
+if !pideclav(2)
+	return
+endif
+
 	if elirec()
 		m.fechaop=fechaop
 		m.codcli   =codcli

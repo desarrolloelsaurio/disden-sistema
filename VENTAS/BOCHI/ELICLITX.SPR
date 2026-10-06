@@ -1,12 +1,12 @@
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º 25/02/2025           ELICLITX.SPR              12:17:01 º
+*       º 02/10/2026           ELICLITX.SPR              11:35:38 º
 *       º                                                         º
 *       ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
 *       º                                                         º
 *       º GOYO REINER                                             º
 *       º                                                         º
-*       º Copyright (c) 2025 G. REINER                            º
+*       º Copyright (c) 2026 G. REINER                            º
 *       º 1º DE MAYO 2134                                         º
 *       º ROSARIO, SF  2000                                       º
 *       º ARGENTINA                                         º
@@ -39,8 +39,8 @@ SET READBORDER ON
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
 
-IF NOT WEXIST("_74f0qbtjb")
-	DEFINE WINDOW _74f0qbtjb ;
+IF NOT WEXIST("_7kp0oulzh")
+	DEFINE WINDOW _7kp0oulzh ;
 		AT 0.000, 0.000 ;
 		SIZE 6.615,94.200 ;
 		FONT "MS Sans Serif", 8 ;
@@ -59,10 +59,10 @@ ENDIF
 *
 
 #REGION 1
-IF WVISIBLE("_74f0qbtjb")
-	ACTIVATE WINDOW _74f0qbtjb SAME
+IF WVISIBLE("_7kp0oulzh")
+	ACTIVATE WINDOW _7kp0oulzh SAME
 ELSE
-	ACTIVATE WINDOW _74f0qbtjb NOSHOW
+	ACTIVATE WINDOW _7kp0oulzh NOSHOW
 ENDIF
 @ 1.923,23.200 GET m.minimo ;
 	SIZE 1.538,68.800 ;
@@ -79,13 +79,13 @@ ENDIF
 	FONT "MS Sans Serif", 8 ;
 	STYLE "B"
 
-IF NOT WVISIBLE("_74f0qbtjb")
-	ACTIVATE WINDOW _74f0qbtjb
+IF NOT WVISIBLE("_7kp0oulzh")
+	ACTIVATE WINDOW _7kp0oulzh
 ENDIF
 
 READ CYCLE
 
-RELEASE WINDOW _74f0qbtjb
+RELEASE WINDOW _7kp0oulzh
 
 #REGION 0
 

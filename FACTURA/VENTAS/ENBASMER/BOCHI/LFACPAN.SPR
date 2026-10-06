@@ -1,12 +1,12 @@
 *       *********************************************************
 *       *                                                         
-*       * 09/05/2024            LFACPAN.SPR              16:01:52 
+*       * 08/07/2026            LFACPAN.SPR              13:18:09 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
 *       * Author's Name                                           
 *       *                                                         
-*       * Copyright (c) 2024 Company Name                         
+*       * Copyright (c) 2026 Company Name                         
 *       * Address                                                 
 *       * City,     Zip                                           
 *       *                                                         
@@ -41,8 +41,8 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 	*       *********************************************************
 	*
 	
-	IF NOT WEXIST("_6wa0ycyzk")
-		DEFINE WINDOW _6wa0ycyzk ;
+	IF NOT WEXIST("_7ib0silpz")
+		DEFINE WINDOW _7ib0silpz ;
 			AT  0.000, 0.000  ;
 			SIZE 20.462,121.800 ;
 			TITLE " Total Facturado " ;
@@ -52,7 +52,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 			MINIMIZE ;
 			DOUBLE ;
 			COLOR RGB(,,,0,128,0)
-		MOVE WINDOW _6wa0ycyzk CENTER
+		MOVE WINDOW _7ib0silpz CENTER
 	ENDIF
 	
 	
@@ -106,10 +106,10 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 	*
 	
 	#REGION 1
-	IF WVISIBLE("_6wa0ycyzk")
-		ACTIVATE WINDOW _6wa0ycyzk SAME
+	IF WVISIBLE("_7ib0silpz")
+		ACTIVATE WINDOW _7ib0silpz SAME
 	ELSE
-		ACTIVATE WINDOW _6wa0ycyzk NOSHOW
+		ACTIVATE WINDOW _7ib0silpz NOSHOW
 	ENDIF
 	@ 1.000,13.600 SAY "FACTURACION ENTRE EL " ;
 		FONT "Arial", 12 ;
@@ -166,7 +166,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		SIZE 2.923,7.600,1.000 ;
 		DEFAULT 1 ;
 		FONT "MS Sans Serif", 8 ;
-		VALID _6wa0ycz3g()
+		VALID _7ib0silr4()
 	@ 10.000,30.400 SAY M.IVA9A ;
 		SIZE 0.947,16.375 ;
 		FONT "Arial", 12 ;
@@ -213,14 +213,14 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		STYLE "BI" ;
 		PICTURE "999,999,999.99"
 	
-	IF NOT WVISIBLE("_6wa0ycyzk")
-		ACTIVATE WINDOW _6wa0ycyzk
+	IF NOT WVISIBLE("_7ib0silpz")
+		ACTIVATE WINDOW _7ib0silpz
 	ENDIF
 	
 	READ CYCLE ;
-		SHOW _6wa0ycz3q()
+		SHOW _7ib0silr7()
 	
-	RELEASE WINDOW _6wa0ycyzk
+	RELEASE WINDOW _7ib0silpz
 	
 	#REGION 0
 	
@@ -256,8 +256,8 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	*       *********************************************************
 	*
 	
-	IF NOT WEXIST("_6wa0ycz4i")
-		DEFINE WINDOW _6wa0ycz4i ;
+	IF NOT WEXIST("_7ib0silr8")
+		DEFINE WINDOW _7ib0silr8 ;
 			FROM INT((SROW()-14)/2),INT((SCOL()-78)/2) ;
 			TO INT((SROW()-14)/2)+13,INT((SCOL()-78)/2)+77 ;
 			TITLE " Total Facturado " ;
@@ -319,10 +319,10 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	*
 	
 	#REGION 1
-	IF WVISIBLE("_6wa0ycz4i")
-		ACTIVATE WINDOW _6wa0ycz4i SAME
+	IF WVISIBLE("_7ib0silr8")
+		ACTIVATE WINDOW _7ib0silr8 SAME
 	ELSE
-		ACTIVATE WINDOW _6wa0ycz4i NOSHOW
+		ACTIVATE WINDOW _7ib0silr8 NOSHOW
 	ENDIF
 	@ 1,16 SAY "FACTURACION ENTRE EL " ;
 		SIZE 1,21, 0
@@ -385,15 +385,15 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		PICTURE "@*HN FIN" ;
 		SIZE 1,7,1 ;
 		DEFAULT 1 ;
-		VALID _6wa0ycz6j()
+		VALID _7ib0sils7()
 	
-	IF NOT WVISIBLE("_6wa0ycz4i")
-		ACTIVATE WINDOW _6wa0ycz4i
+	IF NOT WVISIBLE("_7ib0silr8")
+		ACTIVATE WINDOW _7ib0silr8
 	ENDIF
 	
 	READ CYCLE
 	
-	RELEASE WINDOW _6wa0ycz4i
+	RELEASE WINDOW _7ib0silr8
 	
 	#REGION 0
 	IF m.talkstat = "ON"
@@ -409,7 +409,7 @@ ENDCASE
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YCZ3G           M.OPCION VALID                     
+*       * _7IB0SILR4           M.OPCION VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -422,14 +422,14 @@ ENDCASE
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0ycz3g     &&  M.OPCION VALID
+FUNCTION _7ib0silr4     &&  M.OPCION VALID
 #REGION 1
 CLEA READ
 RETURN .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YCZ3Q           Read Level Show                    
+*       * _7IB0SILR7           Read Level Show                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -441,15 +441,15 @@ RETURN .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0ycz3q     && Read Level Show
+FUNCTION _7ib0silr7     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *
 * Show Code from screen: LFACPAN
 *
 #REGION 1
-IF SYS(2016) = "_6WA0YCYZK" OR SYS(2016) = "*"
-	ACTIVATE WINDOW _6wa0ycyzk SAME
+IF SYS(2016) = "_7IB0SILPZ" OR SYS(2016) = "*"
+	ACTIVATE WINDOW _7ib0silpz SAME
 	@ 3.462,3.000 SAY TT ;
 		SIZE 1.000,49.900, 0.000 ;
 		FONT "Arial", 16 ;
@@ -462,7 +462,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YCZ6J           M.OPCION VALID                     
+*       * _7IB0SILS7           M.OPCION VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -475,7 +475,7 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0ycz6j     &&  M.OPCION VALID
+FUNCTION _7ib0sils7     &&  M.OPCION VALID
 #REGION 1
 CLEA READ
 RETURN .T.

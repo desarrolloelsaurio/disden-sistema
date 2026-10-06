@@ -1,12 +1,12 @@
 *       *********************************************************
 *       *                                                         
-*       * 03/10/2024             ICRE.SPR                13:15:44 
+*       * 08/07/2026             ICRE.SPR                13:18:38 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
 *       * Author's Name                                           
 *       *                                                         
-*       * Copyright (c) 2024 Company Name                         
+*       * Copyright (c) 2026 Company Name                         
 *       * Address                                                 
 *       * City,     Zip                                           
 *       *                                                         
@@ -106,8 +106,8 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		FONT "Arial", 12 ;
 		STYLE "BI" ;
 		PICTURE "@!" ;
-		WHEN _70d0sflr8() ;
-		VALID _70d0sflyr() ;
+		WHEN _7ib0sj29f() ;
+		VALID _7ib0sj29g() ;
 		MESSAGE "Ingrese Cliente"+TEX_EFES	 ;
 		ERROR "CLIENTE INEXISTENTE" ;
 		COLOR ,RGB(255,255,255,0,128,0)
@@ -155,8 +155,8 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		FONT "Arial", 12 ;
 		STYLE "BI" ;
 		PICTURE IIF(ESNUM,REPL('9',14),REPL('X',14)) ;
-		WHEN _70d0sfmi0() ;
-		VALID _70d0sfmi2() ;
+		WHEN _7ib0sj29k() ;
+		VALID _7ib0sj2ak() ;
 		MESSAGE "Nro DE FACTURA RELACIONADA - [F4] FACTURAS DEL CLIENTE" ;
 		ERROR "FACTURA INEXISTENTE" ;
 		COLOR ,RGB(255,255,255,0,128,0)
@@ -175,7 +175,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		STYLE "BI" ;
 		PICTURE "99,999,999.99" ;
 		WHEN LAST()#27 ;
-		VALID _70d0sfmrx() ;
+		VALID _7ib0sj2b7() ;
 		MESSAGE "NETO GRAVADO" ;
 		COLOR ,RGB(255,255,255,0,128,0)
 	@ 12.000,32.000 GET m.montoiva ;
@@ -205,7 +205,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		STYLE "BI" ;
 		PICTURE "99999,999.99" ;
 		WHEN LAST()#27 ;
-		VALID _70d0sfmyo() ;
+		VALID _7ib0sj2b9() ;
 		MESSAGE "Monto total del Crédito" ;
 		COLOR ,RGB(255,255,255,0,128,0)
 	@ 16.750,23.000 GET m.opcion ;
@@ -216,7 +216,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		DEFAULT 1 ;
 		FONT "Arial", 12 ;
 		STYLE "B" ;
-		VALID _70d0sfnd3() ;
+		VALID _7ib0sj2bc() ;
 		MESSAGE "CONFIRMA LA NOTA DE CREDITO REALIZADA ?" ;
 		COLOR ,,,,,,,,RGB(255,255,255,,,,)
 	@ 14.000,1.250 SAY "TOTAL NOTA DE CREDITO :" ;
@@ -237,7 +237,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 	ENDIF
 	
 	READ CYCLE ;
-		SHOW _70d0sfnrj()
+		SHOW _7ib0sj2bf()
 	
 	RELEASE WINDOW ideb
 	
@@ -346,7 +346,7 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		PICTURE "@*HN \!\<OK;\?\<NO" ;
 		SIZE 1,6,1 ;
 		DEFAULT 1 ;
-		VALID _70d0sfprd() ;
+		VALID _7ib0sj2bm() ;
 		MESSAGE "CONFIRMA LA NOTA DE CREDITO REALIZADA ?"
 	@ 1,1 SAY "Cliente" ;
 		SIZE 1,7, 0
@@ -358,8 +358,8 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		SIZE 1,10 ;
 		DEFAULT " " ;
 		PICTURE "@!" ;
-		WHEN _70d0sfpyc() ;
-		VALID _70d0sfq0q() ;
+		WHEN _7ib0sj2bo() ;
+		VALID _7ib0sj2bp() ;
 		MESSAGE "Ingrese Cliente"+TEX_EFES	 ;
 		ERROR "CLIENTE INEXISTENTE"
 	@ 2,9 SAY sayper(m.codcli,"codcli") ;
@@ -420,16 +420,16 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		SIZE 1,14 ;
 		DEFAULT " " ;
 		PICTURE IIF(ESNUM,REPL('9',14),REPL('X',14)) ;
-		WHEN _70d0sfqc0() ;
-		VALID _70d0sfqeu() ;
+		WHEN _7ib0sj2bu() ;
+		VALID _7ib0sj2bw() ;
 		MESSAGE "N§ DE LA FACTURA RELACIONADA - [F4] FACTURAS DEL CLIENTE" ;
 		ERROR "FACTURA INEXISTENTE"
 	@ 7,25 GET m.factura ;
 		SIZE 1,14 ;
 		DEFAULT " " ;
 		PICTURE IIF(ESNUM,REPL('9',14),REPL('X',14)) ;
-		WHEN _70d0sfqnb() ;
-		VALID _70d0sfqqi() ;
+		WHEN _7ib0sj2by() ;
+		VALID _7ib0sj2bz() ;
 		MESSAGE "N§ DE LA NOTA DE DEBITO A EMITIR" ;
 		ERROR "DOCUMENTO EXISTENTE - POR FAVOR CAMBIE EL NUMERO"
 	@ 8,25 GET m.texto ;
@@ -442,7 +442,7 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		DEFAULT 0 ;
 		PICTURE "99,999,999.99" ;
 		WHEN LAST()#27 ;
-		VALID _70d0sfqye() ;
+		VALID _7ib0sj2c4() ;
 		MESSAGE "NETO GRAVADO"
 	@ 10,25 GET m.montoiva ;
 		SIZE 1,13 ;
@@ -470,7 +470,7 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		DEFAULT 0 ;
 		PICTURE "99,999,999.99" ;
 		WHEN LAST()#27 ;
-		VALID _70d0sfr3v() ;
+		VALID _7ib0sj2c6() ;
 		MESSAGE "Monto total del Crédito"
 	@ 10,46 SAY "%" ;
 		SIZE 1,1, 0
@@ -492,7 +492,7 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	ENDIF
 	
 	READ CYCLE ;
-		SHOW _70d0sfr8w()
+		SHOW _7ib0sj2c9()
 	
 	RELEASE WINDOW ideb
 	
@@ -531,7 +531,7 @@ ENDCASE
 
 *       *********************************************************
 *       *                                                         
-*       * _70D0SFLR8           m.codcli WHEN                      
+*       * _7IB0SJ29F           m.codcli WHEN                      
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -544,7 +544,7 @@ ENDCASE
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _70d0sflr8     &&  m.codcli WHEN
+FUNCTION _7ib0sj29f     &&  m.codcli WHEN
 #REGION 1
 ON KEY LABEL F2 M.CODCLI=QUEPOPUP("P/NOTA DE CREDITO",1,9)
 ON KEY LABEL F3 M.CODCLI=SEEKTECX(30,'PER','CLIENTE','PER.CODCLI','CLIENTES',"","",2,9)
@@ -553,7 +553,7 @@ RETURN .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _70D0SFLYR           m.codcli VALID                     
+*       * _7IB0SJ29G           m.codcli VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -566,7 +566,7 @@ RETURN .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _70d0sflyr     &&  m.codcli VALID
+FUNCTION _7ib0sj29g     &&  m.codcli VALID
 #REGION 1
 IF LAST()=27
    CLEA READ
@@ -631,7 +631,7 @@ RETURN .F.
 
 *       *********************************************************
 *       *                                                         
-*       * _70D0SFMI0           m.paanular WHEN                    
+*       * _7IB0SJ29K           m.paanular WHEN                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -644,7 +644,7 @@ RETURN .F.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _70d0sfmi0     &&  m.paanular WHEN
+FUNCTION _7ib0sj29k     &&  m.paanular WHEN
 #REGION 1
 IF LAST()=27
    RETURN .F.
@@ -657,7 +657,7 @@ RETURN .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _70D0SFMI2           m.paanular VALID                   
+*       * _7IB0SJ2AK           m.paanular VALID                   
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -670,7 +670,7 @@ RETURN .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _70d0sfmi2     &&  m.paanular VALID
+FUNCTION _7ib0sj2ak     &&  m.paanular VALID
 #REGION 1
 IF LAST()=27
 	RETURN .T.
@@ -682,7 +682,7 @@ XSEEK(M.PAANULAR,'FAC','FACTURA')
 
 *       *********************************************************
 *       *                                                         
-*       * _70D0SFMRX           m.montobru VALID                   
+*       * _7IB0SJ2B7           m.montobru VALID                   
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -695,7 +695,7 @@ XSEEK(M.PAANULAR,'FAC','FACTURA')
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _70d0sfmrx     &&  m.montobru VALID
+FUNCTION _7ib0sj2b7     &&  m.montobru VALID
 #REGION 1
 STORE M.MONTOBRU*IVA18 TO M.MONTOIVA
 IF PER.CONDIVA="RN" .AND. EMPTY(GETE('ESTUDIO'))
@@ -709,7 +709,7 @@ RETURN SGET("IDEB")
 
 *       *********************************************************
 *       *                                                         
-*       * _70D0SFMYO           m.montonet VALID                   
+*       * _7IB0SJ2B9           m.montonet VALID                   
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -722,7 +722,7 @@ RETURN SGET("IDEB")
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _70d0sfmyo     &&  m.montonet VALID
+FUNCTION _7ib0sj2b9     &&  m.montonet VALID
 #REGION 1
 IF !EMPTY(M.MONTOBRU)
 if per.condiva="RN"
@@ -740,7 +740,7 @@ return sget("ideb")
 
 *       *********************************************************
 *       *                                                         
-*       * _70D0SFND3           m.opcion VALID                     
+*       * _7IB0SJ2BC           m.opcion VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -753,7 +753,7 @@ return sget("ideb")
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _70d0sfnd3     &&  m.opcion VALID
+FUNCTION _7ib0sj2bc     &&  m.opcion VALID
 #REGION 1
 IF M.OPCION=1
    STORE "" TO M.NUMERO,M.ELNUM
@@ -851,7 +851,7 @@ RETURN .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _70D0SFNRJ           Read Level Show                    
+*       * _7IB0SJ2BF           Read Level Show                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -863,7 +863,7 @@ RETURN .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _70d0sfnrj     && Read Level Show
+FUNCTION _7ib0sj2bf     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *
@@ -909,7 +909,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _70D0SFPRD           m.opcion VALID                     
+*       * _7IB0SJ2BM           m.opcion VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -922,7 +922,7 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _70d0sfprd     &&  m.opcion VALID
+FUNCTION _7ib0sj2bm     &&  m.opcion VALID
 #REGION 1
 DO CASE
 CASE M.OPCION=1
@@ -984,7 +984,7 @@ RETURN 1
 
 *       *********************************************************
 *       *                                                         
-*       * _70D0SFPYC           m.codcli WHEN                      
+*       * _7IB0SJ2BO           m.codcli WHEN                      
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -997,7 +997,7 @@ RETURN 1
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _70d0sfpyc     &&  m.codcli WHEN
+FUNCTION _7ib0sj2bo     &&  m.codcli WHEN
 #REGION 1
 ON KEY LABEL F2 M.CODCLI=QUEPOPUP("P/NOTA DE CREDITO",1,9)
 ON KEY LABEL F3 M.CODCLI=SEEKTECX(30,'PER','CLIENTE','PER.CODCLI','CLIENTE',"","",2,9)
@@ -1006,7 +1006,7 @@ RETURN .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _70D0SFQ0Q           m.codcli VALID                     
+*       * _7IB0SJ2BP           m.codcli VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -1019,7 +1019,7 @@ RETURN .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _70d0sfq0q     &&  m.codcli VALID
+FUNCTION _7ib0sj2bp     &&  m.codcli VALID
 #REGION 1
 IF LAST()=27
    CLEA READ
@@ -1063,7 +1063,7 @@ RETURN .F.
 
 *       *********************************************************
 *       *                                                         
-*       * _70D0SFQC0           m.paanular WHEN                    
+*       * _7IB0SJ2BU           m.paanular WHEN                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -1076,7 +1076,7 @@ RETURN .F.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _70d0sfqc0     &&  m.paanular WHEN
+FUNCTION _7ib0sj2bu     &&  m.paanular WHEN
 #REGION 1
 IF LAST()=27
    RETURN .F.
@@ -1089,7 +1089,7 @@ RETURN .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _70D0SFQEU           m.paanular VALID                   
+*       * _7IB0SJ2BW           m.paanular VALID                   
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -1102,7 +1102,7 @@ RETURN .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _70d0sfqeu     &&  m.paanular VALID
+FUNCTION _7ib0sj2bw     &&  m.paanular VALID
 #REGION 1
 IF LAST()=27
 RETURN .T.
@@ -1113,7 +1113,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _70D0SFQNB           m.factura WHEN                     
+*       * _7IB0SJ2BY           m.factura WHEN                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -1126,7 +1126,7 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _70d0sfqnb     &&  m.factura WHEN
+FUNCTION _7ib0sj2by     &&  m.factura WHEN
 #REGION 1
 IF LAST()#27
    PUNMAR=5
@@ -1151,7 +1151,7 @@ RETURN .F.
 
 *       *********************************************************
 *       *                                                         
-*       * _70D0SFQQI           m.factura VALID                    
+*       * _7IB0SJ2BZ           m.factura VALID                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -1164,7 +1164,7 @@ RETURN .F.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _70d0sfqqi     &&  m.factura VALID
+FUNCTION _7ib0sj2bz     &&  m.factura VALID
 #REGION 1
 IF LAST()=27
    RETURN .T.
@@ -1175,7 +1175,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _70D0SFQYE           m.montobru VALID                   
+*       * _7IB0SJ2C4           m.montobru VALID                   
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -1188,7 +1188,7 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _70d0sfqye     &&  m.montobru VALID
+FUNCTION _7ib0sj2c4     &&  m.montobru VALID
 #REGION 1
 STORE M.MONTOBRU*IVA18 TO M.MONTOIVA
 IF PER.CONDIVA="RN"
@@ -1202,7 +1202,7 @@ RETURN SGET("IDEB")
 
 *       *********************************************************
 *       *                                                         
-*       * _70D0SFR3V           m.montonet VALID                   
+*       * _7IB0SJ2C6           m.montonet VALID                   
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -1215,7 +1215,7 @@ RETURN SGET("IDEB")
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _70d0sfr3v     &&  m.montonet VALID
+FUNCTION _7ib0sj2c6     &&  m.montonet VALID
 #REGION 1
 IF !EMPTY(M.MONTOBRU)
 if per.condiva="RN"
@@ -1233,7 +1233,7 @@ return sget("ideb")
 
 *       *********************************************************
 *       *                                                         
-*       * _70D0SFR8W           Read Level Show                    
+*       * _7IB0SJ2C9           Read Level Show                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -1245,7 +1245,7 @@ return sget("ideb")
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _70d0sfr8w     && Read Level Show
+FUNCTION _7ib0sj2c9     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *

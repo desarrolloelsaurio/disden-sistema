@@ -1,12 +1,12 @@
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º 25/02/2025             IPER.SPR                12:16:04 º
+*       º 02/10/2026             IPER.SPR                11:35:20 º
 *       º                                                         º
 *       ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
 *       º                                                         º
 *       º GOYO REINER                                             º
 *       º                                                         º
-*       º Copyright (c) 2025 G. REINER                            º
+*       º Copyright (c) 2026 G. REINER                            º
 *       º 1º DE MAYO 2134                                         º
 *       º ROSARIO, SF  2000                                       º
 *       º ARGENTINA                                         º
@@ -123,7 +123,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		DOUBLE ;
 		COLOR RGB(,,,0,128,0)
 	
-	DEFINE WINDOW _74f0qalsn ;
+	DEFINE WINDOW _7kp0ou7vy ;
 		AT 25.000, 24.000 ;
 		SIZE 4.071,35.600 ;
 		TITLE " " ;
@@ -224,8 +224,8 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		FONT "Arial", 12 ;
 		STYLE "BIT" ;
 		PICTURE REPL('!',CONTENIDO[2]+1) ;
-		WHEN _74f0qalxj() ;
-		VALID _74f0qalxm() ;
+		WHEN _7kp0ou7y6() ;
+		VALID _7kp0ou7y8() ;
 		MESSAGE "Ingrese C¢digo de "+tipo_per+" - [ESC] para Men£"+TEX_EFES+" - [F4] Ult" ;
 		ERROR "NO SE PUEDE TRABAJAR SOBRE UN REGISTRO BORRADO" ;
 		COLOR ,RGB(255,255,255,,,,)
@@ -235,8 +235,8 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		FONT "Arial", 12 ;
 		STYLE "BIT" ;
 		PICTURE "@!" ;
-		WHEN _74f0qalxs() ;
-		VALID _74f0qalxw() ;
+		WHEN _7kp0ou7ya() ;
+		VALID _7kp0ou7yb() ;
 		MESSAGE "Ingrese Nombre o Raz¢n Social de "+tipo_per+TEX_EFES ;
 		ERROR "NO SE PUEDE TRABAJAR SOBRE UN REGISTRO BORRADO" ;
 		COLOR ,RGB(255,255,255,,,,)
@@ -378,10 +378,10 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 	*
 	
 	#REGION 2
-	IF WVISIBLE("_74f0qalsn")
-		ACTIVATE WINDOW _74f0qalsn SAME
+	IF WVISIBLE("_7kp0ou7vy")
+		ACTIVATE WINDOW _7kp0ou7vy SAME
 	ELSE
-		ACTIVATE WINDOW _74f0qalsn NOSHOW
+		ACTIVATE WINDOW _7kp0ou7vy NOSHOW
 	ENDIF
 	@ 0.500,1.400 GET m.OPCION ;
 		PICTURE "@*BHN " + ;
@@ -422,8 +422,8 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 	IF NOT WVISIBLE("control2")
 		ACTIVATE WINDOW control2
 	ENDIF
-	IF NOT WVISIBLE("_74f0qalsn")
-		ACTIVATE WINDOW _74f0qalsn
+	IF NOT WVISIBLE("_7kp0ou7vy")
+		ACTIVATE WINDOW _7kp0ou7vy
 	ENDIF
 	IF NOT WVISIBLE("per")
 		ACTIVATE WINDOW per
@@ -431,9 +431,9 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 	
 	
 	READ CYCLE ;
-		SHOW _74f0qam1u()
+		SHOW _7kp0ou7yc()
 	
-	RELEASE WINDOW _74f0qalsn
+	RELEASE WINDOW _7kp0ou7vy
 	RELEASE WINDOW control2
 	RELEASE WINDOW per
 	
@@ -564,7 +564,7 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		DOUBLE ;
 		COLOR SCHEME 1
 	
-	DEFINE WINDOW _74f0qam3c ;
+	DEFINE WINDOW _7kp0ou7yl ;
 		FROM 0, 0 ;
 		TO 4,32 ;
 		TITLE " SU OPCION " ;
@@ -635,16 +635,16 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		SIZE 1,10 ;
 		DEFAULT " " ;
 		PICTURE REPL('!',CONTENIDO[2]+1) ;
-		WHEN _74f0qam5n() ;
-		VALID _74f0qam6d() ;
+		WHEN _7kp0ou809() ;
+		VALID _7kp0ou80b() ;
 		MESSAGE "Ingrese C¢digo de "+tipo_per+" - [ESC] para Men£"+TEX_EFES+" - [F4] Ult" ;
 		ERROR "NO SE PUEDE TRABAJAR SOBRE UN REGISTRO BORRADO"
 	@ 2,22 GET m.CLIENTE ;
 		SIZE 1,30 ;
 		DEFAULT " " ;
 		PICTURE "@!" ;
-		WHEN _74f0qam6u() ;
-		VALID _74f0qam6x() ;
+		WHEN _7kp0ou80d() ;
+		VALID _7kp0ou80e() ;
 		MESSAGE "Ingrese Nombre o Raz¢n Social de "+tipo_per+TEX_EFES ;
 		ERROR "NO SE PUEDE TRABAJAR SOBRE UN REGISTRO BORRADO"
 	@ 3,22 GET m.domicilio ;
@@ -723,10 +723,10 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	*
 	
 	#REGION 2
-	IF WVISIBLE("_74f0qam3c")
-		ACTIVATE WINDOW _74f0qam3c SAME
+	IF WVISIBLE("_7kp0ou7yl")
+		ACTIVATE WINDOW _7kp0ou7yl SAME
 	ELSE
-		ACTIVATE WINDOW _74f0qam3c NOSHOW
+		ACTIVATE WINDOW _7kp0ou7yl NOSHOW
 	ENDIF
 	@ 1,1 GET m.OPCION ;
 		PICTURE "@*HN \!\<SI;\<NO;\?\<ANULA" ;
@@ -761,8 +761,8 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	IF NOT WVISIBLE("control2")
 		ACTIVATE WINDOW control2
 	ENDIF
-	IF NOT WVISIBLE("_74f0qam3c")
-		ACTIVATE WINDOW _74f0qam3c
+	IF NOT WVISIBLE("_7kp0ou7yl")
+		ACTIVATE WINDOW _7kp0ou7yl
 	ENDIF
 	IF NOT WVISIBLE("per")
 		ACTIVATE WINDOW per
@@ -770,9 +770,9 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	
 	
 	READ CYCLE ;
-		SHOW _74f0qam82()
+		SHOW _7kp0ou810()
 	
-	RELEASE WINDOW _74f0qam3c
+	RELEASE WINDOW _7kp0ou7yl
 	RELEASE WINDOW control2
 	RELEASE WINDOW per
 	
@@ -807,7 +807,7 @@ ENDCASE
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QALXJ           m.codcli WHEN                      º
+*       º _7KP0OU7Y6           m.codcli WHEN                      º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -820,7 +820,7 @@ ENDCASE
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qalxj     &&  m.codcli WHEN
+FUNCTION _7kp0ou7y6     &&  m.codcli WHEN
 #REGION 1
 M.PRIOBJ=_CUROBJ
 =OFF_F2()
@@ -834,7 +834,7 @@ RETURN EMPTY(M.CLIENTE)
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QALXM           m.codcli VALID                     º
+*       º _7KP0OU7Y8           m.codcli VALID                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -847,7 +847,7 @@ RETURN EMPTY(M.CLIENTE)
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qalxm     &&  m.codcli VALID
+FUNCTION _7kp0ou7y8     &&  m.codcli VALID
 #REGION 1
 IF LAST()=27
    RETURN .T.
@@ -877,7 +877,7 @@ RETURN .T.
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QALXS           m.CLIENTE WHEN                     º
+*       º _7KP0OU7YA           m.CLIENTE WHEN                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -890,7 +890,7 @@ RETURN .T.
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qalxs     &&  m.CLIENTE WHEN
+FUNCTION _7kp0ou7ya     &&  m.CLIENTE WHEN
 #REGION 1
 ON KEY LABEL F2 M.CLIENTE=QUEPOPUP("a Corregir",2,12)
 ON KEY LABEL F3 M.CLIENTE=SEEKTECX(30,'PER','CLIENTE','CLIENTE',(CONTENIDO[4]))
@@ -898,7 +898,7 @@ RETURN LAST()#27 .AND. !NOCOD(M.CODCLI) .AND. ESPROPIO
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QALXW           m.CLIENTE VALID                    º
+*       º _7KP0OU7YB           m.CLIENTE VALID                    º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -911,7 +911,7 @@ RETURN LAST()#27 .AND. !NOCOD(M.CODCLI) .AND. ESPROPIO
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qalxw     &&  m.CLIENTE VALID
+FUNCTION _7kp0ou7yb     &&  m.CLIENTE VALID
 #REGION 1
 IF LAST()=27
    RETURN .T.
@@ -937,7 +937,7 @@ RETURN .T.
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QAM1U           Read Level Show                    º
+*       º _7KP0OU7YC           Read Level Show                    º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -949,7 +949,7 @@ RETURN .T.
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qam1u     && Read Level Show
+FUNCTION _7kp0ou7yc     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *
@@ -983,7 +983,7 @@ ENDIF
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QAM5N           m.codcli WHEN                      º
+*       º _7KP0OU809           m.codcli WHEN                      º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -996,7 +996,7 @@ ENDIF
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qam5n     &&  m.codcli WHEN
+FUNCTION _7kp0ou809     &&  m.codcli WHEN
 #REGION 1
 M.PRIOBJ=_CUROBJ
 =OFF_F2()
@@ -1010,7 +1010,7 @@ RETURN EMPTY(M.CLIENTE)
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QAM6D           m.codcli VALID                     º
+*       º _7KP0OU80B           m.codcli VALID                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -1023,7 +1023,7 @@ RETURN EMPTY(M.CLIENTE)
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qam6d     &&  m.codcli VALID
+FUNCTION _7kp0ou80b     &&  m.codcli VALID
 #REGION 1
 IF LAST()=27
    RETURN .T.
@@ -1053,7 +1053,7 @@ RETURN .T.
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QAM6U           m.CLIENTE WHEN                     º
+*       º _7KP0OU80D           m.CLIENTE WHEN                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -1066,7 +1066,7 @@ RETURN .T.
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qam6u     &&  m.CLIENTE WHEN
+FUNCTION _7kp0ou80d     &&  m.CLIENTE WHEN
 #REGION 1
 ON KEY LABEL F2 M.CLIENTE=QUEPOPUP("a Corregir",2,12)
 ON KEY LABEL F3 M.CLIENTE=SEEKTECX(30,'PER','CLIENTE','CLIENTE',(CONTENIDO[4]))
@@ -1074,7 +1074,7 @@ RETURN LAST()#27 .AND. !NOCOD(M.CODCLI) .AND. ESPROPIO
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QAM6X           m.CLIENTE VALID                    º
+*       º _7KP0OU80E           m.CLIENTE VALID                    º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -1087,7 +1087,7 @@ RETURN LAST()#27 .AND. !NOCOD(M.CODCLI) .AND. ESPROPIO
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qam6x     &&  m.CLIENTE VALID
+FUNCTION _7kp0ou80e     &&  m.CLIENTE VALID
 #REGION 1
 IF LAST()=27
    RETURN .T.
@@ -1113,7 +1113,7 @@ RETURN .T.
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QAM82           Read Level Show                    º
+*       º _7KP0OU810           Read Level Show                    º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -1125,7 +1125,7 @@ RETURN .T.
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qam82     && Read Level Show
+FUNCTION _7kp0ou810     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *

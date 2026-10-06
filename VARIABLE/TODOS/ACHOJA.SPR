@@ -1,12 +1,12 @@
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º 25/02/2025            ACHOJA.SPR               12:15:29 º
+*       º 02/10/2026            ACHOJA.SPR               11:35:09 º
 *       º                                                         º
 *       ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
 *       º                                                         º
 *       º GOYO REINER                                             º
 *       º                                                         º
-*       º Copyright (c) 2025 G. REINER                            º
+*       º Copyright (c) 2026 G. REINER                            º
 *       º 1º DE MAYO 2134                                         º
 *       º ROSARIO, SF  2000                                       º
 *       º ARGENTINA                                         º
@@ -109,7 +109,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		DEFAULT 1 ;
 		FONT "MS Sans Serif", 8 ;
 		STYLE "B" ;
-		VALID _74f0q9uc1()
+		VALID _7kp0otz3k()
 	
 	IF NOT WVISIBLE("win")
 		ACTIVATE WINDOW win
@@ -218,7 +218,7 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		PICTURE "@*HN \!\<SI;\?\<NO" ;
 		SIZE 1,6,1 ;
 		DEFAULT 1 ;
-		VALID _74f0q9ufl()
+		VALID _7kp0otz4d()
 	
 	IF NOT WVISIBLE("win")
 		ACTIVATE WINDOW win
@@ -252,7 +252,7 @@ ENDCASE
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0Q9UC1           M.OPCION VALID                     º
+*       º _7KP0OTZ3K           M.OPCION VALID                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -265,7 +265,7 @@ ENDCASE
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0q9uc1     &&  M.OPCION VALID
+FUNCTION _7kp0otz3k     &&  M.OPCION VALID
 #REGION 1
 IF M.OPCION=1
 =PUTNU1(PADR("XACHOJA",20)+PADR(USADOR,10),XACHOJA,"FOXPER",PADR(USADOR,10)+PADR("XACHOJA",20))
@@ -278,7 +278,7 @@ CLEA READ
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0Q9UFL           M.OPCION VALID                     º
+*       º _7KP0OTZ4D           M.OPCION VALID                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -291,7 +291,7 @@ CLEA READ
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0q9ufl     &&  M.OPCION VALID
+FUNCTION _7kp0otz4d     &&  M.OPCION VALID
 #REGION 1
 IF M.OPCION=1
 =PUTNU1(PADR("XACHOJA",20)+PADR(USADOR,10),XACHOJA,"FOXPER",PADR(USADOR,10)+PADR("XACHOJA",20))

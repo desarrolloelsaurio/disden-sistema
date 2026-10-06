@@ -1,12 +1,12 @@
 *       *********************************************************
 *       *                                                         
-*       * 09/05/2024            ACPOPU.SPR               16:01:16 
+*       * 08/07/2026            ACPOPU.SPR               13:17:46 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
 *       * Author's Name                                           
 *       *                                                         
-*       * Copyright (c) 2024 Company Name                         
+*       * Copyright (c) 2026 Company Name                         
 *       * Address                                                 
 *       * City,     Zip                                           
 *       *                                                         
@@ -38,8 +38,8 @@ SET READBORDER ON
 *       *********************************************************
 *
 
-IF NOT WEXIST("_6wa0yc7mi")
-	DEFINE WINDOW _6wa0yc7mi ;
+IF NOT WEXIST("_7ib0shyas")
+	DEFINE WINDOW _7ib0shyas ;
 		AT  0.000, 0.000  ;
 		SIZE 26.000,56.400 ;
 		TITLE " Popops a Utilizar " ;
@@ -49,7 +49,7 @@ IF NOT WEXIST("_6wa0yc7mi")
 		MINIMIZE ;
 		SYSTEM ;
 		COLOR RGB(,,,255,255,255)
-	MOVE WINDOW _6wa0yc7mi CENTER
+	MOVE WINDOW _7ib0shyas CENTER
 ENDIF
 
 
@@ -61,10 +61,10 @@ ENDIF
 *
 
 #REGION 1
-IF WVISIBLE("_6wa0yc7mi")
-	ACTIVATE WINDOW _6wa0yc7mi SAME
+IF WVISIBLE("_7ib0shyas")
+	ACTIVATE WINDOW _7ib0shyas SAME
 ELSE
-	ACTIVATE WINDOW _6wa0yc7mi NOSHOW
+	ACTIVATE WINDOW _7ib0shyas NOSHOW
 ENDIF
 @ 0.615,1.800 GET M.CAGPOP ;
 	PICTURE "@*C AGRUPACION" ;
@@ -161,15 +161,15 @@ ENDIF
 	SIZE 2.923,7.600,0.800 ;
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
-	VALID _6wa0yc7ol()
+	VALID _7ib0shybp()
 
-IF NOT WVISIBLE("_6wa0yc7mi")
-	ACTIVATE WINDOW _6wa0yc7mi
+IF NOT WVISIBLE("_7ib0shyas")
+	ACTIVATE WINDOW _7ib0shyas
 ENDIF
 
 READ
 
-RELEASE WINDOW _6wa0yc7mi
+RELEASE WINDOW _7ib0shyas
 
 #REGION 0
 
@@ -185,7 +185,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YC7OL           M.OPCION VALID                     
+*       * _7IB0SHYBP           M.OPCION VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -198,7 +198,7 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0yc7ol     &&  M.OPCION VALID
+FUNCTION _7ib0shybp     &&  M.OPCION VALID
 #REGION 1
 CLEA READ
 RETURN .T.

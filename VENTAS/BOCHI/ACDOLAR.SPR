@@ -1,12 +1,12 @@
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є 25/02/2025            ACDOLAR.SPR              12:17:03 є
+*       є 02/10/2026            ACDOLAR.SPR              11:35:39 є
 *       є                                                         є
 *       ЗДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД¶
 *       є                                                         є
 *       є GOYO REINER                                             є
 *       є                                                         є
-*       є Copyright (c) 2025 G. REINER                            є
+*       є Copyright (c) 2026 G. REINER                            є
 *       є 1є DE MAYO 2134                                         є
 *       є ROSARIO, SF  2000                                       є
 *       є ARGENTINA                                         є
@@ -42,8 +42,8 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 	*       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 	*
 	
-	IF NOT WEXIST("_74f0qbv0z")
-		DEFINE WINDOW _74f0qbv0z ;
+	IF NOT WEXIST("_7kp0oumgo")
+		DEFINE WINDOW _7kp0oumgo ;
 			AT  0.000, 0.000  ;
 			SIZE 8.957,36.889 ;
 			FONT "Arial", 14 ;
@@ -54,7 +54,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 			NOMINIMIZE ;
 			DOUBLE ;
 			COLOR RGB(,,,0,128,0)
-		MOVE WINDOW _74f0qbv0z CENTER
+		MOVE WINDOW _7kp0oumgo CENTER
 	ENDIF
 	
 	
@@ -85,10 +85,10 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 	*
 	
 	#REGION 1
-	IF WVISIBLE("_74f0qbv0z")
-		ACTIVATE WINDOW _74f0qbv0z SAME
+	IF WVISIBLE("_7kp0oumgo")
+		ACTIVATE WINDOW _7kp0oumgo SAME
 	ELSE
-		ACTIVATE WINDOW _74f0qbv0z NOSHOW
+		ACTIVATE WINDOW _7kp0oumgo NOSHOW
 	ENDIF
 	@ 1.000,6.444 SAY "Dуlar" ;
 		FONT "Arial", 14 ;
@@ -140,7 +140,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		DEFAULT 1 ;
 		FONT "MS Sans Serif", 8 ;
 		STYLE "B" ;
-		VALID _74f0qbv67()
+		VALID _7kp0oumhl()
 	@ 7.217,19.556 GET m.ok ;
 		PICTURE "@*HT Salir" ;
 		SIZE 1.769,14.500,0.667 ;
@@ -148,13 +148,13 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		FONT "MS Sans Serif", 8 ;
 		STYLE "B"
 	
-	IF NOT WVISIBLE("_74f0qbv0z")
-		ACTIVATE WINDOW _74f0qbv0z
+	IF NOT WVISIBLE("_7kp0oumgo")
+		ACTIVATE WINDOW _7kp0oumgo
 	ENDIF
 	
 	READ CYCLE
 	
-	RELEASE WINDOW _74f0qbv0z
+	RELEASE WINDOW _7kp0oumgo
 	
 	#REGION 0
 	
@@ -190,8 +190,8 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	*       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 	*
 	
-	IF NOT WEXIST("_74f0qbv6f")
-		DEFINE WINDOW _74f0qbv6f ;
+	IF NOT WEXIST("_7kp0oumi6")
+		DEFINE WINDOW _7kp0oumi6 ;
 			FROM INT((SROW()-7)/2),INT((SCOL()-44)/2) ;
 			TO INT((SROW()-7)/2)+6,INT((SCOL()-44)/2)+43 ;
 			TITLE " Actualizaciўn de Porcentajes " ;
@@ -231,10 +231,10 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	*
 	
 	#REGION 1
-	IF WVISIBLE("_74f0qbv6f")
-		ACTIVATE WINDOW _74f0qbv6f SAME
+	IF WVISIBLE("_7kp0oumi6")
+		ACTIVATE WINDOW _7kp0oumi6 SAME
 	ELSE
-		ACTIVATE WINDOW _74f0qbv6f NOSHOW
+		ACTIVATE WINDOW _7kp0oumi6 NOSHOW
 	ENDIF
 	@ 1,1 SAY "Porcentaje sobre lista mayorista" ;
 		SIZE 1,32, 0
@@ -255,14 +255,14 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		DEFAULT " " ;
 		PICTURE "99.99"
 	
-	IF NOT WVISIBLE("_74f0qbv6f")
-		ACTIVATE WINDOW _74f0qbv6f
+	IF NOT WVISIBLE("_7kp0oumi6")
+		ACTIVATE WINDOW _7kp0oumi6
 	ENDIF
 	
 	READ CYCLE ;
-		VALID _74f0qbvb8()
+		VALID _7kp0oumie()
 	
-	RELEASE WINDOW _74f0qbv6f
+	RELEASE WINDOW _7kp0oumi6
 	
 	#REGION 0
 	IF m.talkstat = "ON"
@@ -278,7 +278,7 @@ ENDCASE
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _74F0QBV67           m.ok VALID                         є
+*       є _7KP0OUMHL           m.ok VALID                         є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -291,7 +291,7 @@ ENDCASE
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _74f0qbv67     &&  m.ok VALID
+FUNCTION _7kp0oumhl     &&  m.ok VALID
 #REGION 1
 if confirma(" MODIFICAR LOS PRECIOS",.t.,20,1)
 	=PUTNU1("D",M.VALDOLAR,"FOXGRL","",3)
@@ -308,7 +308,7 @@ return .T.
 
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є _74F0QBVB8           Read Level Valid                   є
+*       є _7KP0OUMIE           Read Level Valid                   є
 *       є                                                         є
 *       є Function Origin:                                        є
 *       є                                                         є
@@ -320,7 +320,7 @@ return .T.
 *       є                                                         є
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
-FUNCTION _74f0qbvb8     && Read Level Valid
+FUNCTION _7kp0oumie     && Read Level Valid
 *
 * Valid Code from screen: ACDOLAR
 *

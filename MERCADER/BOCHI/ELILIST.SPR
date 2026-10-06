@@ -1,12 +1,12 @@
 *       ЦДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД·
 *       є                                                         є
-*       є 25/02/2025            ELILIST.SPR              12:17:02 є
+*       є 02/10/2026            ELILIST.SPR              11:35:39 є
 *       є                                                         є
 *       ЗДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДД¶
 *       є                                                         є
 *       є GOYO REINER                                             є
 *       є                                                         є
-*       є Copyright (c) 2025 G. REINER                            є
+*       є Copyright (c) 2026 G. REINER                            є
 *       є 1є DE MAYO 2134                                         є
 *       є ROSARIO, SF  2000                                       є
 *       є ARGENTINA                                         є
@@ -39,8 +39,8 @@ SET READBORDER ON
 *       УДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДДЅ
 *
 
-IF NOT WEXIST("_74f0qbuda")
-	DEFINE WINDOW _74f0qbuda ;
+IF NOT WEXIST("_7kp0oum7a")
+	DEFINE WINDOW _7kp0oum7a ;
 		AT 0.000, 0.000 ;
 		SIZE 8.769,30.800 ;
 		FONT "MS Sans Serif", 8 ;
@@ -59,10 +59,10 @@ ENDIF
 *
 
 #REGION 1
-IF WVISIBLE("_74f0qbuda")
-	ACTIVATE WINDOW _74f0qbuda SAME
+IF WVISIBLE("_7kp0oum7a")
+	ACTIVATE WINDOW _7kp0oum7a SAME
 ELSE
-	ACTIVATE WINDOW _74f0qbuda NOSHOW
+	ACTIVATE WINDOW _7kp0oum7a NOSHOW
 ENDIF
 @ 1.385,3.400 GET m.cuallist ;
 	PICTURE "@*RVN Comъn;Dуlares;Dуlares en Pesos" ;
@@ -77,13 +77,13 @@ ENDIF
 	FONT "MS Sans Serif", 8 ;
 	STYLE "B"
 
-IF NOT WVISIBLE("_74f0qbuda")
-	ACTIVATE WINDOW _74f0qbuda
+IF NOT WVISIBLE("_7kp0oum7a")
+	ACTIVATE WINDOW _7kp0oum7a
 ENDIF
 
 READ CYCLE
 
-RELEASE WINDOW _74f0qbuda
+RELEASE WINDOW _7kp0oum7a
 
 #REGION 0
 

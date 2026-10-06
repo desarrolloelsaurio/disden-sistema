@@ -1,12 +1,12 @@
 *       *********************************************************
 *       *                                                         
-*       * 09/05/2024              FAC.SPR                16:01:36 
+*       * 08/07/2026              FAC.SPR                13:17:58 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
 *       * Author's Name                                           
 *       *                                                         
-*       * Copyright (c) 2024 Company Name                         
+*       * Copyright (c) 2026 Company Name                         
 *       * Address                                                 
 *       * City,     Zip                                           
 *       *                                                         
@@ -149,7 +149,7 @@ ENDIF
 	STYLE "B" ;
 	PICTURE "@K!" ;
 	WHEN GRL_F2("M.CODCLI","a Facturar",10,20,30,"PER","CLIENTE","codcli","clientes",10,20) .AND. SGET("FAC") ;
-	VALID _6wa0ycmpk() ;
+	VALID _7ib0si7ec() ;
 	MESSAGE "Seleccione cliente a Facturar"+TEX_EFES ;
 	ERROR "CLIENTE INEXISTENTE" ;
 	COLOR ,RGB(255,255,255,0,128,0)
@@ -190,7 +190,7 @@ ENDIF
 	FONT "Arial", 12 ;
 	STYLE "B" ;
 	PICTURE "@K !!" ;
-	WHEN _6wa0ycmqi() ;
+	WHEN _7ib0si7eg() ;
 	VALID EMPTY(M.CONDPAGO) .AND. LAST()=27 .OR. (XSEEK(M.CONDPAGO,"MIX","PAGCOD") .AND. SGET("FAC")) ;
 	MESSAGE "Seleccione Condición de Venta" ;
 	ERROR "CONDICION DE VENTA INEXISTENTE" ;
@@ -208,7 +208,7 @@ ENDIF
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
 	WHEN LAST()#27 ;
-	VALID _6wa0ycmqj()
+	VALID _7ib0si7ej()
 @ 15.100,31.250 SAY iif(M.esa,m.MONTO,m.montonet) ;
 	SIZE 0.950,20.500 ;
 	FONT "Arial", 12 ;
@@ -222,7 +222,7 @@ ENDIF
 	STYLE "B" ;
 	PICTURE "9999999.99" ;
 	WHEN !empty(m.monto) ;
-	VALID _6wa0ycmqr() ;
+	VALID _7ib0si7em() ;
 	MESSAGE "Ingrese Porcentaje de Bonificación" ;
 	ERROR "VALORES INACEPTABLES" ;
 	COLOR ,RGB(255,255,255,0,128,0)
@@ -264,14 +264,14 @@ ENDIF
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
 	WHEN last()#27 ;
-	VALID _6wa0ycmri()
+	VALID _7ib0si7er()
 
 IF NOT WVISIBLE("fac")
 	ACTIVATE WINDOW fac
 ENDIF
 
 READ CYCLE ;
-	SHOW _6wa0ycmrr()
+	SHOW _7ib0si7ew()
 
 RELEASE WINDOW fac
 
@@ -550,7 +550,7 @@ return .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YCMPK           m.codcli VALID                     
+*       * _7IB0SI7EC           m.codcli VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -563,7 +563,7 @@ return .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0ycmpk     &&  m.codcli VALID
+FUNCTION _7ib0si7ec     &&  m.codcli VALID
 #REGION 1
 IF LAST()=27 .OR. ;
      EMPTY(M.CODCLI)
@@ -599,7 +599,7 @@ RETURN .F.
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YCMQI           m.coNDPAGO WHEN                    
+*       * _7IB0SI7EG           m.coNDPAGO WHEN                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -615,7 +615,7 @@ RETURN .F.
 ** return OFF_F2() .AND. LAST()#27 .AND. !EMPTY(M.CODCLI) .AND. MIX_F2xx("M.CONDPAGO","DE LA FACTURA",10,20,"pagcod","pagtex",10,20)
 
 
-FUNCTION _6wa0ycmqi     &&  m.coNDPAGO WHEN
+FUNCTION _7ib0si7eg     &&  m.coNDPAGO WHEN
 #REGION 1
 m.condpago = "CO"
 return OFF_F2() .AND. LAST()#27 .AND. !EMPTY(M.CODCLI)
@@ -623,7 +623,7 @@ return OFF_F2() .AND. LAST()#27 .AND. !EMPTY(M.CODCLI)
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YCMQJ           m.imar VALID                       
+*       * _7IB0SI7EJ           m.imar VALID                       
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -636,7 +636,7 @@ return OFF_F2() .AND. LAST()#27 .AND. !EMPTY(M.CODCLI)
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0ycmqj     &&  m.imar VALID
+FUNCTION _7ib0si7ej     &&  m.imar VALID
 #REGION 1
 if m.imar=1
 IF EMPTY(M.CODCLI)
@@ -749,7 +749,7 @@ RETURN .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YCMQR           m.eldto VALID                      
+*       * _7IB0SI7EM           m.eldto VALID                      
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -762,7 +762,7 @@ RETURN .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0ycmqr     &&  m.eldto VALID
+FUNCTION _7ib0si7em     &&  m.eldto VALID
 #REGION 1
 IF M.ELDTO<0 .OR. M.ELDTO>100
    RETURN .F.
@@ -793,7 +793,7 @@ RETURN SGET("FAC")
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YCMRI           m.OKFAC VALID                      
+*       * _7IB0SI7ER           m.OKFAC VALID                      
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -806,7 +806,7 @@ RETURN SGET("FAC")
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0ycmri     &&  m.OKFAC VALID
+FUNCTION _7ib0si7er     &&  m.OKFAC VALID
 #REGION 1
 if m.OKFAC=1
    STORE "" TO M.ESA,M.NUMERO,M.ELNUM
@@ -1063,7 +1063,7 @@ RETU .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YCMRR           Read Level Show                    
+*       * _7IB0SI7EW           Read Level Show                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -1075,7 +1075,7 @@ RETU .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0ycmrr     && Read Level Show
+FUNCTION _7ib0si7ew     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *

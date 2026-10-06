@@ -1,12 +1,12 @@
 *       *********************************************************
 *       *                                                         
-*       * 09/05/2024             ICAG.SPR                16:01:39 
+*       * 08/07/2026             ICAG.SPR                13:18:00 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
 *       * Author's Name                                           
 *       *                                                         
-*       * Copyright (c) 2024 Company Name                         
+*       * Copyright (c) 2026 Company Name                         
 *       * Address                                                 
 *       * City,     Zip                                           
 *       *                                                         
@@ -442,7 +442,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		SIZE 2.923,7.600,0.000 ;
 		DEFAULT 1 ;
 		FONT "MS Sans Serif", 8 ;
-		VALID _6wa0ycpm5()
+		VALID _7ib0si90o()
 	@ 1.000,2.000 SAY "1" ;
 		FONT "MS Sans Serif", 8 ;
 		STYLE "B"
@@ -542,7 +542,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 	ENDIF
 	
 	READ CYCLE ;
-		SHOW _6wa0ycpnf()
+		SHOW _7ib0si90w()
 	
 	RELEASE WINDOW icag
 	
@@ -908,14 +908,14 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		PICTURE "@*VN \!\<Ok;\?\<No" ;
 		SIZE 1,6,0 ;
 		DEFAULT 1 ;
-		VALID _6wa0ycpsk()
+		VALID _7ib0si92q()
 	
 	IF NOT WVISIBLE("icag")
 		ACTIVATE WINDOW icag
 	ENDIF
 	
 	READ CYCLE ;
-		SHOW _6wa0ycpsm()
+		SHOW _7ib0si92r()
 	
 	RELEASE WINDOW icag
 	
@@ -947,7 +947,7 @@ ENDCASE
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YCPM5           M.SELEC VALID                      
+*       * _7IB0SI90O           M.SELEC VALID                      
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -960,7 +960,7 @@ ENDCASE
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0ycpm5     &&  M.SELEC VALID
+FUNCTION _7ib0si90o     &&  M.SELEC VALID
 #REGION 1
 if M.SELEC=1
    M.CAG_SALIDA=""
@@ -981,7 +981,7 @@ return .t.
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YCPNF           Read Level Show                    
+*       * _7IB0SI90W           Read Level Show                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -993,7 +993,7 @@ return .t.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0ycpnf     && Read Level Show
+FUNCTION _7ib0si90w     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *
@@ -1149,7 +1149,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YCPSK           M.SELEC VALID                      
+*       * _7IB0SI92Q           M.SELEC VALID                      
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -1162,7 +1162,7 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0ycpsk     &&  M.SELEC VALID
+FUNCTION _7ib0si92q     &&  M.SELEC VALID
 #REGION 1
 if M.SELEC=1
    M.CAG_SALIDA=""
@@ -1181,7 +1181,7 @@ return .t.
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YCPSM           Read Level Show                    
+*       * _7IB0SI92R           Read Level Show                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -1193,7 +1193,7 @@ return .t.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0ycpsm     && Read Level Show
+FUNCTION _7ib0si92r     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *

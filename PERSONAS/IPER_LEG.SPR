@@ -1,12 +1,12 @@
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º 25/02/2025           IPER_LEG.SPR              12:16:42 º
+*       º 02/10/2026           IPER_LEG.SPR              11:35:33 º
 *       º                                                         º
 *       ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
 *       º                                                         º
 *       º GOYO REINER                                             º
 *       º                                                         º
-*       º Copyright (c) 2025 G. REINER                            º
+*       º Copyright (c) 2026 G. REINER                            º
 *       º 1º DE MAYO 2134                                         º
 *       º ROSARIO, SF  2000                                       º
 *       º ARGENTINA                                         º
@@ -129,8 +129,8 @@ IF NOT WEXIST("xper") ;
 			"Where is 03black1?")
 ENDIF
 
-IF NOT WEXIST("_74f0qberw")
-	DEFINE WINDOW _74f0qberw ;
+IF NOT WEXIST("_7kp0ouhfe")
+	DEFINE WINDOW _7kp0ouhfe ;
 		AT 25.000, 42.000 ;
 		SIZE 4.071,35.600 ;
 		TITLE " " ;
@@ -199,8 +199,8 @@ ENDIF
 	DEFAULT " " ;
 	FONT "ARIAL", 8 ;
 	PICTURE REPL('!',CONTENIDO[2]+LEN(CONTENIDO[5])) ;
-	WHEN _74f0qbew5() ;
-	VALID _74f0qbew8() ;
+	WHEN _7kp0ouhgv() ;
+	VALID _7kp0ouhgw() ;
 	MESSAGE "Ingrese C¢digo de "+tipo_per+" - [ESC] para Men£"+TEX_EFES+" - [F4] Ult" ;
 	ERROR "NO SE PUEDE TRABAJAR SOBRE UN REGISTRO BORRADO"
 @ 2.077,22.667 GET m.CLIENTE ;
@@ -208,8 +208,8 @@ ENDIF
 	DEFAULT " " ;
 	FONT "ARIAL", 8 ;
 	PICTURE "@!" ;
-	WHEN _74f0qbewa() ;
-	VALID _74f0qbewc() ;
+	WHEN _7kp0ouhgy() ;
+	VALID _7kp0ouhgz() ;
 	MESSAGE "Ingrese Nombre o Raz¢n Social de "+tipo_per+TEX_EFES ;
 	ERROR "NO SE PUEDE TRABAJAR SOBRE UN REGISTRO BORRADO"
 @ 3.154,22.667 GET m.detalle ;
@@ -257,10 +257,10 @@ ENDIF
 *
 
 #REGION 3
-IF WVISIBLE("_74f0qberw")
-	ACTIVATE WINDOW _74f0qberw SAME
+IF WVISIBLE("_7kp0ouhfe")
+	ACTIVATE WINDOW _7kp0ouhfe SAME
 ELSE
-	ACTIVATE WINDOW _74f0qberw NOSHOW
+	ACTIVATE WINDOW _7kp0ouhfe NOSHOW
 ENDIF
 @ 0.500,1.400 GET m.OPCION ;
 	PICTURE "@*BHN " + ;
@@ -301,8 +301,8 @@ ENDIF
 IF NOT WVISIBLE("control2")
 	ACTIVATE WINDOW control2
 ENDIF
-IF NOT WVISIBLE("_74f0qberw")
-	ACTIVATE WINDOW _74f0qberw
+IF NOT WVISIBLE("_7kp0ouhfe")
+	ACTIVATE WINDOW _7kp0ouhfe
 ENDIF
 IF NOT WVISIBLE("xper")
 	ACTIVATE WINDOW xper
@@ -314,7 +314,7 @@ ENDIF
 
 READ CYCLE
 
-RELEASE WINDOW _74f0qberw
+RELEASE WINDOW _7kp0ouhfe
 RELEASE WINDOW control2
 RELEASE WINDOW per
 RELEASE WINDOW xper
@@ -419,7 +419,7 @@ RETURN .T.
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QBEW5           m.codcli WHEN                      º
+*       º _7KP0OUHGV           m.codcli WHEN                      º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -432,7 +432,7 @@ RETURN .T.
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qbew5     &&  m.codcli WHEN
+FUNCTION _7kp0ouhgv     &&  m.codcli WHEN
 #REGION 1
 M.PRIOBJ=_CUROBJ
 =OFF_F2()
@@ -448,7 +448,7 @@ RETURN EMPTY(M.CLIENTE)
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QBEW8           m.codcli VALID                     º
+*       º _7KP0OUHGW           m.codcli VALID                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -461,7 +461,7 @@ RETURN EMPTY(M.CLIENTE)
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qbew8     &&  m.codcli VALID
+FUNCTION _7kp0ouhgw     &&  m.codcli VALID
 #REGION 1
 IF LAST()=27
    RETURN .T.
@@ -484,7 +484,7 @@ RETURN SGET("PER")
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QBEWA           m.CLIENTE WHEN                     º
+*       º _7KP0OUHGY           m.CLIENTE WHEN                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -497,7 +497,7 @@ RETURN SGET("PER")
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qbewa     &&  m.CLIENTE WHEN
+FUNCTION _7kp0ouhgy     &&  m.CLIENTE WHEN
 #REGION 1
 ON KEY LABEL F2 M.CLIENTE=QUEPOPUP("a Corregir",2,12)
 ON KEY LABEL F3 M.CLIENTE=SEEKTECX(30,'PER','CLIENTE','CLIENTE',(CONTENIDO[4]))
@@ -505,7 +505,7 @@ RETURN LAST()#27 .AND. !NOCOD(M.CODCLI) .AND. ESPROPIO
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QBEWC           m.CLIENTE VALID                    º
+*       º _7KP0OUHGZ           m.CLIENTE VALID                    º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -518,7 +518,7 @@ RETURN LAST()#27 .AND. !NOCOD(M.CODCLI) .AND. ESPROPIO
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qbewc     &&  m.CLIENTE VALID
+FUNCTION _7kp0ouhgz     &&  m.CLIENTE VALID
 #REGION 1
 IF LAST()=27
    RETURN .T.

@@ -1,12 +1,12 @@
 *       *********************************************************
 *       *                                                         
-*       * 09/05/2024            PRESUP.SPR               16:02:09 
+*       * 08/07/2026            PRESUP.SPR               13:18:22 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
 *       * Author's Name                                           
 *       *                                                         
-*       * Copyright (c) 2024 Company Name                         
+*       * Copyright (c) 2026 Company Name                         
 *       * Address                                                 
 *       * City,     Zip                                           
 *       *                                                         
@@ -108,14 +108,14 @@ ENDIF
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
 	STYLE "BT" ;
-	VALID _6wa0ydbwy()
+	VALID _7ib0sit9f()
 @ 12.308,29.800 GET m.condiva ;
 	PICTURE "@*RVN Cons.Final;Resp.Insc.;Resp.No Insc.;Exento" ;
 	SIZE 1.308,18.000,0.308 ;
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
 	STYLE "BT" ;
-	VALID _6wa0ydbwz()
+	VALID _7ib0sit9g()
 @ 13.692,66.000 GET m.ok ;
 	PICTURE "@*HT O.K." ;
 	SIZE 2.846,10.167,0.667 ;
@@ -145,7 +145,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YDBWY           m.maymin VALID                     
+*       * _7IB0SIT9F           m.maymin VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -158,14 +158,14 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0ydbwy     &&  m.maymin VALID
+FUNCTION _7ib0sit9f     &&  m.maymin VALID
 #REGION 1
 _curobj=objnum(m.condiva)
 return .t.
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YDBWZ           m.condiva VALID                    
+*       * _7IB0SIT9G           m.condiva VALID                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -178,7 +178,7 @@ return .t.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0ydbwz     &&  m.condiva VALID
+FUNCTION _7ib0sit9g     &&  m.condiva VALID
 #REGION 1
 _curobj=objnum(m.ok)
 return .t.

@@ -1,12 +1,12 @@
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º 25/02/2025           IPER_CAG.SPR              12:16:44 º
+*       º 02/10/2026           IPER_CAG.SPR              11:35:33 º
 *       º                                                         º
 *       ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
 *       º                                                         º
 *       º GOYO REINER                                             º
 *       º                                                         º
-*       º Copyright (c) 2025 G. REINER                            º
+*       º Copyright (c) 2026 G. REINER                            º
 *       º 1º DE MAYO 2134                                         º
 *       º ROSARIO, SF  2000                                       º
 *       º ARGENTINA                                         º
@@ -91,7 +91,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		FONT "MS Sans Serif", 8 ;
 		STYLE "B" ;
 		WHEN !M.INGRESO ;
-		VALID _74f0qbglh()
+		VALID _7kp0ouhvj()
 	
 	IF NOT WVISIBLE("xper")
 		ACTIVATE WINDOW xper
@@ -173,7 +173,7 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		SIZE 1,4,1 ;
 		DEFAULT 1 ;
 		WHEN !M.INGRESO ;
-		VALID _74f0qbgo5()
+		VALID _7kp0ouhw7()
 	@ 1,1 SAY "Confirma Ingresar / Modificar Caracter¡sticas ?" ;
 		SIZE 1,47, 0
 	
@@ -199,7 +199,7 @@ ENDCASE
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QBGLH           m.imar VALID                       º
+*       º _7KP0OUHVJ           m.imar VALID                       º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -212,7 +212,7 @@ ENDCASE
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qbglh     &&  m.imar VALID
+FUNCTION _7kp0ouhvj     &&  m.imar VALID
 #REGION 1
 if last()#27 .AND. !EMPTY(m.codcli)
 if m.imar=1
@@ -224,7 +224,7 @@ return .t.
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QBGO5           m.imar VALID                       º
+*       º _7KP0OUHW7           m.imar VALID                       º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -237,7 +237,7 @@ return .t.
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qbgo5     &&  m.imar VALID
+FUNCTION _7kp0ouhw7     &&  m.imar VALID
 #REGION 1
 if last()#27 .AND. !EMPTY(m.codcli)
 if m.imar=1

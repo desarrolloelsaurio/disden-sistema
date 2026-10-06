@@ -1,0 +1,16 @@
+ El volumen de la unidad C no tiene etiqueta.
+ El n£mero de serie del volumen es: BE74-D2B8
+
+ Directorio de C:\GITHUB\DISDEN~1\VENTAS\BOCHI
+
+20/12/2025  10:58             2.237 MERCADER.ERR
+20/12/2025  10:58         1.235.607 MERCADER.EXE
+20/12/2025  10:58               545 MERCADER.MNT
+20/12/2025  10:58             1.046 MERCADER.MNX
+20/12/2025  10:58           661.089 MERCADER.PJT
+20/12/2025  10:58            60.050 MERCADER.PJX
+20/12/2025  10:58            66.248 MERCADER.PRG
+20/12/2025  10:58           657.822 MERCADERnn.PJT
+20/12/2025  10:58            60.050 MERCADERnn.PJX
+               9 archivos      2.744.694 bytes
+               0 dirs  23.625.011.200 bytes libres

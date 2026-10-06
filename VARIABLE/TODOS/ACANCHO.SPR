@@ -1,12 +1,12 @@
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º 25/02/2025            ACANCHO.SPR              12:15:30 º
+*       º 02/10/2026            ACANCHO.SPR              11:35:09 º
 *       º                                                         º
 *       ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
 *       º                                                         º
 *       º GOYO REINER                                             º
 *       º                                                         º
-*       º Copyright (c) 2025 G. REINER                            º
+*       º Copyright (c) 2026 G. REINER                            º
 *       º 1º DE MAYO 2134                                         º
 *       º ROSARIO, SF  2000                                       º
 *       º ARGENTINA                                         º
@@ -107,7 +107,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		DEFAULT 1 ;
 		FONT "MS Sans Serif", 8 ;
 		STYLE "B" ;
-		VALID _74f0q9v3t()
+		VALID _7kp0otze9()
 	
 	IF NOT WVISIBLE("win")
 		ACTIVATE WINDOW win
@@ -216,7 +216,7 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		PICTURE "@*HN \!\<OK;\?\<NO" ;
 		SIZE 1,4,1 ;
 		DEFAULT 1 ;
-		VALID _74f0q9v6p()
+		VALID _7kp0otzh7()
 	
 	IF NOT WVISIBLE("win")
 		ACTIVATE WINDOW win
@@ -252,7 +252,7 @@ ENDCASE
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0Q9V3T           M.OPCION VALID                     º
+*       º _7KP0OTZE9           M.OPCION VALID                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -265,7 +265,7 @@ ENDCASE
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0q9v3t     &&  M.OPCION VALID
+FUNCTION _7kp0otze9     &&  M.OPCION VALID
 #REGION 1
 IF M.OPCION=1
    IF XACANCHOK()
@@ -283,7 +283,7 @@ RETURN .T.
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0Q9V6P           M.OPCION VALID                     º
+*       º _7KP0OTZH7           M.OPCION VALID                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -296,7 +296,7 @@ RETURN .T.
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0q9v6p     &&  M.OPCION VALID
+FUNCTION _7kp0otzh7     &&  M.OPCION VALID
 #REGION 1
 IF M.OPCION=1
    IF XACANCHOK()

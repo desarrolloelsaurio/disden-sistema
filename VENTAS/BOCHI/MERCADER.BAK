@@ -315,14 +315,12 @@ DEFINE BAR 3 OF modificapr PROM "Por \<Teclado" skip for gete("ADELANTE")="SI"
 DEFINE BAR 4 OF modificapr PROM "\<Completo" skip for gete("ADELANTE")="SI"
 DEFINE BAR 5 OF modificapr PROM "\-" SKIP FOR .T.
 DEFINE BAR 6 OF modificapr PROM "\<Global por Proveedor" skip for gete("ADELANTE")="SI"
-DEFINE BAR 7 OF modificapr PROM "\<FOB Global por Proveedor" skip for gete("ADELANTE")="SI"
 
 ON SELE BAR 1 OF modificapr DO _r220z2oow
 ON SELE BAR 2 OF modificapr DO _r220z2oq3
 ON SELE BAR 3 OF modificapr DO _r220z2or7
 ON SELE BAR 4 OF modificapr DO _r220z2osl
 ON SELE BAR 6 OF modificapr DO _r220z2otw
-ON SELE BAR 7 OF modificapr DO _r220z2www
 
 DEFINE POPUP modificapo MARGIN RELATIVE SHADOW COLOR SCHEME 4
 DEFINE BAR 1 OF modificapo PROM "Por \<Rubro" skip for gete("ADELANTE")="SI"
@@ -959,44 +957,6 @@ if elipro("a Corregir",-1,1)
 		sele mer
 		=flock() .or. flok()
 		repl dolar with porcen(mer.dolar,elporc) for proveedor=elpro
-	ENDIF
-ELSE
-=NOSELEC("PROVEEDOR")
-endif
-=relewin("POPCARTE")
-UNLO IN MER
-
-
-*       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
-*       º                                                         º
-*       º _R220Z2WWW  ON SELE BAR 7 OF POPUP modificapr           º
-*       º                                                         º
-*       º Procedure Origin:                                       º
-*       º                                                         º
-*       º From Menu:  MERCADER.MPR,            Record:  103       º
-*       º Called By:  ON SELE BAR 6 OF POPUP modificapr      º
-*       º PROM:     FOB Global por Proveedor                      º
-*       º Snippet:    9                                           º
-*       º                                                         º
-*       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
-*
-PROCEDURE _r220z2www
-=oppro()
-=opmer()
-store nul to respuesta
-if elipro("a Corregir",-1,1)
-	=POPCARTE(CRLF+;
-	"PROVEEDOR SELECCIONADO:"+;
-	CRLF+;
-	ALLTRIM(PER.CLIENTE))
-	ELPRO=PER.CODCLI
-	STORE 0 TO M.RESPUESTA
-	ELPORC=INFIC(100,"Porcentaje a actualizar",.T.)
-	if !empty(m.ELPORC) .and. ;
-	confirma("Aplicar "+alltrim(str(elporc,5,2))+" % al Proveedor",.t.,20,10)
-		sele mer
-		=flock() .or. flok()
-		repl fob with porcen(mer.fob,elporc) for proveedor=elpro
 	ENDIF
 ELSE
 =NOSELEC("PROVEEDOR")

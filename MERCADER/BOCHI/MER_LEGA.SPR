@@ -1,12 +1,12 @@
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º 25/02/2025           MER_LEGA.SPR              12:16:22 º
+*       º 02/10/2026           MER_LEGA.SPR              11:35:26 º
 *       º                                                         º
 *       ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
 *       º                                                         º
 *       º GOYO REINER                                             º
 *       º                                                         º
-*       º Copyright (c) 2025 G. REINER                            º
+*       º Copyright (c) 2026 G. REINER                            º
 *       º 1º DE MAYO 2134                                         º
 *       º ROSARIO, SF  2000                                       º
 *       º ARGENTINA                                         º
@@ -114,8 +114,8 @@ IF NOT WEXIST("xmer") ;
 		COLOR RGB(,,,0,128,0)
 ENDIF
 
-IF NOT WEXIST("_74f0qazax")
-	DEFINE WINDOW _74f0qazax ;
+IF NOT WEXIST("_7kp0ouc06")
+	DEFINE WINDOW _7kp0ouc06 ;
 		AT 20.000, 36.000 ;
 		SIZE 4.000,32.500 ;
 		TITLE " SU OPCION" ;
@@ -191,7 +191,7 @@ ENDIF
 2,22,;
 40,"MER",;
 "MERCA","ARTICULO","MERCA",4,22) ;
-	VALID _74f0qazfj() ;
+	VALID _7kp0ouc0r() ;
 	MESSAGE "ARTICULO A CORREGOR"+TEX_EFES ;
 	ERROR "ARTICULO INEXISTENTE" ;
 	COLOR ,RGB(255,255,255,0,128,0)
@@ -254,10 +254,10 @@ ENDIF
 *
 
 #REGION 3
-IF WVISIBLE("_74f0qazax")
-	ACTIVATE WINDOW _74f0qazax SAME
+IF WVISIBLE("_7kp0ouc06")
+	ACTIVATE WINDOW _7kp0ouc06 SAME
 ELSE
-	ACTIVATE WINDOW _74f0qazax NOSHOW
+	ACTIVATE WINDOW _7kp0ouc06 NOSHOW
 ENDIF
 @ 0.385,1.667 GET m.OPCION ;
 	PICTURE "@*BHN " + ;
@@ -298,8 +298,8 @@ ENDIF
 IF NOT WVISIBLE("control2")
 	ACTIVATE WINDOW control2
 ENDIF
-IF NOT WVISIBLE("_74f0qazax")
-	ACTIVATE WINDOW _74f0qazax
+IF NOT WVISIBLE("_7kp0ouc06")
+	ACTIVATE WINDOW _7kp0ouc06
 ENDIF
 IF NOT WVISIBLE("xmer")
 	ACTIVATE WINDOW xmer
@@ -310,9 +310,9 @@ ENDIF
 
 
 READ CYCLE ;
-	SHOW _74f0qazfl()
+	SHOW _7kp0ouc0u()
 
-RELEASE WINDOW _74f0qazax
+RELEASE WINDOW _7kp0ouc06
 RELEASE WINDOW control2
 RELEASE WINDOW mer
 RELEASE WINDOW xmer
@@ -359,7 +359,7 @@ CAMBIO
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QAZFJ           m.articulo VALID                   º
+*       º _7KP0OUC0R           m.articulo VALID                   º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -372,7 +372,7 @@ CAMBIO
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qazfj     &&  m.articulo VALID
+FUNCTION _7kp0ouc0r     &&  m.articulo VALID
 #REGION 1
 if last()=27 .or. empty(m.articulo)
 return .t.
@@ -387,7 +387,7 @@ return XSEEK(M.ARTICULO,"MER","ARTICULO") .AND. YAGRL("MER","ARTICULO")
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QAZFL           Read Level Show                    º
+*       º _7KP0OUC0U           Read Level Show                    º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -399,7 +399,7 @@ return XSEEK(M.ARTICULO,"MER","ARTICULO") .AND. YAGRL("MER","ARTICULO")
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qazfl     && Read Level Show
+FUNCTION _7kp0ouc0u     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *

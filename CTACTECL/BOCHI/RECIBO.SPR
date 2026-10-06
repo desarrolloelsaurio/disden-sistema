@@ -1,12 +1,12 @@
 *       *********************************************************
 *       *                                                         
-*       * 09/05/2024            RECIBO.SPR               16:02:13 
+*       * 08/07/2026            RECIBO.SPR               13:18:26 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
 *       * Author's Name                                           
 *       *                                                         
-*       * Copyright (c) 2024 Company Name                         
+*       * Copyright (c) 2026 Company Name                         
 *       * Address                                                 
 *       * City,     Zip                                           
 *       *                                                         
@@ -121,7 +121,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		STYLE "B" ;
 		PICTURE "@K!" ;
 		WHEN PER_F2("M.CODCLI","a Facturar",10,20,"codcli","clientes",10,20) .AND. SGET("FAC") ;
-		VALID _6wa0ydfmb() ;
+		VALID _7ib0sivaz() ;
 		MESSAGE "Seleccione cliente a Facturar" ;
 		ERROR "CLIENTE INEXISTENTE" ;
 		COLOR ,RGB(255,255,255,0,128,0)
@@ -176,14 +176,14 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		DEFAULT 1 ;
 		FONT "MS Sans Serif", 8 ;
 		WHEN last()#27 ;
-		VALID _6wa0ydfn0()
+		VALID _7ib0sivbk()
 	
 	IF NOT WVISIBLE("fac")
 		ACTIVATE WINDOW fac
 	ENDIF
 	
 	READ CYCLE ;
-		SHOW _6wa0ydfn8()
+		SHOW _7ib0sivbn()
 	
 	RELEASE WINDOW fac
 	
@@ -309,7 +309,7 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		DEFAULT " " ;
 		PICTURE "@K!" ;
 		WHEN PER_F2("M.CODCLI","a Facturar",10,20,"codcli","clientes",10,20) .AND. SGET("FAC") ;
-		VALID _6wa0ydfo9() ;
+		VALID _7ib0sivbv() ;
 		MESSAGE "Seleccione cliente a Facturar" ;
 		ERROR "CLIENTE INEXISTENTE"
 	@ 3,11 SAY IIF(EMPTY(M.CODCLI),"",PER.CLIENTE) ;
@@ -339,7 +339,7 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		SIZE 1,6,1 ;
 		DEFAULT 1 ;
 		WHEN last()#27 ;
-		VALID _6wa0ydfpq()
+		VALID _7ib0sivch()
 	@ 7,1 SAY "N§ CUIT" ;
 		SIZE 1,7, 0
 	
@@ -348,7 +348,7 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	ENDIF
 	
 	READ CYCLE ;
-		SHOW _6wa0ydfpr()
+		SHOW _7ib0sivcj()
 	
 	RELEASE WINDOW fac
 	
@@ -378,7 +378,7 @@ ENDCASE
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YDFMB           m.codcli VALID                     
+*       * _7IB0SIVAZ           m.codcli VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -391,7 +391,7 @@ ENDCASE
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0ydfmb     &&  m.codcli VALID
+FUNCTION _7ib0sivaz     &&  m.codcli VALID
 #REGION 1
 IF LAST()=27 .OR. ;
 EMPTY(M.CODCLI)
@@ -413,7 +413,7 @@ RETURN .F.
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YDFN0           m.imar VALID                       
+*       * _7IB0SIVBK           m.imar VALID                       
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -426,7 +426,7 @@ RETURN .F.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0ydfn0     &&  m.imar VALID
+FUNCTION _7ib0sivbk     &&  m.imar VALID
 #REGION 1
 if m.imar=1
    sele doc
@@ -476,7 +476,7 @@ return .t.
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YDFN8           Read Level Show                    
+*       * _7IB0SIVBN           Read Level Show                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -488,7 +488,7 @@ return .t.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0ydfn8     && Read Level Show
+FUNCTION _7ib0sivbn     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *
@@ -529,7 +529,7 @@ ENDIF
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YDFO9           m.codcli VALID                     
+*       * _7IB0SIVBV           m.codcli VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -542,7 +542,7 @@ ENDIF
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0ydfo9     &&  m.codcli VALID
+FUNCTION _7ib0sivbv     &&  m.codcli VALID
 #REGION 1
 IF LAST()=27 .OR. ;
 EMPTY(M.CODCLI)
@@ -564,7 +564,7 @@ RETURN .F.
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YDFPQ           m.imar VALID                       
+*       * _7IB0SIVCH           m.imar VALID                       
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -577,7 +577,7 @@ RETURN .F.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0ydfpq     &&  m.imar VALID
+FUNCTION _7ib0sivch     &&  m.imar VALID
 #REGION 1
 if m.imar=1
    sele doc
@@ -607,7 +607,7 @@ return .t.
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YDFPR           Read Level Show                    
+*       * _7IB0SIVCJ           Read Level Show                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -619,7 +619,7 @@ return .t.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0ydfpr     && Read Level Show
+FUNCTION _7ib0sivcj     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *

@@ -1,12 +1,12 @@
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º 25/02/2025              MIX.SPR                12:15:38 º
+*       º 02/10/2026              MIX.SPR                11:35:12 º
 *       º                                                         º
 *       ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
 *       º                                                         º
 *       º GOYO REINER                                             º
 *       º                                                         º
-*       º Copyright (c) 2025 G. REINER                            º
+*       º Copyright (c) 2026 G. REINER                            º
 *       º 1º DE MAYO 2134                                         º
 *       º ROSARIO, SF  2000                                       º
 *       º ARGENTINA                                         º
@@ -79,7 +79,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		DOUBLE ;
 		COLOR RGB(,,,0,128,0)
 	
-	DEFINE WINDOW _74f0qa1o4 ;
+	DEFINE WINDOW _7kp0ou1es ;
 		AT 14.000, 28.000 ;
 		SIZE 4.000,32.833 ;
 		TITLE " SU OPCION " ;
@@ -151,8 +151,8 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		FONT "Arial", 16 ;
 		STYLE "BIT" ;
 		PICTURE TEXTO[2,3] ;
-		WHEN _74f0qa1tz() ;
-		VALID _74f0qa1u2() ;
+		WHEN _7kp0ou1h3() ;
+		VALID _7kp0ou1h4() ;
 		MESSAGE "Ingrese "+PROPER(MENSAJE[4])+" - [ESC] para Men£"+TEX_EFES ;
 		ERROR "NO SE PUEDE TRABAJAR CON UN REGISTRO BORRADO" ;
 		COLOR ,RGB(255,255,255,,,,)
@@ -162,8 +162,8 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		FONT "Arial", 16 ;
 		STYLE "BIT" ;
 		PICTURE TEXTO[1,3] ;
-		WHEN _74f0qa1u3() ;
-		VALID _74f0qa1u4() ;
+		WHEN _7kp0ou1h6() ;
+		VALID _7kp0ou1h7() ;
 		MESSAGE "Ingrese "+PROPER(MENSAJE[3])+" - [ESC] para Men£"+TEX_EFES ;
 		ERROR "NO SE PUEDE TRABAJAR CON UN REGISTRO BORRADO" ;
 		COLOR ,RGB(255,255,255,,,,)
@@ -179,10 +179,10 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 	*
 	
 	#REGION 2
-	IF WVISIBLE("_74f0qa1o4")
-		ACTIVATE WINDOW _74f0qa1o4 SAME
+	IF WVISIBLE("_7kp0ou1es")
+		ACTIVATE WINDOW _7kp0ou1es SAME
 	ELSE
-		ACTIVATE WINDOW _74f0qa1o4 NOSHOW
+		ACTIVATE WINDOW _7kp0ou1es NOSHOW
 	ENDIF
 	@ 0.308,1.500 GET m.OPCION ;
 		PICTURE "@*BHN " + ;
@@ -193,7 +193,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		DEFAULT 1 ;
 		FONT "MS Sans Serif", 8 ;
 		STYLE "B" ;
-		VALID _74f0qa1w0() ;
+		VALID _7kp0ou1hc() ;
 		MESSAGE "Confirma las operaciones realizadas ?"
 	
 	
@@ -223,8 +223,8 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 	IF NOT WVISIBLE("control2")
 		ACTIVATE WINDOW control2
 	ENDIF
-	IF NOT WVISIBLE("_74f0qa1o4")
-		ACTIVATE WINDOW _74f0qa1o4
+	IF NOT WVISIBLE("_7kp0ou1es")
+		ACTIVATE WINDOW _7kp0ou1es
 	ENDIF
 	IF NOT WVISIBLE("mix")
 		ACTIVATE WINDOW mix
@@ -232,9 +232,9 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 	
 	
 	READ CYCLE ;
-		SHOW _74f0qa1us()
+		SHOW _7kp0ou1h9()
 	
-	RELEASE WINDOW _74f0qa1o4
+	RELEASE WINDOW _7kp0ou1es
 	RELEASE WINDOW control2
 	RELEASE WINDOW mix
 	
@@ -323,7 +323,7 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		DOUBLE ;
 		COLOR SCHEME 1
 	
-	DEFINE WINDOW _74f0qa1yw ;
+	DEFINE WINDOW _7kp0ou1ik ;
 		FROM 14, 23 ;
 		TO 18,56 ;
 		TITLE " SU OPCION " ;
@@ -382,16 +382,16 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		SIZE 1,11 ;
 		DEFAULT " " ;
 		PICTURE TEXTO[2,3] ;
-		WHEN _74f0qa21l() ;
-		VALID _74f0qa21p() ;
+		WHEN _7kp0ou1im() ;
+		VALID _7kp0ou1in() ;
 		MESSAGE "Ingrese "+PROPER(MENSAJE[4])+" - [ESC] para Men£"+TEX_EFES ;
 		ERROR "NO SE PUEDE TRABAJAR CON UN REGISTRO BORRADO"
 	@ 2,22 GET M.TEXTO1 ;
 		SIZE 1,30 ;
 		DEFAULT " " ;
 		PICTURE TEXTO[1,3] ;
-		WHEN _74f0qa227() ;
-		VALID _74f0qa229() ;
+		WHEN _7kp0ou1io() ;
+		VALID _7kp0ou1ip() ;
 		MESSAGE "Ingrese "+PROPER(MENSAJE[3])+" - [ESC] para Men£"+TEX_EFES ;
 		ERROR "NO SE PUEDE TRABAJAR CON UN REGISTRO BORRADO"
 	
@@ -406,16 +406,16 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	*
 	
 	#REGION 2
-	IF WVISIBLE("_74f0qa1yw")
-		ACTIVATE WINDOW _74f0qa1yw SAME
+	IF WVISIBLE("_7kp0ou1ik")
+		ACTIVATE WINDOW _7kp0ou1ik SAME
 	ELSE
-		ACTIVATE WINDOW _74f0qa1yw NOSHOW
+		ACTIVATE WINDOW _7kp0ou1ik NOSHOW
 	ENDIF
 	@ 1,1 GET m.OPCION ;
 		PICTURE "@*HN \!\<O K;\<N O;\?\<ESC" ;
 		SIZE 1,9,1 ;
 		DEFAULT 1 ;
-		VALID _74f0qa22t() ;
+		VALID _7kp0ou1ir() ;
 		MESSAGE "Confirma las operaciones realizadas ?"
 	
 	
@@ -443,8 +443,8 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	IF NOT WVISIBLE("control2")
 		ACTIVATE WINDOW control2
 	ENDIF
-	IF NOT WVISIBLE("_74f0qa1yw")
-		ACTIVATE WINDOW _74f0qa1yw
+	IF NOT WVISIBLE("_7kp0ou1ik")
+		ACTIVATE WINDOW _7kp0ou1ik
 	ENDIF
 	IF NOT WVISIBLE("mix")
 		ACTIVATE WINDOW mix
@@ -452,9 +452,9 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 	
 	
 	READ CYCLE ;
-		SHOW _74f0qa22o()
+		SHOW _7kp0ou1iq()
 	
-	RELEASE WINDOW _74f0qa1yw
+	RELEASE WINDOW _7kp0ou1ik
 	RELEASE WINDOW control2
 	RELEASE WINDOW mix
 	
@@ -488,7 +488,7 @@ ENDCASE
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QA1TZ           m.TEXTO2 WHEN                      º
+*       º _7KP0OU1H3           m.TEXTO2 WHEN                      º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -501,7 +501,7 @@ ENDCASE
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qa1tz     &&  m.TEXTO2 WHEN
+FUNCTION _7kp0ou1h3     &&  m.TEXTO2 WHEN
 #REGION 1
 M.PRIOBJ=_CUROBJ
 ON KEY LABEL F2 M.TEXTO2=QUEPOPUP("a Corregir",1,22)
@@ -510,7 +510,7 @@ RETURN EMPTY(M.TEXTO1)
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QA1U2           m.TEXTO2 VALID                     º
+*       º _7KP0OU1H4           m.TEXTO2 VALID                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -523,7 +523,7 @@ RETURN EMPTY(M.TEXTO1)
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qa1u2     &&  m.TEXTO2 VALID
+FUNCTION _7kp0ou1h4     &&  m.TEXTO2 VALID
 #REGION 1
 STORE .F. TO CAMBIO
 IF !EMPTY(TEXTO[2,6])
@@ -543,7 +543,7 @@ RETURN SGET("MIX")
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QA1U3           M.TEXTO1 WHEN                      º
+*       º _7KP0OU1H6           M.TEXTO1 WHEN                      º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -556,7 +556,7 @@ RETURN SGET("MIX")
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qa1u3     &&  M.TEXTO1 WHEN
+FUNCTION _7kp0ou1h6     &&  M.TEXTO1 WHEN
 #REGION 1
 ON KEY LABEL F2 M.TEXTO1=QUEPOPUP("a Corregir",2,22)
 ON KEY LABEL F3 M.TEXTO1=SEEKTECX(20,'MIX','TEXTO1','TEXTO2',TEXTO[2,5],.F.,.F.,2,22)
@@ -564,7 +564,7 @@ RETURN LAST()#27 .AND. !EMPTY(M.TEXTO2)
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QA1U4           M.TEXTO1 VALID                     º
+*       º _7KP0OU1H7           M.TEXTO1 VALID                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -577,7 +577,7 @@ RETURN LAST()#27 .AND. !EMPTY(M.TEXTO2)
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qa1u4     &&  M.TEXTO1 VALID
+FUNCTION _7kp0ou1h7     &&  M.TEXTO1 VALID
 #REGION 1
 IF LAST()=27
    RETURN .T.
@@ -614,7 +614,7 @@ RETURN .T.
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QA1W0           m.OPCION VALID                     º
+*       º _7KP0OU1HC           m.OPCION VALID                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -627,7 +627,7 @@ RETURN .T.
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qa1w0     &&  m.OPCION VALID
+FUNCTION _7kp0ou1hc     &&  m.OPCION VALID
 #REGION 2
 DO CASE
 CASE M.OPCION=3
@@ -667,7 +667,7 @@ RETURN 0
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QA1US           Read Level Show                    º
+*       º _7KP0OU1H9           Read Level Show                    º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -679,7 +679,7 @@ RETURN 0
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qa1us     && Read Level Show
+FUNCTION _7kp0ou1h9     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *
@@ -709,7 +709,7 @@ ENDIF
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QA21L           m.TEXTO2 WHEN                      º
+*       º _7KP0OU1IM           m.TEXTO2 WHEN                      º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -722,7 +722,7 @@ ENDIF
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qa21l     &&  m.TEXTO2 WHEN
+FUNCTION _7kp0ou1im     &&  m.TEXTO2 WHEN
 #REGION 1
 M.PRIOBJ=_CUROBJ
 ON KEY LABEL F2 M.TEXTO2=QUEPOPUP("a Corregir",1,22)
@@ -732,7 +732,7 @@ RETURN EMPTY(M.TEXTO1)
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QA21P           m.TEXTO2 VALID                     º
+*       º _7KP0OU1IN           m.TEXTO2 VALID                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -745,7 +745,7 @@ RETURN EMPTY(M.TEXTO1)
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qa21p     &&  m.TEXTO2 VALID
+FUNCTION _7kp0ou1in     &&  m.TEXTO2 VALID
 #REGION 1
 STORE .F. TO CAMBIO
 IF !EMPTY(TEXTO[2,6])
@@ -765,7 +765,7 @@ RETURN SGET("MIX")
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QA227           M.TEXTO1 WHEN                      º
+*       º _7KP0OU1IO           M.TEXTO1 WHEN                      º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -778,7 +778,7 @@ RETURN SGET("MIX")
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qa227     &&  M.TEXTO1 WHEN
+FUNCTION _7kp0ou1io     &&  M.TEXTO1 WHEN
 #REGION 1
 ON KEY LABEL F2 M.TEXTO1=QUEPOPUP("a Corregir",2,22)
 ON KEY LABEL F3 M.TEXTO1=SEEKTECX(20,'MIX','TEXTO1','TEXTO2',TEXTO[2,5],.F.,.F.,2,22)
@@ -786,7 +786,7 @@ RETURN LAST()#27 .AND. !EMPTY(M.TEXTO2)
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QA229           M.TEXTO1 VALID                     º
+*       º _7KP0OU1IP           M.TEXTO1 VALID                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -799,7 +799,7 @@ RETURN LAST()#27 .AND. !EMPTY(M.TEXTO2)
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qa229     &&  M.TEXTO1 VALID
+FUNCTION _7kp0ou1ip     &&  M.TEXTO1 VALID
 #REGION 1
 IF LAST()=27
    RETURN .T.
@@ -836,7 +836,7 @@ RETURN .T.
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QA22T           m.OPCION VALID                     º
+*       º _7KP0OU1IR           m.OPCION VALID                     º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -849,7 +849,7 @@ RETURN .T.
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qa22t     &&  m.OPCION VALID
+FUNCTION _7kp0ou1ir     &&  m.OPCION VALID
 #REGION 2
 DO CASE
 CASE M.OPCION=3
@@ -889,7 +889,7 @@ RETURN 0
 
 *       ÖÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ·
 *       º                                                         º
-*       º _74F0QA22O           Read Level Show                    º
+*       º _7KP0OU1IQ           Read Level Show                    º
 *       º                                                         º
 *       º Function Origin:                                        º
 *       º                                                         º
@@ -901,7 +901,7 @@ RETURN 0
 *       º                                                         º
 *       ÓÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ½
 *
-FUNCTION _74f0qa22o     && Read Level Show
+FUNCTION _7kp0ou1iq     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *

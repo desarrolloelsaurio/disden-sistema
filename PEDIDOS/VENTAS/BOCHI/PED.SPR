@@ -1,12 +1,12 @@
 *       *********************************************************
 *       *                                                         
-*       * 09/05/2024              PED.SPR                16:02:06 
+*       * 08/07/2026              PED.SPR                13:18:20 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
 *       * Author's Name                                           
 *       *                                                         
-*       * Copyright (c) 2024 Company Name                         
+*       * Copyright (c) 2026 Company Name                         
 *       * Address                                                 
 *       * City,     Zip                                           
 *       *                                                         
@@ -131,7 +131,7 @@ ENDIF
 	STYLE "B" ;
 	PICTURE "@K!" ;
 	WHEN GRL_F2("M.CODCLI","a Pedir",10,20,30,"PER","CLIENTE","codcli","clientes",10,20) .AND. SGET("PED") ;
-	VALID _6wa0yd9lj() ;
+	VALID _7ib0sis10() ;
 	MESSAGE "Seleccione cliente a Pedir"+TEX_EFES ;
 	ERROR "CLIENTE INEXISTENTE" ;
 	COLOR ,RGB(255,255,255,0,128,0)
@@ -191,7 +191,7 @@ MIX_F2("M.CONDPAGO","DE LA PEDTURA",10,20,"pagcod","pagtex",10,20) ;
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
 	WHEN last()#27 ;
-	VALID _6wa0yd9lr()
+	VALID _7ib0sis15()
 @ 15.154,31.000 SAY m.MONTONET ;
 	SIZE 0.950,20.500 ;
 	FONT "Arial", 12 ;
@@ -206,14 +206,14 @@ MIX_F2("M.CONDPAGO","DE LA PEDTURA",10,20,"pagcod","pagtex",10,20) ;
 	DEFAULT 1 ;
 	FONT "MS Sans Serif", 8 ;
 	WHEN last()#27 ;
-	VALID _6wa0yd9mi()
+	VALID _7ib0sis1p()
 
 IF NOT WVISIBLE("ped")
 	ACTIVATE WINDOW ped
 ENDIF
 
 READ CYCLE ;
-	SHOW _6wa0yd9mo()
+	SHOW _7ib0sis1s()
 
 RELEASE WINDOW ped
 
@@ -311,7 +311,7 @@ RETURN .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YD9LJ           m.codcli VALID                     
+*       * _7IB0SIS10           m.codcli VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -324,7 +324,7 @@ RETURN .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0yd9lj     &&  m.codcli VALID
+FUNCTION _7ib0sis10     &&  m.codcli VALID
 #REGION 1
 IF LAST()=27 .OR. ;
 EMPTY(M.CODCLI)
@@ -365,7 +365,7 @@ RETURN .F.
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YD9LR           m.imar VALID                       
+*       * _7IB0SIS15           m.imar VALID                       
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -378,7 +378,7 @@ RETURN .F.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0yd9lr     &&  m.imar VALID
+FUNCTION _7ib0sis15     &&  m.imar VALID
 #REGION 1
 if m.imar=1
 IF EMPTY(M.CODCLI)
@@ -449,7 +449,7 @@ return .t.
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YD9MI           m.OKPED VALID                      
+*       * _7IB0SIS1P           m.OKPED VALID                      
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -462,7 +462,7 @@ return .t.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0yd9mi     &&  m.OKPED VALID
+FUNCTION _7ib0sis1p     &&  m.OKPED VALID
 #REGION 1
 if m.OKPED=1
    SELE DOC
@@ -538,7 +538,7 @@ RETU .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YD9MO           Read Level Show                    
+*       * _7IB0SIS1S           Read Level Show                    
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -550,7 +550,7 @@ RETU .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0yd9mo     && Read Level Show
+FUNCTION _7ib0sis1s     && Read Level Show
 PRIVATE currwind
 STORE WOUTPUT() TO currwind
 *

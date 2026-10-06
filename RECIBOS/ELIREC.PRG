@@ -1,12 +1,12 @@
 *       *********************************************************
 *       *                                                         
-*       * 09/05/2024            ELIREC.PRG               16:01:33 
+*       * 08/07/2026            ELIREC.PRG               13:17:56 
 *       *                                                         
 *       *********************************************************
 *       *                                                         
 *       * Author's Name                                           
 *       *                                                         
-*       * Copyright (c) 2024 Company Name                         
+*       * Copyright (c) 2026 Company Name                         
 *       * Address                                                 
 *       * City,     Zip                                           
 *       *                                                         
@@ -99,7 +99,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		DEFAULT " " ;
 		FONT "MS Sans Serif", 8 ;
 		PICTURE REPL('!',15) ;
-		VALID _6wa0yckg4() ;
+		VALID _7ib0si63x() ;
 		MESSAGE "Ingrese N§ de Factura a Procesar"
 	@ 1.308,1.000 SAY "Nro de Recibo :" ;
 		FONT "MS Sans Serif", 8 ;
@@ -110,7 +110,7 @@ CASE _WINDOWS OR _MAC   && no MAC records in screen
 		DEFAULT 1 ;
 		FONT "MS Sans Serif", 8 ;
 		STYLE "B" ;
-		VALID _6wa0yckgf()
+		VALID _7ib0si63z()
 	
 	IF NOT WVISIBLE("fic")
 		ACTIVATE WINDOW fic
@@ -221,7 +221,7 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		SIZE 1,16 ;
 		DEFAULT " " ;
 		PICTURE REPL('!',14) ;
-		VALID _6wa0yckgz() ;
+		VALID _7ib0si645() ;
 		MESSAGE "Ingrese N§ de Factura a Procesar"
 	@ 1,1 SAY "N§ de Factura :" ;
 		SIZE 1,15, 0
@@ -229,7 +229,7 @@ CASE _DOS OR _UNIX      && no UNIX records in screen
 		PICTURE "@*VN \<OK;\<NO" ;
 		SIZE 1,4,1 ;
 		DEFAULT 1 ;
-		VALID _6wa0yckh7()
+		VALID _7ib0si647()
 	
 	IF NOT WVISIBLE("fic")
 		ACTIVATE WINDOW fic
@@ -268,7 +268,7 @@ ENDCASE
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YCKG4           m.remi VALID                       
+*       * _7IB0SI63X           m.remi VALID                       
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -282,7 +282,7 @@ ENDCASE
 *       *********************************************************
 *
 **sele doc
-FUNCTION _6wa0yckg4     &&  m.remi VALID
+FUNCTION _7ib0si63x     &&  m.remi VALID
 #REGION 1
 if last()#27 .and.  !empty(M.REMI)
 	sele ccl
@@ -303,7 +303,7 @@ return sget("fic")
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YCKGF           M.OPCION VALID                     
+*       * _7IB0SI63Z           M.OPCION VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -316,7 +316,7 @@ return sget("fic")
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0yckgf     &&  M.OPCION VALID
+FUNCTION _7ib0si63z     &&  M.OPCION VALID
 #REGION 1
 IF M.OPCION#1 .OR. LAST()=27
    STORE "00000000" TO M.REMI
@@ -326,7 +326,7 @@ RETURN .T.
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YCKGZ           m.remi VALID                       
+*       * _7IB0SI645           m.remi VALID                       
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -339,7 +339,7 @@ RETURN .T.
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0yckgz     &&  m.remi VALID
+FUNCTION _7ib0si645     &&  m.remi VALID
 #REGION 1
 M.NETO=ALLTRIM(M.REMI)
 M.ULTI=RIGHT(M.NETO,1)
@@ -369,7 +369,7 @@ return sget("fic")
 
 *       *********************************************************
 *       *                                                         
-*       * _6WA0YCKH7           M.OPCION VALID                     
+*       * _7IB0SI647           M.OPCION VALID                     
 *       *                                                         
 *       * Function Origin:                                        
 *       *                                                         
@@ -382,7 +382,7 @@ return sget("fic")
 *       *                                                         
 *       *********************************************************
 *
-FUNCTION _6wa0yckh7     &&  M.OPCION VALID
+FUNCTION _7ib0si647     &&  M.OPCION VALID
 #REGION 1
 IF M.OPCION#1 .OR. LAST()=27
    STORE "00000000" TO M.REMI
